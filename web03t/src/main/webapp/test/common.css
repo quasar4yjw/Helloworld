@@ -32,8 +32,9 @@ position: relative;
 
 }
 .best-items {
-height: 200px;
+height: 250px;
 border:1px solid red;
+position: relative;
 
 }
 .footer {

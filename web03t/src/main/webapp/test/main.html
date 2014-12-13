@@ -70,40 +70,240 @@ height: 180px;
 margin-top: 10px;
 }
 
+
+/* 베스트아이템 */
+.best1{
+position: relative;
+}
+.view-first img {
+   -webkit-transition: all 0.2s linear;
+   -moz-transition: all 0.2s linear;
+   -o-transition: all 0.2s linear;
+   -ms-transition: all 0.2s linear;
+   transition: all 0.2s linear;
+}
+.view-first .mask {
+   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+   filter: alpha(opacity=0);
+   opacity: 0;
+   background-color: rgba(219,127,8, 0.7);
+   -webkit-transition: all 0.4s ease-in-out;
+   -moz-transition: all 0.4s ease-in-out;
+   -o-transition: all 0.4s ease-in-out;
+   -ms-transition: all 0.4s ease-in-out;
+   transition: all 0.4s ease-in-out;
+}
+.view-first h2 {
+   -webkit-transform: translateY(-100px);
+   -moz-transform: translateY(-100px);
+   -o-transform: translateY(-100px);
+   -ms-transform: translateY(-100px);
+   transform: translateY(-100px);
+   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+   filter: alpha(opacity=0);
+   opacity: 0;
+   -webkit-transition: all 0.2s ease-in-out;
+   -moz-transition: all 0.2s ease-in-out;
+   -o-transition: all 0.2s ease-in-out;
+   -ms-transition: all 0.2s ease-in-out;
+   transition: all 0.2s ease-in-out;
+}
+.view-first p {
+   -webkit-transform: translateY(100px);
+   -moz-transform: translateY(100px);
+   -o-transform: translateY(100px);
+   -ms-transform: translateY(100px);
+   transform: translateY(100px);
+   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+   filter: alpha(opacity=0);
+   opacity: 0;
+   -webkit-transition: all 0.2s linear;
+   -moz-transition: all 0.2s linear;
+   -o-transition: all 0.2s linear;
+   -ms-transition: all 0.2s linear;
+   transition: all 0.2s linear;
+}
+.view-first:hover img {
+   -webkit-transform: scale(1.1,1.1);
+   -moz-transform: scale(1.1,1.1);
+   -o-transform: scale(1.1,1.1);
+   -ms-transform: scale(1.1,1.1);
+   transform: scale(1.1,1.1);
+}
+.view-first a.info {
+   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+   filter: alpha(opacity=0);
+   opacity: 0;
+   -webkit-transition: all 0.2s ease-in-out;
+   -moz-transition: all 0.2s ease-in-out;
+   -o-transition: all 0.2s ease-in-out;
+   -ms-transition: all 0.2s ease-in-out;
+   transition: all 0.2s ease-in-out;
+}
+.view-first:hover .mask {
+   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+   filter: alpha(opacity=100);
+   opacity: 1;
+}
+.view-first:hover h2,
+.view-first:hover p,
+.view-first:hover a.info {
+   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+   filter: alpha(opacity=100);
+   opacity: 1;
+   -webkit-transform: translateY(0px);
+   -moz-transform: translateY(0px);
+   -o-transform: translateY(0px);
+   -ms-transform: translateY(0px);
+   transform: translateY(0px);
+}
+.view-first:hover p {
+   -webkit-transition-delay: 0.1s;
+   -moz-transition-delay: 0.1s;
+   -o-transition-delay: 0.1s;
+   -ms-transition-delay: 0.1s;
+   transition-delay: 0.1s;
+}
+.view-first:hover a.info {
+   -webkit-transition-delay: 0.2s;
+   -moz-transition-delay: 0.2s;
+   -o-transition-delay: 0.2s;
+   -ms-transition-delay: 0.2s;
+   transition-delay: 0.2s;
+}
+
+/* 베스트2*/
+.view {
+   width: 321px;
+   height: 200px;
+   margin: auto;
+   float: left;
+   
+   overflow: hidden;
+   position: relative;
+   text-align: center;
+   -webkit-box-shadow: 1px 1px 2px #e6e6e6;
+   -moz-box-shadow: 1px 1px 2px #e6e6e6;
+   box-shadow: 1px 1px 2px #e6e6e6;
+   cursor: default;
+   background: #fff url(../images/bgimg.jpg) no-repeat center center;
+}
+.view .mask,.view .content {
+   width: 321px;
+   height: 200px;
+   position: absolute;
+   overflow: hidden;
+   top: 0;
+   left: 0;
+}
+.view img {
+   display: block;
+   position: relative;
+}
+.view h2 {
+   text-transform: uppercase;
+   color: #fff;
+   text-align: center;
+   position: relative;
+   font-size: 17px;
+   padding: 10px;
+   background: rgba(0, 0, 0, 0.8);
+   margin: 20px 0 0 0;
+}
+.view h3 {
+   font-family: Georgia, serif;
+   font-style: italic;
+   font-size: 12px;
+   position: relative;
+   color: #fff;
+   padding: 10px 20px 20px;
+   text-align: center;
+}
+.view a.info {
+   display: inline-block;
+   text-decoration: none;
+   padding: 7px 14px;
+   background: #000;
+   color: #fff;
+   text-transform: uppercase;
+   -webkit-box-shadow: 0 0 1px #000;
+   -moz-box-shadow: 0 0 1px #000;
+   box-shadow: 0 0 1px #000;
+}
+.view a.info: hover {
+   -webkit-box-shadow: 0 0 5px #000;
+   -moz-box-shadow: 0 0 5px #000;
+   box-shadow: 0 0 5px #000;
+}
+        
+        
+        
+ 
+.prevButton{
+  height:72px;
+  width:68px;
+  position:;
+  background:url('../images/buttons.png') no-repeat;
+  top:50%;
+  margin-top:-36px;
+  cursor:pointer;
+  z-index:2000;
+  background-position:left top;
+  left:0;
+  
+}
+
+ .prevButton:hover{ background-position:left bottom;left:0;}
+
+ .nextButton{
+  height:72px;
+  width:68px;
+  position:absolute;
+  top:50%;
+  margin-top:-36px;
+  cursor:pointer;
+  z-index:2000;
+  background-position:right top;
+  right:0;
+ 
+    background: url("http://i43.tinypic.com/25alqv7.png") no-repeat scroll -29px 0px transparent;  /*changed background position to -29px*/
+}
+
+.nextButton:hover{background-position:right bottom;right:0;}
+
   </style>
 <meta charset="UTF-8">
 <title>Welcome to the HelloWorld</title>
 </head>
 <body>
-<div class='container'>
-	<div class='header'>	   
-	</div>
-	<div class='main-content'>
-	
- <ul class="slide-ul">
-<li><a href="#"><img src="bg1.jpg" alt="dane"></a></li>
-<li><a href="#"><img src="bg2.jpg" alt="dane"></a></li>
-<li><a href="#"><img src="bg3.jpg" alt="dane"></a></li>
-</ul> 
-	<div class='main-search back'>
-	  
-	   <form action="">
-	    <select id='select-country'class="form-control">
-     <option>Where do you want to go?</option>
-     </select>
-     <br> <br>
-     <input type="text"  id="startDate" placeholder="여행시작일" class='date'>
-     <input type="text" id="endDate"placeholder="여행도착일" class='date'>     
-    <br> <br> <br> <br>
-     <input type="hidden" class="slider-input" value="50000,200000" />
-     
-     <button type="submit" id='search' class="btn btn-default">search</button>
-	   </form>
-	</div>
-	  
-	</div>
-	<div class='best-items'>
-	<button id='prevBtn'>이전</button>
+	<div class='container'>
+		<div class='header'></div>
+		<div class='main-content'>
+
+			<ul class="slide-ul">
+				<li><a href="#"><img src="bg1.jpg" alt="dane"></a></li>
+				<li><a href="#"><img src="bg2.jpg" alt="dane"></a></li>
+				<li><a href="#"><img src="bg3.jpg" alt="dane"></a></li>
+			</ul>
+			<div class='main-search back'>
+
+				<form action="">
+					<select id='select-country' class="form-control">
+						<option>Where do you want to go?</option>
+					</select> <br> <br> <input type="text" id="startDate"
+						placeholder="여행시작일" class='date'> <input type="text"
+						id="endDate" placeholder="여행도착일" class='date'> <br> <br>
+					<br> <br> <input type="hidden" class="slider-input"
+						value="50000,200000" />
+
+					<button type="submit" id='search' class="btn btn-default">search</button>
+				</form>
+			</div>
+
+		</div>
+		<div class='best-items'>
+			<!-- <button id='prevBtn'>이전</button> -->
+			<!-- 
 	<a href="#" class="best1"><img src="bg1.jpg" alt="dane"></a>
 	<a href="#" class="best1"><img src="bg2.jpg" alt="dane"></a>
 	<a href="#" class="best1"><img src="bg3.jpg" alt="dane"></a>
@@ -115,14 +315,41 @@ margin-top: 10px;
   <a href="#" style="display:none;" class="best3"><img src="bg3.jpg" alt="dane"></a>
   <a href="#" style="display:none;" class="best3"><img src="bg1.jpg" alt="dane"></a>
   <a href="#" style="display:none;" class="best3"><img src="bg2.jpg" alt="dane"></a>
-  <a href="#" style="display:none;" class="best3"><img src="bg3.jpg" alt="dane"></a>
-  <button id='nextBtn'>다음</button> 
-	</div>
-	<div class='footer'>
-	</div>
-</div>
+  <a href="#" style="display:none;" class="best3"><img src="bg3.jpg" alt="dane"></a> 
+  -->
+			<div class="view view-first">
+				<img src="bg1.jpg" />
+				<div class="mask">
+					<h2>담양으로 놀러오세</h2>
+					<h3>가격: 100000원</h3>
+					<a href="#" class="info">자세히보기</a>
+				</div>
+			</div>
+			<div class="view view-first">
+				<img src="bg2.jpg" />
+				<div class="mask">
+					<h2>파리의야경즐기기&약국</h2>
+					<h3>가격: 150000원</h3>
+					<a href="#" class="info">자세히보기</a>
+				</div>
+			</div>
+			<div class="view view-first">
+				<img src="bg3.jpg" />
+				<div class="mask">
+					<h2>대만의 망고 먹고싶지 않으세요?</h2>
+					<h3>가격: 50000</h3>
+					<a href="#" class="info">자세히보기</a>
+				</div>
+			</div>
+			<span class="button prevButton"></span>
+      <span class="button nextButton"></span>
 
-<script type="text/javascript" src='../js/jquery-1.11.1.js'></script>
+		<!-- 	<button id='nextBtn'>다음</button> -->
+		</div>
+		<div class='footer'></div>
+	</div>
+
+	<script type="text/javascript" src='../js/jquery-1.11.1.js'></script>
 <script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
 <script type="text/javascript" src='../js/require.js'></script>
 <script type="text/javascript" src='../js/jquery.range.js'></script>
@@ -145,7 +372,7 @@ margin-top: 10px;
 });
   
   var current=0;
-  var slide-length = $('.slide-ul>li').length;//이미지의 갯수를 변수로
+  var slide_length = $('.slide-ul>li').length;//이미지의 갯수를 변수로
   
 
 
@@ -157,7 +384,7 @@ margin-top: 10px;
 //자동 슬라이드 함수
 function autoplay(){
   
-  if(current == slide-length-1){
+  if(current == slide_length-1){
   current = 0;
 }else{
   current++;
@@ -168,10 +395,34 @@ function autoplay(){
 setInterval(autoplay,2000);//반복
 
 $("#prevBtn").click(function(){
-  $('.best-item')
+  if($(".best1").css('display') != "none"){
+    $(".best1").css('display','none');
+   $(".best3").css('display','');
+}else if($(".best2").css('display') != "none"){
+  $(".best2").css('display','none');
+  $(".best1").css('display','');
+}else{
+  $(".best3").css('display','none');
+  $(".best2").css('display','');
+}
+  //$('.best-items > a').css('display','none');
+  //if()
 });
-
-
+ 
+$("#nextBtn").click(function(){
+  if($(".best1").css('display') != "none"){
+    $(".best1").css('display','none');
+   $(".best2").css('display','');
+}else if($(".best2").css('display') != "none"){
+  $(".best2").css('display','none');
+  $(".best3").css('display','');
+}else{
+  $(".best3").css('display','none');
+  $(".best1").css('display','');
+}
+  //$('.best-items > a').css('display','none');
+  //if()
+});
 </script>
 </body>
 </html>
