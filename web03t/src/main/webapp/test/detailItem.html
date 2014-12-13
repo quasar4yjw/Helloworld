@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel='stylesheet' href='/web03t/css/bootstrap.min.css'>
+    <link rel="stylesheet" 
+  href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+    <script src="modernizr.customBtn.js"></script>
+    <link rel='stylesheet' href='/web03t/css/bootstrap.min.css'>
 <link rel='stylesheet' href='/web03t/css/bootstrap-theme.min.css'>
 <link rel='stylesheet' href='common.css'>
+ 
+    <link rel="stylesheet" type="text/css" href="componentBtn.css" />
+    
+    
+    
 <style>
 .detail-content {
 width:66%;
@@ -15,6 +23,7 @@ width:34%;
 background-color: royalblue;
 float:right;
 padding: 30px;
+height:3000px;
 }
 
 .represent-img img, .detailPhoto{
@@ -24,7 +33,7 @@ max-height:100%;
 
 .table, .table-hover {
 border-radius:22px;
-background-color:orange;
+background-color:#6cbfee;
 }
 tr, td, th {
 border-radius:22px;
@@ -32,14 +41,25 @@ border-radius:22px;
 
 #guideProfile{
 float:right;
-right:-200px;
 }
 
 .footer {
 clear:both;
 }
 
+.form-control {
+width:350px;
+display:inline;
+}
 
+.datepicker div{
+position:relative;
+top:1000px;
+}
+.datepicker {
+position:relative;
+top:1000px;
+}
 
 
 
@@ -249,17 +269,20 @@ clear:both;
 		  <div class="represent-img"><img src=KyungbokGoong.jpg></div>
 		  <div class="detail-content">
 		    <h3>한국의 전통문화를 뼈속 깊이 알려드릴게요 ~!!!</h3>
-		    금액 : 100,000원<br> 
-		    관심사 : 전통 / 음식 / 쇼핑<br>
+		    금액 : 100,000원
+		    <br> 
+		    관심사 : 전통 / 음식 / 쇼핑
+		    <br>
 		    
-		    <a name="tourPlan" 
+		    <a id="tourPlan" 
 		    class="btn btn-primary btn-lg active">여행일정</a>
         <a href="#detailPhoto" 
         class="btn btn-default btn-lg active" role="button">상세사진</a>
         <a href="#guideInfo" 
         class="btn btn-default btn-lg active" role="button">가이드정보</a>
         <a href="#itemComment" 
-        class="btn btn-default btn-lg active" role="button">한줄평</a><br>
+        class="btn btn-default btn-lg active" role="button">한줄평</a>
+        <br>
        
           
            <ul class="cbp_tmtimeline">
@@ -306,49 +329,117 @@ clear:both;
         
         <a href="#tourPlan"
         class="btn btn-default btn-lg active" role="button">여행일정</a>
-        <a name="detailPhoto"
+        <a id="detailPhoto"
         class="btn btn-primary btn-lg active" role="button">상세사진</a>
         <a href="#guideInfo"
         class="btn btn-default btn-lg active" role="button">가이드정보</a>
         <a href="#itemComment"
-        class="btn btn-default btn-lg active" role="button">한줄평</a><br>
+        class="btn btn-default btn-lg active" role="button">한줄평</a>
+        <br>
+        <br>
         
-        <img class='detailPhoto' src='guideItem1.jpg'><br>
-        <img class='detailPhoto' src='guideItem2.jpg'><br>
+        <img class='detailPhoto' src='guideItem1.jpg'>
+        <br>
+        <img class='detailPhoto' src='guideItem2.jpg'>
+        <br>
         
         
         <a href="#tourPlan"
         class="btn btn-default btn-lg active" role="button">여행일정</a>
         <a href="#detailPhoto"
         class="btn btn-default btn-lg active" role="button">상세사진</a>
-        <a name="guideInfo"
+        <a id="guideInfo"
         class="btn btn-primary btn-lg active" role="button">가이드정보</a>
         <a href="#itemComment"
-        class="btn btn-default btn-lg active" role="button">한줄평</a><br>
-        
-        <span><img src='guideFace.jpg' style=width:150px;></span>
+        class="btn btn-default btn-lg active" role="button">한줄평</a>
+        <br>
+        <br>
+        <span><img src='guideFace.jpg' style=width:220px;></span>
         <div id='guideProfile'>
-        이름 <input class="form-control" type="text" value="엄진영" readonly>
-        나이 <input class="form-control" id="disabledInput" type="text" value="42세" disabled>
-        </div><br>
+        이름<br> <input class="form-control"  type="text" value="엄진영" disabled>
+        <br>
+        나이<br> <input class="form-control"  type="text" value="42세" disabled>
+        <br>
+        이메일<br> <input class="form-control"  type="text" value="jinyoung.eom@gmail.com" disabled>
+        <br>
+        사용가능언어<br> <input class="form-control"  type="text" value="한글, English, Français" disabled>
+        <br>
+        가이드 경력 <br> <input class="form-control"  type="text" value="3년" disabled>
+        </div>
+        <br><br><br>
+        언어자격증
+        <table class="table table-hover">
+         <tr> 
+              <th style=width:100px;>자격증</th>
+              <th>점수</th><th>발급기관</th><th>취득일</th>
+         </tr>
+         <tr>
+              <td>ESPT</td>
+              <td>720</td><td>ESPT 아카데미</td><td>2010-06-20</td>
+         </tr>
+         <tr>
+              <td>DELF</td>
+              <td>B2</td><td>프랑스 정부</td><td>2012-02-03</td>
+         </tr>
+         </table>
+        <br>
         <a href="#tourPlan"
         class="btn btn-default btn-lg active" role="button">여행일정</a>
         <a href="#detailPhoto"
         class="btn btn-default btn-lg active" role="button">상세사진</a>
         <a href="#guideInfo"
         class="btn btn-default btn-lg active" role="button">가이드정보</a>
-        <a name="itemComment"
+        <a id="itemComment"
         class="btn btn-primary btn-lg active" role="button">한줄평</a><br>
+        <br>
+        <br>
+		    <table class="table table-hover">
+		      <tr> 
+              <th style=width:100px;>점수</th>
+              <th>내용</th>
+         </tr>
+         <tr>
+              <td>★★★★</td>
+              <td>정말 좋아요! 시험 전날 갔다왔는데 국사 100점 맞았다니깐요?</td>
+         </tr>
+         <tr>
+              <td>★</td>
+              <td>한국의 역사를 알게되서 너무 슬퍼요 ㅠㅠ So sad...</td>
+         </tr>
+         <tr>
+              <td>★★★★★</td>
+              <td>오호라~!</td>
+         </tr>
+         <tr>
+              <td>★★★</td>
+              <td>재밌는 강의였어요.</td>
+         </tr>
+		    </table>
+		    <nav>
+  <ul class="pagination">
+    <li><a href="#"><span aria-hidden="true">&lt;</span><span class="sr-only">Previous</span></a></li>
+    <li class='active'><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#"><span aria-hidden="true">&gt;</span><span class="sr-only">Next</span></a></li>
+  </ul>
+</nav>
 		  
 		  
-		    
 		  
 		  
 		  
 		  
 		  
+		  </div><!-- detail-content -->
+		  <div class="right-content">
+		  <div id="datepicker"></div>
+		  <button class="btnright btn-1 btn-1d">신청</button>
+		  <button class="btnright btn-1 btn-1d">목록</button>
+		  <button class="btnright btn-1 btn-1d">쪽지</button>
 		  </div>
-		  <div class="right-content"></div>
 		</div>
 		
 		<div class="footer"></div>
@@ -357,10 +448,61 @@ clear:both;
 	<script type="text/javascript" src='../js/jquery-1.11.1.js'></script>
 	<script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
 	<script type="text/javascript" src='../js/require.js'></script>
+	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 	<script type="text/javascript">
-
+	  $(function() {
+	    $( "#datepicker" ).datepicker();
+	  });
   $('.header').load('header.html');
   $('.footer').load('footer.html');
+  
+  
+ /*  $(window).scroll(function(){
+	    var scrollTop = $(document).scrollTop();
+	    //console.log("scrollTop : " + scrollTop);
+	    if (scrollTop < 168) {
+	        scrollTop = 168;
+	    }
+	    $("#datepicker").stop();
+	    $("#datepicker").animate( { "top" : scrollTop });
+	}); */
+  
 </script>
+
+<script src="classieBtn.js"></script>
+    <script>
+      var buttons7Click = Array.prototype.slice.call( document.querySelectorAll( '#btn-click button' ) ),
+        buttons9Click = Array.prototype.slice.call( document.querySelectorAll( 'button.btn-8g' ) ),
+        totalButtons7Click = buttons7Click.length,
+        totalButtons9Click = buttons9Click.length;
+
+      buttons7Click.forEach( function( el, i ) { el.addEventListener( 'click', activate, false ); } );
+      buttons9Click.forEach( function( el, i ) { el.addEventListener( 'click', activate, false ); } );
+
+      function activate() {
+        var self = this, activatedClass = 'btn-activated';
+
+        if( classie.has( this, 'btn-7h' ) ) {
+          // if it is the first of the two btn-7h then activatedClass = 'btn-error';
+          // if it is the second then activatedClass = 'btn-success'
+          activatedClass = buttons7Click.indexOf( this ) === totalButtons7Click-2 ? 'btn-error' : 'btn-success';
+        }
+        else if( classie.has( this, 'btn-8g' ) ) {
+          // if it is the first of the two btn-8g then activatedClass = 'btn-success3d';
+          // if it is the second then activatedClass = 'btn-error3d'
+          activatedClass = buttons9Click.indexOf( this ) === totalButtons9Click-2 ? 'btn-success3d' : 'btn-error3d';
+        }
+
+        if( !classie.has( this, activatedClass ) ) {
+          classie.add( this, activatedClass );
+          setTimeout( function() { classie.remove( self, activatedClass ) }, 1000 );
+        }
+      }
+
+      document.querySelector( '.btn-7i' ).addEventListener( 'click', function() {
+        classie.add( document.querySelector( '#trash-effect' ), 'trash-effect-active' );
+      }, false );
+    </script>
+    
 </body>
 </html>
