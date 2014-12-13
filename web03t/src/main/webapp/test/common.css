@@ -38,7 +38,7 @@ position: relative;
 
 }
 .footer {
-clean:both;
+clear:both;
 height: 150px;
 border:1px solid red;
 }
