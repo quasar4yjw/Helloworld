@@ -5,7 +5,7 @@ border: 1px solid blue;
 margin: auto;
 padding-top: 15px;
 padding-bottom: 15px;
-} 
+}
 .header {
 height: 150px;
 border: 1px solid red;
@@ -18,26 +18,26 @@ border: 1px solid black;
 position: relative;
 right: -730px;
 }
-.main_name {
+.main-name {
 height: 70px;
 border: 1px solid black;
 text-align: center;
 font-size: 3.3em;
 
 }
-.main_content {
+.main-content {
 height: 400px;
 border:1px solid red;
 position: relative;
 
 }
-.best_items {
+.best-items {
 height: 200px;
 border:1px solid red;
 
 }
 .footer {
-clear: both;
+
 height: 150px;
 border:1px solid red;
 }
@@ -45,7 +45,7 @@ hr{
 border-top: 1px solid black;
 margin: 0px;
 }
-.footer_menu {
+.footer-menu {
 width: 400px;
 height: 40px;
 padding: 10px 0px;

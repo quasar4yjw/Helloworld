@@ -17,7 +17,7 @@
     .slider-input{
     font-color: black;
     }
-    .main_search{
+    .main-search{
     width: 350px;
     height: 400px;
     border: 1px solid black;
@@ -28,12 +28,12 @@
     padding: 100px 25px;
     
     }
-     .main_search{
+     .main-search{
     
      background: rgba( 255, 255, 255, 0.3 );
     }
     
-    .main_search #select_country{
+    .main-search #select-country{
     width: 300px;}
     
     .date{
@@ -47,29 +47,29 @@
     font-color: black;
     }
     
-.slide{
-text-align:center; 
-position:relative;
- width: 968px; 
- margin: 0 auto; 
- display: block;
- height: 400px;}
-.slide_ul{
+
+.slide-ul{
 display: block;
 position: absolute;}
-.slide_ul>li{
+.slide-ul>li{
 position:absolute; 
 top:0; left:0; 
 list-style:none;
 z-index:10; 
 display: block;}
-.slide_ul>li img{ 
+.slide-ul>li img{ 
 width: 968px;
 height: 400px;
 }
 li{list-style: none;}
 
 .show{display:block;}
+.best-items>a>img{
+width: 215px;
+height: 180px;
+margin-top: 10px;
+}
+
   </style>
 <meta charset="UTF-8">
 <title>Welcome to the HelloWorld</title>
@@ -78,17 +78,17 @@ li{list-style: none;}
 <div class='container'>
 	<div class='header'>	   
 	</div>
-	<div class='main_content'>
+	<div class='main-content'>
 	
- <ul class="slide_ul">
+ <ul class="slide-ul">
 <li><a href="#"><img src="bg1.jpg" alt="dane"></a></li>
 <li><a href="#"><img src="bg2.jpg" alt="dane"></a></li>
 <li><a href="#"><img src="bg3.jpg" alt="dane"></a></li>
 </ul> 
-	<div class='main_search back'>
+	<div class='main-search back'>
 	  
 	   <form action="">
-	    <select id='select_country'class="form-control">
+	    <select id='select-country'class="form-control">
      <option>Where do you want to go?</option>
      </select>
      <br> <br>
@@ -102,8 +102,21 @@ li{list-style: none;}
 	</div>
 	  
 	</div>
-	<div class='best_items'>
-	  
+	<div class='best-items'>
+	<button id='prevBtn'>이전</button>
+	<a href="#" class="best1"><img src="bg1.jpg" alt="dane"></a>
+	<a href="#" class="best1"><img src="bg2.jpg" alt="dane"></a>
+	<a href="#" class="best1"><img src="bg3.jpg" alt="dane"></a>
+	<a href="#" class="best1"><img src="bg1.jpg" alt="dane"></a>
+	<a href="#" style="display:none;" class="best2"><img src="bg2.jpg" alt="dane"></a>
+  <a href="#" style="display:none;" class="best2"><img src="bg3.jpg" alt="dane"></a>
+  <a href="#" style="display:none;" class="best2"><img src="bg1.jpg" alt="dane"></a>
+  <a href="#" style="display:none;" class="best2"><img src="bg2.jpg" alt="dane"></a>
+  <a href="#" style="display:none;" class="best3"><img src="bg3.jpg" alt="dane"></a>
+  <a href="#" style="display:none;" class="best3"><img src="bg1.jpg" alt="dane"></a>
+  <a href="#" style="display:none;" class="best3"><img src="bg2.jpg" alt="dane"></a>
+  <a href="#" style="display:none;" class="best3"><img src="bg3.jpg" alt="dane"></a>
+  <button id='nextBtn'>다음</button> 
 	</div>
 	<div class='footer'>
 	</div>
@@ -132,27 +145,32 @@ li{list-style: none;}
 });
   
   var current=0;
-  var slide_length = $('.slide_ul>li').length;//이미지의 갯수를 변수로
+  var slide-length = $('.slide-ul>li').length;//이미지의 갯수를 변수로
   
 
 
-  $('.slide_ul>li').hide();//이미지 안보이게
-  $('.slide_ul>li').first().show();//이미지 하나만 보이게
+  $('.slide-ul>li').hide();//이미지 안보이게
+  $('.slide-ul>li').first().show();//이미지 하나만 보이게
   
     
   
 //자동 슬라이드 함수
 function autoplay(){
   
-  if(current == slide_length-1){
+  if(current == slide-length-1){
   current = 0;
 }else{
   current++;
 }
-  $('.slide_ul>li').stop().fadeOut(900);
-  $('.slide_ul>li').eq(current).stop().fadeIn(700);
+  $('.slide-ul>li').stop().fadeOut(900);
+  $('.slide-ul>li').eq(current).stop().fadeIn(700);
 }
 setInterval(autoplay,2000);//반복
+
+$("#prevBtn").click(function(){
+  $('.best-item')
+});
+
 
 </script>
 </body>
