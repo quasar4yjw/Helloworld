@@ -16,10 +16,11 @@
   
     .slider-input{
     font-color: black;
+    width:100%;
     }
     .main-search{
     width: 350px;
-    height: 400px;
+    height: 500px;
     border: 1px solid black;
     position: absolute;
     z-index: 10;   
@@ -48,8 +49,10 @@
     }
     
 
+
 .slide-ul{
 display: block;
+width: 100%;
 position: absolute;}
 .slide-ul>li{
 position:absolute; 
@@ -58,13 +61,14 @@ list-style:none;
 z-index:10; 
 display: block;}
 .slide-ul>li img{ 
-width: 968px;
-height: 400px;
+width:100% ;
+height: 500px;
 }
 li{list-style: none;}
 
 .show{display:block;}
-.best-items>a>img{
+
+.best-items > a >img{
 width: 215px;
 height: 180px;
 margin-top: 10px;
@@ -76,6 +80,8 @@ margin-top: 10px;
 position: relative;
 }
 .view-first img {
+    width:321px;
+    hieght:200px;
    -webkit-transition: all 0.2s linear;
    -moz-transition: all 0.2s linear;
    -o-transition: all 0.2s linear;
@@ -108,7 +114,7 @@ position: relative;
    -ms-transition: all 0.2s ease-in-out;
    transition: all 0.2s ease-in-out;
 }
-.view-first p {
+.view-first h3 {
    -webkit-transform: translateY(100px);
    -moz-transform: translateY(100px);
    -o-transform: translateY(100px);
@@ -140,13 +146,14 @@ position: relative;
    -ms-transition: all 0.2s ease-in-out;
    transition: all 0.2s ease-in-out;
 }
+
 .view-first:hover .mask {
    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
    filter: alpha(opacity=100);
    opacity: 1;
 }
 .view-first:hover h2,
-.view-first:hover p,
+.view-first:hover h3,
 .view-first:hover a.info {
    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
    filter: alpha(opacity=100);
@@ -157,13 +164,13 @@ position: relative;
    -ms-transform: translateY(0px);
    transform: translateY(0px);
 }
-.view-first:hover p {
+.view-first:hover h3 {
    -webkit-transition-delay: 0.1s;
    -moz-transition-delay: 0.1s;
    -o-transition-delay: 0.1s;
    -ms-transition-delay: 0.1s;
    transition-delay: 0.1s;
-}
+}`
 .view-first:hover a.info {
    -webkit-transition-delay: 0.2s;
    -moz-transition-delay: 0.2s;
@@ -178,7 +185,6 @@ position: relative;
    height: 200px;
    margin: auto;
    float: left;
-   
    overflow: hidden;
    position: relative;
    text-align: center;
@@ -186,7 +192,7 @@ position: relative;
    -moz-box-shadow: 1px 1px 2px #e6e6e6;
    box-shadow: 1px 1px 2px #e6e6e6;
    cursor: default;
-   background: #fff url(../images/bgimg.jpg) no-repeat center center;
+   background: #fff no-repeat center center;
 }
 .view .mask,.view .content {
    width: 321px;
@@ -213,7 +219,7 @@ position: relative;
 .view h3 {
    font-family: Georgia, serif;
    font-style: italic;
-   font-size: 12px;
+   font-size: 17px;
    position: relative;
    color: #fff;
    padding: 10px 20px 20px;
@@ -230,46 +236,11 @@ position: relative;
    -moz-box-shadow: 0 0 1px #000;
    box-shadow: 0 0 1px #000;
 }
-.view a.info: hover {
+ .view a.info: hover {
    -webkit-box-shadow: 0 0 5px #000;
    -moz-box-shadow: 0 0 5px #000;
    box-shadow: 0 0 5px #000;
 }
-        
-        
-        
- 
-.prevButton{
-  height:72px;
-  width:68px;
-  position:;
-  background:url('../images/buttons.png') no-repeat;
-  top:50%;
-  margin-top:-36px;
-  cursor:pointer;
-  z-index:2000;
-  background-position:left top;
-  left:0;
-  
-}
-
- .prevButton:hover{ background-position:left bottom;left:0;}
-
- .nextButton{
-  height:72px;
-  width:68px;
-  position:absolute;
-  top:50%;
-  margin-top:-36px;
-  cursor:pointer;
-  z-index:2000;
-  background-position:right top;
-  right:0;
- 
-    background: url("http://i43.tinypic.com/25alqv7.png") no-repeat scroll -29px 0px transparent;  /*changed background position to -29px*/
-}
-
-.nextButton:hover{background-position:right bottom;right:0;}
 
   </style>
 <meta charset="UTF-8">
@@ -302,49 +273,88 @@ position: relative;
 
 		</div>
 		<div class='best-items'>
-			<!-- <button id='prevBtn'>이전</button> -->
-			<!-- 
-	<a href="#" class="best1"><img src="bg1.jpg" alt="dane"></a>
-	<a href="#" class="best1"><img src="bg2.jpg" alt="dane"></a>
-	<a href="#" class="best1"><img src="bg3.jpg" alt="dane"></a>
-	<a href="#" class="best1"><img src="bg1.jpg" alt="dane"></a>
-	<a href="#" style="display:none;" class="best2"><img src="bg2.jpg" alt="dane"></a>
-  <a href="#" style="display:none;" class="best2"><img src="bg3.jpg" alt="dane"></a>
-  <a href="#" style="display:none;" class="best2"><img src="bg1.jpg" alt="dane"></a>
-  <a href="#" style="display:none;" class="best2"><img src="bg2.jpg" alt="dane"></a>
-  <a href="#" style="display:none;" class="best3"><img src="bg3.jpg" alt="dane"></a>
-  <a href="#" style="display:none;" class="best3"><img src="bg1.jpg" alt="dane"></a>
-  <a href="#" style="display:none;" class="best3"><img src="bg2.jpg" alt="dane"></a>
-  <a href="#" style="display:none;" class="best3"><img src="bg3.jpg" alt="dane"></a> 
-  -->
-			<div class="view view-first">
-				<img src="bg1.jpg" />
+		
+			<div class="view view-first best1">
+				<img src="best01.jpg" />
 				<div class="mask">
 					<h2>담양으로 놀러오세</h2>
 					<h3>가격: 100000원</h3>
-					<a href="#" class="info">자세히보기</a>
+					<a href="detailItem.html" class="info">자세히보기</a>
 				</div>
 			</div>
-			<div class="view view-first">
-				<img src="bg2.jpg" />
+			<div class="view view-first best1">
+				<img src="best02.jpg" />
 				<div class="mask">
-					<h2>파리의야경즐기기&약국</h2>
+					<h2>파리의야경즐기기</h2>
 					<h3>가격: 150000원</h3>
 					<a href="#" class="info">자세히보기</a>
 				</div>
 			</div>
-			<div class="view view-first">
-				<img src="bg3.jpg" />
+			<div class="view view-first best1" >
+				<img src="best03.jpg" />
 				<div class="mask">
-					<h2>대만의 망고 먹고싶지 않으세요?</h2>
+					<h2>추운겨울 바다에 수영하고 싶지 않으세요?</h2>
 					<h3>가격: 50000</h3>
 					<a href="#" class="info">자세히보기</a>
 				</div>
 			</div>
-			<span class="button prevButton"></span>
-      <span class="button nextButton"></span>
+			<div class="view view-first best2"  style="display:none;">
+        <img src="best04.jpg" />
+        <div class="mask">
+          <h2>카지노의도시 당신의 운을 믿으십니까?</h2>
+          <h3>가격: 100000원</h3>
+          <a href="#" class="info">자세히보기</a>
+        </div>
+      </div>
+      <div class="view view-first best2" style="display:none;">
+        <img src="best05.jpg" />
+        <div class="mask">
+          <h2>오구리슌을 닮은 알파카를 찾아라.</h2>
+          <h3>가격: 150000원</h3>
+          <a href="#" class="info">자세히보기</a>
+        </div>
+      </div>
+      <div class="view view-first best2" style="display:none;">
+        <img src="bg3.jpg" />
+        <div class="mask">
+          <h2>6666</h2>
+          <h3>가격: 50000</h3>
+          <a href="#" class="info">자세히보기</a>
+        </div>
+      </div>
+      <div class="view view-first best3" style="display:none;">
+        <img src="bg1.jpg" />
+        <div class="mask">
+          <h2>7777777</h2>
+          <h3>가격: 100000원</h3>
+          <a href="#" class="info">자세히보기</a>
+        </div>
+      </div>
+      <div class="view view-first best3" style="display:none;">
+        <img src="bg2.jpg" />
+        <div class="mask">
+          <h2>888888888888</h2>
+          <h3>가격: 150000원</h3>
+          <a href="#" class="info">자세히보기</a>
+        </div>
+      </div>
+      <div class="view view-first best3" style="display:none;">
+        <img src="bg3.jpg" />
+        <div class="mask">
+          <h2>9999999999999</h2>
+          <h3>가격: 50000</h3>
+          <a href="#" class="info">자세히보기</a>
+        </div>
+      </div>
+			 <a class="left carousel-control" id='prev'  role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" id='next' role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 
-		<!-- 	<button id='nextBtn'>다음</button> -->
 		</div>
 		<div class='footer'></div>
 	</div>
@@ -394,10 +404,11 @@ function autoplay(){
 }
 setInterval(autoplay,2000);//반복
 
-$("#prevBtn").click(function(){
+$("#prev").click(function(){
   if($(".best1").css('display') != "none"){
+    console.log('이전');
     $(".best1").css('display','none');
-   $(".best3").css('display','');
+    $(".best3").css('display',''); 
 }else if($(".best2").css('display') != "none"){
   $(".best2").css('display','none');
   $(".best1").css('display','');
@@ -409,8 +420,9 @@ $("#prevBtn").click(function(){
   //if()
 });
  
-$("#nextBtn").click(function(){
+$("#next").click(function(){
   if($(".best1").css('display') != "none"){
+    console.log('다음');
     $(".best1").css('display','none');
    $(".best2").css('display','');
 }else if($(".best2").css('display') != "none"){
@@ -422,6 +434,10 @@ $("#nextBtn").click(function(){
 }
   //$('.best-items > a').css('display','none');
   //if()
+
+});
+$('.view-first > img').mouseover(function(){
+  $('.view-first>div').addclass('view-best');
 });
 </script>
 </body>
