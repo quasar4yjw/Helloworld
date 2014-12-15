@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" 
-  href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
-    <script src="modernizr.customBtn.js"></script>
-    <link rel='stylesheet' href='/web03t/css/bootstrap.min.css'>
+<link rel="stylesheet" 
+href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+<script src="modernizr.customBtn.js"></script>
+<link rel='stylesheet' href='/web03t/css/bootstrap.min.css'>
 <link rel='stylesheet' href='/web03t/css/bootstrap-theme.min.css'>
 <link rel='stylesheet' href='common.css'>
  
-    <link rel="stylesheet" type="text/css" href="componentBtn.css" />
-    
-    
+<link rel="stylesheet" type="text/css" href="componentBtn.css" />
+<link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/nanumgothic.css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/nanumpenscript.css" />
     
 <style>
+body {
+font-family: 'Nanum Gothic Coding', monospace;
+}
 .detail-content {
 width:66%;
 float: left;
@@ -32,12 +35,10 @@ max-height:100%;
 }
 
 .table, .table-hover {
-border-radius:22px;
 background-color:#6cbfee;
+margin-bottom: 10px;
 }
-tr, td, th {
-border-radius:22px;
-} 
+
 
 #guideProfile{
 float:right;
@@ -60,8 +61,10 @@ top:1000px;
 position:relative;
 top:1000px;
 }
-
-
+.pagination {
+margin-left: 30%;
+}
+.f-nav {z-index:9999; position:fixed; top:26px;}
 
  @font-face {
     font-family: 'ecoico';
@@ -258,6 +261,12 @@ top:1000px;
 
 
 
+
+
+
+
+
+
 </style>
 <meta charset="UTF-8">
 <title>Welcome to the HelloWorld</title>
@@ -356,18 +365,18 @@ top:1000px;
         <br>
         <span><img src='guideFace.jpg' style=width:220px;></span>
         <div id='guideProfile'>
-        이름<br> <input class="form-control"  type="text" value="엄진영" disabled>
-        <br>
-        나이<br> <input class="form-control"  type="text" value="42세" disabled>
-        <br>
-        이메일<br> <input class="form-control"  type="text" value="jinyoung.eom@gmail.com" disabled>
-        <br>
-        사용가능언어<br> <input class="form-control"  type="text" value="한글, English, Français" disabled>
-        <br>
-        가이드 경력 <br> <input class="form-control"  type="text" value="3년" disabled>
+        <h4>이름 엄진영</h4>
+        
+        <h4>나이 42세</h4>
+        
+        <h4>이메일 jinyoung.eom@gmail.com</h4>
+        
+        <h4>사용가능언어 한글, English, Français</h4>
+        
+        <h4>가이드 경력 3년</h4>
         </div>
-        <br><br><br>
-        언어자격증
+        <br>
+        <h4>언어자격증</h4>
         <table class="table table-hover">
          <tr> 
               <th style=width:100px;>자격증</th>
@@ -435,10 +444,23 @@ top:1000px;
 		  
 		  </div><!-- detail-content -->
 		  <div class="right-content">
+		  <div class="right-scroll">
 		  <div id="datepicker"></div>
 		  <button class="btnright btn-1 btn-1d">신청</button>
 		  <button class="btnright btn-1 btn-1d">목록</button>
 		  <button class="btnright btn-1 btn-1d">쪽지</button>
+		  </div>
+		  <br>
+		  <br>
+		  <br>
+		  <br>
+		  <br>
+		  
+		   <span class="glyphicon glyphicon-camera" aria-hidden="true"></span> 리뷰<br><br>
+		   <img src="guideReview1.jpg" style='width:250px;'><br><br>
+		  <img src="guideReview2.jpg" style='width:250px;'><br><br>
+		  <img src="guideReview3.jpg" style='width:250px;'><br><br>
+		  <img src="guideReview4.jpg" style='width:250px;'> 
 		  </div>
 		</div>
 		
@@ -450,6 +472,7 @@ top:1000px;
 	<script type="text/javascript" src='../js/require.js'></script>
 	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 	<script type="text/javascript">
+	
 	  $(function() {
 	    $( "#datepicker" ).datepicker();
 	  });
@@ -467,42 +490,20 @@ top:1000px;
 	    $("#datepicker").animate( { "top" : scrollTop });
 	}); */
   
+	
+	var nav = $('.right-scroll');
+	 
+	$(window).scroll(function () {
+	    if ($(this).scrollTop() > 815) {
+	        nav.addClass("f-nav");
+	    } else {
+	        nav.removeClass("f-nav");
+	    }
+	});
+	
 </script>
 
-<script src="classieBtn.js"></script>
-    <script>
-      var buttons7Click = Array.prototype.slice.call( document.querySelectorAll( '#btn-click button' ) ),
-        buttons9Click = Array.prototype.slice.call( document.querySelectorAll( 'button.btn-8g' ) ),
-        totalButtons7Click = buttons7Click.length,
-        totalButtons9Click = buttons9Click.length;
-
-      buttons7Click.forEach( function( el, i ) { el.addEventListener( 'click', activate, false ); } );
-      buttons9Click.forEach( function( el, i ) { el.addEventListener( 'click', activate, false ); } );
-
-      function activate() {
-        var self = this, activatedClass = 'btn-activated';
-
-        if( classie.has( this, 'btn-7h' ) ) {
-          // if it is the first of the two btn-7h then activatedClass = 'btn-error';
-          // if it is the second then activatedClass = 'btn-success'
-          activatedClass = buttons7Click.indexOf( this ) === totalButtons7Click-2 ? 'btn-error' : 'btn-success';
-        }
-        else if( classie.has( this, 'btn-8g' ) ) {
-          // if it is the first of the two btn-8g then activatedClass = 'btn-success3d';
-          // if it is the second then activatedClass = 'btn-error3d'
-          activatedClass = buttons9Click.indexOf( this ) === totalButtons9Click-2 ? 'btn-success3d' : 'btn-error3d';
-        }  
-
-        if( !classie.has( this, activatedClass ) ) {
-          classie.add( this, activatedClass );
-          setTimeout( function() { classie.remove( self, activatedClass ) }, 1000 );
-        }
-      }
-
-      document.querySelector( '.btn-7i' ).addEventListener( 'click', function() {
-        classie.add( document.querySelector( '#trash-effect' ), 'trash-effect-active' );
-      }, false );
-    </script>
+    
     
 </body>
 </html>
