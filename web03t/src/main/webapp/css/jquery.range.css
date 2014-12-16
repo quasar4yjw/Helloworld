@@ -22,8 +22,8 @@
 .slider-container .back-bar .pointer-label {
   position: absolute;
   top: -17px;
-  font-size: 8px;
-  background: white;
+  font-size: 12px;
+ /*  background: white; */
   white-space: nowrap;
   line-height: 1;
 }
@@ -48,7 +48,7 @@
   font-size: 0;
 }
 .slider-container .scale ins {
-  font-size: 9px;
+  font-size: 12px;
   text-decoration: none;
   position: absolute;
   left: 0;
@@ -100,7 +100,7 @@
   cursor: col-resize;
 }
 .theme-green .back-bar .pointer-label {
-  color: #999;
+  color: black;
 }
 .theme-green .back-bar .focused {
   color: #333;
@@ -109,7 +109,7 @@
   border-left: 1px solid #e5e5e5;
 }
 .theme-green .scale ins {
-  color: #999;
+  color: black;
 }
 .theme-blue .back-bar {
   height: 5px;
