@@ -75,180 +75,116 @@ li{list-style: none;}
 
 .show{display:block;}
 
-.best-items > a >img{
-width: 215px;
-height: 180px;
-margin-top: 10px;
-}
-
-
-/* 베스트아이템 */
-.best1{
+.experiences-feature .experiences-results {
 position: relative;
-}
-.view-first img {
-    width:321px;
-    hieght:200px;
-   -webkit-transition: all 0.2s linear;
-   -moz-transition: all 0.2s linear;
-   -o-transition: all 0.2s linear;
-   -ms-transition: all 0.2s linear;
-   transition: all 0.2s linear;
-}
-.view-first .mask {
-   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
-   filter: alpha(opacity=0);
-   opacity: 0;
-   background-color: rgba(219,127,8, 0.7);
-   -webkit-transition: all 0.4s ease-in-out;
-   -moz-transition: all 0.4s ease-in-out;
-   -o-transition: all 0.4s ease-in-out;
-   -ms-transition: all 0.4s ease-in-out;
-   transition: all 0.4s ease-in-out;
-}
-.view-first h2 {
-   -webkit-transform: translateY(-100px);
-   -moz-transform: translateY(-100px);
-   -o-transform: translateY(-100px);
-   -ms-transform: translateY(-100px);
-   transform: translateY(-100px);
-   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
-   filter: alpha(opacity=0);
-   opacity: 0;
-   -webkit-transition: all 0.2s ease-in-out;
-   -moz-transition: all 0.2s ease-in-out;
-   -o-transition: all 0.2s ease-in-out;
-   -ms-transition: all 0.2s ease-in-out;
-   transition: all 0.2s ease-in-out;
-}
-.view-first h3 {
-   -webkit-transform: translateY(100px);
-   -moz-transform: translateY(100px);
-   -o-transform: translateY(100px);
-   -ms-transform: translateY(100px);
-   transform: translateY(100px);
-   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
-   filter: alpha(opacity=0);
-   opacity: 0;
-   -webkit-transition: all 0.2s linear;
-   -moz-transition: all 0.2s linear;
-   -o-transition: all 0.2s linear;
-   -ms-transition: all 0.2s linear;
-   transition: all 0.2s linear;
-}
-.view-first:hover img {
-   -webkit-transform: scale(1.1,1.1);
-   -moz-transform: scale(1.1,1.1);
-   -o-transform: scale(1.1,1.1);
-   -ms-transform: scale(1.1,1.1);
-   transform: scale(1.1,1.1);
-}
-.view-first a.info {
-   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
-   filter: alpha(opacity=0);
-   opacity: 0;
-   -webkit-transition: all 0.2s ease-in-out;
-   -moz-transition: all 0.2s ease-in-out;
-   -o-transition: all 0.2s ease-in-out;
-   -ms-transition: all 0.2s ease-in-out;
-   transition: all 0.2s ease-in-out;
+height: 660px;
 }
 
-.view-first:hover .mask {
-   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
-   filter: alpha(opacity=100);
-   opacity: 1;
-}
-.view-first:hover h2,
-.view-first:hover h3,
-.view-first:hover a.info {
-   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
-   filter: alpha(opacity=100);
-   opacity: 1;
-   -webkit-transform: translateY(0px);
-   -moz-transform: translateY(0px);
-   -o-transform: translateY(0px);
-   -ms-transform: translateY(0px);
-   transform: translateY(0px);
-}
-.view-first:hover h3 {
-   -webkit-transition-delay: 0.1s;
-   -moz-transition-delay: 0.1s;
-   -o-transition-delay: 0.1s;
-   -ms-transition-delay: 0.1s;
-   transition-delay: 0.1s;
-}`
-.view-first:hover a.info {
-   -webkit-transition-delay: 0.2s;
-   -moz-transition-delay: 0.2s;
-   -o-transition-delay: 0.2s;
-   -ms-transition-delay: 0.2s;
-   transition-delay: 0.2s;
+.best-items .best-item-result {
+position: relative;
+height: 660px;
 }
 
-/* 베스트2*/
-.view {
-   width: 321px;
-   height: 200px;
-   margin: auto;
-   float: left;
-   overflow: hidden;
-   position: relative;
-   text-align: center;
-   -webkit-box-shadow: 1px 1px 2px #e6e6e6;
-   -moz-box-shadow: 1px 1px 2px #e6e6e6;
-   box-shadow: 1px 1px 2px #e6e6e6;
-   cursor: default;
-   background: #fff no-repeat center center;
+.best-item-result .tile {
+width: 390px;
+height: 220px;
+display: block;
+position: absolute;
+overflow: hidden;
 }
-.view .mask,.view .content {
-   width: 321px;
-   height: 200px;
-   position: absolute;
-   overflow: hidden;
-   top: 0;
-   left: 0;
+.best-item-result .feature-tile {
+width: 780px;
+height: 440px;
 }
-.view img {
-   display: block;
-   position: relative;
+.best-item-result .tile img {
+display: block;
+width: 100%;
 }
-.view h2 {
-   text-transform: uppercase;
-   color: #fff;
-   text-align: center;
-   position: relative;
-   font-size: 17px;
-   padding: 10px;
-   background: rgba(0, 0, 0, 0.8);
-   margin: 20px 0 0 0;
+.best-item-result .tile .tile-overlay {
+position: absolute;
+top: 0;
+left: 0;
+height: 48px;
+width: 100%;
+background: rgba(255,95,90,.8);
+transition: height .2s linear;
 }
-.view h3 {
-   font-family: Georgia, serif;
-   font-style: italic;
-   font-size: 17px;
-   position: relative;
-   color: #fff;
-   padding: 10px 20px 20px;
-   text-align: center;
+.best-item-result .tile .tile-overlay .tile-overlay-inner {
+overflow: hidden;
+display: block;
+height: 48px;
 }
-.view a.info {
-   display: inline-block;
-   text-decoration: none;
-   padding: 7px 14px;
-   background: #000;
-   color: #fff;
-   text-transform: uppercase;
-   -webkit-box-shadow: 0 0 1px #000;
-   -moz-box-shadow: 0 0 1px #000;
-   box-shadow: 0 0 1px #000;
+.best-item-result  .tile .tile-overlay .tile-overlay-top {
+width: 100%;
+min-height: 37px;
+padding: 11px 0 0px;
+display: block;
+background: rgba(255,95,90,.65);
+text-align: center;
+transition: background .15s linear;
 }
- .view a.info: hover {
-   -webkit-box-shadow: 0 0 5px #000;
-   -moz-box-shadow: 0 0 5px #000;
-   box-shadow: 0 0 5px #000;
+.best-item-result .tile .tile-overlay .tile-label {
+height: 24px;
+font-weight: bold;
+font-size: 18px;
+line-height: 24px;
+padding: 0 20px;
+color: #FFF;
+overflow: hidden;
+}
+.best-item-result .tile .tile-overlay .tile-overlay-bottom {
+width: 100%;
+height: 100%;
+display: block;
+opacity: 0;
+transition: .4s opacity linear;
+}
+ .best-item-result .tile .tile-overlay .tile-overlay-bottom p {
+padding: 40px 20px 0;
+text-align: center;
+color: #FFF;
+font-weight: bold;
+font-size: 14px;
+line-height: 20px;
+}
+.best-item-result  .tile-2 {
+top: 0px;
+right: 0px;
+}
+.best-item-result  .tile-3 {
+top: 220px;
+right: 0px;
+}
+.best-item-result  .tile-4 {
+top: 440px;
+left: 0px;
+}
+.best-item-result  .tile-5 {
+top: 440px;
+left: 390px;
+}
+.best-item-result  .tile-6 {
+top: 440px;
+right: 0px;
+}
+.panel-overlay-listing-label {
+bottom: 30px;
+left: 0;
+padding: 7px 10px;
+}
+.panel-overlay-label {
+background-color: #3c3f40;
+background-color: rgba(60,63,64,0.9);
+padding: 20px 20px 0 20px;
+color: #fff;
+}
+.panel-overlay-bottom-left{
+position: absolute;
 }
 
+.h4{
+margin: auto;
+}
   </style>
 <meta charset="UTF-8">
 <title>Welcome to the HelloWorld</title>
@@ -279,89 +215,95 @@ position: relative;
 			</div>
 
 		</div>
-		<div class='best-items'>
-		
-			<div class="view view-first best1">
-				<img src="../images/best01.jpg" />
-				<div class="mask">
-					<h2>담양으로 놀러오세</h2>
-					<h3>가격: 100000원</h3>
-					<a href="detailItem.html" class="info">자세히보기</a>
+		<div class='best-items'> 
+			<div class='best-item-result'>
+				<div class="tile tile-1 feature-tile">
+					<a> <img src="../images/best01.jpg" /> <span
+						class='tile-overlay'> <span class='tile-overlay-inner'>
+								<span class='tile-overlay-top'>
+									<h4 class='tile-label'>당신도 팬더의 음식 맛이 궁금하나요? 그럼 담양으로 놀러오세요</h4>
+							</span> 							
+						</span>
+					</span>
+					<span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+                 <sup class='h3 price-amount'>100,000 </sup>
+                 <sup class='h4 text-contrast'>원</sup>
+              </span>
+					</a>
 				</div>
-			</div>
-			<div class="view view-first best1">
-				<img src="../images/best02.jpg" />
-				<div class="mask">
-					<h2>파리의야경즐기기</h2>
-					<h3>가격: 150000원</h3>
-					<a href="#" class="info">자세히보기</a>
+				<div class="tile tile-2 ">
+					<a> <img src="../images/best02.jpg" /> <span
+						class='tile-overlay'> <span class='tile-overlay-inner'>
+								<span class='tile-overlay-top'>
+									<h4 class='tile-label'>파리의야경즐기기</h4>
+							</span> 
+							
+						</span>
+					</span>
+					<span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+                 <sup class='h3 price-amount'>150,000 </sup>
+                 <sup class='h4 text-contrast'>원</sup>
+              </span>
+					</a>
 				</div>
+        <div class="tile tile-3 ">
+          <a> <img src="../images/best03.jpg" /> <span
+            class='tile-overlay'> <span class='tile-overlay-inner'>
+                <span class='tile-overlay-top'>
+                  <h4 class='tile-label'>추운겨울 바다에 수영하고 싶지 않으세요?</h4>
+              </span> 
+            </span>
+          </span>
+          <span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+                 <sup class='h3 price-amount'>70,000 </sup>
+                 <sup class='h4 text-contrast'>원</sup>
+              </span>
+          </a>
+        </div>				
+				 <div class="tile tile-4 ">
+          <a> <img src="../images/best04.jpg" /> <span
+            class='tile-overlay'> <span class='tile-overlay-inner'>
+                <span class='tile-overlay-top'>
+                  <h4 class='tile-label'>카지노의도시 당신의 운을 믿으십니까?</h4>
+              </span> 
+            </span>
+          </span>
+          <span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+                 <sup class='h3 price-amount'>135,000 </sup>
+                 <sup class='h4 text-contrast'>원</sup>
+              </span>
+          </a>
+        </div>        
+        <div class="tile tile-5 ">
+          <a> <img src="../images/best05.jpg" /> <span
+            class='tile-overlay'> <span class='tile-overlay-inner'>
+                <span class='tile-overlay-top'>
+                  <h4 class='tile-label'>오구리슌을 닮은 알파카를 찾아라.</h4>
+              </span> 
+            </span>
+          </span>
+          <span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+                 <sup class='h3 price-amount'>160,000 </sup>
+                 <sup class='h4 text-contrast'>원</sup>
+              </span>
+          </a>
+        </div>
+        
+        <div class="tile tile-6 ">
+          <a> <img src="../images/best06.jpg" /> <span
+            class='tile-overlay'> <span class='tile-overlay-inner'>
+                <span class='tile-overlay-top'>
+                  <h4 class='tile-label'>한번쯤 외어본 주문 : 윙가디움 레디오사</h4>
+              </span> 
+            </span>
+          </span>
+          <span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+                 <sup class='h3 price-amount'>190,000 </sup>
+                 <sup class='h4 text-contrast'>원</sup>
+              </span>
+          </a>
+        </div>				
 			</div>
-			<div class="view view-first best1" >
-				<img src="../images/best03.jpg" />
-				<div class="mask">
-					<h2>추운겨울 바다에 수영하고 싶지 않으세요?</h2>
-					<h3>가격: 50000</h3>
-					<a href="#" class="info">자세히보기</a>
-				</div>
-			</div>
-			<div class="view view-first best2"  style="display:none;">
-        <img src="../images/best04.jpg" />
-        <div class="mask">
-          <h2>카지노의도시 당신의 운을 믿으십니까?</h2>
-          <h3>가격: 100000원</h3>
-          <a href="#" class="info">자세히보기</a>
-        </div>
-      </div>
-      <div class="view view-first best2" style="display:none;">
-        <img src="../images/best05.jpg" />
-        <div class="mask">
-          <h2>오구리슌을 닮은 알파카를 찾아라.</h2>
-          <h3>가격: 150000원</h3>
-          <a href="#" class="info">자세히보기</a>
-        </div>
-      </div>
-      <div class="view view-first best2" style="display:none;">
-        <img src="../images/bg3.jpg" />
-        <div class="mask">
-          <h2>6666</h2>
-          <h3>가격: 50000</h3>
-          <a href="#" class="info">자세히보기</a>
-        </div> 
-      </div>
-      <div class="view view-first best3" style="display:none;">
-        <img src="../images/bg1.jpg" />
-        <div class="mask">
-          <h2>7777777</h2>
-          <h3>가격: 100000원</h3>
-          <a href="#" class="info">자세히보기</a>
-        </div>
-      </div>
-      <div class="view view-first best3" style="display:none;">
-        <img src="../images/bg2.jpg" />
-        <div class="mask">
-          <h2>888888888888</h2>
-          <h3>가격: 150000원</h3>
-          <a href="#" class="info">자세히보기</a>
-        </div>
-      </div>
-      <div class="view view-first best3" style="display:none;">
-        <img src="../images/bg3.jpg" />
-        <div class="mask">
-          <h2>9999999999999</h2>
-          <h3>가격: 50000</h3>
-          <a href="#" class="info">자세히보기</a>
-        </div>
-      </div>
-			 <a class="left carousel-control" id='prev'  role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" id='next' role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-
 		</div>
 		<div class='footer'></div>
 	</div>
@@ -409,43 +351,8 @@ function autoplay(){
   $('.slide-ul>li').stop().fadeOut(900);
   $('.slide-ul>li').eq(current).stop().fadeIn(700);
 }
-setInterval(autoplay,2000);//반복
+setInterval(autoplay,4000);//반복
 
-$("#prev").click(function(){
-  if($(".best1").css('display') != "none"){
-    console.log('이전');
-    $(".best1").css('display','none');
-    $(".best3").css('display',''); 
-}else if($(".best2").css('display') != "none"){
-  $(".best2").css('display','none');
-  $(".best1").css('display','');
-}else{
-  $(".best3").css('display','none');
-  $(".best2").css('display','');
-}
-  //$('.best-items > a').css('display','none');
-  //if()
-});
- 
-$("#next").click(function(){
-  if($(".best1").css('display') != "none"){
-    console.log('다음');
-    $(".best1").css('display','none');
-   $(".best2").css('display','');
-}else if($(".best2").css('display') != "none"){
-  $(".best2").css('display','none');
-  $(".best3").css('display','');
-}else{
-  $(".best3").css('display','none');
-  $(".best1").css('display','');
-}
-  //$('.best-items > a').css('display','none');
-  //if()
-
-});
-$('.view-first > img').mouseover(function(){
-  $('.view-first>div').addclass('view-best');
-});
 </script>
 </body>
 </html>
