@@ -10,9 +10,7 @@
 
 <link rel='stylesheet' href='/web03t/css/bootstrap.min.css'>
 <link rel='stylesheet' href='/web03t/css/bootstrap-theme.min.css'>
-<link rel='stylesheet' href='common.css'>
-  
-
+<link rel='stylesheet' href='../css/common.css'>
 
 
 
@@ -24,7 +22,6 @@
 
 
 <style>
-    
       .content {
         width: 70%;
         padding: 100px 50px 50px 80px;
@@ -57,7 +54,6 @@
       width: 70px;
       height:30px; 
       }
-      
     
  /*      * {
   .border-radius(0) !important;
@@ -471,12 +467,16 @@ onkeypress="onlyNumber()" min="50000" max="200000">
         </tr>
         <tr class="item1">
             <td><input type="text" class="form-control date_add"/>
-            <button class="addBtn btn btn-primary">+</button></td>
+            
+             <button class="addBtn btn btn-primary">+</button></td>  
             <td><input type="time" class="form-control time_add"/></td>
             <td><textarea class="form-control plan_add"></textarea></td>
             
            
-            <td><button class="delBtn btn btn-mini btn-danger" style='display:none;'>x</button></td>
+            <td>
+            <button class="addBtn btn btn-primary">+</button>
+            <button class="delBtn btn btn-mini btn-danger">x</button>
+            </td>
         </tr>
         
 </table>
@@ -638,22 +638,29 @@ function onlyNumber() {
                 $("#example").append(newitem);
                 
                 
-                $(".item"+(parseInt(lastItemNo)+1) + " .delBtn").css('display', '');
+               /*  $(".item"+(parseInt(lastItemNo)+1) + " .delBtn").css('display', ''); */
             });
  
  
             // + 버튼 클릭시
 
-            	
+            	 
             	$(document).on("click", ".addBtn", function(){
             	
                 var clickedRow = $(this).parent().parent();
+                console.log($(this).parent().parent());
+                console.log($(this));
+                console.log(clickedRow.attr("class"));
                 var cls = clickedRow.attr("class");
- 
-                // tr 복사해서 마지막에 추가
+               
+                // tr 복사해서 마지막에 추가 
                 var newrow = clickedRow.clone();
+                if($("." + cls).length >= 2) {
+                $(newrow).prepend("<td></td>")
+                }
                 newrow.find("td:eq(0)").remove();
                 newrow.insertAfter($("#example ."+cls+":last"));
+                console.log($("#example ."+cls+":last"));
  
                 // rowspan 조정
                 resizeRowspan(cls);
@@ -687,6 +694,7 @@ function onlyNumber() {
             }
         });
     </script>
+    
     
     
    
