@@ -12,6 +12,11 @@ href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <link rel="stylesheet" type="text/css" href="../css/componentBtn.css" />
     
 <style>
+.main-content{
+border : 3px solid black;
+clear:both;
+}
+
 .detail-content {
 width:66%;
 float: left;
@@ -54,14 +59,6 @@ width:350px;
 display:inline;
 }
 
-.datepicker div{
-position:relative;
-top:1000px;
-}
-.datepicker {
-position:relative;
-top:1000px;
-}
 .pagination {
 margin-left: 30%;
 }
@@ -504,7 +501,7 @@ border-color: #ff5a5f;
 	var nav = $('.right-scroll');
 	 
 	$(window).scroll(function () {
-	    if ($(this).scrollTop() > 815) {
+	    if ($(this).scrollTop() > 930) {
 	        nav.addClass("f-nav");
 	    } else {
 	        nav.removeClass("f-nav");
