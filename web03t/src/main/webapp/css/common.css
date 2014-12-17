@@ -41,6 +41,10 @@
        url(//fonts.gstatic.com/ea/cwtexfangsong/v3/cwTeXFangSong-zhonly.ttf) format('truetype');
 }
 
+body {
+      font-family: 'Quicksand', 'cwTeXFangSong', 'Jeju Gothic', sans-serif;
+}
+
 .container {
  width: 100%;
 border: 1px solid blue;
