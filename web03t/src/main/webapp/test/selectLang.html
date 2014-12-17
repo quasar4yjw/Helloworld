@@ -1,132 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<title>Expanding Overlay Effect</title>
-		<meta name="description" content="Expanding Overlay Effect: Revealing content using CSS clip" />
-		<meta name="keywords" content="css, css3, clip, rect(), overlay, expand, fixed, effect, responsive" />
-		<meta name="author" content="Codrops" />
-		<link rel="shortcut icon" href="../favicon.ico"> 
-		<link rel="stylesheet" type="text/css" href="../css/default.css" />
-		<link rel="stylesheet" type="text/css" href="../css/climacons.css" />
-		<link rel="stylesheet" type="text/css" href="../css/component.css" />
-		<script src="../js/modernizr.custom.js"></script>
-	</head>
-	<body>
-		<div class="container">	
-			<!-- Codrops top bar -->
-			<!-- <div class="codrops-top clearfix">
-				<a href="http://tympanus.net/Development/3DGalleryRoom/"><strong>&laquo; Previous Demo: </strong>3D Image Gallery Room</a>
-				<span class="right"><a href="http://adamwhitcroft.com/climacons/font/">Icons by Adam Whitcroft</a>
-				<a href="http://tympanus.net/codrops/?p=13621"><strong>Back to the Codrops Article</strong></a></span>
-			</div>/ Codrops top bar -->
-			<header class="clearfix">
-				<h1>HelloWorld<span>Select your language.</span></h1>	
-				
-			</header>
-			<div class="main">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Expanding Overlay Effect</title>
+    <meta name="description" content="Expanding Overlay Effect: Revealing content using CSS clip" />
+    <meta name="keywords" content="css, css3, clip, rect(), overlay, expand, fixed, effect, responsive" />
+    <meta name="author" content="Codrops" />
+    <link rel="shortcut icon" href="../favicon.ico"> 
+    <link rel="stylesheet" type="text/css" href="../css/default.css" />
+    <link rel="stylesheet" type="text/css" href="../css/climacons.css" />
+    <link rel="stylesheet" type="text/css" href="../css/component.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script src="../js/modernizr.custom.js"></script>
+  </head>
+  <body>
+    <div class="container"> 
+      <!-- Codrops top bar -->
+      <!-- <div class="codrops-top clearfix">
+        <a href="http://tympanus.net/Development/3DGalleryRoom/"><strong>&laquo; Previous Demo: </strong>3D Image Gallery Room</a>
+        <span class="right"><a href="http://adamwhitcroft.com/climacons/font/">Icons by Adam Whitcroft</a>
+        <a href="http://tympanus.net/codrops/?p=13621"><strong>Back to the Codrops Article</strong></a></span>
+      </div>/ Codrops top bar -->
+      <header class="clearfix">
+        <h1>HelloWorld<span>Select your language.</span></h1> 
+        
+      </header>
+      <div class="main">
 
-				<ul id="rb-grid" class="rb-grid clearfix">
-	
+        <ul id="rb-grid" class="rb-grid clearfix">
+  
           <li class="icon-clima-2 rb-span-6">
             <span class="rb-temp">English</span>
+          </li>
+          
+          <li class="icon-clima-2 rb-span-4">
+            <span class="rb-temp">Dansk</span>
+          </li>
+          
+          <li class="icon-clima-2 rb-span-4">
+            <span class="rb-temp">ภาษาไทย</span>
+          </li>
+          
+          <li class="icon-clima-2 rb-span-2">
+            <span class="rb-temp">한국어</span>
+          </li>
+          
+          <li class="icon-clima-2 rb-span-2">
+            <span class="rb-temp">Nederlands</span>
+          </li>
+          
+          <li class="icon-clima-2 rb-span-2">
+            <span class="rb-temp">Português</span>
+          </li>
+          
+          <li class="icon-clima-2 rb-span-6">
+            <span class="rb-temp">Bahasa Indonesia</span>
+          </li>
+          
+          <li class="icon-clima-2 rb-span-6">
+            <span class="rb-temp">Русский</span>
+          </li>
+          
+          <li class="icon-clima-2 rb-span-4">
+            <span class="rb-temp">Eλληνικά</span>
+          </li>
+          
+          <li class="icon-clima-2 rb-span-4">
+            <span class="rb-temp">Magyar</span>
+          </li>
+          
+          <li class="icon-clima-2 rb-span-4">
+            <span class="rb-temp">日本語</span>
+          </li>
+          
+          <li class="icon-clima-2 rb-span-4">
+            <span class="rb-temp">Norsk</span>
+          </li>
+          
+          <li class="icon-clima-2 rb-span-4">
+            <span class="rb-temp">Suomi</span>
+          </li>
+          
+          <li class="icon-clima-2 rb-span-6">
+            <span class="rb-temp">Español</span>
           </li>
           
           <li class="icon-clima-2 rb-span-4">
             <span class="rb-temp">Svenska</span>
           </li>
           
-          <li class="icon-clima-2 rb-span-4">
-            <span class="rb-temp">Arabic</span>
+          <li class="icon-clima-2 rb-span-2">
+            <span class="rb-temp">Italiano</span>
           </li>
           
           <li class="icon-clima-2 rb-span-2">
-            <span class="rb-temp">Korean</span>
+            <span class="rb-temp">Polski</span>
           </li>
           
           <li class="icon-clima-2 rb-span-2">
-            <span class="rb-temp">Japanish</span>
-          </li>
-          
-          <li class="icon-clima-2 rb-span-2">
-            <span class="rb-temp">Portuguese</span>
+            <span class="rb-temp">Türkçe</span>
           </li>
           
           <li class="icon-clima-2 rb-span-6">
-            <span class="rb-temp">German</span>
+            <span class="rb-temp">Bahasa Melayu</span>
           </li>
           
           <li class="icon-clima-2 rb-span-6">
-            <span class="rb-temp">Russian</span>
+            <span class="rb-temp">中文 (繁體)</span>
           </li>
           
           <li class="icon-clima-2 rb-span-4">
-            <span class="rb-temp">Malay</span>
+            <span class="rb-temp">Íslenska</span>
           </li>
           
           <li class="icon-clima-2 rb-span-4">
-            <span class="rb-temp">Hindi</span>
-          </li>
-          
-          <li class="icon-clima-2 rb-span-4">
-            <span class="rb-temp">Persian</span>
-          </li>
-          
-          <li class="icon-clima-2 rb-span-4">
-            <span class="rb-temp">Lahnda</span>
-          </li>
-          
-          <li class="icon-clima-2 rb-span-4">
-            <span class="rb-temp">vitnamese</span>
+            <span class="rb-temp">Čeština</span>
           </li>
           
           <li class="icon-clima-2 rb-span-6">
-            <span class="rb-temp">Spanish</span>
-          </li>
-          
-          <li class="icon-clima-2 rb-span-4">
-            <span class="rb-temp">Bengali</span>
+            <span class="rb-temp">Français</span>
           </li>
           
           <li class="icon-clima-2 rb-span-2">
-            <span class="rb-temp">Italian</span>
+            <span class="rb-temp">Deutsch</span>
           </li>
           
           <li class="icon-clima-2 rb-span-2">
-            <span class="rb-temp">Turkish</span>
+            <span class="rb-temp">中文 (简体)</span>
           </li>
           
           <li class="icon-clima-2 rb-span-2">
-            <span class="rb-temp">Dutch</span>
-          </li>
-          
-          <li class="icon-clima-2 rb-span-6">
-            <span class="rb-temp">Chinese</span>
-          </li>
-          
-          <li class="icon-clima-2 rb-span-6">
-            <span class="rb-temp">French</span>
+            <span class="rb-temp">Català</span>
           </li>
           
           
           
           
-          
-				</ul>
-			</div>
-		</div><!-- /container -->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-		<script src="../js/jquery.fittext.js"></script>
-		<script src="../js/boxgrid.js"></script>
-		<script>
-			$(function() {
+        </ul>
+      </div>
+    </div><!-- /container -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="../js/jquery.fittext.js"></script>
+    <script src="../js/boxgrid.js"></script>
+    <script>
+      $(function() {
 
-				Boxgrid.init();
-				
+        Boxgrid.init();
+        
  
-			});
-		</script>
-	</body>
+      });
+    </script>
+  </body>
 </html>
