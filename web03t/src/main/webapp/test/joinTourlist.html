@@ -1,6 +1,6 @@
 
     <div class="container">
-
+<p class="yesno" style=color:black;>22</p>
       <div class="fs-form-wrap" id="fs-form-wrap">
         <div class="fs-title">
           <h1></h1>
@@ -9,11 +9,11 @@
         </div>
         <form id="myform" class="fs-form fs-form-overview fs-show" autocomplete="off">
           <ol class="fs-fields">
-            
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't send you spam, we promise...">이메일 주소를 입력해주세요.</label>
-              <input class="fs-anim-lower" id="q2" name="q2" type="email" placeholder="yourid@gmail.com" required="">
+              <input class="fs-anim-lower-email" id="email" name="email" type="email" placeholder="yourid@gmail.com" required="">
             </li>
+            
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">패스워드를 입력해주세요.</label>
@@ -77,6 +77,19 @@
           <button class="fs-submit" type="submit">가입하기</button>
         </form><!-- /fs-form -->
       <div class="fs-controls"><button class="fs-continue">Continue</button><nav class="fs-nav-dots"><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class="fs-dot-current"></button></nav><span class="fs-numbers"><span class="fs-number-current">6</span><span class="fs-number-total">6</span></span><div class="fs-progress" style="width: 100%;"></div></div><span class="fs-message-error"></span></div><!-- /fs-form-wrap -->
-
-
+    <script>
+    /* $(".fs-anim-lower-email").keyup(function(data){
+        $.get("http://localhost:3000/idCheck",{id:$('.fs-anim-lower-email').val()},function(data){
+          $('.yesno').html(data.result);
+        });
+      }); */
+    $(".fs-anim-lower-email").keyup(function(data){
+    alert($('.fs-anim-lower-email').val());
+    console.log("@___@" + $('.fs-anim-lower-email').val());
+    });
+  /*   $("#email").keydown(function(){
+        alert("event1");
+        
+      }); */
+    </script>
     </div><!-- /container -->
