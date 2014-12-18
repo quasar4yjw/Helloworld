@@ -11,32 +11,16 @@
   href='/web03t/css/common.css'>
   <link rel="stylesheet" 
   href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
-  <link rel='stylesheet'   
+  <link rel='stylesheet' 
   href='/web03t/css/login-popup.css'>
-  
   <style type="text/css">
-  /* 나라선택  */
-    .main-search #select-country{
-    width: 300px;
-    background-color: transparent;
-background-image: none;
-border: 3px solid #898e8c;
-border-radius: 0px;
-}
- /* placeholder 글자색 넣 */
-  ::-webkit-input-placeholder{color:black;}
-    .date{
-    width: 145px;    
-background: transparent;
-border: 3px solid #898e8c;
-    }
+    
+ /* search  */ 
+  
   .theme-green .back-bar .selected-bar {
 background-color: #ff5a5f;
 background-image: linear-gradient(to bottom, #ff5a5f, #ff5a5f);
 }
-
-
-
 
     .slider-input{
     font-color: black;
@@ -53,20 +37,36 @@ background-image: linear-gradient(to bottom, #ff5a5f, #ff5a5f);
     padding: 100px 25px;
     
     }
-     .main-search{
     
+    
+     .main-search{    
      background: rgba( 255, 255, 255, 0.3 );
     }
-    
+    /* 나라선택  */
     .main-search #select-country{
-    width: 300px;}
-    
+    width: 300px;
+    background-color: transparent;
+background-image: none;
+border: 3px solid #898e8c;
+border-radius: 0px;
+}
+  /* placeholder 글자색 넣 */
+  ::-webkit-input-placeholder{color:black;}
     .date{
-    width: 145px;
+    width: 145px;    
+background: transparent;
+border: 3px solid #898e8c;
     }
+    
+    
     #search{
     width: 300px;    
-    margin-top: 50px;    
+margin-top: 50px;
+background: transparent;
+font-weight: bolder;
+border: 5px solid #898e8c;
+font-size: 2.0em;
+border-radius: 0px;
     }
     .slider-input{
     font-color: black;
@@ -85,188 +85,124 @@ list-style:none;
 z-index:10; 
 display: block;}
 .slide-ul>li img{ 
-width:100% ;
+width: 100%;
 height: 500px;
+opacity: 0.8;
 }
 li{list-style: none;}
 
 .show{display:block;}
 
- .content {
-        width: 70%;
-        padding: 100px 50px 50px 80px;
-        margin-bottom: 20px;
-        float: left;
-        border: 1px solid #bcbcbc;
-      }
-      .sidebar {
-        width: 30%;
-        padding: 20px;
-        margin-bottom: 20px;
-        float: right;
-        border: 1px solid #bcbcbc;
-      }
-      
-/* content안의 div설  */      
-#w {
-  width: 770px;
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 15px;
+.experiences-feature .experiences-results {
+position: relative;
+height: 660px;
 }
 
-#content-list {
-  padding: 8px 15px;
-  padding-bottom: 20px;
- 
+.best-items .best-item-result {
+position: relative;
+height: 660px;
 }
 
-
-.options {
-  display: block;
-  text-align: right;
-  font-size: 1.2em;
-  line-height: 16px;
-  font-weight: bold;
-  color: #ff5a5f;
-  margin-bottom: 8px;
-}
-.options .sorticon {
-  position: relative;
-  top: 3px;
-}
-
-.options .sorticon img {
-  width:18px;
-  height:18px;
-   opacity: 0.6;
-  -webkit-transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  transition: all 0.2s linear;
-}
-.options .sorticon img:hover {
-  opacity: 1.0;
-}
-.options .sorticon.active img {
- margin-left: 2px;
-  opacity: 1.0;
-}
-.options #thumbnails-list img{
-  margin-right: 30px;
-}
-
-/* list styles */
-#listdisplay { 
-  display: block;
-}
-#listdisplay img{
-width: 250px;
-height: 180px;
-}
-
-#listdisplay li {
-  display: block;
-  width: 100%;
-  padding: 12px 8px;
-  margin-bottom: 1px;
-  border-bottom: 1px solid #aaa;
-}
-#listdisplay li a img {
-  display: block;
-  float: left;
-  padding: 5px;
-  border: 2px solid #bbb;
-  background: #fff;
-  margin-right: 20px;
-}
-
-#listdisplay li .innercontent h3 {
-  
-  
-  line-height: 1.35em;
-  margin-bottom: 4px;
-  color: #898e8c;
-  font-weight: bold;
-}
-#listdisplay li .innercontent p {
-  
-  font-weight: 300;
-  line-height: 1.35em;
-  
-}
-#listdisplay li .innercontent h4{
-font-weight: bold;
-/* text-align: right; */
-font-size: 1.5em;
-}
-
-#listdisplay.thumbview li {
+.best-item-result .tile {
+width: 390px;
+height: 220px;
 display: block;
-width: 320px;
-height: 350px;
-float: left;
-margin-right: 10px;
-margin-bottom: 7px;
-border: 0;
+position: absolute;
+overflow: hidden;
 }
-#listdisplay.thumbview li a img {
-  display: block;
-  float: none;
-  margin: 0 auto;
-  margin-bottom: 4px;
+.best-item-result .feature-tile {
+width: 780px;
+height: 440px;
 }
-#listdisplay.thumbview li .innercontent {
-  display: block;
-  text-align: center;
+.best-item-result .tile img {
+display: block;
+width: 100%;
+}
+.best-item-result .tile .tile-overlay {
+position: absolute;
+top: 0;
+left: 0;
+height: 48px;
+width: 100%;
+background: rgba(255,95,90,.8);
+transition: height .2s linear;
+}
+.best-item-result .tile .tile-overlay .tile-overlay-inner {
+overflow: hidden;
+display: block;
+height: 48px;
+}
+.best-item-result  .tile .tile-overlay .tile-overlay-top {
+width: 100%;
+min-height: 37px;
+padding: 11px 0 0px;
+display: block;
+background: rgba(255,95,90,.65);
+text-align: center;
+transition: background .15s linear;
+}
+.best-item-result .tile .tile-overlay .tile-label {
+height: 24px;
+font-weight: bold;
+font-size: 18px;
+line-height: 24px;
+padding: 0 20px;
+color: #FFF;
+overflow: hidden;
+}
+.best-item-result .tile .tile-overlay .tile-overlay-bottom {
+width: 100%;
+height: 100%;
+display: block;
+opacity: 0;
+transition: .4s opacity linear;
+}
+ .best-item-result .tile .tile-overlay .tile-overlay-bottom p {
+padding: 40px 20px 0;
+text-align: center;
+color: #FFF;
+font-weight: bold;
+font-size: 14px;
+line-height: 20px;
+}
+.best-item-result  .tile-2 {
+top: 0px;
+right: 0px;
+}
+.best-item-result  .tile-3 {
+top: 220px;
+right: 0px;
+}
+.best-item-result  .tile-4 {
+top: 440px;
+left: 0px;
+}
+.best-item-result  .tile-5 {
+top: 440px;
+left: 390px;
+}
+.best-item-result  .tile-6 {
+top: 440px;
+right: 0px;
+}
+.panel-overlay-listing-label {
+bottom: 30px;
+left: 0;
+padding: 7px 10px;
+}
+.panel-overlay-label {
+background-color: #3c3f40;
+background-color: rgba(60,63,64,0.9);
+padding: 20px 20px 0 20px;
+color: #fff;
+}
+.panel-overlay-bottom-left{
+position: absolute;
 }
 
-#listdisplay.thumbview li .innercontent p  {
-   display:none; 
-  
+.h4{
+margin: auto;
 }
-
-
- .clearfix> a:link, 
- .clearfix> a:visited,  
- .clearfix> a:hover, 
- .clearfix>a:active  {
-
-COLOR: #000000;
-LINE-HEIGHT: normal;
-TEXT-DECORATION: none;
-font-weight: bolder;
-}
-
-.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
-.clearfix { display: inline-block; }
- 
-html[xmlns] .clearfix { display: block; }
-* html .clearfix { height: 1%; }
-
-/* sidebar 스타일 */
-
- .recentlyItem{
-  position: relative;
-width: 30%;
-top: 30%;
-
-/* 
- */
-  
-} 
-
-.recentlyItem ul li img{
-width: 100px;
-height: 100px;
-}
- .f-nav{
-z-index:9999;
-   position:fixed;
-  width:30%;
-  top: 30%;
-
-}
-
   </style>
 <meta charset="UTF-8">
 <title>Welcome to the HelloWorld</title>
@@ -285,7 +221,7 @@ z-index:9999;
 
 				<form action="">
 					<select id='select-country' class="form-control">
-            <option value="">여행지를 선택하세요.</option>
+						<option value="">여행지를 선택하세요.</option>
   <option value="AF">Afghanistan</option>
   <option value="AX">Åland Islands</option>
   <option value="AL">Albania</option>
@@ -532,125 +468,115 @@ z-index:9999;
   <option value="VI">Virgin Islands, U.S.</option>
   <option value="WF">Wallis and Futuna</option>
   <option value="EH">Western Sahara</option>
-  <option value="YE">Yemen</option>
+  <option value="YE">Yemen</opt로그인   회원가입    여행일정등록
+  ion>
   <option value="ZM">Zambia</option>
   <option value="ZW">Zimbabwe</option>
-					</select> <br> <br> <input type="text" id="startDate"
-						placeholder="여행시작일" class='date'> <input type="text"
-						id="endDate" placeholder="여행종료일" class='date'> <br> <br>
-						
-						
+					</select> <br> <br> 
+					<input type="text" id="startDate" placeholder="여행시작일" class='date'> 
+					<input type="text" id="endDate" placeholder="여행종료일" class='date'>
+					<br> <br>
 					<br> <br> <input type="hidden" class="slider-input"
 						value="50000,200000" />
-					
+
+					<button type="submit" id='search' class="btn btn-default">search</button>
 				</form>
 			</div>
 
 		</div>
-		
-		<div class='content'>	
-  
-  <div id="w">
-    <span class="options">Switch Options: 
-      <a href="#" id="details-list" class="sorticon active" title="List View"><img src="../images/details-list.png" alt="list"></a> 
-      <a href="#" id="thumbnails-list" class="sorticon" title="Thumbnail View"><img src="../images/thumbnails-list.png" alt="thumbnails"></a>
-    </span>
-    <!-- icons: http://findicons.com/pack/1689/splashy/ -->
-    <div id="content-list">
-      <ul id="listdisplay" class="clearfix">
-       <li class="clearfix">
-       <a href="#" target="_blank"> 
-          <span class="listimg"><img src="../images/best01.jpg"></span>
-          <span class="innercontent">
-            <h3>당신도 팬더의 음식 맛이 궁금하나요?</h3>
-            <h4>100,000원</h4>
-            <br>
-            <p>주요 명소 : 담양죽녹원, 메타세쿼이아 가로수길<br>
-               관심사: 음식, 전통 </p>
+		<div class='best-items'> 
+			<div class='best-item-result'>
+				<div class="tile tile-1 feature-tile">
+					<a> <img src="../images/best01.jpg" /> <span
+						class='tile-overlay'> <span class='tile-overlay-inner'>
+								<span class='tile-overlay-top'>
+									<h4 class='tile-label'>당신도 팬더의 음식 맛이 궁금하나요? 그럼 담양으로 놀러오세요</h4>
+							</span> 							
+						</span>
+					</span>
+					<span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+                 <sup class='h3 price-amount'>100,000 </sup>
+                 <sup class='h4 text-contrast'>원</sup>
+              </span>
+					</a>
+				</div>
+				<div class="tile tile-2 ">
+					<a> <img src="../images/best02.jpg" /> <span
+						class='tile-overlay'> <span class='tile-overlay-inner'>
+								<span class='tile-overlay-top'>
+									<h4 class='tile-label'>파리의하루</h4>
+							</span> 
+							
+						</span>
+					</span>
+					<span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+                 <sup class='h3 price-amount'>150,000 </sup>
+                 <sup class='h4 text-contrast'>원</sup>
+              </span>
+					</a>
+				</div>
+        <div class="tile tile-3 ">
+          <a> <img src="../images/best03.jpg" /> <span
+            class='tile-overlay'> <span class='tile-overlay-inner'>
+                <span class='tile-overlay-top'>
+                  <h4 class='tile-label'>추운겨울 바다에 수영하고 싶지 않으세요?</h4>
+              </span> 
+            </span>
           </span>
+          <span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+                 <sup class='h3 price-amount'>70,000 </sup>
+                 <sup class='h4 text-contrast'>원</sup>
+              </span>
           </a>
-        </li><!-- row #1 -->
-        <li class="clearfix">
-          <a href="#" target="_blank"> 
-          <span class="listimg"><img src="../images/best02.jpg"></span>
-          <span class="innercontent">
-            <h3>파리의 하루</h3>
-            <h4>150,000원</h4>
-            <br>
-            <p>주요 명소 : 에펠탑, 몽마르트 언덕, 루브르 박물<br>
-               관심사: 음식, 전통, 쇼핑</p>
+        </div>				
+				 <div class="tile tile-4 ">
+          <a> <img src="../images/best04.jpg" /> <span
+            class='tile-overlay'> <span class='tile-overlay-inner'>
+                <span class='tile-overlay-top'>
+                  <h4 class='tile-label'>카지노의도시 당신의 운을 믿으십니까?</h4>
+              </span> 
+            </span>
           </span>
+          <span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+                 <sup class='h3 price-amount'>135,000 </sup>
+                 <sup class='h4 text-contrast'>원</sup>
+              </span>
           </a>
-        </li><!-- row #2 -->
-        <li class="clearfix">
-          <a href="#" target="_blank"> 
-          <span class="listimg"><img src="../images/best03.jpg"></span>
-          <span class="innercontent">
-            <h3>추운겨울 수영하고 싶지 않으세요?</h3>
-            <h4>150,000원</h4>
-            <br>
-            <p>주요 명소 : 푸카비치, <br>
-               관심사: 음식, 쇼핑, 기타</p>
+        </div>        
+        <div class="tile tile-5 ">
+          <a> <img src="../images/best05.jpg" /> <span
+            class='tile-overlay'> <span class='tile-overlay-inner'>
+                <span class='tile-overlay-top'>
+                  <h4 class='tile-label'>오구리슌을 닮은 알파카를 찾아라.</h4>
+              </span> 
+            </span>
           </span>
+          <span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+                 <sup class='h3 price-amount'>160,000 </sup>
+                 <sup class='h4 text-contrast'>원</sup>
+              </span>
           </a>
-        </li><!-- row #3 -->
-        <li class="clearfix">
-         <a href="#" target="_blank"> 
-          <span class="listimg"><img src="../images/best04.jpg"></span>
-          <span class="innercontent">
-            <h3>카지노의도시 당신의 운을 믿으십니까?</h3>
-            <h4>135,000원</h4>
-            <br>
-            <p>주요 명소 : 카지노, 카쇼, 분수쇼 <br>
-               관심사: 음식, 쇼핑, 기타</p>
-          </span>
-          </a>
-        </li><!-- row #4 -->
-        <li class="clearfix">
-         <a href="#" target="_blank"> 
-          <span class="listimg"><img src="../images/best05.jpg"></span>
-          <span class="innercontent">
-            <h3>오구리슌 닮은 알파카를 찾아</h3>
-            <h4>160,000원</h4>
-            <br>
-            <p>주요 명소 : 로토루아, 테푸이아 민속 <br>
-               관심사: 음식, 전</p>
-          </span>
-          </a>
-        </li><!-- row #5 -->
-        <li class="clearfix">
-          <a href="#" target="_blank"> 
-          <span class="listimg"><img src="../images/best06.jpg"></span>
-          <span class="innercontent">
-            <h3>한번쯤 외어본 주문 : 윙가디움 레디오사 </h3>
-            <h4>190,000원</h4>
-            <br>
-            <p>주요 명소 : 해리포터 스튜디 <br>
-               관심사: 전시회, 쇼핑</p>
-          </span>
-          </a>
-        </li><!-- row #6 -->
-        
-      </ul>
-    </div>
-    </div>
-  </div>
-		<div class='sidebar'>
-		<div class="recentlyItem">
-        <h4 class='recentlyTitle'> 최근 본 상품 </h4>
-        <div>
-        <ul>
-          <li><a><img src='../images/best02.jpg'></a>
-            <h6 id='title'>파리의하루</h6>
-          </li>
-          <li><a><img src='../images/best05.jpg'></a>
-            <h6 id='title'>오구리슌 닮은 알파카를 찾아</h6>
-          </li>
-        </ul>
         </div>
-      </div>
+        
+        <div class="tile tile-6 ">
+          <a> <img src="../images/best06.jpg" /> <span
+            class='tile-overlay'> <span class='tile-overlay-inner'>
+                <span class='tile-overlay-top'>
+                  <h4 class='tile-label'>한번쯤 외어본 주문 : 윙가디움 레디오사</h4>
+              </span> 
+            </span>
+          </span>
+          <span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+                 <sup class='h3 price-amount'>190,000 </sup>
+                 <sup class='h4 text-contrast'>원</sup>
+              </span>
+          </a>
+        </div>				
+			</div>
 		</div>
-		<div id="somedialog" class="dialog"> </div>
+		<div id="somedialog" class="dialog">
+         
+          </div>
 		<div class='footer'></div>
 	</div>
 
@@ -660,8 +586,8 @@ z-index:9999;
 <script type="text/javascript" src='../js/jquery.range.js'></script>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 <script type="text/javascript">
-$('.dialog').load('loginDialog.html');
-  $('.header').load('header.html');
+  $('.dialog').load('loginDialog.html');
+  $('.header').load('header.html');  
   $('.footer').load('footer.html');
   $("#startDate").datepicker();
   $("#endDate").datepicker();
@@ -699,42 +625,6 @@ function autoplay(){
 }
 setInterval(autoplay,4000);//반복
 
-//list 모양 변경
-$(function(){
-  $('.options a').on('click', function(e){
-    e.preventDefault();
-    
-    if($(this).hasClass('active')) {
-      // do nothing if the clicked link is already active
-      return;
-    }
-    
-    $('.options a').removeClass('active');
-    $(this).addClass('active');
-    
-    var clickid = $(this).attr('id');
-    
-
-    $('#listdisplay').fadeOut(240, function(){
-      if(clickid == 'thumbnails-list') {
-        $(this).addClass('thumbview');
-      } else {
-        $(this).removeClass('thumbview');
-      }
-
-      $('#listdisplay').fadeIn(200);  
-    });
-  });
-});
-var nav = $('.recentlyItem');
-
-$(window).scroll(function () {
-    if ($(this).scrollTop() > 700) {
-        nav.addClass("f-nav");
-    } else {
-        nav.removeClass("f-nav");
-    }
-});
 </script>
 </body>
 </html>
