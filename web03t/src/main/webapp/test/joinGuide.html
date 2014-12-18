@@ -1,6 +1,6 @@
 
     <div class="container">
-<p class="yesno" style=color:black;>중복확인 테스트</p>
+<p class="yesno2" style=color:black;>중복확인 테스트</p>
       <div class="fs-form-wrap" id="fs-form-wrap">
         <div class="fs-title">
           <h1></h1>
@@ -11,7 +11,7 @@
           <ol class="fs-fields">
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't send you spam, we promise...">이메일 주소를 입력해주세요.</label>
-              <input class="fs-anim-lower-email" id="email" name="email" type="email" placeholder="yourid@gmail.com" required="">
+              <input class="fs-anim-lower-email2" id="email" name="email" type="email" placeholder="yourid@gmail.com" required="">
             </li>
             
             
@@ -79,34 +79,17 @@
       <div class="fs-controls"><button class="fs-continue">Continue</button><nav class="fs-nav-dots"><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class="fs-dot-current"></button></nav><span class="fs-numbers"><span class="fs-number-current">6</span><span class="fs-number-total">6</span></span><div class="fs-progress" style="width: 100%;"></div></div><span class="fs-message-error"></span></div><!-- /fs-form-wrap -->
 
     <script>
-    /*  $("#email").keydown(function(){
-      alert("#email KEYDOWN");
-         //load될 html안의 스크립트 문에서 아이디를 이용한 이벤트 등록불가
-     }); */
-    console.log($('.fs-anim-lower-email').val())
-    $(".fs-anim-lower-email").keyup(function() {
-      $("input").addClass('fs-anim-lower-email22 fs-anim-lower-email33');
-      console.log($('input').first().val())
-      $.get("http://localhost:3000/idCheck", {
-        id : $('.fs-anim-lower-email22').val()
+   /*  $(".fs-anim-lower-email").keyup(function() {
+      console.log($('.fs-anim-lower-email').val());
+       $.get("http://localhost:3000/idCheck", {
+        id : $('.fs-anim-lower-email').val()
       }, function(data) {
         $('.yesno').html(data.result);
-      });
+      }); 
 
-      $.get("http://localhost:3000/idCheck", {
-        id : $('.fs-anim-lower-email33').val()
-      }, function(data) {
-        $('#yesno').html(data.result);
-      });
-  
-      //load될 html안의 스크립트 문에서 클래스를 이용한 이벤트는 등록가능
-      //load되면서 이벤트는 등록되지만
-      //실행하는 함수의 클래스를 찾을 수가 없음(x)
-      //클래스는 찾지만 load한 input val()을 받지 못함
-
-    });
+    }); */
   </script>
-	
+  
 </div><!-- /container -->
 
 
