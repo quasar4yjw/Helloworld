@@ -79,34 +79,30 @@
       <div class="fs-controls"><button class="fs-continue">Continue</button><nav class="fs-nav-dots"><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class="fs-dot-current"></button></nav><span class="fs-numbers"><span class="fs-number-current">6</span><span class="fs-number-total">6</span></span><div class="fs-progress" style="width: 100%;"></div></div><span class="fs-message-error"></span></div><!-- /fs-form-wrap -->
 
     <script>
-      /*  $("#email").keydown(function(){
+    /*  $("#email").keydown(function(){
       alert("#email KEYDOWN");
          //load될 html안의 스크립트 문에서 아이디를 이용한 이벤트 등록불가
-         //로드한 아이디가 두 개일 경우 이벤트 등록 불가ㅠㅠ
-     });   */
-    /* console.log($('.fs-anim-lower-email').val()) */
+     }); */
+    console.log($('.fs-anim-lower-email').val())
     $(".fs-anim-lower-email").keyup(function() {
-      //$("input").addClass('fs-anim-lower-email22 fs-anim-lower-email33');
-      console.log($('.fs-anim-lower-email').val());
-       $.get("http://localhost:3000/idCheck", {
-        id : $('.fs-anim-lower-email').val()
+      $("input").addClass('fs-anim-lower-email22 fs-anim-lower-email33');
+      console.log($('input').first().val())
+      $.get("http://localhost:3000/idCheck", {
+        id : $('.fs-anim-lower-email22').val()
       }, function(data) {
         $('.yesno').html(data.result);
-      }); 
+      });
 
-      /* $.get("http://localhost:3000/idCheck", {
+      $.get("http://localhost:3000/idCheck", {
         id : $('.fs-anim-lower-email33').val()
       }, function(data) {
         $('#yesno').html(data.result);
-      }); */
+      });
   
       //load될 html안의 스크립트 문에서 클래스를 이용한 이벤트는 등록가능
       //load되면서 이벤트는 등록되지만
-      //실행하는 함수의 클래스를 찾을 수가 없음(x) ; 찾기는 함ㅠㅠ
-      //클래스는 찾지만 load한 input val()을 받지 못함(x) ; 두번째 input이었음ㅠㅠ
-      //로드한 클래스가 두 개일 경우 첫 번째 클래스의 val()만 받음ㅠㅠ(o)
-      //★★jQuery 기본 getter 함수는 배열의 첫 인덱스의 값만 가져오고
-      //            setter 함수는 배열의 모든 인덱스를 해당 값으로 세팅한다.
+      //실행하는 함수의 클래스를 찾을 수가 없음(x)
+      //클래스는 찾지만 load한 input val()을 받지 못함
 
     });
   </script>
