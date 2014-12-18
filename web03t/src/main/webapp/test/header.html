@@ -1,6 +1,27 @@
 <div class='top'>
-	<a href='#login'>로그인</a> &nbsp&nbsp<a href='#signUp'>회원가입</a> &nbsp&nbsp
+	<button  data-dialog="somedialog" class="trigger">로그인</button> 
+	&nbsp&nbsp
+	<button class="trigger" onclick="location.href='selectJoinForm.html'">회원가입</button>  &nbsp&nbsp
 	  <a href="addPlan.html" class="button blue alt">여행일정등록</a>
 	<!-- <button>여행일정등록</button> -->
 </div>
 <div class='main-name'>HelloWorld</div>
+<script>
+
+  var dlgtrigger = document.querySelector( '[data-dialog]' ),
+    somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
+    dlg = new DialogFx( somedialog );
+
+  dlgtrigger.addEventListener( 'click', 
+    dlg.toggle.bind(dlg)
+    //$('')
+    //$('.main-content').css('opacity','0');
+    );
+   
+$(dlgtrigger).click(function(){
+  $('.main-content').css('opacity','0');
+  }); 
+$('#btnLogin').click(function(){  
+  $('.main-content').css('opacity','1');
+});
+</script>

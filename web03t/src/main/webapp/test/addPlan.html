@@ -11,6 +11,7 @@
 <link rel='stylesheet' href='/web03t/css/bootstrap.min.css'>
 <link rel='stylesheet' href='/web03t/css/bootstrap-theme.min.css'>
 <link rel='stylesheet' href='../css/common.css'>
+  <link rel='stylesheet'   href='/web03t/css/login-popup.css'>
 
 
 
@@ -558,12 +559,12 @@ onkeypress="onlyNumber()" min="50000" max="200000">
 
       </div>
 
-
+<div id="somedialog" class="dialog">
 <div class="footer"></div>
 </div>
 <script type="text/javascript" src='../js/jquery-1.11.1.js'></script>
 <script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
-<script type="text/javascript" src='../js/require.js'></script>
+<!-- <script type="text/javascript" src='../js/require.js'></script> -->
 
 
 <!-- 이미지업로드 -->
@@ -572,7 +573,7 @@ onkeypress="onlyNumber()" min="50000" max="200000">
 
 
 <script type="text/javascript">
-
+$('.dialog').load('loginDialog.html');
   $('.header').load('header.html');
   $('.footer').load('footer.html');
 </script>

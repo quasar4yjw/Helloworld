@@ -10,6 +10,8 @@ href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <link rel='stylesheet' href='../css/common.css'>
  
 <link rel="stylesheet" type="text/css" href="../css/componentBtn.css" />
+
+  <link rel='stylesheet'   href='/web03t/css/login-popup.css'>
     
 <style>
 .main-content{
@@ -470,7 +472,7 @@ border-color: #ff5a5f;
 		  <img src=../images/"guideReview4.jpg" style='width:250px;'>  -->
 		  </div>
 		</div>
-		
+		  <div id="somedialog" class="dialog"> </div>
 		<div class="footer"></div>
 	</div>
 
@@ -483,6 +485,7 @@ border-color: #ff5a5f;
 	  $(function() {
 	    $( "#datepicker" ).datepicker();
 	  });
+	  $('.dialog').load('loginDialog.html');
   $('.header').load('header.html');
   $('.footer').load('footer.html');
   
