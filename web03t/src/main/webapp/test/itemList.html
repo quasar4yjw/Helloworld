@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel='stylesheet' 
+  href='/web03t/css/bootstrap.min.css'>
+<link rel='stylesheet' 
+  href='/web03t/css/bootstrap-theme.min.css'>
+  <link rel='stylesheet' 
+  href='/web03t/css/jquery.range.css'>
+  <link rel='stylesheet' 
+  href='/web03t/css/common.css'>
+  <link rel="stylesheet" 
+  href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+  
+  <style type="text/css">
+  .theme-green .back-bar .selected-bar {
+background-color: #ff5a5f;
+background-image: linear-gradient(to bottom, #ff5a5f, #ff5a5f);
+}
+
+
+
+
+    .slider-input{
+    font-color: black;
+    width:100%;
+    }
+    .main-search{
+    width: 350px;
+    height: 500px;
+    /* border: 1px solid black; */
+    position: absolute;
+    z-index: 10;   
+    left: 33%;
+    margin: auto;
+    padding: 100px 25px;
+    
+    }
+     .main-search{
+    
+     background: rgba( 255, 255, 255, 0.3 );
+    }
+    
+    .main-search #select-country{
+    width: 300px;}
+    
+    .date{
+    width: 145px;
+    }
+    #search{
+    width: 300px;    
+    margin-top: 50px;    
+    }
+    .slider-input{
+    font-color: black;
+    }
+    
+
+
+.slide-ul{
+display: block;
+width: 100%;
+position: absolute;}
+.slide-ul>li{
+position:absolute; 
+top:0; left:0; 
+list-style:none;
+z-index:10; 
+display: block;}
+.slide-ul>li img{ 
+width:100% ;
+height: 500px;
+}
+li{list-style: none;}
+
+.show{display:block;}
+
+ .content {
+        width: 70%;
+        padding: 100px 50px 50px 80px;
+        margin-bottom: 20px;
+        float: left;
+        border: 1px solid #bcbcbc;
+      }
+      .sidebar {
+        width: 30%;
+        padding: 20px;
+        margin-bottom: 20px;
+        float: right;
+        border: 1px solid #bcbcbc;
+      }
+      
+/* content안의 div설  */      
+#w {
+  width: 770px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+#content-list {
+  padding: 8px 15px;
+  padding-bottom: 20px;
+ 
+}
+
+
+.options {
+  display: block;
+  text-align: right;
+  font-size: 1.2em;
+  line-height: 16px;
+  font-weight: bold;
+  color: #ff5a5f;
+  margin-bottom: 8px;
+}
+.options .sorticon {
+  position: relative;
+  top: 3px;
+}
+
+.options .sorticon img {
+  width:18px;
+  height:18px;
+   opacity: 0.6;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.options .sorticon img:hover {
+  opacity: 1.0;
+}
+.options .sorticon.active img {
+ margin-left: 2px;
+  opacity: 1.0;
+}
+.options #thumbnails-list img{
+  margin-right: 30px;
+}
+
+/* list styles */
+#listdisplay { 
+  display: block;
+}
+#listdisplay img{
+width: 250px;
+height: 180px;
+}
+
+#listdisplay li {
+  display: block;
+  width: 100%;
+  padding: 12px 8px;
+  margin-bottom: 1px;
+  border-bottom: 1px solid #aaa;
+}
+#listdisplay li a img {
+  display: block;
+  float: left;
+  padding: 5px;
+  border: 2px solid #bbb;
+  background: #fff;
+  margin-right: 20px;
+}
+
+#listdisplay li .innercontent h3 {
+  
+  
+  line-height: 1.35em;
+  margin-bottom: 4px;
+  color: #898e8c;
+  font-weight: bold;
+}
+#listdisplay li .innercontent p {
+  
+  font-weight: 300;
+  line-height: 1.35em;
+  
+}
+#listdisplay li .innercontent h4{
+font-weight: bold;
+/* text-align: right; */
+font-size: 1.5em;
+}
+
+#listdisplay.thumbview li {
+display: block;
+width: 320px;
+height: 350px;
+float: left;
+margin-right: 10px;
+margin-bottom: 7px;
+border: 0;
+}
+#listdisplay.thumbview li a img {
+  display: block;
+  float: none;
+  margin: 0 auto;
+  margin-bottom: 4px;
+}
+#listdisplay.thumbview li .innercontent {
+  display: block;
+  text-align: center;
+}
+
+#listdisplay.thumbview li .innercontent p  {
+   display:none; 
+  
+}
+
+
+ .clearfix> a:link, 
+ .clearfix> a:visited,  
+ .clearfix> a:hover, 
+ .clearfix>a:active  {
+
+COLOR: #000000;
+LINE-HEIGHT: normal;
+TEXT-DECORATION: none;
+font-weight: bolder;
+}
+
+.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: inline-block; }
+ 
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; }
+
+/* sidebar 스타일 */
+
+ .recentlyItem{
+  position: relative;
+width: 30%;
+top: 30%;
+
+/* 
+ */
+  
+} 
+
+.recentlyItem ul li img{
+width: 100px;
+height: 100px;
+}
+ .f-nav{
+z-index:9999;
+   position:fixed;
+  width:30%;
+  top: 30%;
+
+}
+
+  </style>
+<meta charset="UTF-8">
+<title>Welcome to the HelloWorld</title>
+</head>
+<body>
+	<div class='container'>
+		<div class='header'></div>
+		<div class='main-content'>
+
+			<ul class="slide-ul">
+				<li><a href="#"><img src="../images/bg1.jpg" alt="dane"></a></li>
+				<li><a href="#"><img src="../images/bg2.jpg" alt="dane"></a></li>
+				<li><a href="#"><img src="../images/bg3.jpg" alt="dane"></a></li>
+			</ul>
+			<div class='main-search back'>
+
+				<form action="">
+					<select id='select-country' class="form-control">
+						<option>Where do you want to go?</option>
+					</select> <br> <br> <input type="text" id="startDate"
+						placeholder="여행시작일" class='date'> <input type="text"
+						id="endDate" placeholder="여행종료일" class='date'> <br> <br>
+						
+						
+					<br> <br> <input type="hidden" class="slider-input"
+						value="50000,200000" />
+					
+				</form>
+			</div>
+
+		</div>
+		
+		<div class='content'>	
+  
+  <div id="w">
+    <span class="options">Switch Options: 
+      <a href="#" id="details-list" class="sorticon active" title="List View"><img src="../images/details-list.png" alt="list"></a> 
+      <a href="#" id="thumbnails-list" class="sorticon" title="Thumbnail View"><img src="../images/thumbnails-list.png" alt="thumbnails"></a>
+    </span>
+    <!-- icons: http://findicons.com/pack/1689/splashy/ -->
+    <div id="content-list">
+      <ul id="listdisplay" class="clearfix">
+       <li class="clearfix">
+       <a href="#" target="_blank"> 
+          <span class="listimg"><img src="../images/best01.jpg"></span>
+          <span class="innercontent">
+            <h3>당신도 팬더의 음식 맛이 궁금하나요?</h3>
+            <h4>100,000원</h4>
+            <br>
+            <p>주요 명소 : 담양죽녹원, 메타세쿼이아 가로수길<br>
+               관심사: 음식, 전통 </p>
+          </span>
+          </a>
+        </li><!-- row #1 -->
+        <li class="clearfix">
+          <a href="#" target="_blank"> 
+          <span class="listimg"><img src="../images/best02.jpg"></span>
+          <span class="innercontent">
+            <h3>파리의 하루</h3>
+            <h4>150,000원</h4>
+            <br>
+            <p>주요 명소 : 에펠탑, 몽마르트 언덕, 루브르 박물<br>
+               관심사: 음식, 전통, 쇼핑</p>
+          </span>
+          </a>
+        </li><!-- row #2 -->
+        <li class="clearfix">
+          <a href="#" target="_blank"> 
+          <span class="listimg"><img src="../images/best03.jpg"></span>
+          <span class="innercontent">
+            <h3>추운겨울 수영하고 싶지 않으세요?</h3>
+            <h4>150,000원</h4>
+            <br>
+            <p>주요 명소 : 푸카비치, <br>
+               관심사: 음식, 쇼핑, 기타</p>
+          </span>
+          </a>
+        </li><!-- row #3 -->
+        <li class="clearfix">
+         <a href="#" target="_blank"> 
+          <span class="listimg"><img src="../images/best04.jpg"></span>
+          <span class="innercontent">
+            <h3>카지노의도시 당신의 운을 믿으십니까?</h3>
+            <h4>135,000원</h4>
+            <br>
+            <p>주요 명소 : 카지노, 카쇼, 분수쇼 <br>
+               관심사: 음식, 쇼핑, 기타</p>
+          </span>
+          </a>
+        </li><!-- row #4 -->
+        <li class="clearfix">
+         <a href="#" target="_blank"> 
+          <span class="listimg"><img src="../images/best05.jpg"></span>
+          <span class="innercontent">
+            <h3>오구리슌 닮은 알파카를 찾아</h3>
+            <h4>160,000원</h4>
+            <br>
+            <p>주요 명소 : 로토루아, 테푸이아 민속 <br>
+               관심사: 음식, 전</p>
+          </span>
+          </a>
+        </li><!-- row #5 -->
+        <li class="clearfix">
+          <a href="#" target="_blank"> 
+          <span class="listimg"><img src="../images/best06.jpg"></span>
+          <span class="innercontent">
+            <h3>한번쯤 외어본 주문 : 윙가디움 레디오사 </h3>
+            <h4>190,000원</h4>
+            <br>
+            <p>주요 명소 : 해리포터 스튜디 <br>
+               관심사: 전시회, 쇼핑</p>
+          </span>
+          </a>
+        </li><!-- row #6 -->
+        
+      </ul>
+    </div>
+    </div>
+  </div>
+		<div class='sidebar'>
+		<div class="recentlyItem">
+        <h4 class='recentlyTitle'> 최근 본 상품 </h4>
+        <div>
+        <ul>
+          <li><a><img src='../images/best02.jpg'></a>
+            <h6 id='title'>파리의하루</h6>
+          </li>
+          <li><a><img src='../images/best05.jpg'></a>
+            <h6 id='title'>오구리슌 닮은 알파카를 찾아</h6>
+          </li>
+        </ul>
+        </div>
+      </div>
+		</div>
+		<div class='footer'></div>
+	</div>
+
+	<script type="text/javascript" src='../js/jquery-1.11.1.js'></script>
+<script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
+<script type="text/javascript" src='../js/require.js'></script>
+<script type="text/javascript" src='../js/jquery.range.js'></script>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript">
+
+  $('.header').load('header.html');
+  $('.footer').load('footer.html');
+  $("#startDate").datepicker();
+  $("#endDate").datepicker();
+  $('.slider-input').jRange({
+    from: 50000,
+    to: 200000,
+    step: 1000,
+    scale: [50000,100000,1500000,200000],
+    format: '%s won',
+    width: 300,
+    showLabels: true,
+    isRange : true
+});
+  
+  var current=0;
+  var slide_length = $('.slide-ul>li').length;//이미지의 갯수를 변수로
+  
+
+
+  $('.slide-ul>li').hide();//이미지 안보이게
+  $('.slide-ul>li').first().show();//이미지 하나만 보이게
+  
+    
+  
+//자동 슬라이드 함수
+function autoplay(){
+  
+  if(current == slide_length-1){
+  current = 0;
+}else{
+  current++;
+}
+  $('.slide-ul>li').stop().fadeOut(900);
+  $('.slide-ul>li').eq(current).stop().fadeIn(700);
+}
+setInterval(autoplay,4000);//반복
+
+//list 모양 변경
+$(function(){
+  $('.options a').on('click', function(e){
+    e.preventDefault();
+    
+    if($(this).hasClass('active')) {
+      // do nothing if the clicked link is already active
+      return;
+    }
+    
+    $('.options a').removeClass('active');
+    $(this).addClass('active');
+    
+    var clickid = $(this).attr('id');
+    
+
+    $('#listdisplay').fadeOut(240, function(){
+      if(clickid == 'thumbnails-list') {
+        $(this).addClass('thumbview');
+      } else {
+        $(this).removeClass('thumbview');
+      }
+
+      $('#listdisplay').fadeIn(200);  
+    });
+  });
+});
+var nav = $('.recentlyItem');
+
+$(window).scroll(function () {
+    if ($(this).scrollTop() > 700) {
+        nav.addClass("f-nav");
+    } else {
+        nav.removeClass("f-nav");
+    }
+});
+</script>
+</body>
+</html>
