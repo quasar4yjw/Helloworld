@@ -99,7 +99,23 @@
 		<script src="../js/classieSelectJoinForm.js"></script>
 		<script src="../js/cbpSplitLayoutSelectJoinForm.js"></script>
 		<script>
-		$('.page-inner').load('joinTourlist.html');
+		//$('.page-inner').load('joinTourlist.html');
+		 $.get('joinTourlist.html', function(result) {
+	          $('.page-inner').html(result);
+	      });
+		
+		  
+		</script>
+		<script>
+	  /* $("#email").keydown(function() {
+	       alert("#email KEYDOWN");
+	       
+    });  //다른 html에서 load한 html의 아이디,클래스 사용불가
+	    
+    $(".fs-anim-lower-email").keydown(function() {
+         alert(".fs-anim-lower-email KEYDOWN");
+	          
+    });  //다른 html에서 load한 html의 아이디,클래스 사용불가  */
 		</script>
 	</body>
 </html>

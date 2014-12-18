@@ -53,12 +53,12 @@
 	height: 100%;
 	background: #fff;
 	color: #3b3f45;
-	font-size: 1.2em;
+	font-size: 1.0em;
 }
 
 .fs-form-overview .fs-fields::before {
 	display: block;
-	margin-bottom: 2.5em;
+	margin-bottom: 1.5em;
 	color: #ff5a5f;
 	content: '회원가입';
 	font-weight: 700;
@@ -638,8 +638,10 @@ button.fs-continue {
 }
 
 .fs-form-overview .fs-submit {
-	border-color: #232529;
-	color: #232529;
+	border-color: #ff5a5f;
+	color: #ff5a5f;
+	width: 330px;
+  margin-top: 30px;
 }
 
 button.fs-continue {
@@ -653,7 +655,7 @@ button.fs-continue {
 button.fs-submit:hover,
 button.fs-submit:focus,
 button.fs-continue:hover {
-	background: #232529;
+	background: #ff5a5f;
 	color: #fff;
 }
 

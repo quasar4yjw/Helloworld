@@ -8,16 +8,17 @@
           </div>
         </div>
         <form id="myform" class="fs-form fs-form-overview fs-show" autocomplete="off">
+          <input class="fs-anim-lower-email" type="text" placeholder="yourid@gmail.com22" >
           <ol class="fs-fields">
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't send you spam, we promise...">이메일 주소를 입력해주세요.</label>
-              <input class="fs-anim-lower-email" id="email" name="email" type="email" placeholder="yourid@gmail.com" required="">
+              <!-- <input class="fs-anim-lower-email" id="email" name="email" type="email" placeholder="yourid@gmail.com" required=""> -->
             </li>
             
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">패스워드를 입력해주세요.</label>
-              <input class="fs-anim-lower" id="q1" name="q1" type="password"  placeholder="6자 이상, 영문 + 숫자 조합" required="">
+              <input class="fs-anim-lower" id="q1" name="q1" type="password"  placeholder="6자 이상, 영문 + 숫자 조합" required>
             </li>
             
             <li class="">
@@ -77,19 +78,37 @@
           <button class="fs-submit" type="submit">가입하기</button>
         </form><!-- /fs-form -->
       <div class="fs-controls"><button class="fs-continue">Continue</button><nav class="fs-nav-dots"><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class="fs-dot-current"></button></nav><span class="fs-numbers"><span class="fs-number-current">6</span><span class="fs-number-total">6</span></span><div class="fs-progress" style="width: 100%;"></div></div><span class="fs-message-error"></span></div><!-- /fs-form-wrap -->
+
     <script>
-    /* $(".fs-anim-lower-email").keyup(function(data){
-        $.get("http://localhost:3000/idCheck",{id:$('.fs-anim-lower-email').val()},function(data){
-          $('.yesno').html(data.result);
-        });
-      }); */
-    $(".fs-anim-lower-email").keyup(function(data){
-    alert($('.fs-anim-lower-email').val());
-    console.log("@___@" + $('.fs-anim-lower-email').val());
+    /*  $("#email").keydown(function(){
+      alert("#email KEYDOWN");
+         //load될 html안의 스크립트 문에서 아이디를 이용한 이벤트 등록불가
+     }); */
+    console.log($('.fs-anim-lower-email').val())
+    $(".fs-anim-lower-email").keyup(function() {
+      $("input").addClass('fs-anim-lower-email22 fs-anim-lower-email33');
+      console.log($('input').first().val())
+      $.get("http://localhost:3000/idCheck", {
+        id : $('.fs-anim-lower-email22').val()
+      }, function(data) {
+        $('.yesno').html(data.result);
+      });
+
+      $.get("http://localhost:3000/idCheck", {
+        id : $('.fs-anim-lower-email33').val()
+      }, function(data) {
+        $('#yesno').html(data.result);
+      });
+  
+      //load될 html안의 스크립트 문에서 클래스를 이용한 이벤트는 등록가능
+      //load되면서 이벤트는 등록되지만
+      //실행하는 함수의 클래스를 찾을 수가 없음(x)
+      //클래스는 찾지만 load한 input val()을 받지 못함
+
     });
-  /*   $("#email").keydown(function(){
-        alert("event1");
-        
-      }); */
-    </script>
-    </div><!-- /container -->
+  </script>
+	
+</div><!-- /container -->
+
+
+    

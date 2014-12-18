@@ -7,16 +7,17 @@
 </head>
 
 <body>
-<input type="text" id="keyevent" placeholder="아이디를 입력하세요"/>
+<input type="text" class="keyevent" placeholder="아이디를 입력하세요"/>
 <p id='yesno'></p>
 
 <script type="text/javascript">
-$("#keyevent").keyup(function(data){
+$(".keyevent").keyup(function(data){
+	console.log($('input').first().val())
   $.get("http://localhost:3000/idCheck",{
-    id : $('#keyevent').val()
+    id : $('input').first().val()
   },function(data){
     $('#yesno').html(data.result);
-  })
+  });
 });
 
 </script>
