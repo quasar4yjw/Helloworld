@@ -4,4 +4,4 @@ Helloworld
 
 BIT Last project
 
-Jungwoo YEOM / Sera JUNG([SeraJung]: https://github.com/SeraJung) / Daeun KIM([wendy15]: https://github.com/wendy15)
+Jungwoo YEOM / Sera JUNG([SeraJung]:(https://github.com/SeraJung)) / Daeun KIM([wendy15]: https://github.com/wendy15)
