@@ -15,7 +15,7 @@
 	font-family: inherit;
 	font-size: inherit;
 	color: inherit;
-	background: none;
+	background: #ff5a5f;
 	cursor: pointer;
 	padding: 25px 80px;
 	display: inline-block;
@@ -159,7 +159,7 @@
 
 .btn-1d:hover,
 .btn-1d:active {
-  color: #0e83cd;
+  color: #f99bcc;
 }
 
 .btn-1d:hover:after {
