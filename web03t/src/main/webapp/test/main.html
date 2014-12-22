@@ -114,9 +114,15 @@ overflow: hidden;
 width: 780px;
 height: 440px;
 }
-.best-item-result .tile img {
+.best-item-result .tile img{
 display: block;
-width: 100%;
+width: 390px;
+height: 220px;
+}
+.best-item-result .feature-tile img {
+display: block;
+width: 780px;
+height: 440px;
 }
 .best-item-result .tile .tile-overlay {
 position: absolute;
@@ -479,7 +485,8 @@ margin: auto;
 					<br> <br> <input type="hidden" class="slider-input"
 						value="50000,200000" />
 
-					<button type="submit" id='search' class="btn btn-default">search</button>
+					<button type="submit" id='search' class="btn btn-default"
+					onclick="location.href='itemList.html'">search</button>
 				</form>
 			</div>
 
@@ -487,15 +494,11 @@ margin: auto;
 		<div class='best-items'> 
 			<div class='best-item-result'>
 				<div class="tile tile-1 feature-tile">
-					<a> <img src="../images/best01.jpg" /> <span
-						class='tile-overlay'> <span class='tile-overlay-inner'>
-								<span class='tile-overlay-top'>
-									<h4 class='tile-label'>당신도 팬더의 음식 맛이 궁금하나요? 그럼 담양으로 놀러오세요</h4>
-							</span> 							
-						</span>
-					</span>
+					<a href="detailItem.html"> <img src="../images/best01.jpg" />
+								
 					<span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
-                 <sup class='h3 price-amount'>100,000 </sup>
+                 <h4 class='tile-label'>당신도 팬더의 음식 맛이 궁금하나요? 그럼 담양으로 놀러오세요</h4>
+              <sup class='h3 price-amount'>100,000 </sup>
                  <sup class='h4 text-contrast'>원</sup>
               </span>
 					</a>
@@ -524,6 +527,7 @@ margin: auto;
             </span>
           </span>
           <span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+                 
                  <sup class='h3 price-amount'>70,000 </sup>
                  <sup class='h4 text-contrast'>원</sup>
               </span>
@@ -601,6 +605,7 @@ margin: auto;
     showLabels: true,
     isRange : true
 });
+ 
   
   var current=0;
   var slide_length = $('.slide-ul>li').length;//이미지의 갯수를 변수로
