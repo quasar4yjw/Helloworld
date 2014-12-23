@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Blueprint: View Mode Switch</title>
+		<meta name="description" content="Blueprint: View Mode Switch" />
+		<meta name="keywords" content="view mode, switch, css, style, grid, list, template" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="../css/defaultConn.css" />
+		<link rel="stylesheet" type="text/css" href="../css/component.css" />
+		<script src="../js/modernizr.custom.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+		
+		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+		<link rel='stylesheet' href='../css/bootstrap.min.css'>
+		<link rel='stylesheet' href='../css/bootstrap-theme.min.css'>
+		<link rel='stylesheet' href='../css/common.css'>
+		
+		<style>
+
+	.myButton {
+		color: #fff;
+  background: #fc8387;
+  padding: 10px 20px;
+  border-radius: 2px;
+  margin: 20px 0 0;
+  display: inline-block;
+  transition: background 0.2s;
+  }
+  
+  .myButton:hover {
+  color: #fff;
+  background: #ff5a5f;
+}
+
+.myButton:before {
+  margin-right: 5px;
+}
+
+.test-hover:hover {
+  
+  background: #eee;
+}
+
+ .cbp-vm-date {
+  display: inline-block;
+  margin-left: 5px;
+ }
+
+ .conn-menubar {
+  padding-bottom: 10px;
+  border-bottom: 3px solid #bdbdbd;
+ } 
+ 
+
+	.menu-date {
+	display: inline-block;
+	margin: 0px 175px 0px 10px;
+}
+
+  .menu-status {
+  display: inline-block;
+  margin-right: 105px;
+}
+ 
+  .menu-price {
+  display: inline-block;
+  margin-right: 130px;
+}
+
+  .menu-item {
+  display: inline-block;
+}
+
+   h1 {
+display: block;
+color: #ff5a5f;
+content: '회원가입';
+font-weight: 700;
+font-size: 1.85em;
+padding: 50px 0px 20px 145px;
+}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+		 <div class="header"></div>
+		 <h1>연결 정보</h1>
+		
+	<!-- 	
+			<header class="clearfix">
+				<span>zzzzzz<span class="bp-icon bp-icon-all" data-content="The Blueprints are a collection of basic and minimal website concepts, components, plugins and layouts with minimal style for easy adaption and usage, or simply for inspiration."></span></span>
+				<h1>#ff5a5f</h1>
+				<nav>
+					<a href="http://tympanus.net/Blueprints/AnimatedHeader/" class="bp-icon bp-icon-prev" data-info="previous Blueprint"><span>Previous Blueprint</span></a>
+					<a href="http://tympanus.net/Blueprints/ResponsiveIconGrid/" class="bp-icon bp-icon-next" data-info="next Blueprint"><span>Next Blueprint</span></a>
+					<a href="http://tympanus.net/codrops/?p=15656" class="bp-icon bp-icon-drop" data-info="back to the Codrops article"><span>back to the Codrops article</span></a>
+					<a href="http://tympanus.net/codrops/category/blueprints/" class="bp-icon bp-icon-archive" data-info="Blueprints archive"><span>Go to the archive</span></a> 
+				
+				
+				</nav> 
+				
+				
+				
+			</header>	-->
+			<div class="main">
+				<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-list">
+					<div class="cbp-vm-options">
+						
+						
+						
+						<!-- <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List View</a>
+						<a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid">Grid View</a> -->
+					
+					
+					<!-- <a href=# class="bp-icon bp-icon-prev" data-info="previous Blueprint"><span>Previous Blueprint</span></a>
+          <a href=# class="bp-icon bp-icon-next" data-info="next Blueprint"><span>Next Blueprint</span></a>
+          <a href=# class="bp-icon bp-icon-drop" data-info="back to the Codrops article"><span>back to the Codrops article</span></a>
+          <a href=# class="bp-icon bp-icon-archive" data-info="Blueprints archive"><span>Go to the archive</span></a> -->
+          
+					<a href="#" class="myButton">전체</a>
+					<a href="#" class="myButton">예약요청</a>
+					<a href="#" class="myButton">예약완료</a>
+					<a href="#" class="myButton">취소</a>
+					
+					</div>
+					
+					<div class="conn-menubar">
+					<div class="menu-date">
+					여행 날짜
+					</div>
+					<div class="menu-status">
+          상태
+          </div>
+          <div class="menu-price">
+          가격
+          </div>
+          <div class="menu-item">
+          관광 상품
+          </div>
+          
+          </div>
+         
+					<ul>
+						<li class="test-hover">
+						  <div class="cbp-vm-date">2014.01.22</div>
+							<a class="cbp-vm-image" href="#"><img src="../images/conn1.jpg"></a>
+							<h3 class="cbp-vm-title" id="reserv-request">예약요청</h3>
+							<div class="cbp-vm-price">100,000 원</div>
+							<div class="cbp-vm-details">
+								동산위에 올라서서 파란 하늘 바라 보며
+							</div>
+							<a class="cbp-vm-icon cbp-vm-add" href="#">취소</a>
+						</li>
+						<li class="test-hover">
+						  <div class="cbp-vm-date">2014.01.22</div>
+							<a class="cbp-vm-image" href="#"><img src="../images/conn2.jpg"></a>
+							<h3 class="cbp-vm-title" id="reserv-complete">예약완료</h3>
+							<div class="cbp-vm-price">20,000 원</div>
+							<div class="cbp-vm-details">
+								저랑 치즈케이크 드실래요?
+							</div>
+							
+						</li>
+						<li class="test-hover">
+						  <div class="cbp-vm-date">2014.01.22</div>
+							<a class="cbp-vm-image" href="#"><img src="../images/conn3.jpg"></a>
+							<h3 class="cbp-vm-title" id="reserv-cancel">예약취소</h3>
+							<div class="cbp-vm-price">90,000 원</div>
+							<div class="cbp-vm-details">
+								Kohlrabi bok choy broccoli rabe welsh onion spring onion tatsoi ricebean kombu chard.
+							</div>
+							
+						</li>
+						<li class="test-hover">
+						  <div class="cbp-vm-date">2014.01.22</div>
+							<a class="cbp-vm-image" href="#"><img src="../images/conn4.jpg"></a>
+							<h3 class="cbp-vm-title" id="reserv-cancel">예약취소</h3>
+							<div class="cbp-vm-price">120,000 원</div>
+							<div class="cbp-vm-details">
+								Melon sierra leone bologi carrot peanut salsify celery onion jícama summer purslane.
+							</div>
+							
+						</li>
+						<li class="test-hover">
+						  <div class="cbp-vm-date">2014.01.22</div>
+							<a class="cbp-vm-image" href="#"><img src="../images/conn5.jpg"></a>
+							<h3 class="cbp-vm-title" id="reserv-complete">예약완료</h3>
+							<div class="cbp-vm-price">150,000 원</div>
+							<div class="cbp-vm-details">
+								Celery carrot napa cabbage wakame zucchini celery chard beetroot jícama sierra leone.
+							</div>
+
+						</li>
+						<li class="test-hover">
+						  <div class="cbp-vm-date">2014.01.22</div>
+							<a class="cbp-vm-image" href="#"><img src="../images/conn6.jpg"></a>
+							<h3 class="cbp-vm-title" id="reserv-complete">예약완료</h3>
+							<div class="cbp-vm-price">200,000 원</div>
+							<div class="cbp-vm-details">
+								Catsear cabbage tomato parsnip cucumber pea brussels sprout spring onion shallot swiss .
+							</div>
+
+						</li>
+						<li class="test-hover">
+						  <div class="cbp-vm-date">2014.01.22</div>
+							<a class="cbp-vm-image" href="#"><img src="../images/conn7.jpg"></a>
+							<h3 class="cbp-vm-title" id="reserv-request">예약요청</h3>
+							<div class="cbp-vm-price">180,000 원</div>
+							<div class="cbp-vm-details">
+								Mung bean taro chicory spinach komatsuna fennel.
+							</div>
+							<a class="cbp-vm-icon cbp-vm-add" href="#">취소</a>
+						</li>
+						
+					</ul>
+					
+					
+				</div>
+			</div><!-- /main -->
+			
+		</div><!-- /container -->
+			<div class="footer"></div>
+		<script src="../js/classie.js"></script>
+		<script src="../js/cbpViewModeSwitch.js"></script>
+		
+		
+    <script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
+    <script type="text/javascript" src='../js/require.js'></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js" type="text/javascript"></script>
+	
+		<script type="text/javascript">
+
+  $('.header').load('header.html');
+  $('.footer').load('footer.html');
+</script>
+		
+		
+		
+		<script>
+		$(document).ready(function(){
+			
+			  $("[id=reserv-cancel]").css("color","#C24747");
+			  $("[id=reserv-complete]").css("color","#3399CC");
+			  $("[id=reserv-request]").css("color","#669999");
+			  
+		});
+		</script>
+		
+	</body>
+</html>
