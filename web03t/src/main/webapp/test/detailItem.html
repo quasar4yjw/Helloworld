@@ -12,6 +12,7 @@ href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <link rel="stylesheet" type="text/css" href="../css/componentBtn.css" />
 
   <link rel='stylesheet'   href='/web03t/css/login-popup.css'>
+    <link rel='stylesheet'   href='/web03t/css/jquery.bxslider.css'>
     
 <style>
 .main-content {
@@ -361,7 +362,9 @@ font-size: 28px;
 }
 
 
-
+#bx-pager {
+  text-align:center;
+}
 
 </style>
 <meta charset="UTF-8">
@@ -371,7 +374,26 @@ font-size: 28px;
 	<div class='container'>
 		<div class="header"></div>
 		<div class="main-content">
-		  <div class="represent-img"><img src=../images/KyungbokGoong.jpg></div>
+		  <div class="represent-img">
+<ul class="bxslider">
+  <li><img style='height:800px;' src="../images/KyungbokGoong.jpg" /></li>
+  <li><img style='height:800px;' src="../images/guideItem1.jpg" /></li>
+  <li><img style='height:800px;' src="../images/guideItem2.jpg" /></li>
+</ul>
+
+<div id="bx-pager">
+  <a data-slide-index="0" href=""><img style='width:120px; height:120px;' src="../images/KyungbokGoong.jpg" /></a>
+  <a data-slide-index="1" href=""><img style='width:120px; height:120px;' src="../images/guideItem1.jpg" /></a>
+  <a data-slide-index="2" href=""><img style='width:120px; height:120px;' src="../images/guideItem2.jpg" /></a>
+</div>
+
+</div>
+		  
+		  
+		  
+		  
+		  
+		  
 		  <div class="detail-content">
 		    
 		    
@@ -381,8 +403,8 @@ font-size: 28px;
 			    <li><a href="#tourPlan">여행일정</a></li>
 			    <li><a href="#guideInfo">가이드정보</a></li>
 			    <li><a href="#itemComment">한줄평</a></li>
-			    </div>
 			  </ul>
+			  </div>
         </nav>
         
         
@@ -586,6 +608,7 @@ font-size: 28px;
 	<script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
 	<!-- <script type="text/javascript" src='../js/require.js'></script> -->
 	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+	<script src="../js/jquery.bxslider.js"></script>
 	<script type="text/javascript">
 	
 	  $('.dialog').load('loginDialog.html');
@@ -685,6 +708,12 @@ $(".serviceTest").click(function(){
              + "-" + ddLast);
 })
 });
+</script>
+<script>
+
+$('.bxslider').bxSlider({
+	  pagerCustom: '#bx-pager'
+	});
 </script>
     
     
