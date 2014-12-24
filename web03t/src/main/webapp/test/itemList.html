@@ -92,162 +92,259 @@ li{list-style: none;}
 
 .show{display:block;}
 
+
+      
+/* content 스타일 고치  */
+a{
+color: #47a3da;
+}
  .content {
         width: 70%;
         padding: 100px 50px 50px 80px;
         margin-bottom: 20px;
         float: left;
-        border: 1px solid #bcbcbc;
+         color: #47a3da;
+        /* border: 1px solid #bcbcbc; */
       }
+
+/* Main container */
+.cbp-vm-switcher {
+  padding: 20px;
+  border: 3px solid #bdbdbd;
+}
+
+/* options/select wrapper with switch anchors */
+.cbp-vm-options {
+  text-align: right;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #bdbdbd;
+}
+
+.cbp-vm-options a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #d0d0d0;
+  margin: 2px;
+}
+
+.cbp-vm-options a:hover,
+.cbp-vm-options a.cbp-vm-selected {
+  color: #47a3da;
+}
+
+.cbp-vm-options a:before {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 30px;
+  text-align: center;
+  display: inline-block;
+}
+
+/* General style of switch items' list */
+
+.cbp-vm-switcher ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Clear eventual floats */
+.cbp-vm-switcher ul:before, 
+.cbp-vm-switcher ul:after { 
+  content: " "; 
+  display: table; 
+}
+
+.cbp-vm-switcher ul:after { 
+  clear: both; 
+}
+
+.cbp-vm-switcher ul li {
+  display: block;
+  position: relative;
+}
+
+.cbp-vm-image {
+  display: block;
+  margin: 0 auto;
+}
+
+.cbp-vm-image img {
+  display: inline-block;
+  width: 100%;
+  border: none;
+}
+
+.cbp-vm-title {
+  margin: 0;
+  padding: 0;
+}
+
+.cbp-vm-price {
+  color: #c0c0c0;
+}
+
+/* Common icon styles */
+.cbp-vm-icon:before {
+  font-family: 'fontawesome';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+.cbp-vm-grid:before {
+  content: "\f00a";
+}
+
+.cbp-vm-list:before {
+  content: "\f00b";
+}
+
+.cbp-vm-add:before {
+  content: "\f055";
+}
+
+/* Individual view mode styles */
+
+/* Large grid view */
+.cbp-vm-view-grid ul {
+  text-align: center;
+}
+
+.cbp-vm-view-grid ul li {
+  width: 45%;
+  text-align: center;
+  padding: 25px;
+  margin: 20px 0 0;
+  display: inline-block;
+  min-height: 420px;
+  vertical-align: top;
+}
+.cbp-vm-view-grid img{
+height:171px;
+}
+
+.cbp-vm-view-grid .cbp-vm-title {
+  margin-top: 2%;
+  font-size: 2em;
+  color:black;
+}
+
+.cbp-vm-view-grid .cbp-vm-details {
+  max-width: 300px;
+  min-height: 70px;
+  margin: 0 auto;
+} 
+
+.cbp-vm-view-grid .cbp-vm-price {
+  margin: 10px 0;
+  font-size: 1.5em;
+}
+ a:link, 
+a:visited,  
+ a:hover, 
+ a:active {
+LINE-HEIGHT: normal;
+TEXT-DECORATION: none;
+}
+
+
+/* List view */
+.cbp-vm-view-list li {
+  padding: 20px 0;
+  white-space: nowrap;
+}
+
+.cbp-vm-view-list .cbp-vm-image,
+.cbp-vm-view-list .cbp-vm-title,
+.cbp-vm-view-list .cbp-vm-details,
+.cbp-vm-view-list .cbp-vm-price,
+.cbp-vm-view-list .cbp-vm-add {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.cbp-vm-view-list .cbp-vm-image {
+  width: 10%;
+}
+
+.cbp-vm-view-list .cbp-vm-title {
+  font-size: 1.3em;
+  padding: 0 10px;
+  white-space: normal;
+  color:black;
+  width: 40%;
+}
+
+.cbp-vm-view-list .cbp-vm-price {
+  font-size: 1.3em;
+  width: 10%;
+}
+
+.cbp-vm-view-list .cbp-vm-details {
+  width: 40%;
+  padding: 0 15px;
+  margin-left: 3%; 
+  overflow: hidden;
+  white-space: normal;
+}
+
+
+@media screen and (max-width: 66.7em) {
+  .cbp-vm-view-list .cbp-vm-details  {
+    width: 30%;
+  }
+} 
+
+@media screen and (max-width: 57em) {
+  .cbp-vm-view-grid ul li {
+    width: 49%;
+  }
+}
+
+@media screen and (max-width: 47.375em) {
+  .cbp-vm-view-list .cbp-vm-image {
+    width: 20%;
+  }
+
+  .cbp-vm-view-list .cbp-vm-title {
+    width: auto;
+  }
+
+  .cbp-vm-view-list .cbp-vm-details  {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  
+}
+
+@media screen and (max-width: 40.125em) {
+  .cbp-vm-view-grid ul li {
+    width: 100%;
+  }
+}
+/* sidebar 스타일 */
+
       .sidebar {
         width: 30%;
         padding: 20px;
         margin-bottom: 20px;
         float: right;
-        border: 1px solid #bcbcbc;
+       /*  border: 1px solid #bcbcbc; */
       }
-      
-/* content안의 div설  */      
-#w {
-  width: 770px;
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 15px;
-}
-
-#content-list {
-  padding: 8px 15px;
-  padding-bottom: 20px;
- 
-}
-
-
-.options {
-  display: block;
-  text-align: right;
-  font-size: 1.2em;
-  line-height: 16px;
-  font-weight: bold;
-  color: #ff5a5f;
-  margin-bottom: 8px;
-}
-.options .sorticon {
-  position: relative;
-  top: 3px;
-}
-
-.options .sorticon img {
-  width:18px;
-  height:18px;
-   opacity: 0.6;
-  -webkit-transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  transition: all 0.2s linear;
-}
-.options .sorticon img:hover {
-  opacity: 1.0;
-}
-.options .sorticon.active img {
- margin-left: 2px;
-  opacity: 1.0;
-}
-.options #thumbnails-list img{
-  margin-right: 30px;
-}
-
-/* list styles */
-#listdisplay { 
-  display: block;
-}
-#listdisplay img{
-width: 250px;
-height: 180px;
-}
-
-#listdisplay li {
-  display: block;
-  width: 100%;
-  padding: 12px 8px;
-  margin-bottom: 1px;
-  border-bottom: 1px solid #aaa;
-}
-#listdisplay li a img {
-  display: block;
-  float: left;
-  padding: 5px;
-  border: 2px solid #bbb;
-  background: #fff;
-  margin-right: 20px;
-}
-
-#listdisplay li .innercontent h3 {
-  
-  
-  line-height: 1.35em;
-  margin-bottom: 4px;
-  color: #898e8c;
-  font-weight: bold;
-}
-#listdisplay li .innercontent p {
-  
-  font-weight: 300;
-  line-height: 1.35em;
-  
-}
-#listdisplay li .innercontent h4{
-font-weight: bold;
-/* text-align: right; */
-font-size: 1.5em;
-}
-
-#listdisplay.thumbview li {
-display: block;
-width: 320px;
-height: 350px;
-float: left;
-margin-right: 10px;
-margin-bottom: 7px;
-border: 0;
-}
-#listdisplay.thumbview li a img {
-  display: block;
-  float: none;
-  margin: 0 auto;
-  margin-bottom: 4px;
-}
-#listdisplay.thumbview li .innercontent {
-  display: block;
-  text-align: center;
-}
-
-#listdisplay.thumbview li .innercontent p  {
-   display:none; 
-  
-}
-
-
- .clearfix> a:link, 
- .clearfix> a:visited,  
- .clearfix> a:hover, 
- .clearfix>a:active  {
-
-COLOR: #000000;
-LINE-HEIGHT: normal;
-TEXT-DECORATION: none;
-font-weight: bolder;
-}
-
-.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
-.clearfix { display: inline-block; }
- 
-html[xmlns] .clearfix { display: block; }
-* html .clearfix { height: 1%; }
-
-/* sidebar 스타일 */
-
  .recentlyItem{
   position: relative;
-width: 30%;
+
 top: 30%;
 
 /* 
@@ -549,91 +646,75 @@ z-index:9999;
 		</div>
 		
 		<div class='content'>	
-  
-  <div id="w">
-    <span class="options">Switch Options: 
-      <a href="#" id="details-list" class="sorticon active" title="List View"><img src="../images/details-list.png" alt="list"></a> 
-      <a href="#" id="thumbnails-list" class="sorticon" title="Thumbnail View"><img src="../images/thumbnails-list.png" alt="thumbnails"></a>
-    </span>
-    <!-- icons: http://findicons.com/pack/1689/splashy/ -->
-    <div id="content-list">
-      <ul id="listdisplay" class="clearfix">
-       <li class="clearfix">
-       <a href="#" target="_blank"> 
-          <span class="listimg"><img src="../images/best01.jpg"></span>
-          <span class="innercontent">
-            <h3>당신도 팬더의 음식 맛이 궁금하나요?</h3>
-            <h4>100,000원</h4>
-            <br>
-            <p>주요 명소 : 담양죽녹원, 메타세쿼이아 가로수길<br>
-               관심사: 음식, 전통 </p>
-          </span>
-          </a>
-        </li><!-- row #1 -->
-        <li class="clearfix">
-          <a href="#" target="_blank"> 
-          <span class="listimg"><img src="../images/best02.jpg"></span>
-          <span class="innercontent">
-            <h3>파리의 하루</h3>
-            <h4>150,000원</h4>
-            <br>
-            <p>주요 명소 : 에펠탑, 몽마르트 언덕, 루브르 박물<br>
-               관심사: 음식, 전통, 쇼핑</p>
-          </span>
-          </a>
-        </li><!-- row #2 -->
-        <li class="clearfix">
-          <a href="#" target="_blank"> 
-          <span class="listimg"><img src="../images/best03.jpg"></span>
-          <span class="innercontent">
-            <h3>추운겨울 수영하고 싶지 않으세요?</h3>
-            <h4>150,000원</h4>
-            <br>
-            <p>주요 명소 : 푸카비치, <br>
-               관심사: 음식, 쇼핑, 기타</p>
-          </span>
-          </a>
-        </li><!-- row #3 -->
-        <li class="clearfix">
-         <a href="#" target="_blank"> 
-          <span class="listimg"><img src="../images/best04.jpg"></span>
-          <span class="innercontent">
-            <h3>카지노의도시 당신의 운을 믿으십니까?</h3>
-            <h4>135,000원</h4>
-            <br>
-            <p>주요 명소 : 카지노, 카쇼, 분수쇼 <br>
-               관심사: 음식, 쇼핑, 기타</p>
-          </span>
-          </a>
-        </li><!-- row #4 -->
-        <li class="clearfix">
-         <a href="#" target="_blank"> 
-          <span class="listimg"><img src="../images/best05.jpg"></span>
-          <span class="innercontent">
-            <h3>오구리슌 닮은 알파카를 찾아</h3>
-            <h4>160,000원</h4>
-            <br>
-            <p>주요 명소 : 로토루아, 테푸이아 민속 <br>
-               관심사: 음식, 전</p>
-          </span>
-          </a>
-        </li><!-- row #5 -->
-        <li class="clearfix">
-          <a href="#" target="_blank"> 
-          <span class="listimg"><img src="../images/best06.jpg"></span>
-          <span class="innercontent">
-            <h3>한번쯤 외어본 주문 : 윙가디움 레디오사 </h3>
-            <h4>190,000원</h4>
-            <br>
-            <p>주요 명소 : 해리포터 스튜디 <br>
-               관심사: 전시회, 쇼핑</p>
-          </span>
-          </a>
-        </li><!-- row #6 -->
-        
-      </ul>
-    </div>
-    </div>
+		<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
+          <div class="cbp-vm-options">
+            <a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid">Grid View</a>
+            <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List View</a>
+          </div>
+          <ul>
+            <li>
+              <a class="cbp-vm-image" href="#"><img src="../images/best01.jpg"></a>
+              <a href='#'><h3 class="cbp-vm-title">당신도 팬더의 음식 맛이 궁금하나요?</h3>
+              <div class="cbp-vm-price">100,000원</div>
+              <div class="cbp-vm-details">
+               주요 명소 : 담양죽녹원, 메타세쿼이아 <br>
+               관심사: 음식, 전통
+               
+              </div>
+               </a>
+            </li>
+            <li>
+              <a class="cbp-vm-image" href="#"><img src="../images/best02.jpg"></a>
+              <a href='#'><h3 class="cbp-vm-title">파리의 아침 크로와상과 함께</h3>
+              <div class="cbp-vm-price">150,000원</div>
+              <div class="cbp-vm-details">
+               주요 명소 : 에펠탑, 몽마르트 언덕<br>
+               관심사: 음식, 전통, 쇼핑
+                </div>
+               </a>
+            </li>   
+            <li>
+              <a class="cbp-vm-image" href="#"><img src="../images/best03.jpg"></a>
+              <a href='#'><h3 class="cbp-vm-title">추운겨울 수영하고 싶지 않으세요?</h3>
+              <div class="cbp-vm-price">150,000원</div>
+              <div class="cbp-vm-details">
+               주요 명소 : 푸카비치, <br>
+               관심사: 음식, 쇼핑, 기타
+                </div>
+               </a>
+            </li>           
+            <li>
+              <a class="cbp-vm-image" href="#"><img src="../images/best04.jpg"></a>
+              <a href='#'><h3 class="cbp-vm-title">카지노의도시 당신의 운을 믿으십니까?</h3>
+              <div class="cbp-vm-price">135,000원</div>
+              <div class="cbp-vm-details">
+               주요 명소 : 카지노, 카쇼, 분수쇼 <br>
+               관심사: 음식, 쇼핑, 기타
+                </div>
+               </a>
+            </li>
+            <li>
+              <a class="cbp-vm-image" href="#"><img src="../images/best05.jpg"></a>
+              <a href='#'><h3 class="cbp-vm-title">오구리슌 닮은 알파카를 찾아라</h3>
+              <div class="cbp-vm-price">160,000원</div>
+              <div class="cbp-vm-details">
+               주요 명소 : 로토루아, 테푸이아 민속 <br>
+               관심사: 음식, 전통
+                </div>
+               </a>
+            </li>  
+            <li>
+              <a class="cbp-vm-image" href="#"><img src="../images/best06.jpg"></a>
+              <a href='#'><h3 class="cbp-vm-title">한번쯤 외어본 주문 : 윙가디움 레디오사 </h3>
+              <div class="cbp-vm-price">190,000원</div>
+              <div class="cbp-vm-details">
+               주요 명소 : 해리포터 스튜디오 <br>
+               관심사: 전시회, 쇼핑
+                </div>
+               </a>
+            </li>       
+          </ul>
+        </div>
   </div>
 		<div class='sidebar'>
 		<div class="recentlyItem">
@@ -641,7 +722,7 @@ z-index:9999;
         <div>
         <ul>
           <li><a><img src='../images/best02.jpg'></a>
-            <h6 id='title'>파리의하루</h6>
+            <h6 id='title'>파리의 아침 크로와상과 함께</h6>
           </li>
           <li><a><img src='../images/best05.jpg'></a>
             <h6 id='title'>오구리슌 닮은 알파카를 찾아</h6>
@@ -735,6 +816,36 @@ $(window).scroll(function () {
         nav.removeClass("f-nav");
     }
 });
+
+(function() {
+
+  var container = document.getElementById( 'cbp-vm' ),
+    optionSwitch = Array.prototype.slice.call( container.querySelectorAll( 'div.cbp-vm-options > a' ) );
+
+  function init() {
+    optionSwitch.forEach( function( el, i ) {
+      el.addEventListener( 'click', function( ev ) {
+        ev.preventDefault();
+        _switch( this );
+      }, false );
+    } );
+  }
+
+  function _switch( opt ) {
+    // remove other view classes and any any selected option
+    optionSwitch.forEach(function(el) { 
+      classie.remove( container, el.getAttribute( 'data-view' ) );
+      classie.remove( el, 'cbp-vm-selected' );
+    });
+    // add the view class for this option
+    classie.add( container, opt.getAttribute( 'data-view' ) );
+    // this option stays selected
+    classie.add( opt, 'cbp-vm-selected' );
+  }
+
+  init();
+
+})();
 </script>
 </body>
 </html>

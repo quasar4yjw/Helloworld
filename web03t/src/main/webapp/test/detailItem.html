@@ -12,6 +12,7 @@ href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <link rel="stylesheet" type="text/css" href="../css/componentBtn.css" />
 
   <link rel='stylesheet'   href='/web03t/css/login-popup.css'>
+    <link rel='stylesheet'   href='/web03t/css/jquery.bxslider.css'>
     
 <style>
 .main-content {
@@ -75,8 +76,19 @@ left: 30px;
 .f-nav {
 z-index:9999; 
 position:fixed; 
-top: 0px;
+top: 52px;
 left: 29px;
+}
+
+.f-navAnchor {
+z-index:9999; 
+position:fixed; 
+top: 0px;
+left: 0px;
+}
+
+.navbar-collapse {
+width: 3000px;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
@@ -318,10 +330,17 @@ border-color: red;
 .ui-widget-header {
     background: initial;
 }
-.ui-state-default {
+
+
+
+.ui-widget-content .ui-state-default {
     background: initial;
     border: 1px solid #ff5a5f;
     color: initial;
+}
+
+.ui-widget-content .ui-state-disabled .ui-state-default{
+ border: 1px solid gray;
 }
 
 
@@ -333,6 +352,20 @@ background-color: #FF5A5F;
 .nav-tabs{
 padding-top: 30px;
 }
+
+.btn-default {
+text-shadow: 0 px 0 #fff;
+}
+
+.btn-lg, .btn-group-lg>.btn {
+font-size: 28px;
+}
+
+
+#bx-pager {
+  text-align:center;
+}
+
 </style>
 <meta charset="UTF-8">
 <title>Welcome to the HelloWorld</title>
@@ -341,11 +374,28 @@ padding-top: 30px;
 	<div class='container'>
 		<div class="header"></div>
 		<div class="main-content">
-		  <div class="represent-img"><img src=../images/KyungbokGoong.jpg></div>
+		  <div class="represent-img">
+<ul class="bxslider">
+  <li><img style='height:800px;' src="../images/KyungbokGoong.jpg" /></li>
+  <li><img style='height:800px;' src="../images/guideItem1.jpg" /></li>
+  <li><img style='height:800px;' src="../images/guideItem2.jpg" /></li>
+</ul>
+
+<div id="bx-pager">
+  <a data-slide-index="0" href=""><img style='width:120px; height:120px;' src="../images/KyungbokGoong.jpg" /></a>
+  <a data-slide-index="1" href=""><img style='width:120px; height:120px;' src="../images/guideItem1.jpg" /></a>
+  <a data-slide-index="2" href=""><img style='width:120px; height:120px;' src="../images/guideItem2.jpg" /></a>
+</div>
+
+</div>
+		  
+		  
+		  
+		  
+		  
+		  
 		  <div class="detail-content">
-		    <h1>한국의 전통문화를 뼈속 깊이 알려드릴게요 ~!!!</h1>
-		    <h3>금액 : 100,000원</h3>
-		    <h3>관심사 : 전통 / 음식 / 쇼핑</h3>
+		    
 		    
 		    <nav id='anchorMenu' style='display:none' class="navbar navbar-inverse" role="navigation">
 			   <div class="collapse navbar-collapse">
@@ -353,13 +403,17 @@ padding-top: 30px;
 			    <li><a href="#tourPlan">여행일정</a></li>
 			    <li><a href="#guideInfo">가이드정보</a></li>
 			    <li><a href="#itemComment">한줄평</a></li>
-			    </div>
 			  </ul>
+			  </div>
         </nav>
         
         
 		    <div class='first-detail-color'>
 		    <div class='first-detail'>
+		    
+		    <h1>한국의 전통문화를 뼈속 깊이 알려드릴게요 ~!!!</h1>
+        <h3>  금액 : 100,000원</h3>
+        <h3>관심사 : 전통 / 음식 / 쇼핑</h3>
 		   <!--  <div id='anchorMenu' style='display:none'>
 		    <a href="#tourPlan"
         class="btn btn-default btn-lg active" role="button">여행일정</a>
@@ -523,9 +577,13 @@ padding-top: 30px;
 		  
 		  <div class="right-scroll datepicker">
       <div id="datepicker"></div>
-      <button class="btn btn-default" type="submit">신청</button>
-      <button class="btn btn-default" type="submit">목록</button>
-      <button class="btn btn-default" type="submit">쪽지</button>
+      <br><br>
+      <button class="serviceTest btn btn-default" type="button">신청</button>
+      <button class="btn btn-default" type="submit" onclick="location.href='itemList.html'";>목록</button>
+      <button class="btn btn-default" type="submit" onclick="location.href='#'";>쪽지</button>
+      <br>
+      시작일:<input id=firstDate type=date readonly><br>
+      종료일:<input id=lastDate type=date readonly>
       </div>
       
       
@@ -548,8 +606,9 @@ padding-top: 30px;
 
 	<script type="text/javascript" src='../js/jquery-1.11.1.js'></script>
 	<script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
-	<script type="text/javascript" src='../js/require.js'></script>
+	<!-- <script type="text/javascript" src='../js/require.js'></script> -->
 	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+	<script src="../js/jquery.bxslider.js"></script>
 	<script type="text/javascript">
 	
 	  $('.dialog').load('loginDialog.html');
@@ -597,7 +656,7 @@ padding-top: 30px;
     $(function() {
       $( "#datepicker" ).multiDatesPicker({
           minDate:0,
-          addDisabledDates: [date.setDate(24), date.setDate(30)],// 불가능한 스케줄 multidatespickr.sourceforge.net
+          addDisabledDates: [date.setDate(24), date.setDate(25)],// 불가능한 스케줄 multidatespickr.sourceforge.net
         dateFormat:"yy-mm-dd",
         mode: 'daysRange',
         autoselectRange: [0, 3]
@@ -608,11 +667,11 @@ padding-top: 30px;
     var nav = $('#anchorMenu');
     
     $(window).scroll(function () {
-        if ($(this).scrollTop() > 1130) {
-            nav.addClass("f-nav");
+        if ($(this).scrollTop() > 1090) {
+            nav.addClass("f-navAnchor");
             nav.css('display', '');
         } else {
-            nav.removeClass("f-nav");
+            nav.removeClass("f-navAnchor");
             nav.css('display', 'none');
         }
     });
@@ -620,13 +679,41 @@ padding-top: 30px;
 var nav2 = $('.right-scroll');
     
     $(window).scroll(function () {
-        if ($(this).scrollTop() > 1130) {
+        if ($(this).scrollTop() > 1090) {
             nav2.addClass("f-nav");
         } else {
             nav2.removeClass("f-nav");
         }
     });
-    
+
+$(function(){
+$(".serviceTest").click(function(){
+	var mm = parseInt($(".ui-datepicker-month").html());
+  var ddFirst = $(".ui-datepicker .ui-datepicker-calendar .ui-state-highlight a:first").html();
+  var ddLast = $(".ui-datepicker .ui-datepicker-calendar .ui-state-highlight a:last").html();
+  if(mm < 10) mm = "0" + mm;
+	if(ddFirst < 10) ddFirst = "0" + ddFirst;
+	if(ddLast < 10) ddLast = "0" + ddLast;
+	 console.log($(".ui-datepicker-year").html() 
+	          + "-" + mm
+	          + "-" + ddFirst + " ~ " +
+	          $(".ui-datepicker-year").html() 
+	            + "-" + mm
+	            + "-" + ddLast);
+	 $("#firstDate").val($(".ui-datepicker-year").html() 
+	            + "-" + mm
+	            + "-" + ddFirst);
+	 $("#lastDate").val($(".ui-datepicker-year").html() 
+             + "-" + mm
+             + "-" + ddLast);
+})
+});
+</script>
+<script>
+
+$('.bxslider').bxSlider({
+	  pagerCustom: '#bx-pager'
+	});
 </script>
     
     
