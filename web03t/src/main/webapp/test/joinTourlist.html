@@ -42,7 +42,7 @@
             
              <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">사용가능언어를 선택해주세요.</label>
-            <select class="language-selector form-control" required>    
+            <select class="language-selector form-control">    
                   <option value="id">Bahasa Indonesia</option>    
                   <option value="ms">Bahasa Melayu</option>    
                   <option value="ca">Català</option>    
@@ -71,27 +71,29 @@
                   <option value="ko" selected="">한국어</option>
               </select>
               </li>
-            <fieldset>
-       <legend>성별을 선택하세요.</legend>
-       <p style="padding-left:20%;">
-       <label for = "genderMale">남성</label>
+              <li>
+              <label class="fs-field-label fs-anim-upper" for="q1">성별을 선택하세요.</label>
+       <div class='ac-custom ac-radio ac-circle' style="padding-bottom: 10px;">
+       <ul>
+       <li><label for = "genderMale">남성</label>
           <input type = "radio"
                  name = "gender"
                  id = "genderMale"
-                 value = "남성" required>
-          &nbsp;&nbsp;
-          <label for = "genderFemale">여성</label>
+                 value = "남성" required></li>
+          <li><label for = "genderFemale">여성</label>
           <input type = "radio"
                  name = "gender"
                  id = "genderFemale"
-                 value = "여성" required>
-          </p>       
-      </fieldset> 
- 
+                 value = "여성" required></li>
+                 </ul>
+                 </div>
+      </li>
+      
             
           </ol><!-- /fs-fields -->
           <button class="fs-submit" type="submit">가입하기</button>
         </form><!-- /fs-form -->
+        
       <div class="fs-controls"><button class="fs-continue">Continue</button><nav class="fs-nav-dots"><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class="fs-dot-current"></button></nav><span class="fs-numbers"><span class="fs-number-current">6</span><span class="fs-number-total">6</span></span><div class="fs-progress" style="width: 100%;"></div></div><span class="fs-message-error"></span></div><!-- /fs-form-wrap -->
 
     <script>
@@ -135,7 +137,8 @@
       //★★jQuery 기본 getter 함수는 배열의 첫 인덱스의 값만 가져오고
       //            setter 함수는 배열의 모든 인덱스를 해당 값으로 세팅한다.
   </script>
-	
+	<script src="../js/modernizr.customRadioEffect.js"></script>
+    <script src="../js/svgcheckbxRadioEffect.js"></script>
 </div><!-- /container -->
 
 
