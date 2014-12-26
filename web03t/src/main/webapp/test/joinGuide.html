@@ -7,8 +7,12 @@
           <div class="codrops-top">
           </div>
         </div>
-        <form id="myform" class="fs-form fs-form-overview fs-show" autocomplete="off">
+        <form action="" method="post" enctype="multipart/form-data" id="myform" class="fs-form fs-form-overview fs-show" autocomplete="off">
           <ol class="fs-fields">
+          <li>
+      <input type="file" accept="image/png, image/jpeg">
+          </li>
+          
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't send you spam, we promise...">이메일 주소를 입력해주세요.</label>
               <input class="fs-anim-lower-email2" id="email" name="email" type="email" placeholder="yourid@gmail.com" required="">
@@ -42,7 +46,7 @@
             
              <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">사용가능언어를 선택해주세요.</label>
-            <select class="language-selector form-control">    
+            <select multiple="multiple" id="my-select" name="my-select[]" class="language-selector form-control">    
                   <option value="id">Bahasa Indonesia</option>    
                   <option value="ms">Bahasa Melayu</option>    
                   <option value="ca">Català</option>    
@@ -89,7 +93,33 @@
 
     }); */
   </script>
-  
+  <script src="../js/jquery.ezdz.js"></script>
+    <script>
+        $('[type="file"]').ezdz({
+            text: '사진을 올려주세요',
+            validators: {
+                maxWidth:  600,
+                maxHeight: 400
+            },
+            reject: function(file, errors) {
+                if (errors.mimeType) {
+                    alert(file.name + ' must be an image.');
+                }
+
+                if (errors.maxWidth) {
+                    alert(file.name + ' must be width:600px max.');
+                }
+
+                if (errors.maxHeight) {
+                    alert(file.name + ' must be height:400px max.');
+                }
+            }
+        });
+    </script>
+     <script src="../js/jquery.multi-select.js" type="text/javascript"></script>
+     <script>
+     $('#my-select').multiSelect()
+     </script>
 </div><!-- /container -->
 
 
