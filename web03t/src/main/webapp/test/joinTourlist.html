@@ -91,7 +91,15 @@
       
             
           </ol><!-- /fs-fields -->
-          <button class="fs-submit" type="submit">가입하기</button>
+          
+          <div class="progress-button elastic">
+            <button type=button><span>가입하기</span></button>
+            <svg class="progress-circle" width="70" height="70"><path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z"/></svg>
+            <svg class="checkmark" width="70" height="70"><path d="m31.5,46.5l15.3,-23.2"/><path d="m31.5,46.5l-8.5,-7.1"/></svg>
+            <svg class="cross" width="70" height="70"><path d="m35,35l-9.3,-9.3"/><path d="m35,35l9.3,9.3"/><path d="m35,35l-9.3,9.3"/><path d="m35,35l9.3,-9.3"/></svg>
+          </div><!-- /progress-button -->
+          
+         <!--  <button class="fs-submit" type="submit">가입하기</button> -->
         </form><!-- /fs-form -->
         
       <div class="fs-controls"><button class="fs-continue">Continue</button><nav class="fs-nav-dots"><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class="fs-dot-current"></button></nav><span class="fs-numbers"><span class="fs-number-current">6</span><span class="fs-number-total">6</span></span><div class="fs-progress" style="width: 100%;"></div></div><span class="fs-message-error"></span></div><!-- /fs-form-wrap -->
@@ -139,6 +147,29 @@
   </script>
 	<script src="../js/modernizr.customRadioEffect.js"></script>
     <script src="../js/svgcheckbxRadioEffect.js"></script>
+    
+    
+    <script src="../js/modernizr.customProgressButton.js"></script>
+    <script src="../js/classieProgressButton.js"></script>
+    <script src="../js/uiProgressButton.js"></script>
+    <script>
+      [].slice.call( document.querySelectorAll( '.progress-button' ) ).forEach( function( bttn, pos ) {
+        new UIProgressButton( bttn, {
+          callback : function( instance ) {
+            var progress = 0,
+              interval = setInterval( function() {
+                progress = Math.min( progress + Math.random() * 0.1, 1 );
+                instance.setProgress( progress );
+
+                if( progress === 1 ) {
+                  instance.stop( pos === 1 || pos === 3 ? -1 : 1 );
+                  clearInterval( interval );
+                }
+              }, 150 );
+          }
+        } );
+      } );
+    </script>
 </div><!-- /container -->
 
 

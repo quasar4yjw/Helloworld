@@ -152,10 +152,11 @@ body {
 	border-radius: 50%;
 	color: #ff5a5f;
 	text-align: center;
-	font-size: 33px;
+	font-size: 44px;
 	line-height: 44px;
 	opacity: 0;
 	pointer-events: none;
+	font-weight:bold;
 }
 
 .mobile-layout .back { /* fixed positioning will make this not clickable after scrolling on some mobile devices */
