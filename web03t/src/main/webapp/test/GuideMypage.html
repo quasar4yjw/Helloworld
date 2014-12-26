@@ -21,9 +21,6 @@
 <link rel='stylesheet' href='../css/common.css'>
 <link rel='stylesheet' href='/web03t/css/login-popup.css'>
 
-<!-- <link rel="stylesheet" href="../css/jquery.ezdz.min.css">
-<link rel="stylesheet" href="../css/styles.css"> -->
-
 <!-- <meta charset="UTF-8"> -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Welcome to the HelloWorld</title>
@@ -40,13 +37,6 @@
   border: 1px solid #bcbcbc;
 }
 
-/* .sidebar {
-  width: 30%;
-  padding: 20px;
-  margin-bottom: 20px;
-  float: right;
-  border: 1px solid #bcbcbc;
-} */
 
 .title {
   width: 350px;
@@ -56,9 +46,7 @@
 
 #price {
   text-align: right;
-  /*       width: 350px;
-      height:30px; 
-      padding:5px 10px 5px 0px; */
+
 }
 
 .input {
@@ -66,9 +54,6 @@
   height: 30px;
 }
 
-/*      * {
-  .border-radius(0) !important;
-} */
 #field {
   margin-bottom: 20px;
   /* width: 100px;
@@ -172,24 +157,10 @@ font-size: 1.85em;
 .Mypage-update {
   border: 1px solid blue;
 }
-/* 
-.fs-form-overview {
-padding: 2em 40% 10em 15%;
-} */
-
 
 #gender {
 display: -webkit-inline-box;
 width: 12%;
-
-}
-
-
-.myphoto {
-font: 12px Arial;
-      margin: 20px auto;
-      text-align: center;
-      width: 260px;
 }
 
 button.fs-submit {
@@ -235,7 +206,7 @@ action="" method="post" enctype="multipart/form-data">
          <ol class="fs-fields"> 
   
     <li class="">
-    <label class="myphoto fs-field-label fs-anim-upper" for="q2">프로필 사진</label><br>
+    <label class="fs-field-label fs-anim-upper" for="q2">프로필 사진</label><br>
 <!-- 사진 업로드 -->
       <input type="file" accept="image/png, image/jpeg">
 
@@ -438,22 +409,22 @@ action="" method="post" enctype="multipart/form-data">
     <script src="../js/jquery.ezdz.js"></script>
     <script>
         $('[type="file"]').ezdz({
-            text: 'drop a picture',
+            text: '사진을 올려주세요.',
             validators: {
                 maxWidth:  800,
                 maxHeight: 800
             },
             reject: function(file, errors) {
                 if (errors.mimeType) {
-                    alert(file.name + ' must be an image.');
+                    alert(file.name + ' jpg 또는 png 파일을 업로드 해주세요.');
                 }
 
                 if (errors.maxWidth) {
-                    alert(file.name + ' must be width:800px max.');
+                    alert(file.name + ' 가로길이는 800px을 넘을 수 없습니다.');
                 }
 
                 if (errors.maxHeight) {
-                    alert(file.name + ' must be height:800px max.');
+                    alert(file.name + ' 세로길이는 800px을 넘을 수 없습니다.');
                 }
             }
         });

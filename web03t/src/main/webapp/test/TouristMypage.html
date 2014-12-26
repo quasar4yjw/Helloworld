@@ -2,6 +2,14 @@
 <html>
 <head>
 
+<!-- 성별라디오버튼 -->
+<link rel="stylesheet" type="text/css" href="../css/normalizeRadioEffect.css" />
+    <link rel="stylesheet" type="text/css" href="../css/demoRadioEffect.css" />
+    <link rel="stylesheet" type="text/css" href="../css/componentRadioEffect.css" />
+
+
+
+
 <link
   href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
   rel="stylesheet">
@@ -18,6 +26,7 @@
 <link rel='stylesheet' href='/web03t/css/bootstrap-theme.min.css'>
 <link rel='stylesheet' href='../css/common.css'>
 <link rel='stylesheet' href='/web03t/css/login-popup.css'>
+
 
 
 
@@ -175,12 +184,6 @@ padding: 2em 40% 10em 15%;
 } */
 
 
-#gender {
-display: -webkit-inline-box;
-width: 12%;
-
-}
-
 .fs-form-overview .fs-submit {
 margin: 50px 50px 50px 0px;
 }
@@ -239,11 +242,26 @@ margin: 50px 50px 50px 0px;
               <input class="fs-anim-lower" id="q1" name="q1" type="tel" value="+821072225772">
             </li>
 
-           <li class="">
-              <label>성별</label>
-              <input id="gender" name="gender" type="radio" value="male">남자
-              <input id="gender" name="gender" type="radio" value="female">여자
-           </li>
+           <li>
+              <label class="fs-field-label fs-anim-upper" for="q1">성별</label>
+       <div class='ac-custom ac-radio ac-circle' style="padding-bottom: 10px;">
+       <ul>
+       <li><label for = "genderMale">남성</label>
+          <input type = "radio"
+                 name = "gender"
+                 id = "genderMale"
+                 value = "남성"
+                 checked="checked"></li>
+    <!--       <li><label for = "genderFemale">여성</label>
+          <input type = "radio"
+                 name = "gender"
+                 id = "genderFemale"
+                 value = "여성" ></li> -->
+                 </ul>
+                 </div>
+                 
+                 
+      </li>
              
              <br>  
 
@@ -388,6 +406,9 @@ margin: 50px 50px 50px 0px;
   <script src="../js/classieSelectJoinForm.js"></script>
   <script src="../js/cbpSplitLayoutSelectJoinForm.js"></script>
 
+<!-- 성별라디오버튼 -->
+  <script src="../js/modernizr.customRadioEffect.js"></script>
+    <script src="../js/svgcheckbxRadioEffect.js"></script>
  
 
   <script type="text/javascript">
