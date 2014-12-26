@@ -76,6 +76,10 @@
               </select>
               </li>
             
+            <li class="">
+              <label class="fs-field-label fs-anim-upper" for="q4">가이드 정보에 표시될<BR>자기소개를 입력해주세요.</label>
+              <textarea class="fs-anim-lower" id="q4" name="q4" placeholder="안녕하세요? 저는 홍길동입니다."></textarea>
+            </li>
             
           </ol><!-- /fs-fields -->
          
@@ -97,22 +101,22 @@
   <script src="../js/jquery.ezdz.js"></script>
     <script>
         $('[type="file"]').ezdz({
-            text: '사진을 올려주세요',
+            text: '사진을 올려주세요.',
             validators: {
-                maxWidth:  600,
-                maxHeight: 400
+                maxWidth:  800,
+                maxHeight: 800
             },
             reject: function(file, errors) {
                 if (errors.mimeType) {
-                    alert(file.name + ' must be an image.');
+                    alert(file.name + ' jpg 또는 png 파일을 업로드 해주세요.');
                 }
 
                 if (errors.maxWidth) {
-                    alert(file.name + ' must be width:600px max.');
+                    alert(file.name + ' 가로길이는 800px을 넘을 수 없습니다.');
                 }
 
                 if (errors.maxHeight) {
-                    alert(file.name + ' must be height:400px max.');
+                    alert(file.name + ' 세로길이는 800px을 넘을 수 없습니다.');
                 }
             }
         });
