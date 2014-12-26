@@ -17,63 +17,91 @@
     
  /* search  */ 
   
-  .theme-green .back-bar .selected-bar {
-background-color: #ff5a5f;
-background-image: linear-gradient(to bottom, #ff5a5f, #ff5a5f);
+.theme-green .back-bar .selected-bar {
+background-color: rgb( 182, 182, 180 );
+background-image: linear-gradient(to bottom, #B6B6B4, #B6B6B4);
 }
+
 
     .slider-input{
     font-color: black;
     width:100%;
     }
     .main-search{
-    width: 350px;
+    width: 450px;
     height: 500px;
     /* border: 1px solid black; */
     position: absolute;
-    z-index: 10;   
-    left: 33%;
+    z-index: 0;   
+    left: 30%;
     margin: auto;
     padding: 100px 25px;
-    
-    }
-    
-    
-     .main-search{    
-     background: rgba( 255, 255, 255, 0.3 );
+        
+     background: rgba( 0, 0,0, 0.5 );
     }
     /* 나라선택  */
     .main-search #select-country{
     width: 300px;
-    background-color: transparent;
+    background-color: transparent;  
 background-image: none;
 border: 3px solid #898e8c;
 border-radius: 0px;
+margin-left:13%;
+margin-bottom: 20px;
 }
-  /* placeholder 글자색 넣 */
-  ::-webkit-input-placeholder{color:black;}
+  /* placeholder 글자색 넣기 */
+  ::-webkit-input-placeholder{color:#ffffff;}
+  /*  날짜 수정*/
     .date{
     width: 145px;    
+    color: white;
 background: transparent;
 border: 3px solid #898e8c;
+margin-bottom: 20px;
     }
+    input#startDate {
+margin-left: 14%;
+}
     
-    
+  /* 달력 css  */
+   table.ui-datepicker-calendar {border-collapse: separate;}
+  .ui-datepicker-calendar td {border: 1px solid transparent;}
+.ui-datepicker .ui-datepicker-calendar .ui-state-highlight a {
+  background: #ff5a5f none; /* a color that fits the widget theme */
+  color: white; /* a color that is readeable with the color above */
+}
+.ui-widget-header {
+    background: initial;
+}
+.ui-state-default {
+    background: initial;
+    border: 1px solid #ff5a5f;
+}
+/* 달력끝 */  
+
+/* 가격바 수정 */
+.slider-container.theme-green {
+margin-left: 13%;
+}
+
+/* 서치 버튼 수 */    
     #search{
-    width: 300px;    
-margin-top: 50px;
+width: 300px;
+margin-top: 100px;
+margin-left: 13%;
 background: transparent;
 font-weight: bolder;
 border: 5px solid #898e8c;
+color: white;
 font-size: 2.0em;
 border-radius: 0px;
-    }
-    .slider-input{
-    font-color: black;
+}
+
+
+.slider-input{
+    font-color: white;
     }
     
-
-
 .slide-ul{
 display: block;
 width: 100%;
@@ -82,7 +110,7 @@ position: absolute;}
 position:absolute; 
 top:0; left:0; 
 list-style:none;
-z-index:10; 
+z-index:0; 
 display: block;}
 .slide-ul>li img{ 
 width: 100%;
@@ -180,7 +208,7 @@ top: 220px;
 right: 0px;
 }
 .best-item-result  .tile-4 {
-top: 440px;
+top: 440px; 4
 left: 0px;
 }
 .best-item-result  .tile-5 {
@@ -198,7 +226,7 @@ padding: 7px 10px;
 }
 .panel-overlay-label {
 background-color: #3c3f40;
-background-color: rgba(60,63,64,0.9);
+background-color: rgba(255,90,95,0.7);
 padding: 0px 20px 0 20px;
 color: #fff;
 }
@@ -206,9 +234,15 @@ color: #fff;
 position: absolute;
 }
 
+
 .h4{
 margin: auto;
+line-height: 1.2em;
 }
+ .h3 {
+line-height: 1.3em;
+}
+
   </style>
 <meta charset="UTF-8">
 <title>Welcome to the HelloWorld</title>
@@ -226,7 +260,7 @@ margin: auto;
 			<div class='main-search back'>
 
 				<form action="">
-					<select id='select-country' class="form-control">
+					<select id='select-country'> <!-- class="form-control" -->
 						<option value="">여행지를 선택하세요.</option>
   <option value="AF">Afghanistan</option>
   <option value="AX">Åland Islands</option>
@@ -482,7 +516,8 @@ margin: auto;
 					<input type="text" id="startDate" placeholder="여행시작일" class='date'> 
 					<input type="text" id="endDate" placeholder="여행종료일" class='date'>
 					<br> <br>
-					<br> <br> <input type="hidden" class="slider-input"
+					<br> <br> 
+					<input type="hidden" class="slider-input"
 						value="50000,200000" />
 
 					<button type="submit" id='search' class="btn btn-default"
@@ -498,8 +533,9 @@ margin: auto;
 								
 					<span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
                  <h3 class='tile-label'>당신도 팬더의 음식 맛이 궁금하나요? 그럼 담양으로 놀러오세요</h3>
-              <sup class='h2 price-amount'>100,000 </sup>
-                 <sup class='h2 text-contrast'>원</sup>
+                
+              <sup class='h3 price-amount'>100,000 </sup>
+                 <sup class='h3 text-contrast'>원</sup>
               </span>
 					</a>
 				</div>
@@ -562,6 +598,7 @@ margin: auto;
 <!-- <script type="text/javascript" src='../js/require.js'></script> -->
 <script type="text/javascript" src='../js/jquery.range.js'></script>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript" src='../js/jquery-ui.multidatespicker.js'></script>
 <script type="text/javascript">
   $('.dialog').load('loginDialog.html');
   $('.header').load('header.html');  
@@ -579,7 +616,7 @@ margin: auto;
     isRange : true
 });
  
-  
+ 
   var current=0;
   var slide_length = $('.slide-ul>li').length;//이미지의 갯수를 변수로
   
@@ -601,7 +638,7 @@ function autoplay(){
   $('.slide-ul>li').stop().fadeOut(900);
   $('.slide-ul>li').eq(current).stop().fadeIn(700);
 }
-setInterval(autoplay,4000);//반복
+setInterval(autoplay,4000);//반복 
 
 </script>
 </body>

@@ -48,7 +48,7 @@ background-image: linear-gradient(to bottom, #ff5a5f, #ff5a5f);
     /* border: 1px solid black; */
     position: absolute;
     z-index: 10;   
-    left: 33%;
+    left: 35%;
     margin: auto;
     padding: 100px 25px;
     
@@ -95,6 +95,16 @@ li{list-style: none;}
 
       
 /* content 스타일 고치  */
+@font-face {
+  font-family: 'fontawesome';
+  src:url('../fonts/fontawesome/fontawesome.eot');
+  src:url('../fonts/fontawesome/fontawesome.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/fontawesome/fontawesome.woff') format('woff'),
+    url('../fonts/fontawesome/fontawesome.ttf') format('truetype'),
+    url('../fonts/fontawesome/fontawesome.svg#fontawesome') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 a{
 color: #47a3da;
 }
@@ -208,9 +218,6 @@ color: #47a3da;
   content: "\f00b";
 }
 
-.cbp-vm-add:before {
-  content: "\f055";
-}
 
 /* Individual view mode styles */
 
@@ -333,6 +340,25 @@ TEXT-DECORATION: none;
     width: 100%;
   }
 }
+
+/*  콘텐츠 및 목록 번호.. */
+
+.pagination {
+ margin-left: 33%; 
+}
+
+.pagination>li>a {
+color: black;
+}
+
+.pagination>.active>a {
+background-color: #ff5a5f;
+border-color: #ff5a5f;
+}
+.pagination>.active>a:hover{
+background-color: red;
+border-color: red;
+}
 /* sidebar 스타일 */
 
       .sidebar {
@@ -360,7 +386,7 @@ height: 100px;
 z-index:9999;
    position:fixed;
   width:30%;
-  top: 30%;
+  top: 3%;
 
 }
 
@@ -715,6 +741,17 @@ z-index:9999;
             </li>       
           </ul>
         </div>
+                <nav>
+  <ul class="pagination">
+    <li><a href="#"><span aria-hidden="true">&lt;</span><span class="sr-only">Previous</span></a></li>
+    <li class='active'><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#"><span aria-hidden="true">&gt;</span><span class="sr-only">Next</span></a></li>
+  </ul>
+</nav>
   </div>
 		<div class='sidebar'>
 		<div class="recentlyItem">
@@ -730,7 +767,9 @@ z-index:9999;
         </ul>
         </div>
       </div>
+      
 		</div>
+		
 		<div id="somedialog" class="dialog"> </div>
 		<div class='footer'></div>
 	</div>

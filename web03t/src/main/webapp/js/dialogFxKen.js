@@ -59,8 +59,8 @@
 		var self = this;
 
 		// close action
+	
 		this.ctrlClose.addEventListener( 'click', this.toggle.bind(this) );
-
 		// esc key closes dialog
 		document.addEventListener( 'keydown', function( ev ) {
 			var keyCode = ev.keyCode || ev.which;
@@ -84,6 +84,7 @@
 
 			// callback on close
 			this.options.onCloseDialog( this );
+			
 		}
 		else {
 			classie.add( this.el, 'dialog--open' );

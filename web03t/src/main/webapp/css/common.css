@@ -143,6 +143,7 @@ position: relative;
 
 }
 .footer {
+background: rgb(87,85,85);
 clear:both;
 height: 150px;
 border:1px solid red;
@@ -153,21 +154,22 @@ border:1px solid red;
  .footer-menu> a:hover, 
  .footer-menu>a:active  {
 FONT-SIZE: 11pt;
-COLOR: #000000;
+color:white;
 LINE-HEIGHT: normal;
 TEXT-DECORATION: none;
 font-weight: bolder;
 }
 
-hr{
-border-top: 1px solid black;
-margin: 0px;
+.footer-line {
+border-top: 2px solid white;
+margin: 0;
 }
 
 .footer-menu {
 width: 400px;
 height: 40px;
 padding: 10px 0px;
+
 border: 1px solid black;
 position: relative;
 right: -817px;
@@ -175,6 +177,6 @@ right: -817px;
 .copyright {
 font-style: normal;
 text-align: center;
-color: blue;
+color: black;
 margin: 5%;
 }
