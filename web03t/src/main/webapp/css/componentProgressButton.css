@@ -4,7 +4,7 @@
 	display: inline-block;
 	text-align: center;
 	width: 45%;
-	min-width: 250px;
+	min-width: 350px;
 	margin: 10px;
 }
 
@@ -15,7 +15,7 @@
 	padding: 0;
 	width: 350px;
 	height: 70px;
-	border: 2px solid #FF5A5F;
+	border: 3px solid #FF5A5F;
 	border-radius: 40px;
 	background: transparent;
 	color: #FF5A5F;
