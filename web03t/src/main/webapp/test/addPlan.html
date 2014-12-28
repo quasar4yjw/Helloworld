@@ -95,12 +95,12 @@
 #mainPlace {
   position: relative;
   left: 5px;
-  top: 550px;
+  top: 640px;
 }
 #scheduleSet {
   position: relative;
   left: 5px;
-  top: 700px;
+  top: 800px;
 }
 #imgUpload {
   position: relative;
@@ -135,7 +135,7 @@
   width: 100%;
 }
 .interest-select {
-  width: 31.7%;
+  width: 31.5%;
 }
 .regiBtn {
   margin: 0px 190px 50px 20px;
@@ -173,6 +173,40 @@ font-size: 1.5em;
 border-radius: 0;
 }
 
+
+
+
+.fs-form-overview .fs-fields input {
+font-size: 1.5em;
+}
+
+
+.content-sidebar {
+width:1170px;
+margin: 0 auto;
+}
+
+.scheduleTable .scheduleBtn {
+border: 3px solid #ff5a5f;
+border-radius: 5px;
+}
+
+.interest-select {
+height:36px;
+font-size:18px;
+}
+
+ .travel-select {
+height:36px;
+font-size:18px;
+}
+
+ #ch{
+ width:24px;
+ height:24px;
+ themeColor: red;
+}
+
 </style>
 
 </head>
@@ -185,6 +219,7 @@ border-radius: 0;
   <div class='container'>
     <div class="header"></div>
 
+<div class="content-sidebar">
     <div class="content">
 
       <form id="myform" class="fs-form fs-form-overview fs-show"
@@ -527,34 +562,37 @@ border-radius: 0;
 
 
 <li class="scheduleTable">
-              <input class="btn btn-primary" type="button" value=" + " onclick="addRow('dataTable')">
+              <input class="scheduleBtn" type="button" value=" 일정추가 " onclick="addRow('dataTable')">
  
-    <input class="btn btn-danger" type="button" value=" - " onclick="deleteRow('dataTable')">
+    <input class="scheduleBtn" type="button" value=" 삭제 " onclick="deleteRow('dataTable')">
  
 
 
 
-    <table id="dataTable" class="table table-bordered schedule-set" width="350px">
+    <table id="dataTable" class="table table-striped schedule-set" width="350px">
         <tbody>
 
 
 
 
          <tr>
-            <td><input class="form-control" type="checkbox" name="chk"></td>
+            <td><input type="checkbox" id="ch">
+            <label for="ch"></label>
+            </td>
+            
             <td>
                 <select class="form-control" name="country">
-                    <option value="in">1일차</option>
-                    <option value="de">2일차</option>
-                    <option value="fr">3일차</option>
-                    <option value="us">4일차</option>
-                    <option value="ch">5일차</option>
+                    <option value="one">1일차</option>
+                    <option value="two">2일차</option>
+                    <option value="three">3일차</option>
+                    <option value="four">4일차</option>
+                    <option value="five">5일차</option>
                 </select>
             </td>
 
    
             <td><input class="form-control" type="time" name="txt"></td>
-            <td><textarea class="form-control" name="txt"></textarea></td>
+            <td><textarea class="form-control" name="txt" placeholder="여행 내용"></textarea></td>
             
 
 
@@ -635,9 +673,12 @@ border-radius: 0;
         </ul>
       </div>
     </div>
+    </div>
   </div>
   <div class="footer"></div>
   <div id="somedialog" class="dialog"></div>
+  
+  </div>
   <script type="text/javascript" src='../js/jquery-1.11.1.js'></script>
   <script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
   <!-- <script type="text/javascript" src='../js/require.js'></script> -->
@@ -725,7 +766,7 @@ var row=table.rows[i];
 var chkbox=row.cells[0].childNodes[0];
 if(null!=chkbox&&true==chkbox.checked){
 if(rowCount<=1){
-alert("Cannot delete all the rows.");
+alert("적어도 하나의 계획을 작성해야 합니다.");
 break;
 }
 table.deleteRow(i);
@@ -806,6 +847,8 @@ catch(e){alert(e);
        */
     });
   </script>
+
+
 
 </body>
 </html>

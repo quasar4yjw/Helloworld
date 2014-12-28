@@ -1504,7 +1504,7 @@
         elErrorContainer: null,
         slugCallback: null,
         dropZoneEnabled: true,
-        dropZoneTitle: 'Drag & drop files here &hellip;',
+        dropZoneTitle: '사진을 올려주세요.',
         dropZoneTitleClass: 'file-drop-zone-title',
         fileActionSettings: {}
     };
