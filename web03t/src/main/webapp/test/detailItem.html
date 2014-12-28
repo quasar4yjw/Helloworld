@@ -366,6 +366,9 @@ font-size: 28px;
   text-align:center;
 }
 
+ .ui-state-default:hover {
+ background-color:red !important;
+} 
 </style>
 <meta charset="UTF-8">
 <title>Welcome to the HelloWorld</title>
@@ -655,7 +658,7 @@ font-size: 28px;
           $.datepicker.setDefaults($.datepicker.regional['ko']);
   });
   
-  
+  var numTravel = 3;
   
   var date = new Date();
     $(function() {
@@ -664,7 +667,7 @@ font-size: 28px;
           addDisabledDates: [date.setDate(24), date.setDate(25)],// 불가능한 스케줄 multidatespickr.sourceforge.net
         dateFormat:"yy-mm-dd",
         mode: 'daysRange',
-        autoselectRange: [0, 3]
+        autoselectRange: [0, numTravel]
       });
     });
 
@@ -713,6 +716,12 @@ $(".serviceTest").click(function(){
              + "-" + ddLast);
 })
 });
+
+/* $(function(){
+$('.ui-state-default').mouseover(function(){
+	$('.ui-state-hover').css('background-color', 'black');
+});
+}); */
 </script>
 <script>
 
