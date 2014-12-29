@@ -131,26 +131,7 @@ ALTER TABLE ITEMS
 ALTER TABLE ITEMS
 	MODIFY COLUMN I_NO INTEGER NOT NULL AUTO_INCREMENT COMMENT '상품번호';
 
--- 여행객 예약정보
-CREATE TABLE TABLE11 (
-	COL5    <데이터 타입 없음> NOT NULL COMMENT '예약정보 번호', -- 예약정보 번호
-	COL     <데이터 타입 없음> NULL     COMMENT '여행날짜', -- 여행날짜
-	COL2    <데이터 타입 없음> NULL     COMMENT '예약상태', -- 예약상태
-	COL3    <데이터 타입 없음> NULL     COMMENT '예약날짜', -- 예약날짜
-	I_NO    INTEGER            NULL     COMMENT '상품번호', -- 상품번호
-	T_EMAIL VARCHAR(40)        NULL     COMMENT '여행객이메일' -- 여행객이메일
-)
-COMMENT '여행객 예약정보';
 
--- 여행객 예약정보
-ALTER TABLE TABLE11
-	ADD CONSTRAINT PK_TABLE11 -- 여행객 예약정보 기본키
-		PRIMARY KEY (
-			COL5 -- 예약정보 번호
-		);
-
-ALTER TABLE TABLE11
-	MODIFY COLUMN COL5 <데이터 타입 없음> NOT NULL AUTO_INCREMENT COMMENT '예약정보 번호';
 
 -- 쪽지
 CREATE TABLE MSG (
@@ -399,25 +380,6 @@ ALTER TABLE ITEMS
 			G_EMAIL -- 가이드이메일
 		);
 
--- 여행객 예약정보
-ALTER TABLE TABLE11
-	ADD CONSTRAINT FK_TOURISTS_TO_TABLE11 -- 여행객 -> 여행객 예약정보
-		FOREIGN KEY (
-			T_EMAIL -- 여행객이메일
-		)
-		REFERENCES TOURISTS ( -- 여행객
-			T_EMAIL -- 여행객이메일
-		);
-
--- 여행객 예약정보
-ALTER TABLE TABLE11
-	ADD CONSTRAINT FK_ITEMS_TO_TABLE11 -- 여행아이템 -> 여행객 예약정보
-		FOREIGN KEY (
-			I_NO -- 상품번호
-		)
-		REFERENCES ITEMS ( -- 여행아이템
-			I_NO -- 상품번호
-		);
 
 -- 쪽지
 ALTER TABLE MSG
