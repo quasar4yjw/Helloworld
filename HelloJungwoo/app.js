@@ -62,12 +62,12 @@ app.get('/idCheck', function (request, response) {
     	if(result.length){
     		console.log('아이디 있음!!!');	
     		response.send({
-    			"result":"이메일이 이미 존재해ㅠㅠ"
+    			"result":"1"
     		});
     	}else{
     		console.log('아이디 없음ㅠㅠㅠ');
     		response.send({
-    			"result":"그 이메일로 만들어두 댐!!"
+    			"result":"0"
     		});
     	}
     });
