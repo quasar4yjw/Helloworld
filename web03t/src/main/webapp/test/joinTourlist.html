@@ -113,21 +113,16 @@
       <div class="fs-controls"><button class="fs-continue">Continue</button><nav class="fs-nav-dots"><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class="fs-dot-current"></button></nav><span class="fs-numbers"><span class="fs-number-current">6</span><span class="fs-number-total">6</span></span><div class="fs-progress" style="width: 100%;"></div></div><span class="fs-message-error"></span></div><!-- /fs-form-wrap -->
 
     <script>
-    $(".fs-anim-lower-email").keyup(function() {
-      console.log($('.fs-anim-lower-email').val());
+    emailValidate(".fs-anim-lower-email", '.yesno');
+    emailValidate(".fs-anim-lower-email2", '.yesno2');
+    function emailValidate(target, message) {
+    $(target).keyup(function() {
+      console.log($(target).val());
        $.get("http://192.168.0.136:3000/idCheck", {
-        id : $('.fs-anim-lower-email').val()
+        id : $(target).val()
       }, function(data) {
-    	  if(data.result == "1"){
-        $('.yesno').css({
-        	 "opacity": "1",
-        "-webkit-transform": "translate3d(0,50%,0) rotate3d(0,0,0,0)",
-        "transform": "translate3d(0,50%,0) rotate3d(0,0,0,0)",
-        "pointer-events": "auto"
-        });
-    	  }
-        else if(data.result == "0"){
-            $('.yesno').css({
+    	  if(data.result == "0"){
+            $(message).css({
             	 "opacity": "0",
                "-webkit-transform": "translate3d(0,50%,0) rotate3d(1,1,1,30deg)",
             "transform": "translate3d(0,50%,0) rotate3d(1,1,1,30deg)",
@@ -136,79 +131,24 @@
             }
       }); 
     });
-     $(".fs-anim-lower-email").focus(function() {
-         //$("input").addClass('fs-anim-lower-email22 fs-anim-lower-email33');
-         console.log($('.fs-anim-lower-email').val());
-          $.get("http://192.168.0.136:3000/idCheck", {
-           id : $('.fs-anim-lower-email').val()
-         }, function(data) {
-           if(data.result == "1"){
-           $('.yesno').css({
-              "opacity": "1",
-           "-webkit-transform": "translate3d(0,50%,0) rotate3d(0,0,0,0)",
-           "transform": "translate3d(0,50%,0) rotate3d(0,0,0,0)",
-           "pointer-events": "auto"
-           });
-           }
-         }); 
-       });
-     $(".fs-anim-lower-email").focusout(function(){
-    	 $('.yesno').css({
-             "opacity": "0",
-             "-webkit-transform": "translate3d(0,50%,0) rotate3d(1,1,1,30deg)",
-          "transform": "translate3d(0,50%,0) rotate3d(1,1,1,30deg)",
-          "pointer-events": "none"
+     $(target).focusout(function(){
+    	 console.log($(target).val());
+         $.get("http://192.168.0.136:3000/idCheck", {
+          id : $(target).val()
+        }, function(data) {
+          if(data.result == "1"){
+          $(message).css({
+             "opacity": "1",
+          "-webkit-transform": "translate3d(0,50%,0) rotate3d(0,0,0,0)",
+          "transform": "translate3d(0,50%,0) rotate3d(0,0,0,0)",
+          "pointer-events": "auto"
           });
+          $(target).focus();
+          }
+          
+        }); 
      });
-     $(".fs-anim-lower-email2").keyup(function() {
-         //$("input").addClass('fs-anim-lower-email22 fs-anim-lower-email33');
-         console.log($('.fs-anim-lower-email2').val());
-          $.get("http://192.168.0.136:3000/idCheck", {
-           id : $('.fs-anim-lower-email2').val()
-         }, function(data) {
-           if(data.result == "1"){
-           $('.yesno2').css({
-              "opacity": "1",
-           "-webkit-transform": "translate3d(0,50%,0) rotate3d(0,0,0,0)",
-           "transform": "translate3d(0,50%,0) rotate3d(0,0,0,0)",
-           "pointer-events": "auto"
-           });
-           }
-           else if(data.result == "0"){
-               $('.yesno2').css({
-                  "opacity": "0",
-                  "-webkit-transform": "translate3d(0,50%,0) rotate3d(1,1,1,30deg)",
-               "transform": "translate3d(0,50%,0) rotate3d(1,1,1,30deg)",
-               "pointer-events": "none"
-               });
-               }
-         }); 
-       });
-        
-        $(".fs-anim-lower-email2").focus(function() {
-            //$("input").addClass('fs-anim-lower-email22 fs-anim-lower-email33');
-            console.log($('.fs-anim-lower-email2').val());
-             $.get("http://192.168.0.136:3000/idCheck", {
-              id : $('.fs-anim-lower-email2').val()
-            }, function(data) {
-              if(data.result == "1"){
-              $('.yesno2').css({
-                 "opacity": "1",
-              "-webkit-transform": "translate3d(0,50%,0) rotate3d(0,0,0,0)",
-              "transform": "translate3d(0,50%,0) rotate3d(0,0,0,0)",
-              "pointer-events": "auto"
-              });
-              }
-            }); 
-          });
-        $(".fs-anim-lower-email2").focusout(function(){
-          $('.yesno2').css({
-                "opacity": "0",
-                "-webkit-transform": "translate3d(0,50%,0) rotate3d(1,1,1,30deg)",
-             "transform": "translate3d(0,50%,0) rotate3d(1,1,1,30deg)",
-             "pointer-events": "none"
-             });
-        });
+    }
   </script>
 	<script src="../js/modernizr.customRadioEffect.js"></script>
     <script src="../js/svgcheckbxRadioEffect.js"></script>
