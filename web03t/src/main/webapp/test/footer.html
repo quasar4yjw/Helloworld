@@ -1,11 +1,19 @@
    <hr class='footer-line'>
+   <div class='footer-menu-contain'>
     <div class='footer-menu'>
        <a href='notice'>공지사항</a> 
          &nbsp&nbsp
     <a href='review'>관광후기</a>  
     &nbsp&nbsp
     <a href='qna'>문의사항</a>  
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    </div>
+    <span class='mypage'>
+    <a href='#'>회원정보수정</a>
+     &nbsp&nbsp
+    <a href='#'>쪽지</a> &nbsp&nbsp
+    <a href='#'>신청정보</a>    
+    </span>
+    <div class='select-language'>
      <select class="language-selector">    
       <option value="id">Bahasa Indonesia</option>    
       <option value="ms">Bahasa Melayu</option>    
@@ -35,5 +43,11 @@
       <option value="ko" selected="">한국어</option>
       </select>
     </div>
+    </div>
     <hr class='footer-line'>
     <address class='copyright'>&copy; Helloworld, Inc.</address> 
+<script>
+if($('.mypage').attr('display') != 'none'){
+  $('.select-language').attr('left','51%');
+}
+</script>

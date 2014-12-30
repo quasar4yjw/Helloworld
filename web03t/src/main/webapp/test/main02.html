@@ -7,17 +7,14 @@
   href='/web03t/css/bootstrap-theme.min.css'>
   <link rel='stylesheet' 
   href='/web03t/css/jquery.range.css'>
-  <link rel='stylesheet' 
-  href='/web03t/css/common.css'>
   <link rel="stylesheet" 
   href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
-  <link rel='stylesheet'   
+  <link rel='stylesheet' 
   href='/web03t/css/login-popup.css'>
-  
+   <link rel='stylesheet'  href='/web03t/css/common.css'>
   <style type="text/css">
-  /* search  */ 
-  
-/* search  */ 
+    
+ /* search  */ 
   
 .theme-green .back-bar .selected-bar {
 background-color: rgb( 182, 182, 180 );
@@ -41,19 +38,9 @@ left: 50%;
 /* margin: 0 auto; */
 padding: 100px 25px;
 background: rgba( 0, 0,0 ,0.6);
-    }
-    /* 나라선택  */
-    .main-search #select-country{
-    width: 350px;
-    
-    color:white;
-background-color: transparent;
-background: rgba(0,0,0,0.3);
-background-image: none;
-border: 3px solid #898e8c;
-border-radius: 0px;
-margin-left: 7%;
 }
+    }
+    /* 나라선택은 제일 마지막에 있습니다.  */
   /* placeholder 글자색 넣기 */
   ::-webkit-input-placeholder{color:#ffffff;}
   /*  날짜 수정*/
@@ -91,54 +78,21 @@ margin-right: 5%;
 margin-left: 7%;
 }
 
+/* 서치 버튼 수 */    
+    #search{
+width: 350px;
+margin-top: 100px;
+margin-left: 7%;
+background: transparent;
+font-weight: bolder;
+border: 5px solid #898e8c;
+color: white;
+font-size: 2.0em;
 
-/*관심사 버튼*/
-#nav {
-  
-  overflow:hidden;
-  margin:34px auto 0 auto;
-  padding:0;
-  list-style:none;
-  width: 300px;
+border-radius: 50px;
 }
-  #nav li {
-   display: inline-block;
-    float:left;
-    padding:5px;
-    list-style:none;
-    text-align:center;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-  }
-  
-  #nav>li>button {
-    text-decoration:none;
-    color:#fff;
-    display:block;
-    width: 120px;
-    margin: 2px 10px;
-    padding:5px 10px;         
-    background: #666;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;    
-  }
-  
-    
-    .current {
-      background: #ff5a5f !important;
-      /* color:#666 !important; */
-    }
-    
-/*관심사 끝*/
 
-/* 메인 배경 이미지 수정  */
+/* 서치바 이미지 수  */
 .slider-input{
     font-color: white;
     }
@@ -161,301 +115,142 @@ opacity: 0.8;
 li{list-style: none;}
 
 .show{display:block;}
-/* 메인 배경 이미지 수정끝  */
-
-      
-/* content 스타일 고치  */
-@font-face {
-  font-family: 'fontawesome';
-  src:url('../fonts/fontawesome/fontawesome.eot');
-  src:url('../fonts/fontawesome/fontawesome.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/fontawesome/fontawesome.woff') format('woff'),
-    url('../fonts/fontawesome/fontawesome.ttf') format('truetype'),
-    url('../fonts/fontawesome/fontawesome.svg#fontawesome') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-a{
-color: #47a3da;
-}
- .content {
-        width: 70%;
-        padding: 100px 50px 50px 80px;
-        margin-bottom: 20px;
-        float: left;
-         color: #47a3da;
-        /* border: 1px solid #bcbcbc; */
-      }
-
-/* Main container */
-.cbp-vm-switcher {
-  padding: 20px;
-  border: 3px solid #bdbdbd;
+/* 서치바이미지 수정  */
+.experiences-feature .experiences-results {
+position: relative;
+height: 660px;
 }
 
-/* options/select wrapper with switch anchors */
-.cbp-vm-options {
-  text-align: right;
-  padding-bottom: 10px;
-  border-bottom: 3px solid #bdbdbd;
+.best-items .best-item-result {
+position: relative;
+height: 660px;
 }
 
-.cbp-vm-options a {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  overflow: hidden;
-  white-space: nowrap;
-  color: #d0d0d0;
-  margin: 2px;
+.best-item-result .tile {
+width: 390px;
+height: 220px;
+display: block;
+position: absolute;
+overflow: hidden;
 }
-
-.cbp-vm-options a:hover,
-.cbp-vm-options a.cbp-vm-selected {
-  color: #47a3da;
+.best-item-result .feature-tile {
+width: 780px;
+height: 440px;
 }
-
-.cbp-vm-options a:before {
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  font-size: 30px;
-  text-align: center;
-  display: inline-block;
+.best-item-result .tile img{
+display: block;
+width: 390px;
+height: 220px;
 }
-
-/* General style of switch items' list */
-
-.cbp-vm-switcher ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.best-item-result .feature-tile img {
+display: block;
+width: 780px;
+height: 440px;
 }
-
-/* Clear eventual floats */
-.cbp-vm-switcher ul:before, 
-.cbp-vm-switcher ul:after { 
-  content: " "; 
-  display: table; 
+.best-item-result .tile .tile-overlay {
+position: absolute;
+top: 0;
+left: 0;
+height: 48px;
+width: 100%;
+background: rgba(255,95,90,.8);
+transition: height .2s linear;
 }
-
-.cbp-vm-switcher ul:after { 
-  clear: both; 
+.best-item-result .tile .tile-overlay .tile-overlay-inner {
+overflow: hidden;
+display: block;
+height: 48px;
 }
-
-.cbp-vm-switcher ul li {
-  display: block;
-  position: relative;
+.best-item-result  .tile .tile-overlay .tile-overlay-top {
+width: 100%;
+min-height: 37px;
+padding: 11px 0 0px;
+display: block;
+background: rgba(255,95,90,.65);
+text-align: center;
+transition: background .15s linear;
 }
-
-.cbp-vm-image {
-  display: block;
-  margin: 0 auto;
+.best-item-result .tile .tile-overlay .tile-label {
+height: 24px;
+font-weight: bold;
+font-size: 18px;
+line-height: 24px;
+padding: 0 20px;
+color: #FFF;
+overflow: hidden;
 }
-
-.cbp-vm-image img {
-  display: inline-block;
-  width: 100%;
-  border: none;
+.best-item-result .tile .tile-overlay .tile-overlay-bottom {
+width: 100%;
+height: 100%;
+display: block;
+opacity: 0;
+transition: .4s opacity linear;
 }
-
-.cbp-vm-title {
-  margin: 0;
-  padding: 0;
+ .best-item-result .tile .tile-overlay .tile-overlay-bottom p {
+padding: 40px 20px 0;
+text-align: center;
+color: #FFF;
+font-weight: bold;
+font-size: 14px;
+line-height: 20px;
 }
-
-.cbp-vm-price {
-  color: #c0c0c0;
+.best-item-result  .tile-2 {
+top: 0px;
+right: 0px;
 }
-
-/* Common icon styles */
-.cbp-vm-icon:before {
-  font-family: 'fontawesome';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
+.best-item-result  .tile-3 {
+top: 220px;
+right: 0px;
 }
-
-.cbp-vm-grid:before {
-  content: "\f00a";
+.best-item-result  .tile-4 {
+top: 440px; 4
+left: 0px;
 }
-
-.cbp-vm-list:before {
-  content: "\f00b";
+.best-item-result  .tile-5 {
+top: 440px;
+left: 390px;
+}
+.best-item-result  .tile-6 {
+top: 440px;
+right: 0px;
+}
+.panel-overlay-listing-label {
+bottom: 30px;
+left: 0;
+padding: 7px 10px;
+}
+.panel-overlay-label {
+background-color: #3c3f40;
+background-color: rgba(255,90,95,0.7);
+padding: 0px 20px 0 20px;
+color: #fff;
+}
+.panel-overlay-bottom-left{
+position: absolute;
 }
 
 
-/* Individual view mode styles */
-
-/* Large grid view */
-.cbp-vm-view-grid ul {
-  text-align: center;
+.h4{
+margin: auto;
+line-height: 1.2em;
+}
+ .h3 {
+line-height: 1.3em;
 }
 
-.cbp-vm-view-grid ul li {
-  width: 45%;
-  text-align: center;
-  padding: 25px;
-  margin: 20px 0 0;
-  display: inline-block;
-  min-height: 420px;
-  vertical-align: top;
-}
-.cbp-vm-view-grid img{
-height:171px;
-}
-
-.cbp-vm-view-grid .cbp-vm-title {
-  margin-top: 2%;
-  font-size: 2em;
-  color:black;
+    /* search 나라선택  */
+    .main-search #select-country{
+    width: 350px;    
+    color:white;
+background-color: transparent;
+background: rgba(0,0,0,0.3);
+background-image: none;
+border: 3px solid #898e8c;
+border-radius: 0px;position: relative;
+left: 50%;
+margin-left: -172.5px;
 }
 
-.cbp-vm-view-grid .cbp-vm-details {
-  max-width: 300px;
-  min-height: 70px;
-  margin: 0 auto;
-} 
-
-.cbp-vm-view-grid .cbp-vm-price {
-  margin: 10px 0;
-  font-size: 1.5em;
-}
- #cbp-vm a:link, #cbp-vm a:visited, #cbp-vm  a:hover, #cbp-vm a:active {
-LINE-HEIGHT: normal;
-TEXT-DECORATION: none;
-}
-
-
-/* List view */
-.cbp-vm-view-list li {
-  padding: 20px 0;
-  white-space: nowrap;
-}
-
-.cbp-vm-view-list .cbp-vm-image,
-.cbp-vm-view-list .cbp-vm-title,
-.cbp-vm-view-list .cbp-vm-details,
-.cbp-vm-view-list .cbp-vm-price,
-.cbp-vm-view-list .cbp-vm-add {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.cbp-vm-view-list .cbp-vm-image {
-  width: 10%;
-}
-
-.cbp-vm-view-list .cbp-vm-title {
-  font-size: 1.3em;
-  padding: 0 10px;
-  white-space: normal;
-  color:black;
-  width: 40%;
-}
-
-.cbp-vm-view-list .cbp-vm-price {
-  font-size: 1.3em;
-  width: 10%;
-}
-
-.cbp-vm-view-list .cbp-vm-details {
-  width: 40%;
-  padding: 0 15px;
-  margin-left: 3%; 
-  overflow: hidden;
-  white-space: normal;
-}
-
-
-@media screen and (max-width: 66.7em) {
-  .cbp-vm-view-list .cbp-vm-details  {
-    width: 30%;
-  }
-} 
-
-@media screen and (max-width: 57em) {
-  .cbp-vm-view-grid ul li {
-    width: 49%;
-  }
-}
-
-@media screen and (max-width: 47.375em) {
-  .cbp-vm-view-list .cbp-vm-image {
-    width: 20%;
-  }
-
-  .cbp-vm-view-list .cbp-vm-title {
-    width: auto;
-  }
-
-  .cbp-vm-view-list .cbp-vm-details  {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-  }
-
-  
-}
-
-@media screen and (max-width: 40.125em) {
-  .cbp-vm-view-grid ul li {
-    width: 100%;
-  }
-}
-
-/*  콘텐츠 및 목록 번호.. */
-
-.pagination {
- margin-left: 33%; 
-}
-
-.pagination>li>a {
-color: black;
-}
-
-.pagination>.active>a {
-background-color: #ff5a5f;
-border-color: #ff5a5f;
-}
-.pagination>.active>a:hover{
-background-color: red;
-border-color: red;
-}
-/* sidebar 스타일 */
-
-      .sidebar {
-        width: 30%;
-        padding: 20px;
-        margin-bottom: 20px;
-        float: right;
-       /*  border: 1px solid #bcbcbc; */
-      }
- .recentlyItem{
-  position: relative;
-
-top: 30%;
-
-/* 
- */
-  
-} 
-
-.recentlyItem ul li img{
-width: 100px;
-height: 100px;
-}
- .f-nav{
-z-index:9999;
-   position:fixed;
-  width:30%;
-  top: 3%;
-
-}
 
   </style>
 <meta charset="UTF-8">
@@ -467,15 +262,21 @@ z-index:9999;
 		<div class='main-content'>
 
 			<ul class="slide-ul">
-				<li><a href="#"><img src="../images/bg1.jpg" alt="dane"></a></li>
-				<li><a href="#"><img src="../images/bg2.jpg" alt="dane"></a></li>
-				<li><a href="#"><img src="../images/bg3.jpg" alt="dane"></a></li>
+				<li><a href="#"><img src="../images/bg1.jpg" alt="dane">  
+				<span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+          <h4 class='tile-label'>터키</h4></a></li>
+				<li><a href="#"><img src="../images/bg2.jpg" alt="dane">
+				<span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+          <h4 class='tile-label'>볼리비아</h4></a></li>
+				<li><a href="#"><img src="../images/bg3.jpg" alt="dane">
+				<span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+          <h4 class='tile-label'>독일</h4></a></li>
 			</ul>
 			<div class='main-search back'>
 
 				<form action="">
-					<select id='select-country' class="form-control">
-            <option value="">여행지를 선택하세요.</option>
+					<select id='select-country'> <!-- class="form-control" -->
+						<option value="">여행지를 선택하세요.</option>
   <option value="AF">Afghanistan</option>
   <option value="AX">Åland Islands</option>
   <option value="AL">Albania</option>
@@ -722,133 +523,88 @@ z-index:9999;
   <option value="VI">Virgin Islands, U.S.</option>
   <option value="WF">Wallis and Futuna</option>
   <option value="EH">Western Sahara</option>
-  <option value="YE">Yemen</option>
+  <option value="YE">Yemen</opt로그인   회원가입    여행일정등록
+  ion>
   <option value="ZM">Zambia</option>
   <option value="ZW">Zimbabwe</option>
-					</select> <br> <br> <input type="text" id="startDate"
-						placeholder="여행시작일" class='date'> <input type="text"
-						id="endDate" placeholder="여행종료일" class='date'> <br> <br>
-						
-						
-					<br> <br> <input type="hidden" class="slider-input"
+					</select> <br> <br> 
+					<input type="text" id="startDate" placeholder="여행시작일" class='date'> 
+					<input type="text" id="endDate" placeholder="여행종료일" class='date'>
+					<br> <br>
+					<br> <br> 
+					<input type="hidden" class="slider-input"
 						value="50000,200000" />
-						
-						<ul id="nav">
-    <li><button type="button">전통1</button></li>
-    <li><button type="button">전통2</button></li>
-    <li><button type="button">전통3</button></li>
-    <li><button type="button">전통4</button></li>               
-    <li><button type="button">전통5</button></li>         
-    <li><button type="button">전통6</button></li>          
-    <li><button type="button">전통7</button></li>         
-    <li><button type="button">전통8</button></li>                        
-  </ul>
-					
+
+					<button type="submit" id='search' class="btn btn-default"
+					onclick="location.href='itemList.html'">search</button>
 				</form>
 			</div>
 
 		</div>
-		
-		<div class='content'>	
-		<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
-          <div class="cbp-vm-options">
-            <a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid">Grid View</a>
-            <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List View</a>
-          </div>
-          <ul>
-            <li>
-              <a class="cbp-vm-image" href="#"><img src="../images/best01.jpg"></a>
-              <a href='#'><h3 class="cbp-vm-title">당신도 팬더의 음식 맛이 궁금하나요?</h3>
-              <div class="cbp-vm-price">100,000원</div>
-              <div class="cbp-vm-details">
-               주요 명소 : 담양죽녹원, 메타세쿼이아 <br>
-               관심사: 음식, 전통
-               
-              </div>
-               </a>
-            </li>
-            <li>
-              <a class="cbp-vm-image" href="#"><img src="../images/best02.jpg"></a>
-              <a href='#'><h3 class="cbp-vm-title">파리의 아침 크로와상과 함께</h3>
-              <div class="cbp-vm-price">150,000원</div>
-              <div class="cbp-vm-details">
-               주요 명소 : 에펠탑, 몽마르트 언덕<br>
-               관심사: 음식, 전통, 쇼핑
-                </div>
-               </a>
-            </li>   
-            <li>
-              <a class="cbp-vm-image" href="#"><img src="../images/best03.jpg"></a>
-              <a href='#'><h3 class="cbp-vm-title">추운겨울 수영하고 싶지 않으세요?</h3>
-              <div class="cbp-vm-price">150,000원</div>
-              <div class="cbp-vm-details">
-               주요 명소 : 푸카비치, <br>
-               관심사: 음식, 쇼핑, 기타
-                </div>
-               </a>
-            </li>           
-            <li>
-              <a class="cbp-vm-image" href="#"><img src="../images/best04.jpg"></a>
-              <a href='#'><h3 class="cbp-vm-title">카지노의도시 당신의 운을 믿으십니까?</h3>
-              <div class="cbp-vm-price">135,000원</div>
-              <div class="cbp-vm-details">
-               주요 명소 : 카지노, 카쇼, 분수쇼 <br>
-               관심사: 음식, 쇼핑, 기타
-                </div>
-               </a>
-            </li>
-            <li>
-              <a class="cbp-vm-image" href="#"><img src="../images/best05.jpg"></a>
-              <a href='#'><h3 class="cbp-vm-title">오구리슌 닮은 알파카를 찾아라</h3>
-              <div class="cbp-vm-price">160,000원</div>
-              <div class="cbp-vm-details">
-               주요 명소 : 로토루아, 테푸이아 민속 <br>
-               관심사: 음식, 전통
-                </div>
-               </a>
-            </li>  
-            <li>
-              <a class="cbp-vm-image" href="#"><img src="../images/best06.jpg"></a>
-              <a href='#'><h3 class="cbp-vm-title">한번쯤 외어본 주문 : 윙가디움 레디오사 </h3>
-              <div class="cbp-vm-price">190,000원</div>
-              <div class="cbp-vm-details">
-               주요 명소 : 해리포터 스튜디오 <br>
-               관심사: 전시회, 쇼핑
-                </div>
-               </a>
-            </li>       
-          </ul>
+		<div class='best-items'> 
+			<div class='best-item-result'>
+				<div class="tile tile-1 feature-tile">
+					<a href="detailItem.html"> <img src="../images/best01.jpg" />
+								
+					<span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+                 <h3 class='tile-label'>당신도 팬더의 음식 맛이 궁금하나요? 그럼 담양으로 놀러오세요</h3>
+                
+              <sup class='h3 price-amount'>100,000 </sup>
+                 <sup class='h3 text-contrast'>원</sup>
+              </span>
+					</a>
+				</div>
+				<div class="tile tile-2 ">
+					<a> <img src="../images/best02.jpg" /> 
+					<span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+					<h4 class='tile-label'>파리의하루</h4>
+                 <sup class='h4 price-amount'>150,000 </sup>
+                 <sup class='h4 text-contrast'>원</sup>
+              </span>
+					</a>
+				</div>
+        <div class="tile tile-3 ">
+          <a> <img src="../images/best03.jpg" /> 
+          <span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+                 <h4 class='tile-label'>추운겨울 바다에 수영하고 싶지 않으세요?</h4>
+                 <sup class='h4 price-amount'>70,000 </sup>
+                 <sup class='h4 text-contrast'>원</sup>
+              </span>
+          </a>
+        </div>				
+				 <div class="tile tile-4 ">
+          <a> <img src="../images/best04.jpg" /> 
+          <span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+          <h4 class='tile-label'>카지노의도시 당신의 운을 믿으십니까?</h4>
+                 <sup class='h4 price-amount'>135,000 </sup>
+                 <sup class='h4 text-contrast'>원</sup>
+              </span>
+          </a>
+        </div>        
+        <div class="tile tile-5 ">
+          <a> <img src="../images/best05.jpg" /> 
+          <span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+          <h4 class='tile-label'>오구리슌을 닮은 알파카를 찾아라.</h4>
+                 <sup class='h4 price-amount'>160,000 </sup>
+                 <sup class='h4 text-contrast'>원</sup>
+              </span>
+          </a>
         </div>
-                <nav>
-  <ul class="pagination">
-    <li><a href="#"><span aria-hidden="true">&lt;</span><span class="sr-only">Previous</span></a></li>
-    <li class='active'><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li><a href="#"><span aria-hidden="true">&gt;</span><span class="sr-only">Next</span></a></li>
-  </ul>
-</nav>
-  </div>
-		<div class='sidebar'>
-		<div class="recentlyItem">
-        <h4 class='recentlyTitle'> 최근 본 상품 </h4>
-        <div>
-        <ul>
-          <li><a href='#'><img src='../images/best02.jpg'></a>
-            <h6 id='title'>파리의 아침 크로와상과 함께</h6>
-          </li>
-          <li><a><img src='../images/best05.jpg'></a>
-            <h6 id='title'>오구리슌 닮은 알파카를 찾아</h6>
-          </li>
-        </ul>
-        </div>
-      </div>
-      
+        
+        <div class="tile tile-6 ">
+          <a> <img src="../images/best06.jpg" /> 
+          <span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
+          <h4 class='tile-label'>한번쯤 외어본 주문 : 윙가디움 레디오사</h4>
+                 <sup class='h4 price-amount'>190,000 </sup>
+                 <sup class='h4 text-contrast'>원</sup>
+              </span>
+          </a>
+        </div>				
+			</div>
 		</div>
-		
-		<div id="somedialog" class="dialog"> </div>
+		<div id="somedialog" class="dialog">
+         
+          </div>
 		<div class='footer'></div>
 	</div>
 
@@ -857,10 +613,12 @@ z-index:9999;
 <!-- <script type="text/javascript" src='../js/require.js'></script> -->
 <script type="text/javascript" src='../js/jquery.range.js'></script>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript" src='../js/jquery-ui.multidatespicker.js'></script>
 <script type="text/javascript">
-$('.dialog').load('loginDialog.html');
-  $('.header').load('header.html');
+  $('.dialog').load('loginDialog.html');
+  $('.header').load('header01.html');  
   $('.footer').load('footer.html');
+  console.log($("#select-country option:selected").text());
   $('#startDate').datepicker({
     maxDate: '+1y',
     beforeShowDay: noBefore  });
@@ -886,7 +644,8 @@ $('.dialog').load('loginDialog.html');
     showLabels: true,
     isRange : true
 });
-  
+ 
+ 
   var current=0;
   var slide_length = $('.slide-ul>li').length;//이미지의 갯수를 변수로
   
@@ -908,85 +667,8 @@ function autoplay(){
   $('.slide-ul>li').stop().fadeOut(900);
   $('.slide-ul>li').eq(current).stop().fadeIn(700);
 }
-setInterval(autoplay,4000);//반복
+setInterval(autoplay,4000);//반복 
 
-
-//버튼 ...
-$('#nav>li >button').click(function(){
-  console.log($(this).attr('class') );
-  if($(this).attr('class')==null || $(this).attr('class')==''){
-    $(this).addClass('current');
-  }else{
-    $(this).removeClass("current");
-  } 
-});
-
-//list 모양 변경
-$(function(){
-  $('.options a').on('click', function(e){
-    e.preventDefault();
-    
-    if($(this).hasClass('active')) {
-      // do nothing if the clicked link is already active
-      return;
-    }
-    
-    $('.options a').removeClass('active');
-    $(this).addClass('active');
-    
-    var clickid = $(this).attr('id');
-    
-
-    $('#listdisplay').fadeOut(240, function(){
-      if(clickid == 'thumbnails-list') {
-        $(this).addClass('thumbview');
-      } else {
-        $(this).removeClass('thumbview');
-      }
-
-      $('#listdisplay').fadeIn(200);  
-    });
-  });
-});
-var nav = $('.recentlyItem');
-
-$(window).scroll(function () {
-    if ($(this).scrollTop() > 700) {
-        nav.addClass("f-nav");
-    } else {
-        nav.removeClass("f-nav");
-    }
-});
-
-(function() {
-
-  var container = document.getElementById( 'cbp-vm' ),
-    optionSwitch = Array.prototype.slice.call( container.querySelectorAll( 'div.cbp-vm-options > a' ) );
-
-  function init() {
-    optionSwitch.forEach( function( el, i ) {
-      el.addEventListener( 'click', function( ev ) {
-        ev.preventDefault();
-        _switch( this );
-      }, false );
-    } );
-  }
-
-  function _switch( opt ) {
-    // remove other view classes and any any selected option
-    optionSwitch.forEach(function(el) { 
-      classie.remove( container, el.getAttribute( 'data-view' ) );
-      classie.remove( el, 'cbp-vm-selected' );
-    });
-    // add the view class for this option
-    classie.add( container, opt.getAttribute( 'data-view' ) );
-    // this option stays selected
-    classie.add( opt, 'cbp-vm-selected' );
-  }
-
-  init();
-
-})();
 </script>
 </body>
 </html>

@@ -58,19 +58,38 @@ position: relative;
 }
 
 .top {
-width: 350px;
+	width: 360px;
 height: 32px;
 border: 1px solid black;
 position: relative;
-left: 74%;
+left: 77%;
 padding: 0 10px;
 font-size: 1.25em;
 }
+/*유저 네임   */
+  #userName> a:link, #userName> a:visited, #userName> a:hover, 
+  #userName>a:active {
+
+color:black;
+LINE-HEIGHT: normal;
+TEXT-DECORATION: none;
+}
+/* 메일  */
+.si-icons span {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
 /* 여행일정등록버튼  css  */
 .button {
   display: inline-block;
   position: relative;
   height: 30px;
+
   line-height: 33px;
   padding: 0 15px;
   font-size: 15px;
@@ -119,7 +138,14 @@ font-size: 1.25em;
   
 }
 
+ a#trip:link, a#trip:visited, 
+a#trip:hover, a#trip:active {
+	color:white;
 
+TEXT-DECORATION: none;
+
+	
+} 
 /*  main-name= hello world */
 .main-name {
 height: 70px;
@@ -149,10 +175,12 @@ height: 150px;
 border:1px solid red;
 }
 
- .footer-menu> a:link, 
- .footer-menu> a:visited,  
- .footer-menu> a:hover, 
- .footer-menu>a:active  {
+
+
+ .footer-menu> a:link, .footer-menu> a:visited, .footer-menu> a:hover, 
+ .footer-menu>a:active , 
+  .mypage> a:link, .mypage> a:visited, .mypage> a:hover, 
+ .mypage>a:active {
 FONT-SIZE: 11pt;
 color:white;
 LINE-HEIGHT: normal;
@@ -166,13 +194,31 @@ margin: 0;
 }
 
 .footer-menu {
-width: 400px;
+width: 200px;
 height: 40px;
 padding: 10px 0px;
-
 border: 1px solid black;
 position: relative;
-right: -817px;
+display: inline-block;
+left: 5%;
+}
+.mypage {
+	width: 200px;
+height: 40px;
+padding: 10px 0px;
+position: absolute;
+right: 16%;
+}
+.select-language {
+	
+width: 150px;
+height: 40px;
+display: inline-block;
+position: absolute;
+padding: 10px 0;
+border: 1px solid black;
+/* float: right; */
+right: 5%;
 }
 .copyright {
 font-style: normal;
