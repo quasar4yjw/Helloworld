@@ -21,6 +21,7 @@
 <link rel='stylesheet' href='../css/common.css'>
 <link rel='stylesheet' href='/web03t/css/login-popup.css'>
 
+<link href="../css/multi-select.css" media="screen" rel="stylesheet" type="text/css">
 <!-- <meta charset="UTF-8"> -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Welcome to the HelloWorld</title>
@@ -253,10 +254,9 @@ action="" method="post" enctype="multipart/form-data">
              <br>  
 
             
-             <li class="">
-              <label class="fs-field-label fs-anim-upper" for="q1">사용언어</label>
-          <br>
-            <select class="language-selector form-control">    
+            <li class="">
+              <label class="fs-field-label fs-anim-upper" for="q1">사용가능언어를 선택해주세요.</label>
+            <select multiple="multiple" id="my-select" name="my-select[]" class="language-selector form-control">    
                   <option value="id">Bahasa Indonesia</option>    
                   <option value="ms">Bahasa Melayu</option>    
                   <option value="ca">Català</option>    
@@ -439,7 +439,10 @@ action="" method="post" enctype="multipart/form-data">
         });
     </script>
   
-  
+  <script src="../js/jquery.multi-select.js" type="text/javascript"></script>
+  <script>
+     $('#my-select').multiSelect()
+     </script>
   
   
   
