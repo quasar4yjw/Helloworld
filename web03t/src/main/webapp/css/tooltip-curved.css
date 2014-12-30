@@ -64,16 +64,16 @@
 	z-index: 9999;
 	width: 200px;
 	bottom: 50%;
-	margin-bottom: -1em;
+	margin-bottom: -1.3em;
 	padding: 20px;
 	border-radius: 20px;
-	font-size: 1.1em;
+	font-size: 0.8em;
 	text-align: center;
 	color: #fff;
 	opacity: 0;
 	cursor: default;
 	pointer-events: none;
-	font-family: 'Gochi Hand', cursive;
+	/* font-family: 'Gochi Hand', cursive; */
 	-webkit-font-smoothing: antialiased;
 	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
 	transition: opacity 0.3s, transform 0.3s;
