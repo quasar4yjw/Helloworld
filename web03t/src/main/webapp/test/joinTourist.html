@@ -46,7 +46,8 @@
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">전화번호를 입력해주세요.</label>
-              <input class="fs-anim-lower" id="q1" name="q1" type="tel" placeholder="+821072225772" required="">
+              <input class="fs-anim-lower" id="q1" name="q1" type="tel" placeholder="+821072225772" required=""
+              onkeydown="return showKeyCode(event)">
             </li>
             
              <li class="">
@@ -197,6 +198,23 @@
          "transform": "translate3d(0,50%,0) rotate3d(1,1,1,30deg)",
          "pointer-events": "none"
          });
+    }
+    
+    $(document).on("keyup", "input:text[numberOnly]", 
+    		function() {$(this).val( $(this).val().replace(/[^0-9]/gi,"") );});
+    
+    
+    function showKeyCode(event) {
+        event = event || window.event;
+        var keyID = (event.which) ? event.which : event.keyCode;
+        if( ( keyID >=48 && keyID <= 57 ) || ( keyID >=96 && keyID <= 105 ) || keyID == 8 || keyID == 46)
+        {
+            return;
+        }
+        else
+        {
+            return false;
+        }
     }
     </script>
 </div><!-- /container -->
