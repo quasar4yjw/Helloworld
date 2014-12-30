@@ -65,9 +65,10 @@
 	width: 200px;
 	bottom: 50%;
 	margin-bottom: -1.3em;
-	padding: 20px;
-	border-radius: 20px;
-	font-size: 0.8em;
+	padding: 18px;
+	border-radius: 30px;
+	font-size: 0.7em;
+	font-weight : 700;
 	text-align: center;
 	color: #fff;
 	opacity: 0;
