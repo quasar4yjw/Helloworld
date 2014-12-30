@@ -50,11 +50,13 @@ body {
 border: 1px solid blue;
 padding: 0px;
 margin:auto;
+background-color:#f3f3f5;
 }
 .header {
-height: 150px;
+height: 120px;
 border: 1px solid red;
 position: relative;
+background-color:#ff5a5f;
 }
 
 .top {
@@ -73,6 +75,9 @@ font-size: 1.25em;
 color:black !important;
 LINE-HEIGHT: normal;
 TEXT-DECORATION: none;
+}
+img {
+vertical-align: initial;
 }
 /* 메일  */
 .si-icons span {
@@ -171,7 +176,6 @@ position: relative;
 .footer {
 background: rgb(87,85,85);
 clear:both;
-height: 150px;
 border:1px solid red;
 }
 
@@ -224,5 +228,5 @@ right: 5%;
 font-style: normal;
 text-align: center;
 color: black;
-margin: 5%;
+margin: 3%;
 }
