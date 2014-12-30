@@ -159,6 +159,7 @@
     $(target).focusout(function(){
     	var pwdVal = this.value;
     	var validate = pwdVal.match(/^(?=\w{6,}$)(?=.*\d)(?=.*[A-z]).*/);
+    	if(pwdVal != "") {
     	console.log(pwdVal.match(/^(?=\w{6,}$)(?=.*\d)(?=.*[A-z]).*/));
     		if (pwdVal.match(/^(?=\w{6,}$)(?=.*\d)(?=.*[A-z]).*/) == null) {
     	        $(message).css({
@@ -167,8 +168,9 @@
     	        "transform": "translate3d(0,50%,0) rotate3d(0,0,0,0)",
     	        "pointer-events": "auto"
     	        });
-    	        this.focus();
+    	        this.focus(); 
     	        }
+    	}
     });
     
     $(target).keyup(function(){
