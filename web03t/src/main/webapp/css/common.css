@@ -67,10 +67,10 @@ padding: 0 10px;
 font-size: 1.25em;
 }
 /*유저 네임   */
-  #userName a:link, #userName a:visited, #userName  a:hover, 
-  #userName a:active {
+  a#userName:link, a#userName:visited, a#auserName:hover, 
+  a#userName:active {
 
-color:black;
+color:black !important;
 LINE-HEIGHT: normal;
 TEXT-DECORATION: none;
 }
@@ -140,7 +140,7 @@ TEXT-DECORATION: none;
 
  a#trip:link, a#trip:visited, 
 a#trip:hover, a#trip:active {
-	color:white;
+	color:white !important;
 
 TEXT-DECORATION: none;
 
