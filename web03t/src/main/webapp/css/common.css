@@ -67,8 +67,8 @@ padding: 0 10px;
 font-size: 1.25em;
 }
 /*유저 네임   */
-  #userName> a:link, #userName> a:visited, #userName> a:hover, 
-  #userName>a:active {
+  #userName a:link, #userName a:visited, #userName  a:hover, 
+  #userName a:active {
 
 color:black;
 LINE-HEIGHT: normal;
