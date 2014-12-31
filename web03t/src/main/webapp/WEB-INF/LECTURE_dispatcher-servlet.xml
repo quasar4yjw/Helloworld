@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<context:component-scan base-package="io.helloworld.control" />
+	<context:component-scan base-package="java63.web03.control" />
 
 	<!-- @RequestMapping과 @ExceptionHandler 등의 애노테이션을 처리할 객체를 등록한다. 이 선언이 있어야만 
 		@RequestMapping 기능을 완전히 사용할 수 있다. =>주의! 엄격히 페이지 컨트롤러에 대해서는 @Controller를 사용하라! -->

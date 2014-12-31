@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <sql> 태그 사용하기
+=> 자주 사용되는 SQL문은 별도로 정의해두고 포함한다.
+-->
+
+<mapper namespace="io.helloworld.dao.TouristDao">
+
+  <insert id="insert" parameterType="Tourist">
+    INSERT INTO USERS(EMAIL, UNAME, TEL, PWD, BIRTH) 
+    VALUES (#{email},#{userName},#{tel},#{password},#{birthDate});
+  </insert>
+  
+  <insert id="insertSpecial" parameterType="Tourist">
+    INSERT INTO TOURISTS(T_EMAIL, T_GENDER, T_LANG) 
+    VALUES(#{email}, #{gender}, #{touristLanguage});
+  </insert>
+  
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

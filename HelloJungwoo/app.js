@@ -11,11 +11,11 @@ var express = require('express')
 
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-    host    :'localhost',
+    host    :'helloworld.io',
     port : 3306,
-    user : 'study2',
-    password : 'study',
-    database:'studydb'
+    user : 'hello',
+    password : 'world',
+    database:'hellodb'
 });
 
 connection.connect(function(err) {
@@ -55,7 +55,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/idCheck', function (request, response) {
 	response.setHeader("Access-Control-Allow-Origin", "*");
-	connection.query('SELECT EMAIL FROM MEMBERS WHERE EMAIL=?', [request.param('id')], function (error, result) {
+	connection.query('SELECT EMAIL FROM USERS WHERE EMAIL=?', [request.param('id')], function (error, result) {
 
     	console.log(result);
     	

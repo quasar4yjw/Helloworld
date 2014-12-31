@@ -20,7 +20,7 @@
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q3">패스워드를 입력해주세요.</label>
-              <input class="fs-anim-lower fs-anim-lower-password" id="q3" name="q3" type="password"  placeholder="6자 이상, 영문 + 숫자 조합" required>
+              <input class="fs-anim-lower fs-anim-lower-password" id="password" name="q3" type="password"  placeholder="6자 이상, 영문 + 숫자 조합" required>
               <div class="tooltip tooltip-west">
               <span class="tooltip-content tooltip-content-password">6자리 이상, 영문 +숫자 조합이어야 합니다.</span>
               </div>
@@ -28,7 +28,7 @@
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">패스워드 확인을 위해 다시한번 입력해주세요.</label>
-              <input class="fs-anim-lower fs-anim-lower-repassword" id="q1" name="q1" type="password"  placeholder="6자 이상, 영문 + 숫자 조합"  required="">
+              <input class="fs-anim-lower fs-anim-lower-repassword" id="repassword" name="q1" type="password"  placeholder="6자 이상, 영문 + 숫자 조합"  required="">
               <div class="tooltip tooltip-west">
               <span class="tooltip-content tooltip-content-repassword">6자리 이상, 영문 +숫자 조합이어야 합니다.</span>
             </div>
@@ -36,23 +36,23 @@
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">이름을 입력해주세요.</label>
-              <input class="fs-anim-lower" id="q1" name="q1" type="text" placeholder="홍길동" required="">
+              <input class="fs-anim-lower" id="userName" name="q1" type="text" placeholder="홍길동" required="">
             </li>
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">생일을 입력해주세요.</label>
-              <input class="fs-anim-lower" id="q1" name="q1" type="date" required="">
+              <input class="fs-anim-lower" id="birthDate" name="q1" type="date" required="">
             </li>
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">전화번호를 입력해주세요.</label>
-              <input class="fs-anim-lower" id="q1" name="q1" type="tel" placeholder="+821072225772" required=""
+              <input class="fs-anim-lower" id="tel" name="q1" type="tel" placeholder="+821072225772" required=""
               onkeydown="return showKeyCode(event)">
             </li>
             
              <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">사용가능언어를 선택해주세요.</label>
-            <select class="language-selector form-control">    
+            <select class="language-selector form-control" id="touristLanguage">    
                   <option value="id">Bahasa Indonesia</option>    
                   <option value="ms">Bahasa Melayu</option>    
                   <option value="ca">Català</option>    
@@ -89,12 +89,16 @@
           <input type = "radio"
                  name = "gender"
                  id = "genderMale"
-                 value = "남성" required></li>
+                 value = "남성" 
+                 class = "gender"
+                 required></li>
           <li><label for = "genderFemale">여성</label>
           <input type = "radio"
                  name = "gender"
                  id = "genderFemale"
-                 value = "여성" required></li>
+                 value = "여성" 
+                 class = "gender"
+                 required></li>
                  </ul>
                  </div>
       </li>
@@ -108,7 +112,7 @@
             <svg class="cross" width="70" height="70"><path d="m35,35l-9.3,-9.3"/><path d="m35,35l9.3,9.3"/><path d="m35,35l-9.3,9.3"/><path d="m35,35l9.3,-9.3"/></svg>
           </div>/progress-button -->
           
-           <button class="fs-submit" type="submit">가입하기</button> 
+           <button class="fs-submit fs-submit-tourlist" type="button">가입하기</button> 
         </form><!-- /fs-form -->
         
       <div class="fs-controls"><button class="fs-continue">Continue</button><nav class="fs-nav-dots"><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class="fs-dot-current"></button></nav><span class="fs-numbers"><span class="fs-number-current">6</span><span class="fs-number-total">6</span></span><div class="fs-progress" style="width: 100%;"></div></div><span class="fs-message-error"></span></div><!-- /fs-form-wrap -->
@@ -217,6 +221,39 @@
         }
     }
     </script>
+    <script>
+    $('.fs-submit-tourlist').click(function(){
+    	  /*$.post(URL, 성공함수)
+    	     .fail(실패함수)
+    	     .done(성공함수2)
+    	     .always(마무리함수);
+    	  */
+    	  $.post('../tourist/signUp.do' /* URL */
+    	      , { /* 서버에 보낼 데이터를 객체에 담아 넘긴다 */
+    	        email : $('#email').val(),
+    	        userName : $('#userName').val(),
+    	        tel : $('#tel').val(),
+    	        password : $('#repassword').val(),
+    	        birthDate : $('#birthDate').val(),
+    	        gender : $('.gender').val(),
+    	        touristLanguage : $('#touristLanguage').val()
+    	      } 
+    	      , function(result){ /* 서버로부터 응답을 받았을 때 호출될 메서드*/
+    	        if (result.status == "success") {
+    	          //$('#btnCancel').click(); // click 이벤트 발생시킴.
+    	          alert("가입되었습니당!");
+    	        } else {
+    	          alert("등록 실패!");
+    	        }
+    	      } 
+    	      , 'json' /* 서버가 보낸 데이터를 JSON 형식으로 처리*/)
+    	   /* 서버 요청이 실패했을 때 호출될 함수 등록*/   
+    	   .fail(function(jqXHR, textStatus, errorThrown){ 
+    	     alert(textStatus + ":" + errorThrown);
+    	   });
+    	  
+    	});
+    </script><!-- 회원가입 -->
 </div><!-- /container -->
 
 
