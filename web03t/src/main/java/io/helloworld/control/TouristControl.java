@@ -29,11 +29,8 @@ public class TouristControl {
 	  public Object add(Tourist tourist) throws Exception {  
 	    
 		touristDao.insert(tourist);
-	    
-	    
 	    HashMap<String,Object> resultMap = new HashMap<>();
 	    resultMap.put("status", "success");
-	    
 	    return resultMap;
 	  }
 	
