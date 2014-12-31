@@ -89,14 +89,14 @@
           <input type = "radio"
                  name = "gender"
                  id = "genderMale"
-                 value = "남성" 
+                 value = "1" 
                  class = "gender"
                  required></li>
           <li><label for = "genderFemale">여성</label>
           <input type = "radio"
                  name = "gender"
                  id = "genderFemale"
-                 value = "여성" 
+                 value = "2" 
                  class = "gender"
                  required></li>
                  </ul>
@@ -228,9 +228,9 @@
     	     .done(성공함수2)
     	     .always(마무리함수);
     	  */
-    	  var genderVal = 3;
-    	  if ($('.gender').val() == "남성") genderVal == 1;
-    	  if ($('.gender').val() == "여성") genderVal == 2;
+    	  /* var genderVal = 3;
+    	  if ($("input:radio[gender]:checked").val() == "남성") genderVal = 1;
+    	  if ($("input:radio[gender]:checked").val() == "여성") genderVal = 2; */
     	  $.post('../tourist/signUp.do' /* URL */
     	      , { /* 서버에 보낼 데이터를 객체에 담아 넘긴다 */
     	        email : $('#email').val(),
@@ -238,7 +238,7 @@
     	        tel : $('#tel').val(),
     	        password : $('#repassword').val(),
     	        birthDate : $('#birthDate').val(),
-    	        gender : genderVal,
+    	        gender : $("input:radio[name=gender]:checked").val(),
     	        touristLanguage : $('#touristLanguage').val()
     	      } 
     	      , function(result){ /* 서버로부터 응답을 받았을 때 호출될 메서드*/
