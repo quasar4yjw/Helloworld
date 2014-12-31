@@ -7,13 +7,12 @@
   href='/web03t/css/bootstrap-theme.min.css'>
   <link rel='stylesheet' 
   href='/web03t/css/jquery.range.css'>
-  <link rel='stylesheet' 
-  href='/web03t/css/common.css'>
   <link rel="stylesheet" 
   href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
   <link rel='stylesheet'   
   href='/web03t/css/login-popup.css'>
-  
+   <link rel="stylesheet"  href="/web03t/css/font-awesome.css">
+   <link rel='stylesheet'   href='/web03t/css/common.css'>
   <style type="text/css">
   /* search  */ 
   
@@ -92,50 +91,63 @@ margin-left: 7%;
 }
 
 
-/*관심사 버튼*/
-#nav {
-  
-  overflow:hidden;
-  margin:34px auto 0 auto;
-  padding:0;
-  list-style:none;
-  width: 300px;
+/*관심사 체크박스*/
+#interest{
+overflow: hidden;
+margin: 34px auto 0 auto;
+padding: 0;
+list-style: none;
+width: 300px;
 }
-  #nav li {
-   display: inline-block;
-    float:left;
-    padding:5px;
-    list-style:none;
-    text-align:center;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-  }
-  
-  #nav>li>button {
-    text-decoration:none;
-    color:#fff;
-    display:block;
-    width: 120px;
-    margin: 2px 10px;
-    padding:5px 10px;         
-    background: #666;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;    
-  }
-  
-    
-    .current {
-      background: #ff5a5f !important;
-      /* color:#666 !important; */
-    }
-    
+.checkbox {
+  padding-left: 20px;
+display: inline-block;
+width: 145px; }
+
+.checkbox input[type="checkbox"] {
+    opacity: 0; }
+ .checkbox label {
+ font-size: 14px;
+line-height: 1.42857143;
+color: #fff !important;
+    display: inline-block;
+    position: relative;
+    padding-left: 5px; }
+.checkbox-danger input[type="checkbox"]:checked + label::before {
+  background-color: #d9534f;
+  border-color: #d9534f; }
+.checkbox-danger input[type="checkbox"]:checked + label::after {
+  color: #fff; }
+.checkbox label::before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      left: 0;
+      margin-left: -20px;
+      border: 1px solid #cccccc;
+      border-radius: 3px;
+      background-color: #fff;
+      -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+      -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+      transition: border 0.15s ease-in-out, color 0.15s ease-in-out; }
+
+.checkbox input[type="checkbox"]:checked + label::after {
+      font-family: 'FontAwesome';
+      content: "\f00c"; }
+.checkbox label::after {
+      display: inline-block;
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      left: 0;
+      top: 0;
+      margin-left: -20px;
+      padding-left: 3px;
+      padding-top: 1px;
+      font-size: 11px;
+      color: #fff; }
 /*관심사 끝*/
 
 /* 메인 배경 이미지 수정  */
@@ -212,7 +224,7 @@ color: #47a3da;
 
 .cbp-vm-options a:hover,
 .cbp-vm-options a.cbp-vm-selected {
-  color: #47a3da;
+  color: #ff5a5f;
 }
 
 .cbp-vm-options a:before {
@@ -733,17 +745,56 @@ z-index:9999;
 					<br> <br> <input type="hidden" class="slider-input"
 						value="50000,200000" />
 						
-						<ul id="nav">
-    <li><button type="button">전통1</button></li>
-    <li><button type="button">전통2</button></li>
-    <li><button type="button">전통3</button></li>
-    <li><button type="button">전통4</button></li>               
-    <li><button type="button">전통5</button></li>         
-    <li><button type="button">전통6</button></li>          
-    <li><button type="button">전통7</button></li>         
-    <li><button type="button">전통8</button></li>                        
-  </ul>
-					
+					<div id='interest'>
+					<div class="checkbox checkbox-danger">
+                        <input id="checkbox1" type="checkbox">
+                        <label for="checkbox1">
+                           전통1
+                        </label>
+          </div>
+          <div class="checkbox checkbox-danger">
+                        <input id="checkbox2" type="checkbox">
+                        <label for="checkbox2">
+                           전통2
+                        </label>
+          </div>
+           <div class="checkbox checkbox-danger">
+                        <input id="checkbox3" type="checkbox">
+                        <label for="checkbox3">
+                           전통3
+                        </label>
+          </div>
+           <div class="checkbox checkbox-danger">
+                        <input id="checkbox4" type="checkbox">
+                        <label for="checkbox4">
+                           전통4
+                        </label>
+          </div>
+           <div class="checkbox checkbox-danger">
+                        <input id="checkbox5" type="checkbox">
+                        <label for="checkbox5">
+                           전통5
+                        </label>
+          </div>
+          <div class="checkbox checkbox-danger">
+                        <input id="checkbox6" type="checkbox" >
+                        <label for="checkbox6">
+                           전통6
+                        </label>
+          </div>
+          <div class="checkbox checkbox-danger">
+                        <input id="checkbox7" type="checkbox" >
+                        <label for="checkbox7">
+                           전통7
+                        </label>
+          </div>
+          <div class="checkbox checkbox-danger">
+                        <input id="checkbox8" type="checkbox" >
+                        <label for="checkbox8">
+                           전통8
+                        </label>
+          </div>
+					</div>
 				</form>
 			</div>
 
@@ -769,20 +820,21 @@ z-index:9999;
             </li>
             <li>
               <a class="cbp-vm-image" href="#"><img src="../images/best02.jpg"></a>
-              <a href='#'><h3 class="cbp-vm-title">파리의 아침 크로와상과 함께</h3>
-              <div class="cbp-vm-price">150,000원</div>
-              <div class="cbp-vm-details">
-               주요 명소 : 에펠탑, 몽마르트 언덕<br>
-               관심사: 음식, 전통, 쇼핑
-                </div>
-               </a>
+              <a href='#'>
+	              <h3 class="cbp-vm-title">파리의 아침 크로와상과 함께</h3>
+	              <div class="cbp-vm-price">150,000원</div>
+	              <div class="cbp-vm-details">
+	               주요 명소 : 에펠탑, 몽마르트 언덕<br>
+	               관심사: 음식, 전통, 쇼핑
+	              </div>
+              </a>
             </li>   
             <li>
               <a class="cbp-vm-image" href="#"><img src="../images/best03.jpg"></a>
               <a href='#'><h3 class="cbp-vm-title">추운겨울 수영하고 싶지 않으세요?</h3>
               <div class="cbp-vm-price">150,000원</div>
               <div class="cbp-vm-details">
-               주요 명소 : 푸카비치, <br>
+               주요 명소 : 푸카비치 <br>
                관심사: 음식, 쇼핑, 기타
                 </div>
                </a>
