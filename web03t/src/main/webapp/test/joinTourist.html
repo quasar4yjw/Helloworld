@@ -228,6 +228,9 @@
     	     .done(성공함수2)
     	     .always(마무리함수);
     	  */
+    	  var genderVal = 3;
+    	  if ($('.gender').val() == "남성") genderVal == 1;
+    	  if ($('.gender').val() == "여성") genderVal == 2;
     	  $.post('../tourist/signUp.do' /* URL */
     	      , { /* 서버에 보낼 데이터를 객체에 담아 넘긴다 */
     	        email : $('#email').val(),
@@ -235,7 +238,7 @@
     	        tel : $('#tel').val(),
     	        password : $('#repassword').val(),
     	        birthDate : $('#birthDate').val(),
-    	        gender : $('.gender').val(),
+    	        gender : genderVal,
     	        touristLanguage : $('#touristLanguage').val()
     	      } 
     	      , function(result){ /* 서버로부터 응답을 받았을 때 호출될 메서드*/

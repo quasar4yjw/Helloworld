@@ -11,7 +11,7 @@ public class Tourist implements Serializable{
 	  protected String             password;
 	  protected Date               birthDate;
 	  protected int                gender;
-	  protected int                touristLanguage;
+	  protected String             touristLanguage;
 	  
 	public String getEmail() {
 		return email;
@@ -49,10 +49,10 @@ public class Tourist implements Serializable{
 	public void setGender(int gender) {
 		this.gender = gender;
 	}
-	public int getTouristLanguage() {
+	public String getTouristLanguage() {
 		return touristLanguage;
 	}
-	public void setTouristLanguage(int touristLanguage) {
+	public void setTouristLanguage(String touristLanguage) {
 		this.touristLanguage = touristLanguage;
 	}
 	@Override
@@ -62,6 +62,8 @@ public class Tourist implements Serializable{
 				+ ", gender=" + gender + ", touristLanguage=" + touristLanguage
 				+ "]";
 	}
+	  
+	
 	  
 	  
 	  
