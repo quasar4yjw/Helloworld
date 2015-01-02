@@ -16,13 +16,13 @@
   
   <insert id="insertSpecial" parameterType="Guide">
     INSERT INTO GUIDES(G_EMAIL, G_PHOT, G_CONT)
-    VALUES(#{email}, #{photo}, #{touristLanguage});
+    VALUES(#{email}, #{photo}, #{introduce});
   </insert>
   
-  <insert id="insertLanguages" parameterType="Guide">
+   <!-- <insert id="insertLanguages" parameterType="Guide">
     INSERT INTO G_LANGS(G_EMAIL, ALANG)
     VALUES(#{email}, #{guideLanguageList});
-  </insert>
+  </insert>  -->
   
 </mapper>
 
