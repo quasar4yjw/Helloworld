@@ -48,7 +48,7 @@
             
              <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">사용가능언어를 선택해주세요.</label>
-            <select multiple="multiple" id="guideLanguage" name="my-select[]" class="language-selector form-control">    
+            <select multiple="multiple" id="guideLanguage" name="my-select[]" class="language-selector form-control my-select">    
                   <option value="id">Bahasa Indonesia</option>    
                   <option value="ms">Bahasa Melayu</option>    
                   <option value="ca">Català</option>    
@@ -85,7 +85,7 @@
             
           </ol><!-- /fs-fields -->
          
-           <button class="fs-submit fs-submit-guide" type="submit">가입하기</button>
+           <button class="fs-submit fs-submit-guide" type="button">가입하기</button>
         </form><!-- /fs-form -->
       <div class="fs-controls"><button class="fs-continue">Continue</button><nav class="fs-nav-dots"><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class="fs-dot-current"></button></nav><span class="fs-numbers"><span class="fs-number-current">6</span><span class="fs-number-total">6</span></span><div class="fs-progress" style="width: 100%;"></div></div><span class="fs-message-error"></span></div><!-- /fs-form-wrap -->
 
@@ -100,7 +100,7 @@
 
     }); */
   </script>
-  <script src="../js/jquery.form.js"></script>
+   <script src="../js/jquery.form.js"></script>
   <script src="../js/jquery.ezdz.js"></script>
     <script>
         $('[type="file"]').ezdz({
@@ -126,10 +126,10 @@
     </script>
      <script src="../js/jquery.multi-select.js" type="text/javascript"></script>
      <script>
-     $('#my-select').multiSelect()
+     $('.my-select').multiSelect()
      </script>
      
-      <!-- <script>
+       <script>
     $('.fs-submit-guide').click(function(){
         /*$.post(URL, 성공함수)
            .fail(실패함수)
@@ -167,7 +167,11 @@
          });
         
       });
-    </script>회원가입  -->
+    </script> 
+    <!-- 회원가입  --> 
+    
+    
+    
     <script>
     $(function(){
         //ajax form submit
@@ -177,7 +181,7 @@
 			                userName : $('#guideUserName').val(),
 			                tel : $('#guideTel').val(),
 			                password : $('#guideRepassword').val(),
-			                birthDate : $('#guideBirthDate').val(),
+			                /* birthDate : $('#guideBirthDate').val(), */
 			                introduce : $("#guideIntroduce").val(),
 			                photo : $('#guidePhoto').val()
 			             },
@@ -196,7 +200,7 @@
                 }                               
             });
     });
-    </script>
+    </script> 
     
 </div><!-- /container -->
 

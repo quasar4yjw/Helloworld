@@ -6,7 +6,7 @@
           <div class="codrops-top">
           </div>
         </div>
-        <form id="myform" class="fs-form fs-form-overview fs-show" autocomplete="off">
+        <form id="myForm" class="fs-form fs-form-overview fs-show" autocomplete="off">
           <ol class="fs-fields">
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't send you spam, we promise...">이메일 주소를 입력해주세요.</label>
@@ -123,7 +123,7 @@
     function emailValidate(target, message) {
     $(target).keyup(function() {
       console.log($(target).val());
-       $.get("http://192.168.0.136:3000/idCheck", {
+       $.get("http://192.168.0.140:3000/idCheck", {
         id : $(target).val()
       }, function(data) {
     	  if(data.result == "0"){
