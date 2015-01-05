@@ -133,7 +133,7 @@
     });
      $(target).focusout(function(){
     	 console.log($(target).val());
-         $.get("http://192.168.0.136:3000/idCheck", {
+         $.get("http://192.168.0.140:3000/idCheck", {
           id : $(target).val()
         }, function(data) {
           if(data.result == "1"){

@@ -6,7 +6,7 @@
           <div class="codrops-top">
           </div>
         </div>
-        <form action="" method="post" enctype="multipart/form-data" id="myform" class="fs-form fs-form-overview fs-show" autocomplete="off">
+        <form action="../guide/signUp.do" method="post" enctype="multipart/form-data" id="myForm" class="fs-form fs-form-overview fs-show" autocomplete="off">
           <ol class="fs-fields">
           <li>
       <input id="guidePhoto" type="file" accept="image/png, image/jpeg">
@@ -100,6 +100,7 @@
 
     }); */
   </script>
+  <script src="../js/jquery.form.js"></script>
   <script src="../js/jquery.ezdz.js"></script>
     <script>
         $('[type="file"]').ezdz({
@@ -128,7 +129,7 @@
      $('#my-select').multiSelect()
      </script>
      
-      <script>
+      <!-- <script>
     $('.fs-submit-guide').click(function(){
         /*$.post(URL, 성공함수)
            .fail(실패함수)
@@ -140,7 +141,7 @@
         if ($("input:radio[gender]:checked").val() == "여성") genderVal = 2; */
         var guideLanguageList;
         //protected List<?>            guideLanguageList;
-        $.post('../guide/signUp.do' /* URL */
+          $.post('../guide/signUp.do' /* URL */
             , { /* 서버에 보낼 데이터를 객체에 담아 넘긴다 */
            	 	 email : $('#guideEmail').val(),
                userName : $('#guideUserName').val(),
@@ -166,7 +167,36 @@
          });
         
       });
-    </script><!-- 회원가입 --> 
+    </script>회원가입  -->
+    <script>
+    $(function(){
+        //ajax form submit
+        $('#myForm').ajaxForm({
+			        	data: { /* 서버에 보낼 데이터를 객체에 담아 넘긴다 */
+			                email : $('#guideEmail').val(),
+			                userName : $('#guideUserName').val(),
+			                tel : $('#guideTel').val(),
+			                password : $('#guideRepassword').val(),
+			                birthDate : $('#guideBirthDate').val(),
+			                introduce : $("#guideIntroduce").val(),
+			                photo : $('#guidePhoto').val()
+			             },
+			          dataType:'json',
+                beforeSubmit: function (data,form,option) {
+                    //validation체크 
+                    //막기위해서는 return false를 잡아주면됨
+                    return true;
+                },
+                success: function(response,status){
+                    //성공후 서버에서 받은 데이터 처리
+                    alert("업로드 성공!!");
+                },
+                error: function(){
+                    //에러발생을 위한 code페이지
+                }                               
+            });
+    });
+    </script>
     
 </div><!-- /container -->
 
