@@ -2,6 +2,17 @@
 <html>
 <head>
 
+
+<link href="../css/jquery-ui.css" rel="stylesheet"/>
+<link href="../css/jquery.appendGrid-1.5.1.css" rel="stylesheet"/>
+<link href="../css/jquery-ui.theme.css" rel="stylesheet"/>
+<!-- <link href="jquery-ui.structure.css" rel="stylesheet"/> -->
+
+
+
+
+
+
 <!-- 이미지업로드 -->
 <link
   href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
@@ -20,10 +31,10 @@
 
 
 
-<link rel='stylesheet' href='/web03t/css/bootstrap.min.css'>
-<link rel='stylesheet' href='/web03t/css/bootstrap-theme.min.css'>
+<link rel='stylesheet' href='../css/bootstrap.min.css'>
+<link rel='stylesheet' href='../css/bootstrap-theme.min.css'>
 <link rel='stylesheet' href='../css/common.css'>
-<link rel='stylesheet' href='/web03t/css/login-popup.css'>
+<link rel='stylesheet' href='../css/login-popup.css'>
 
 
 
@@ -36,9 +47,11 @@
 
 
 <style>
-form#myform {
-background-color: #f3f5f5;
+
+form#myForm {
+  background-color: #f3f3f5;
 }
+
 .content {
   width: 70%;
   padding: 100px 50px 50px 80px;
@@ -162,7 +175,7 @@ color: #ff5a5f;
   padding: 0%;
   }
   
-  .scheduleTable input {
+/*   .scheduleTable input {
 display: initial;
 margin: 0;
 padding: 5px;
@@ -176,7 +189,7 @@ font-weight: bold;
 font-size: 1.5em;
 border-radius: 0;
 }
-
+ */
 
 
 
@@ -184,17 +197,20 @@ border-radius: 0;
 font-size: 1.5em;
 }
 
+.fs-fields { 
+background-color: #f3f3f5;
+}
 
 .content-sidebar {
 width:1170px;
 margin: 0 auto;
 }
-
+/* 
 .scheduleTable .scheduleBtn {
 border: 3px solid #ff5a5f;
 border-radius: 5px;
 }
-
+ */
 .interest-select {
 height:36px;
 font-size:18px;
@@ -210,9 +226,15 @@ font-size:18px;
  height:24px;
 }
 
-#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
-  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
-  #sortable li span { position: absolute; margin-left: -1.3em; }
+/* tr {
+background-color: #ff5a5f;
+}
+
+ */
+ 
+ table input {
+ background-color: red;
+ } 
 
 </style>
 
@@ -229,7 +251,7 @@ font-size:18px;
 <div class="content-sidebar">
     <div class="content">
 
-      <form id="myform" class="fs-form fs-form-overview fs-show"
+      <form id="myForm" class="fs-form fs-form-overview fs-show"
         autocomplete="off">
 
 
@@ -586,7 +608,13 @@ font-size:18px;
 
 
 <li class="scheduleTable">
-              <input class="scheduleBtn" type="button" value=" 일정추가 " onclick="addRow('dataTable')">
+
+
+
+<table id="tblAppendGrid" class="schedule-set" id="scheduleSet">
+</table>
+
+            <!--   <input class="scheduleBtn" type="button" value=" 일정추가 " onclick="addRow('dataTable')">
  
     <input class="scheduleBtn" type="button" value=" 삭제 " onclick="deleteRow('dataTable')">
  
@@ -626,7 +654,7 @@ font-size:18px;
     </tbody>
     
     </table>
-
+ -->
           </li>
 
 
@@ -715,13 +743,22 @@ font-size:18px;
   <script src="../js/selectFx.js"></script>
   <script src="../js/fullscreenForm.js"></script>
   <!-- joinTourlist -->
-  <script type="text/javascript" src='../js/jquery-1.11.1.js'></script>
+  
   <script src="../js/classieSelectJoinForm.js"></script>
   <!-- 이미지업로드 -->
   <script src="../js/fileinput.js" type="text/javascript"></script>
+  <!-- <script type="text/javascript" src="../js/jquery-ui.js"></script>
+  
   <script
     src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"
     type="text/javascript"></script>
+<!-- <script type="text/javascript" src="../js/jquery.appendGrid-1.5.1.js"></script> -->
+
+
+<script type="text/javascript" src="../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../js/jquery.appendGrid-1.5.1.js"></script>
+
+
   <script type="text/javascript">
     $('.dialog').load('loginDialog.html');
     $('.header').load('header.html');
@@ -763,61 +800,7 @@ font-size:18px;
 
 
 
-<!-- 테이블추가 -->
-	<script language="javascript">
-		function addRow(tableID) {
-			var table = document.getElementById(tableID);
-			var rowCount = table.rows.length;
-			var row = table.insertRow(rowCount);
-			var colCount = table.rows[0].cells.length;
-			for (var i = 0; i < colCount; i++) {
-				var newcell = row.insertCell(i);
-				newcell.innerHTML = table.rows[0].cells[i].innerHTML;
-				switch (newcell.childNodes[0].type) {
-				case "text":
-					newcell.childNodes[0].value = "";
-					break;
-				case "checkbox":
-					newcell.childNodes[0].checked = false;
-					break;
-				case "select-one":
-					newcell.childNodes[0].selectedIndex = 0;
-					break;
-				}
-			}
-		}
-		function deleteRow(tableID) {
-			try {
-				var table = document.getElementById(tableID);
-				var rowCount = table.rows.length;
-				for (var i = 0; i < rowCount; i++) {
-					var row = table.rows[i];
-					var chkbox = row.cells[0].childNodes[0];
-					if (null != chkbox && true == chkbox.checked) {
-						if (rowCount <= 1) {
-							alert("적어도 하나의 계획을 작성해야 합니다.");
-							break;
-						}
-						table.deleteRow(i);
-						rowCount--;
-						i--;
-					}
-				}
-			} catch (e) {
-				alert(e);
-			}
-		}
-	</script>
-
-
-
-
-
-
-
-
-
-	<script>
+  <script>
     //이미지 업로드
     $("#file-1").fileinput({
       uploadUrl : '#',
@@ -885,7 +868,7 @@ font-size:18px;
 function showKeyCode(event) {
     event = event || window.event;
     var keyID = (event.which) ? event.which : event.keyCode;
-    if( ( keyID >=48 && keyID <= 57 ) || ( keyID >=96 && keyID <= 105 ) )
+    if( ( keyID >=48 && keyID <= 57 ) || ( keyID >=96 && keyID <= 105 ) || keyID == 8 || keyID == 46)
     {
         return;
     }
@@ -904,5 +887,61 @@ function maxLengthCheck(object)
     object.value = object.value.slice(0, object.maxLength)
 }
 </script>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#tblAppendGrid').appendGrid({ /* Initial parameters */ });
+    });
+</script>
+
+<script>
+    
+    $(function () {
+        // Initialize appendGrid
+        $('#tblAppendGrid').appendGrid({
+            caption: '여행 일정 등록',
+            initRows: 1,
+            columns: [
+                    { name: 'date', display: '일차', type: 'select', ctrlOptions: { 0: '1일차', 1: '2일차', 2: '3일차', 3: '4일차', 4: '5일차'} },
+                    { name: 'time', display: '시간', type: 'time', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '100%'} }
+                   /*  { name: 'Album', display: 'Album', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px'} },
+                    { name: 'Year', display: 'Year', type: 'text', ctrlAttr: { maxlength: 4 }, ctrlCss: { width: '40px'} },
+                    { name: 'Poster', display: 'With Poster?', type: 'checkbox' },
+                    { name: 'Price', display: 'Price', type: 'text', ctrlAttr: { maxlength: 10 }, ctrlCss: { width: '50px', 'text-align': 'right' }, value: 0 } */
+                ],
+     
+                
+            useSubPanel: true,
+            subPanelBuilder: function (cell, uniqueIndex) {
+                // Create a label
+                $('<span></span>').text('').appendTo(cell);
+                // Create a text area
+                $('<textarea></textarea>').css('vertical-align', 'middle').attr({
+                    id: 'tblAppendGrid_AdtComment_' + uniqueIndex,
+                    name: 'tblAppendGrid_AdtComment_' + uniqueIndex,
+                    rows: 5, cols: 100
+                }).appendTo(cell);
+            },
+            subPanelGetter: function (uniqueIndex) {
+                // Return the element value inside sub panel for `getAllValue` and `getRowValue` methods
+                return { 'Comment': $('#tblAppendGrid_AdtComment_' + uniqueIndex).val() };
+            },
+            rowDataLoaded: function (caller, record, rowIndex, uniqueIndex) {
+                // Check the record contains `Comment`
+                if (record.Comment) {
+                    // Get the control in sub panel
+                    var elem = document.getElementById('tblAppendGrid_AdtComment_' + uniqueIndex);
+                    // Fill the comment values in the sub panel
+                    elem.value = record.Comment;
+                }
+            }
+        });
+      
+    
+    });
+    
+    </script>
+
 </body>
 </html>
