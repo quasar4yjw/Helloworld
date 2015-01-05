@@ -14,6 +14,17 @@
     VALUES (#{country},#{language},#{title},#{place},#{price});
   </insert>
   
+  <insert id="insertTags" parameterType="Item">
+    INSERT INTO TAGS(INTER)
+    VALUES (#{interest1});
+    
+    INSERT INTO TAGS(INTER)
+    VALUES (#{interest2});
+    
+    INSERT INTO TAGS(INTER)
+    VALUES (#{interest3});
+  </insert>
+  
   <insert id="insertSchedule" parameterType="ItemSchedule">
     INSERT INTO ITEM_SCH(T_DAY, T_TIME, T_CONT)
     VALUES(#{travelDay}, #{travelTime}, #{travelContent});
