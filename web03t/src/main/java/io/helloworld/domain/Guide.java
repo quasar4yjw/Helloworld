@@ -8,15 +8,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Guide implements Serializable{
 	private static final long serialVersionUID = 1L;
-	  protected String             email;
-	  protected String         	   userName;
-	  protected String             tel;
-	  protected String             password;
-	  protected Date               birthDate;
-	  protected List<?>            guideLanguageList;
-	  protected String             introduce;
-	  protected String   	       photo;
-	  protected MultipartFile      photofile;
+	protected String             email;
+	protected String             userName;
+	protected String             tel;
+	protected String             password;
+	protected Date               birthDate;
+	protected List<?>            guideLanguageList;
+	protected String             introduce;
+	protected String   	      	 photo;
+	protected MultipartFile      photofile;
 	@Override
 	public String toString() {
 		return "Guide [email=" + email + ", userName=" + userName + ", tel="
@@ -78,13 +78,13 @@ public class Guide implements Serializable{
 	public void setPhotofile(MultipartFile photofile) {
 		this.photofile = photofile;
 	}
-	  
-	  
 
-	  
-	  
-	  
-	
-	  
-	  
+
+
+
+
+
+
+
+
 } 
