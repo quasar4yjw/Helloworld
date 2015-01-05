@@ -3,13 +3,14 @@ package io.helloworld.domain;
 import java.io.Serializable;
 
 
-public class Items implements Serializable{
+public class Item implements Serializable{
   
   private static final long serialVersionUID = 1L;
 
   protected int             itemNo;
   protected String          country;
   protected String          language;
+  protected String          title;
   protected String          place;
   protected int             price;
   
@@ -33,6 +34,12 @@ public class Items implements Serializable{
   }
   public void setLanguage(String language) {
     this.language = language;
+  }
+  public String getTitle() {
+    return title;
+  }
+  public void setTitle(String title) {
+    this.title = title;
   }
   public String getPlace() {
     return place;
@@ -64,14 +71,15 @@ public class Items implements Serializable{
   public void setInterest3(String interest3) {
     this.interest3 = interest3;
   }
-  
   @Override
   public String toString() {
-    return "Items [itemNo=" + itemNo + ", country=" + country + ", language="
-        + language + ", place=" + place + ", price=" + price + ", interest1="
-        + interest1 + ", interest2=" + interest2 + ", interest3=" + interest3
-        + "]";
+    return "Item [itemNo=" + itemNo + ", country=" + country + ", language="
+        + language + ", title=" + title + ", place=" + place + ", price="
+        + price + ", interest1=" + interest1 + ", interest2=" + interest2
+        + ", interest3=" + interest3 + "]";
   }
-  
+ 
 
+  
+  
 }

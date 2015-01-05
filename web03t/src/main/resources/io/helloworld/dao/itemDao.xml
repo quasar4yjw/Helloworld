@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <sql> 태그 사용하기
+=> 자주 사용되는 SQL문은 별도로 정의해두고 포함한다.
+-->
+
+<mapper namespace="io.helloworld.dao.ItemDao">
+
+  <insert id="insertItem" parameterType="Item">
+    INSERT INTO ITEMS(COUNTRY, LANG, TITLE, PLACE, PRICE) 
+    VALUES (#{country},#{language},#{title},#{place},#{price});
+  </insert>
+  
+  <insert id="insertSchedule" parameterType="ItemSchedule">
+    INSERT INTO ITEM_SCH(T_DAY, T_TIME, T_CONT)
+    VALUES(#{travelDay}, #{travelTime}, #{travelContent});
+  </insert>
+  
+   <insert id="insertDetailPhoto" parameterType="DetailPhoto">
+    INSERT INTO DET_PHOTS(P_URL)
+    VALUES(#{photoUrl});
+  </insert>
+  
+</mapper>

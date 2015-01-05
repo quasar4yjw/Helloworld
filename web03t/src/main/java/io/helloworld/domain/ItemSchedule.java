@@ -10,7 +10,7 @@ public class ItemSchedule implements Serializable{
   protected int             travelNo;
   protected String          travelDay;
   protected Time            travelTime;
-  protected String          Content;
+  protected String          travelContent;
   
   public int getTravelNo() {
     return travelNo;
@@ -31,16 +31,16 @@ public class ItemSchedule implements Serializable{
     this.travelTime = travelTime;
   }
   public String getContent() {
-    return Content;
+    return travelContent;
   }
   public void setContent(String content) {
-    Content = content;
+    travelContent = content;
   }
   
   @Override
   public String toString() {
     return "ItemSchedule [travelNo=" + travelNo + ", travelDay=" + travelDay
-        + ", travelTime=" + travelTime + ", Content=" + Content + "]";
+        + ", travelTime=" + travelTime + ", Content=" + travelContent + "]";
   }
   
   

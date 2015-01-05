@@ -32,8 +32,9 @@ public class DetailPhoto implements Serializable{
   @Override
   public String toString() {
     return "DetailPhoto [detailPhotoNo=" + detailPhotoNo + ", photoUrl="
-        + photoUrl + ", photofile=" + photofile + "]";
+        + photoUrl + "]";
   }
+
   
   
 }
