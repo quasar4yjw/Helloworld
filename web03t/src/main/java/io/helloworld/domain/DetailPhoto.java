@@ -8,9 +8,16 @@ public class DetailPhoto implements Serializable{
 
   private static final long serialVersionUID = 1L;
   
+  protected int             itemNo;
   protected int             detailPhotoNo;
   protected String          photoUrl;
   protected MultipartFile   photofile;
+  public int getItemNo() {
+    return itemNo;
+  }
+  public void setItemNo(int itemNo) {
+    this.itemNo = itemNo;
+  }
   public int getDetailPhotoNo() {
     return detailPhotoNo;
   }
@@ -31,10 +38,14 @@ public class DetailPhoto implements Serializable{
   }
   @Override
   public String toString() {
-    return "DetailPhoto [detailPhotoNo=" + detailPhotoNo + ", photoUrl="
-        + photoUrl + "]";
+    return "DetailPhoto [itemNo=" + itemNo + ", detailPhotoNo=" + detailPhotoNo
+        + ", photoUrl=" + photoUrl + "]";
   }
-
+  
+  
+  
+  
+  
   
   
 }

@@ -21,8 +21,11 @@ public class ItemService {
      propagation=Propagation.REQUIRED)
   public void addPlan(Item item, ItemSchedule itemSchedule, DetailPhoto detailPhoto){
     itemDao.insertItem(item);
-/*    itemDao.insertSchedule(itemSchedule);
-    itemDao.insertDetailPhoto(detailPhoto);*/
+    itemDao.insertTag1(item);
+    itemDao.insertTag2(item);
+    itemDao.insertTag3(item);
+    /*   itemDao.insertSchedule(itemSchedule);
+      itemDao.insertDetailPhoto(detailPhoto);*/
   }
   
   

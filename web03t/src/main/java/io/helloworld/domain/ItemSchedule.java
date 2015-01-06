@@ -7,11 +7,17 @@ public class ItemSchedule implements Serializable{
 
   private static final long serialVersionUID = 1L;
   
+  protected int             itemNo;
   protected int             travelNo;
   protected String          travelDay;
   protected Time            travelTime;
   protected String          travelContent;
-  
+  public int getItemNo() {
+    return itemNo;
+  }
+  public void setItemNo(int itemNo) {
+    this.itemNo = itemNo;
+  }
   public int getTravelNo() {
     return travelNo;
   }
@@ -30,19 +36,19 @@ public class ItemSchedule implements Serializable{
   public void setTravelTime(Time travelTime) {
     this.travelTime = travelTime;
   }
-  public String getContent() {
+  public String getTravelContent() {
     return travelContent;
   }
-  public void setContent(String content) {
-    travelContent = content;
+  public void setTravelContent(String travelContent) {
+    this.travelContent = travelContent;
   }
-  
   @Override
   public String toString() {
-    return "ItemSchedule [travelNo=" + travelNo + ", travelDay=" + travelDay
-        + ", travelTime=" + travelTime + ", Content=" + travelContent + "]";
+    return "ItemSchedule [itemNo=" + itemNo + ", travelNo=" + travelNo
+        + ", travelDay=" + travelDay + ", travelTime=" + travelTime
+        + ", travelContent=" + travelContent + "]";
   }
   
   
-
+  
 }

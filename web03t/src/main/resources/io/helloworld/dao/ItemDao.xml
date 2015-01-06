@@ -9,20 +9,25 @@
 
 <mapper namespace="io.helloworld.dao.ItemDao">
 
-  <insert id="insertItem" parameterType="Item">
+  <insert id="insertItem" parameterType="Item"
+  useGeneratedKeys="true" keyColumn="I_NO" keyProperty="itemNo">
     INSERT INTO ITEMS(COUNTRY, LANG, TITLE, PLACE, PRICE) 
     VALUES (#{country},#{language},#{title},#{place},#{price});
   </insert>
   
-  <insert id="insertTags" parameterType="Item">
-    INSERT INTO TAGS(INTER)
-    VALUES (#{interest1});
-    
-    INSERT INTO TAGS(INTER)
-    VALUES (#{interest2});
-    
-    INSERT INTO TAGS(INTER)
-    VALUES (#{interest3});
+  <insert id="insertTag1" parameterType="Item">
+    INSERT INTO TAGS(I_NO, INTER)
+    VALUES (#{itemNo}, #{interest1});
+  </insert>
+  
+  <insert id="insertTag2" parameterType="Item">
+    INSERT INTO TAGS(I_NO, INTER)
+    VALUES (#{itemNo}, #{interest2});
+  </insert>
+  
+  <insert id="insertTag3" parameterType="Item">
+    INSERT INTO TAGS(I_NO, INTER)
+    VALUES (#{itemNo}, #{interest3});
   </insert>
   
   <insert id="insertSchedule" parameterType="ItemSchedule">
