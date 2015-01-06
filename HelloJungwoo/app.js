@@ -49,7 +49,7 @@ app.use(express.static(path.join(__dirname, 'public')));
         console.log(rows);
         res.json(rows);
     });
-    console.log(query);
+    console.log(query); 
 });*/
 
 
