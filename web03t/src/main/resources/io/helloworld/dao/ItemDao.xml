@@ -30,14 +30,14 @@
     VALUES (#{itemNo}, #{interest3});
   </insert>
   
-  <insert id="insertSchedule" parameterType="ItemSchedule">
-    INSERT INTO ITEM_SCH(T_DAY, T_TIME, T_CONT)
-    VALUES(#{travelDay}, #{travelTime}, #{travelContent});
+   <insert id="insertSchedule" parameterType="Item">
+    INSERT INTO ITEM_SCH(I_NO, T_DAY, T_TIME, T_CONT)
+    VALUES(#{itemNo}, #{travelDay}, #{travelTime}, #{travelContent});
   </insert>
-  
+<!--  
    <insert id="insertDetailPhoto" parameterType="DetailPhoto">
     INSERT INTO DET_PHOTS(P_URL)
     VALUES(#{photoUrl});
-  </insert>
+  </insert> -->
   
 </mapper>

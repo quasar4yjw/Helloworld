@@ -26,13 +26,23 @@ public class ItemControl {
   @Autowired ServletContext servletContext;
   
  @RequestMapping(value="/addPlan", method=RequestMethod.POST)
- public Object add(Item item, ItemSchedule itemSchedule, DetailPhoto detailPhoto) throws Exception {
+ public Object add(Item item/*, ItemSchedule itemSchedule, DetailPhoto detailPhoto*/) throws Exception {
    
-   itemService.addPlan(item, itemSchedule, detailPhoto);
+   itemService.addPlan(item/*, itemSchedule, detailPhoto*/);
    HashMap<String,Object> resultMap = new HashMap<>();
    resultMap.put("status", "success");
    return resultMap;
    
    }
+ 
+/* @RequestMapping(value="/addPlanSchedule", method=RequestMethod.POST)
+ public Object addSchedule(Item item, ItemSchedule itemSchedule, DetailPhoto detailPhoto) throws Exception {
+   
+   itemService.addPlanSchedule(item, itemSchedule, detailPhoto);
+   HashMap<String,Object> resultMap = new HashMap<>();
+   resultMap.put("status", "success");
+   return resultMap;
+   
+   }*/
   
 }

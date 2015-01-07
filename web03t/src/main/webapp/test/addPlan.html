@@ -47,11 +47,9 @@
 
 
 <style>
-
 form#myForm {
   background-color: #f3f3f5;
 }
-
 .content {
   width: 70%;
   padding: 100px 50px 50px 80px;
@@ -93,6 +91,11 @@ form#myForm {
   position: relative;
   left: 5px;
   top: 165px;
+}
+#languageSelect {
+  position: relative;
+  left: 5px;
+  top: 200px;
 }
 #titleSet {
   position: relative;
@@ -192,17 +195,12 @@ font-size: 1.5em;
 border-radius: 0;
 }
  */
-
-
-
 .fs-form-overview .fs-fields input {
 font-size: 1.5em;
 }
-
 .fs-fields { 
 background-color: #f3f3f5;
 }
-
 .content-sidebar {
 width:1170px;
 margin: 0 auto;
@@ -217,23 +215,18 @@ border-radius: 5px;
 height:36px;
 font-size:18px;
 }
-
-
  #ch{
  width:24px;
  height:24px;
 }
-
 /* tr {
 background-color: #ff5a5f;
 }
-
  */
  
  table input {
  background-color: red;
  } 
-
 </style>
 
 </head>
@@ -558,8 +551,8 @@ background-color: #ff5a5f;
 
           <li class="">
             <!--  <label class="fs-field-label fs-anim-upper" for="q2">제목을 입력해 주세요.</label> -->
-            <input class="title-set fs-anim-lower" id="itemTitle" placeholder="제목을 입력해 주세요."
-            >
+            <input class="title-set fs-anim-lower form-control" id="itemTitle" placeholder="제목을 입력해 주세요."
+             required="">
           </li>
 
 
@@ -573,11 +566,11 @@ background-color: #ff5a5f;
             " step="1000" placeholder="가격을 정해주세요." onkeypress="onlyNumber()"
             min="50000" max="200000"> -->
             
-            <input class="pay-set fs-anim-lower" id='itemPrice' type="number" 
+            <input class="pay-set fs-anim-lower form-control" id='itemPrice' type="number" 
             step="1000" placeholder="가격을 정해주세요."
             min="50000" max="999000" maxlength = "6"
             onkeydown="return showKeyCode(event)"
-            oninput="maxLengthCheck(this)">
+            oninput="maxLengthCheck(this)"  required="">
             <span id="keyinfo"></span>
             
           </li>
@@ -645,47 +638,7 @@ background-color: #ff5a5f;
 <table id="tblAppendGrid" class="schedule-set" id="scheduleSet">
 </table>
 
-            <!--   <input class="scheduleBtn" type="button" value=" 일정추가 " onclick="addRow('dataTable')">
- 
-    <input class="scheduleBtn" type="button" value=" 삭제 " onclick="deleteRow('dataTable')">
- 
-
-
-
-<table id="dataTable" class="table table-striped schedule-set" width="350px">
-
-    
-        <tbody>
-
-
-
-
-         <tr>
-            <td><input type="checkbox" id="ch">
-            <label for="ch"></label>
-            </td>
             
-            <td>
-                <select class="form-control" name="country">
-                    <option value="one">1일차</option>
-                    <option value="two">2일차</option>
-                    <option value="three">3일차</option>
-                    <option value="four">4일차</option>
-                    <option value="five">5일차</option>
-                </select>
-            </td>
-
-   
-            <td><input class="form-control" type="time" name="txt"></td>
-            <td><textarea class="form-control" name="txt" placeholder="여행 내용"></textarea></td>
-            
-
-
-        </tr>
-    </tbody>
-    
-    </table>
- -->
           </li>
 
 
@@ -703,7 +656,7 @@ background-color: #ff5a5f;
             </div>
           </form>
 <br><br>
-          <button class="fs-submit regiBtn" type="submit" style="
+          <button class="fs-submit regiBtn" type="button" style="
     font-size: 1.5em;
     padding: 23px 0px;
 ">등록하기</button>
@@ -716,6 +669,12 @@ background-color: #ff5a5f;
         <h4><span class="bp-icon-about bp-icon"></span> 여행지 선택</h4>
         <ul>
           <li>여행하고 싶은 국가를 선택해주세요.</li>
+        </ul>
+      </div>
+      <div id="languageSelect" style='display: none;'>
+        <h4><span class="bp-icon-about bp-icon"></span> 언어 선택</h4>
+        <ul>
+          <li>가이드할 언어를 선택해주세요.</li>
         </ul>
       </div>
       <div id="titleSet" style='display: none;'>
@@ -800,6 +759,10 @@ background-color: #ff5a5f;
       $(".sidebar div").css("display", "none");
       $("#travelSelect").css("display", "");
     });
+    $(".language-select").mousedown(function() {
+        $(".sidebar div").css("display", "none");
+        $("#languageSelect").css("display", "");
+      });
     $(".title-set").mousedown(function() {
       $(".sidebar div").css("display", "none");
       $("#titleSet").css("display", "");
@@ -825,7 +788,6 @@ background-color: #ff5a5f;
       $("#imgUpload").css("display", "");
     });
     
-
   </script>
 
 
@@ -934,56 +896,84 @@ function maxLengthCheck(object)
             caption: '여행 일정 등록',
             initRows: 1,
             columns: [
-                    { name: 'date', display: '일차', type: 'select', ctrlOptions: { 0: '1일차', 1: '2일차', 2: '3일차', 3: '4일차', 4: '5일차'} },
-                    { name: 'time', display: '시간', type: 'time', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '100%'} }
+                    { name: 'travelDay', display: '일차', type: 'select', ctrlOptions: { 1: '1일차', 2: '2일차', 3: '3일차', 4: '4일차', 5: '5일차'} },
+                    { name: 'travelTime', display: '시간', type: 'time', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '100%'} },
+                    { name: 'travelContent', display: '내용', type: 'textarea', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '100%'} }
                    /*  { name: 'Album', display: 'Album', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px'} },
                     { name: 'Year', display: 'Year', type: 'text', ctrlAttr: { maxlength: 4 }, ctrlCss: { width: '40px'} },
                     { name: 'Poster', display: 'With Poster?', type: 'checkbox' },
                     { name: 'Price', display: 'Price', type: 'text', ctrlAttr: { maxlength: 10 }, ctrlCss: { width: '50px', 'text-align': 'right' }, value: 0 } */
-                ],
+                ]
      
                 
-            useSubPanel: true,
+           /*  useSubPanel: true,
             subPanelBuilder: function (cell, uniqueIndex) {
                 // Create a label
                 $('<span></span>').text('').appendTo(cell);
                 // Create a text area
                 $('<textarea></textarea>').css('vertical-align', 'middle').attr({
-                    id: 'tblAppendGrid_AdtComment_' + uniqueIndex,
-                    name: 'tblAppendGrid_AdtComment_' + uniqueIndex,
+                    id: 'tblAppendGrid_travelContent_' + uniqueIndex,
+                    name: 'tblAppendGrid_travelContent_' + uniqueIndex,
                     rows: 5, cols: 100
                 }).appendTo(cell);
             },
             subPanelGetter: function (uniqueIndex) {
                 // Return the element value inside sub panel for `getAllValue` and `getRowValue` methods
-                return { 'Comment': $('#tblAppendGrid_AdtComment_' + uniqueIndex).val() };
+                return { 'Comment': $('#tblAppendGrid_travelContent_' + uniqueIndex).val() };
             },
             rowDataLoaded: function (caller, record, rowIndex, uniqueIndex) {
                 // Check the record contains `Comment`
                 if (record.Comment) {
                     // Get the control in sub panel
-                    var elem = document.getElementById('tblAppendGrid_AdtComment_' + uniqueIndex);
+                    var elem = document.getElementById('tblAppendGrid_travelContent_' + uniqueIndex);
                     // Fill the comment values in the sub panel
                     elem.value = record.Comment;
                 }
-            }
+            }*/
         });
       
-    
+     
     });
     
     </script>
-    
-        <script>
+   <!--  <script>
     $('.regiBtn').click(function(){
-        /*$.post(URL, 성공함수)
-           .fail(실패함수)
-           .done(성공함수2)
-           .always(마무리함수);
-        */
-        /* var genderVal = 3;
-        if ($("input:radio[gender]:checked").val() == "남성") genderVal = 1;
-        if ($("input:radio[gender]:checked").val() == "여성") genderVal = 2; */
+        var data = $('#tblAppendGrid').appendGrid('getAllValue');
+          var count =  $('#tblAppendGrid').appendGrid('getRowCount');
+          
+          for (var i=0;i<count;i++){
+              $.post('../item/addPlanSchedule.do' /* URL */
+                      , { /* 서버에 보낼 데이터를 객체에 담아 넘긴다 */
+                          travelDay : data[i].travelDay,
+                          travelTime : data[i].travelTime,
+                          travelContent : data[i].travelContent} 
+                      , function(result){ /* 서버로부터 응답을 받았을 때 호출될 메서드*/
+                        if (result.status == "success") {
+                          //$('#btnCancel').click(); // click 이벤트 발생시킴.
+                          console.log("222 등록되었습니다.");
+                          /* location.href="main.html"; */
+                        } else {
+                          console.log("222 등록 실패!");
+                        }
+                      } 
+                      , 'json' /* 서버가 보낸 데이터를 JSON 형식으로 처리*/)
+                   /* 서버 요청이 실패했을 때 호출될 함수 등록*/   
+                   .fail(function(jqXHR, textStatus, errorThrown){ 
+                     console.log(textStatus + "2번째 :" + errorThrown);
+                   });
+                  }
+      });
+    </script> -->
+    <script>
+        
+    $('.regiBtn').click(function(){
+        var data = $('#tblAppendGrid').appendGrid('getAllValue');
+        var count =  $('#tblAppendGrid').appendGrid('getRowCount');
+        
+        $.each(data, function(index){ 
+            console.debug(index + ". " + this.travelDay + " " + this.travelTime + " " + this.travelContent); 
+            });
+
         $.post('../item/addPlan.do' /* URL */
             , { /* 서버에 보낼 데이터를 객체에 담아 넘긴다 */
               country : $('#itemCountry').val(),
@@ -994,23 +984,99 @@ function maxLengthCheck(object)
               interest1 : $('#itemInterest1').val(),
               interest2 : $("#itemInterest2").val(),
               interest3 : $('#itemInterest3').val()
+              
+/*               $.each(data, function(index){ 
+            	  console.debug(index + ". " + this.travelDay + " " + this.travelTime + " " + this.travelContent); 
+            	  }); */
             } 
-            , function(result){ /* 서버로부터 응답을 받았을 때 호출될 메서드*/
+            , function(result){
+            	for (var i=0;i<count;i++){
+                    $.post('../item/addPlan.do' /* URL */
+                            , { /* 서버에 보낼 데이터를 객체에 담아 넘긴다 */
+                                travelDay : data[i].travelDay,
+                                travelTime : data[i].travelTime,
+                                travelContent : data[i].travelContent} 
+                            , function(result){ /* 서버로부터 응답을 받았을 때 호출될 메서드*/
+                              if (result.status == "success") {
+                                //$('#btnCancel').click(); // click 이벤트 발생시킴.
+                                console.log("222 등록되었습니다.");
+                                /* location.href="main.html"; */
+                              } else {
+                                console.log("222 등록 실패!");
+                              }
+                            } 
+                            , 'json' /* 서버가 보낸 데이터를 JSON 형식으로 처리*/)
+                         /* 서버 요청이 실패했을 때 호출될 함수 등록*/   
+                         .fail(function(jqXHR, textStatus, errorThrown){ 
+                           console.log(textStatus + "2번째 :" + errorThrown);
+                         });
+                        }
+            	
+            	/* 서버로부터 응답을 받았을 때 호출될 메서드*/
               if (result.status == "success") {
                 //$('#btnCancel').click(); // click 이벤트 발생시킴.
-                alert("등록되었습니다.");
-                location.href="main.html";
+                console.log("111 등록되었습니다.");
+                /* location.href="main.html"; */
               } else {
-                alert("등록 실패!");
+                console.log("111 등록 실패!");
               }
             } 
             , 'json' /* 서버가 보낸 데이터를 JSON 형식으로 처리*/)
          /* 서버 요청이 실패했을 때 호출될 함수 등록*/   
          .fail(function(jqXHR, textStatus, errorThrown){ 
-           alert(textStatus + ":" + errorThrown);
+           console.log(textStatus + "1번째 :" + errorThrown);
          });
-        
       });
+    
+    
+    
+    
+    
+    
+   /*  $('.regiBtn').click(function () {
+    	  
+
+    	var data = $('#tblAppendGrid').appendGrid('getAllValue');
+    	var count =  $('#tblAppendGrid').appendGrid('getRowCount');
+
+    	for (var i=0;i<count;i++){
+    	var travelDay = data[i].travelDay;
+    	var travelTime = data[i].travelTime;
+    	var travelContent = data[i].travelContent;
+
+
+    	$.ajax({
+    	        type:'POST',
+    	        url: "../item/addPlan.do",
+    	        dataType:'json',
+    	        data: {
+    	        	travelDay : travelDay,
+    	        	travelTime : travelTime,
+    	          travelContent : travelContent}
+    	        ,
+    	        cache: false,
+    	        
+    	        success: function(result){
+    	        if(result.status=="success"){
+    	       
+    	          console.log('등록됨..');
+    	        
+    	        }else{
+    	        console.log('등록실패');
+    	        }
+    	        }
+    	    })
+    	    .fail(function(jqXHR, textStatus, errorThrown){ 
+    	           console.log(textStatus + "두번째 :" + errorThrown);
+    	         });
+    	    
+    	    
+    	    }
+    	}); */
+    
+    
+    
+    
     </script>
 
 </body>

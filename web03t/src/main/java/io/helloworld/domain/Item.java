@@ -17,6 +17,22 @@ public class Item implements Serializable{
   protected String          interest1;
   protected String          interest2;
   protected String          interest3;
+  
+  protected int             travelNo;
+  protected int             travelDay;
+  protected String            travelTime;
+  protected String          travelContent;
+  
+  
+  @Override
+  public String toString() {
+    return "Item [itemNo=" + itemNo + ", country=" + country + ", language="
+        + language + ", title=" + title + ", place=" + place + ", price="
+        + price + ", interest1=" + interest1 + ", interest2=" + interest2
+        + ", interest3=" + interest3 + ", travelNo=" + travelNo
+        + ", travelDay=" + travelDay + ", travelTime=" + travelTime
+        + ", travelContent=" + travelContent + "]";
+  }
   public int getItemNo() {
     return itemNo;
   }
@@ -71,13 +87,31 @@ public class Item implements Serializable{
   public void setInterest3(String interest3) {
     this.interest3 = interest3;
   }
-  @Override
-  public String toString() {
-    return "Item [itemNo=" + itemNo + ", country=" + country + ", language="
-        + language + ", title=" + title + ", place=" + place + ", price="
-        + price + ", interest1=" + interest1 + ", interest2=" + interest2
-        + ", interest3=" + interest3 + "]";
+  public int getTravelNo() {
+    return travelNo;
   }
+  public void setTravelNo(int travelNo) {
+    this.travelNo = travelNo;
+  }
+  public int getTravelDay() {
+    return travelDay;
+  }
+  public void setTravelDay(int travelDay) {
+    this.travelDay = travelDay;
+  }
+  public String getTravelTime() {
+    return travelTime;
+  }
+  public void setTravelTime(String travelTime) {
+    this.travelTime = travelTime;
+  }
+  public String getTravelContent() {
+    return travelContent;
+  }
+  public void setTravelContent(String travelContent) {
+    this.travelContent = travelContent;
+  }
+  
  
 
   
