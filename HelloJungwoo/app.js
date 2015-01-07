@@ -50,7 +50,7 @@ app.use(express.static(path.join(__dirname, 'public')));
         res.json(rows);
     });
     console.log(query); 
-});*/
+});*/ 
 
 
 app.get('/idCheck', function (request, response) {
