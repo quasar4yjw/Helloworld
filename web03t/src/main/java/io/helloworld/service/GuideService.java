@@ -38,7 +38,7 @@ public class GuideService {
 		Map dataMap = new Gson().fromJson(msg, new TypeToken<Map<String, String>>() {}.getType());
 
 		for(int i = 0; i < dataMap.size(); i++) {
-			guide.setGuideLanguage((String)dataMap.get(i));
+			guide.setGuideLanguage((String)dataMap.get(i+""));
 			guideDao.insertLanguage(guide);
 		}
 	}
