@@ -6,4 +6,5 @@ import io.helloworld.domain.Guide;
 public interface GuideDao {
 	void insert(Guide guide);
 	void insertSpecial(Guide guide);
+	void insertLanguage(Guide guide);
 }

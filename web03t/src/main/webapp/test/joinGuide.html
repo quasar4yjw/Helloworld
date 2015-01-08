@@ -126,20 +126,21 @@
     </script>
      <script src="../js/jquery.multi-select.js" type="text/javascript"></script>
      <script>
-     $('.my-select').multiSelect()
+     $('.my-select').multiSelect();
+     /* $('.fs-submit-guide').click(function(){
+         console.log($('.my-select').val());
+         console.log($.extend({}, $('.my-select').val()));
+     }); */
      </script>
      
-       <script>
+        <script>
     $('.fs-submit-guide').click(function(){
+    	var temp = encodeURIComponent( JSON.stringify($.extend({}, $('.my-select').val())) );
         /*$.post(URL, 성공함수)
            .fail(실패함수)
            .done(성공함수2)
            .always(마무리함수);
         */
-        /* var genderVal = 3;
-        if ($("input:radio[gender]:checked").val() == "남성") genderVal = 1;
-        if ($("input:radio[gender]:checked").val() == "여성") genderVal = 2; */
-        var guideLanguageList;
         //protected List<?>            guideLanguageList;
           $.post('../guide/signUp.do' /* URL */
             , { /* 서버에 보낼 데이터를 객체에 담아 넘긴다 */
@@ -148,8 +149,10 @@
                tel : $('#guideTel').val(),
                password : $('#guideRepassword').val(),
                birthDate : $('#guideBirthDate').val(),
+               guideCount : 0,
+               guideLanguageList : temp,
                introduce : $("#guideIntroduce").val(),
-               photo : $('#guidePhoto').val()
+               //photo : $('#guidePhoto').val()
             } 
             , function(result){ /* 서버로부터 응답을 받았을 때 호출될 메서드*/
               if (result.status == "success") {
@@ -172,7 +175,7 @@
     
     
     
-    <script>
+   <!--  <script>
     $(function(){
         //ajax form submit
         $('#myForm').ajaxForm({
@@ -200,7 +203,7 @@
                 }                               
             });
     });
-    </script> 
+    </script>  -->
     
 </div><!-- /container -->
 
