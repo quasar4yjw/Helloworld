@@ -1,16 +1,18 @@
 package io.helloworld.dao;
 
+import java.util.Map;
+
 import io.helloworld.domain.DetailPhoto;
 import io.helloworld.domain.Item;
 import io.helloworld.domain.ItemSchedule;
 
 public interface ItemDao {
   
-  void insertItem(Item item);
-  void insertTag1(Item item);
-  void insertTag2(Item item);
-  void insertTag3(Item item);
-  void insertSchedule(Item item);
+  void insertItem(Map dataMap);
+  void insertTag1(Map dataMap);
+  void insertTag2(Map dataMap);
+  void insertTag3(Map dataMap);
+  void insertSchedule(Map dataMap);
   /* void insertDetailPhoto(DetailPhoto detailPhoto);
 */  
 }

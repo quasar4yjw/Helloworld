@@ -635,7 +635,7 @@ background-color: #ff5a5f;
 
 
 
-<table id="tblAppendGrid" class="schedule-set" id="scheduleSet">
+<table id="tblAppendGrid" class="schedule-set" id="scheduleSet" style='width:100%'>
 </table>
 
             
@@ -898,7 +898,7 @@ function maxLengthCheck(object)
             columns: [
                     { name: 'travelDay', display: '일차', type: 'select', ctrlOptions: { 1: '1일차', 2: '2일차', 3: '3일차', 4: '4일차', 5: '5일차'} },
                     { name: 'travelTime', display: '시간', type: 'time', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '100%'} },
-                    { name: 'travelContent', display: '내용', type: 'textarea', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '100%'} }
+                    { name: 'travelContent', display: '내용', type: 'textarea', ctrlAttr: { maxlength: 1000 }, ctrlCss: { width: '100%'} }
                    /*  { name: 'Album', display: 'Album', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px'} },
                     { name: 'Year', display: 'Year', type: 'text', ctrlAttr: { maxlength: 4 }, ctrlCss: { width: '40px'} },
                     { name: 'Poster', display: 'With Poster?', type: 'checkbox' },
@@ -965,53 +965,48 @@ function maxLengthCheck(object)
       });
     </script> -->
     <script>
-        
     $('.regiBtn').click(function(){
+/*         var travelDay = "";
+        var travelTime = "";
+        var travelContent = ""; */
+        
         var data = $('#tblAppendGrid').appendGrid('getAllValue');
         var count =  $('#tblAppendGrid').appendGrid('getRowCount');
         
-        $.each(data, function(index){ 
+        var temp = {
+                country : $('#itemCountry').val(),
+                language : $('#itemLanguage').val(),
+                title : $('#itemTitle').val(),
+                place : $('#itemPlace').val(),
+                price : $('#itemPrice').val(),
+                interest1 : $('#itemInterest1').val(),
+                interest2 : $("#itemInterest2").val(),
+                interest3 : $('#itemInterest3').val(),
+/*              travelDay : travelDay,
+                travelTime : travelTime,
+                travelContent : travelContent */
+        };
+        
+        for (var i=0; i<count; i++) {
+/*             travelDay = travelDay + data[i].travelDay;
+            travelTime = travelTime + data[i].travelTime;
+            travelContent = travelContent + data[i].travelContent; */
+            temp["travelDay" + (i + 1)] = data[i].travelDay;
+            temp["travelTime" + (i + 1)] = data[i].travelTime;
+            temp["travelContent" + (i + 1)] = data[i].travelContent;
+        }
+        
+        console.log(temp);
+        console.log(encodeURIComponent( JSON.stringify(temp) ));
+        /* $.each(data, function(index){ 
             console.debug(index + ". " + this.travelDay + " " + this.travelTime + " " + this.travelContent); 
-            });
+            }); */
 
         $.post('../item/addPlan.do' /* URL */
             , { /* 서버에 보낼 데이터를 객체에 담아 넘긴다 */
-              country : $('#itemCountry').val(),
-              language : $('#itemLanguage').val(),
-              title : $('#itemTitle').val(),
-              place : $('#itemPlace').val(),
-              price : $('#itemPrice').val(),
-              interest1 : $('#itemInterest1').val(),
-              interest2 : $("#itemInterest2").val(),
-              interest3 : $('#itemInterest3').val()
-              
-/*               $.each(data, function(index){ 
-            	  console.debug(index + ". " + this.travelDay + " " + this.travelTime + " " + this.travelContent); 
-            	  }); */
+              data: encodeURIComponent( JSON.stringify(temp) )
             } 
             , function(result){
-            	for (var i=0;i<count;i++){
-                    $.post('../item/addPlan.do' /* URL */
-                            , { /* 서버에 보낼 데이터를 객체에 담아 넘긴다 */
-                                travelDay : data[i].travelDay,
-                                travelTime : data[i].travelTime,
-                                travelContent : data[i].travelContent} 
-                            , function(result){ /* 서버로부터 응답을 받았을 때 호출될 메서드*/
-                              if (result.status == "success") {
-                                //$('#btnCancel').click(); // click 이벤트 발생시킴.
-                                console.log("222 등록되었습니다.");
-                                /* location.href="main.html"; */
-                              } else {
-                                console.log("222 등록 실패!");
-                              }
-                            } 
-                            , 'json' /* 서버가 보낸 데이터를 JSON 형식으로 처리*/)
-                         /* 서버 요청이 실패했을 때 호출될 함수 등록*/   
-                         .fail(function(jqXHR, textStatus, errorThrown){ 
-                           console.log(textStatus + "2번째 :" + errorThrown);
-                         });
-                        }
-            	
             	/* 서버로부터 응답을 받았을 때 호출될 메서드*/
               if (result.status == "success") {
                 //$('#btnCancel').click(); // click 이벤트 발생시킴.

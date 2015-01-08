@@ -22,8 +22,6 @@ public class Item implements Serializable{
   protected int             travelDay;
   protected String            travelTime;
   protected String          travelContent;
-  
-  
   @Override
   public String toString() {
     return "Item [itemNo=" + itemNo + ", country=" + country + ", language="
@@ -112,6 +110,10 @@ public class Item implements Serializable{
     this.travelContent = travelContent;
   }
   
+  
+  
+  
+ 
  
 
   
