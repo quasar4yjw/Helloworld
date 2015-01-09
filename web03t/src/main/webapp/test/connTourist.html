@@ -26,7 +26,7 @@
 
 	.myButton {
 		color: #fff;
-  background: #fc8387;
+  background: #47a3da;/* #fc8387; */
   padding: 10px 20px;
   border-radius: 2px;
   margin: 20px 0 0;
@@ -34,7 +34,7 @@
   transition: background 0.2s;
   }
   
-  .myButton:hover {
+.myButton:hover {
   color: #fff;
   background: #ff5a5f;
 }
@@ -106,10 +106,10 @@ text-decoration: none;
 					<div class="cbp-vm-options">
 						
        
-					<a href="#" class="myButton">전체</a>
-					<a href="#" class="myButton">예약요청</a>
-					<a href="#" class="myButton">예약완료</a>
-					<a href="#" class="myButton">취소</a>
+					<a href="#" class="myButton myButtonTotal">전체</a>
+					<a href="#" class="myButton myButtonReq">예약요청</a>
+					<a href="#" class="myButton myButtonSucc">예약완료</a>
+					<a href="#" class="myButton myButtonCancel">취소</a>
 					
 					</div>
 					
@@ -223,7 +223,7 @@ text-decoration: none;
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js" type="text/javascript"></script>
 	
 		<script type="text/javascript">
-		$('.dialog').load('loginDialog.html');
+	$('.dialog').load('loginDialog.html');
   $('.header').load('header.html');
   $('.footer').load('footer.html');
 </script>
@@ -239,6 +239,100 @@ text-decoration: none;
 			  
 		});
 		</script>
+		
+		<script>
+
+		
+		$( '.myButtonTotal' ).click(function() {
+		  $( '.myButtonTotal' ).css("background-color","#ff5a5f");
+		  $( '.myButtonReq' ).css("background-color","#47a3da");
+		  $( '.myButtonSucc' ).css("background-color","#47a3da");
+		  $( '.myButtonCancel' ).css("background-color","#47a3da");
+		});
+		
+		$( '.myButtonReq' ).click(function() {
+		      $( '.myButtonTotal' ).css("background-color","#47a3da");
+		      $( '.myButtonReq' ).css("background-color","#ff5a5f");
+		      $( '.myButtonSucc' ).css("background-color","#47a3da");
+		      $( '.myButtonCancel' ).css("background-color","#47a3da");
+		    });
+		
+		$( '.myButtonSucc' ).click(function() {
+		      $( '.myButtonTotal' ).css("background-color","#47a3da");
+		      $( '.myButtonReq' ).css("background-color","#47a3da");
+		      $( '.myButtonSucc' ).css("background-color","#ff5a5f");
+		      $( '.myButtonCancel' ).css("background-color","#47a3da");
+		    });
+		
+		$( '.myButtonCancel' ).click(function() {
+		      $( '.myButtonTotal' ).css("background-color","#47a3da");
+		      $( '.myButtonReq' ).css("background-color","#47a3da");
+		      $( '.myButtonSucc' ).css("background-color","#47a3da");
+		      $( '.myButtonCancel' ).css("background-color","#ff5a5f");
+		    });
+
+		
+
+/* 		 var focusout = false;
+
+		    $(".myButtonTotal").click(function () {
+		        if (focusout == true) {
+		            focusout = false;
+		            $( '.myButtonTotal' ).css("background-color","#ff5a5f");
+		        }
+		        else {
+		            alert('222');
+		        }
+		    });
+
+		    $(".myButtonTotal").focusout(function () {
+		        focusout = true;
+		        alert('dddd');
+		    });
+		     */
+		/*     
+		    
+		    $(document).ready(function(){
+		    	  $(".myButtonTotal").focusin(function(){
+		    	    $(this).css("background-color","#ff5a5f");
+		    	  });
+		    	  $(".myButtonTotal").focusout(function(){
+		    	    $(this).css("background-color","#47a3da");
+		    	  });
+		    	});
+		     
+		     $(document).ready(function(){
+		            $(".myButtonReq").focusin(function(){
+		              $(this).css("background-color","#ff5a5f");
+		            });
+		            $(".myButtonReq").focusout(function(){
+		              $(this).css("background-color","#47a3da");
+		            });
+		          });
+		     
+		     $(document).ready(function(){
+		            $(".myButtonSucc").focusin(function(){
+		              $(this).css("background-color","#ff5a5f");
+		            });
+		            $(".myButtonSucc").focusout(function(){
+		              $(this).css("background-color","#47a3da");
+		            });
+		          });
+		     
+		     $(document).ready(function(){
+		            $(".myButtonCancel").focusin(function(){
+		              $(this).css("background-color","#ff5a5f");
+		            });
+		            $(".myButtonCancel").focusout(function(){
+		              $(this).css("background-color","#47a3da");
+		            });
+		          });
+		     
+		     
+		      */
+		
+		</script>
+		
 		
 	</body>
 </html>
