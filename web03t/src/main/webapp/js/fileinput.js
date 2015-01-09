@@ -827,6 +827,8 @@
             formdata.append(self.uploadFileAttr, files[i]);
             formdata.append('file_id', i);
             self.uploadExtra(formdata);
+            
+            
             self.ajaxRequests.push($.ajax({
                 url: self.uploadUrl,
                 type: 'POST',
@@ -866,7 +868,9 @@
                     if (allFiles) {
                         var cap = files[i].name;
                         self.showUploadError('<b>' + cap + '</b>: ' + errorThrown, formdata, previewId, i, 'fileuploaderror');
+                        console.log(textStatus + ":" + errorThrown);
                     } else {
+                    	console.log("dddddd");
                         self.showError(errorThrown, formdata, previewId, i, 'fileuploaderror');
                     }
                     updateProgress();
@@ -874,6 +878,8 @@
                 }
             }));
         },
+        
+        
         uploadBatch: function() {
             var self = this, files = self.filestack, total = files.length, 
                 config = self.fileActionSettings; formdata = new FormData(),
@@ -985,11 +991,11 @@
         showUploadError: function (msg, file, previewId, index) {
             var self = this, $error = self.$errorContainer, $el = self.$element, 
                 ev = arguments.length > 4 ? arguments[4] : 'fileerror';
-            if ($error.find('ul').length == 0) {
-                $error.html('<ul class="text-left"><li>' + msg + '</li></ul>');
+            /*if ($error.find('ul').length == 0) {
+                $error.html('<ul class="text-left"><li>' + msg + '@_@</li></ul>');
             } else {
-                $error.find('ul').append('<li>' + msg + '</li>');
-            }
+                $error.find('ul').append('<li>' + msg + '@_@@@</li>');
+            }*/
             $error.fadeIn(800);
             $el.trigger(ev, [file, previewId, index]);
             addCss(self.$container, 'has-error');

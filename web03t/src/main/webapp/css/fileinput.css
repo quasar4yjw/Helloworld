@@ -21,7 +21,7 @@
     font-size: 999px;
     text-align: right;
     color: #fff;
-    background: transparent url('../img/loading.gif') top left no-repeat;
+    background: transparent url('../images/loading.gif') top left no-repeat;
     border: none;
 }
 .btn-file {
@@ -163,7 +163,7 @@
 }
 
 .file-drop-zone-title {
-	color: #aaa;
+  color: #aaa;
     font-size: 40px;
     padding: 85px 10px;
 }
@@ -174,7 +174,7 @@
 }
 
 .file-uploading {
-    background-image: url('../img/loading-sm.gif');
+    background-image: url('../images/loading-sm.gif');
     background-position: center bottom 10px;
     background-repeat: no-repeat;
     opacity: 0.6;
