@@ -14,7 +14,7 @@
           
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't send you spam, we promise...">이메일 주소를 입력해주세요.</label>
-              <input class="fs-anim-lower-email2" id="guideEmail" name="email" type="email" placeholder="yourid@gmail.com" required="">
+              <input class="fs-anim-lower-email2" id="guideEmail" type="email" placeholder="yourid@gmail.com" required="">
               <div class="tooltip tooltip-west">
               <span class="tooltip-content yesno2">이미 존재하는 이메일입니다.</span>
               </div>
@@ -85,7 +85,7 @@
             
           </ol><!-- /fs-fields -->
          
-           <button class="fs-submit fs-submit-guide" type="button">가입하기</button>
+           <button class="fs-submit fs-submit-guide" type="submit">가입하기</button>
         </form><!-- /fs-form -->
       <div class="fs-controls"><button class="fs-continue">Continue</button><nav class="fs-nav-dots"><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class="fs-dot-current"></button></nav><span class="fs-numbers"><span class="fs-number-current">6</span><span class="fs-number-total">6</span></span><div class="fs-progress" style="width: 100%;"></div></div><span class="fs-message-error"></span></div><!-- /fs-form-wrap -->
 
@@ -131,9 +131,10 @@
          console.log($('.my-select').val());
          console.log($.extend({}, $('.my-select').val()));
      }); */
+    
      </script>
      
-        <script>
+         <!-- <script>
     $('.fs-submit-guide').click(function(){
     	var temp = encodeURIComponent( JSON.stringify($.extend({}, $('.my-select').val())) );
         /*$.post(URL, 성공함수)
@@ -151,7 +152,7 @@
                birthDate : $('#guideBirthDate').val(),
                guideCount : 0,
                guideLanguageList : temp,
-               introduce : $("#guideIntroduce").val(),
+               introduce : $("#guideIntroduce").val()
                //photo : $('#guidePhoto').val()
             } 
             , function(result){ /* 서버로부터 응답을 받았을 때 호출될 메서드*/
@@ -170,40 +171,44 @@
          });
         
       });
-    </script> 
+    </script>   -->
     <!-- 회원가입  --> 
     
     
     
-   <!--  <script>
-    $(function(){
+      <script>
+      $('.fs-submit-guide').click(function(){
+    	  var temp = encodeURIComponent( JSON.stringify($.extend({}, $('.my-select').val())) );
         //ajax form submit
         $('#myForm').ajaxForm({
 			        	data: { /* 서버에 보낼 데이터를 객체에 담아 넘긴다 */
-			                email : $('#guideEmail').val(),
+			        		    email : $('#guideEmail').val(),
 			                userName : $('#guideUserName').val(),
 			                tel : $('#guideTel').val(),
 			                password : $('#guideRepassword').val(),
-			                /* birthDate : $('#guideBirthDate').val(), */
+			                birthDate : $('#guideBirthDate').val(),
+			                guideCount : 0,
+			                guideLanguageList : temp,
 			                introduce : $("#guideIntroduce").val(),
-			                photo : $('#guidePhoto').val()
+			                photofile : $('#guidePhoto').val()
 			             },
 			          dataType:'json',
                 beforeSubmit: function (data,form,option) {
                     //validation체크 
                     //막기위해서는 return false를 잡아주면됨
+                    console.log("사진 업로드 성공11!!");
                     return true;
                 },
                 success: function(response,status){
                     //성공후 서버에서 받은 데이터 처리
-                    alert("업로드 성공!!");
+                    console.log("사진 업로드 성공22!!");
                 },
                 error: function(){
                     //에러발생을 위한 code페이지
                 }                               
             });
     });
-    </script>  -->
+    </script>  
     
 </div><!-- /container -->
 

@@ -24,6 +24,7 @@
     VALUES(#{email}, #{guideLanguage});
   </insert>
   
+  
    <!-- <insert id="insertLanguages" parameterType="Guide">
     INSERT INTO G_LANGS(G_EMAIL, ALANG)
     VALUES(#{email}, #{guideLanguageList});

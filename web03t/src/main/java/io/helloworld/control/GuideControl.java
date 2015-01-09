@@ -3,6 +3,7 @@ package io.helloworld.control;
 import io.helloworld.domain.Guide;
 import io.helloworld.service.GuideService;
 
+import java.io.File;
 import java.util.HashMap;
 
 import javax.servlet.ServletContext;
@@ -24,6 +25,19 @@ public class GuideControl {
 	@RequestMapping(value="/signUp", method=RequestMethod.POST)
 	  public Object add(Guide guide) throws Exception {  
 	    
+		if (guide.getPhotofile() != null
+		        && !guide.getPhotofile().isEmpty()) {
+
+		      String fileuploadRealPath = 
+		        servletContext.getRealPath("/fileupload");
+		      String filename = System.currentTimeMillis() + "_"; 
+		      File file = new File(fileuploadRealPath + "/" + filename);
+		    
+		      guide.getPhotofile().transferTo(file);
+		      guide.setPhoto(filename);
+		    }
+		
+		
 		guideService.signUp(guide);
 	    HashMap<String,Object> resultMap = new HashMap<>();
 	    resultMap.put("status", "success");
