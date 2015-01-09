@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -26,7 +27,7 @@ import com.google.gson.reflect.TypeToken;
 
 public class ItemControl {
   static Logger log = Logger.getLogger(ItemControl.class);
-  
+  static final int PAGE_DEFAULT_SIZE = 6;
   @Autowired ItemService itemService;
   @Autowired ServletContext servletContext;
   
@@ -43,6 +44,28 @@ public class ItemControl {
    return resultMap;
    
    }
+ @RequestMapping("/list")
+ public Object list(
+     @RequestParam(defaultValue="1") int pageNo,
+     @RequestParam(defaultValue="6") int pageSize) throws Exception {
+   
+   if (pageSize <= 0)
+     pageSize = PAGE_DEFAULT_SIZE;
+   
+   int maxPageNo = itemService.getMaxPageNo(pageSize);
+   
+   if (pageNo <= 0) pageNo = 1;
+   if (pageNo > maxPageNo) pageNo = maxPageNo;
+   
+   HashMap<String,Object> resultMap = new HashMap<>();
+   resultMap.put("status", "success");
+   resultMap.put("currPageNo", pageNo);
+   resultMap.put("maxPageNo", maxPageNo);
+   resultMap.put("items", 
+       itemService.getList(pageNo, pageSize));
+     
+   return resultMap;
+ }
  
 /* @RequestMapping(value="/addPlanSchedule", method=RequestMethod.POST)
  public Object addSchedule(Item item, ItemSchedule itemSchedule, DetailPhoto detailPhoto) throws Exception {

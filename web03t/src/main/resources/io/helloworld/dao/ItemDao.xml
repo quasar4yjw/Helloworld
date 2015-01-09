@@ -9,6 +9,24 @@
 
 <mapper namespace="io.helloworld.dao.ItemDao">
 
+  <resultMap type="map" id="itemListMap">
+    <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
+    <id column="I_NO" property="no"/>    
+    <result column="COUNTRY" property="country"/>
+    <result column="LANG" property="language"/>
+    <result column="TITLE" property="title"/>
+    <result column="PLACE" property="place"/>
+    <result column="PRICE" property="price"/>
+    <result column="P_URL" property="photoUrl"/>
+    </resultMap>
+  
+  <resultMap type="map" id="tagsMap">
+    <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
+    <id column="T_NO" property="no"/>
+    <result column="I_NO" property="itemNo"/>
+    <result column="INTER" property="interest"/>    
+  </resultMap>
+
   <insert id="insertItem" parameterType="Map"
   useGeneratedKeys="true" keyColumn="I_NO" keyProperty="itemNo">
     INSERT INTO ITEMS(COUNTRY, LANG, TITLE, PLACE, PRICE) 
@@ -34,6 +52,35 @@
     INSERT INTO ITEM_SCH(I_NO, T_DAY, T_TIME, T_CONT)
     VALUES(#{itemNo}, #{travelDay}, #{travelTime}, #{travelContent});
   </insert>
+  
+  <select id="selectList" parameterType="map" 
+        resultMap="itemListMap">
+    SELECT       
+      T1.I_NO, 
+      T1.COUNTRY, 
+      T1.LANG, 
+      T1.TITLE,
+      T1.PLACE,
+      T1.PRICE,
+      MIN(T2.P_URL)    
+    FROM ITEMS T1 LEFT OUTER JOIN DET_PHOTS T2 
+    USING(I_NO)
+    GROUP BY T1.I_NO
+    <if test="pageSize > 0">
+      limit #{startIndex}, #{pageSize}
+    </if>
+  </select>
+  
+  <select id="totalSize" resultType="int">
+    SELECT count(I_NO) FROM ITEMS
+  </select>
+  
+  <!-- <select id="selectTags" parameterType="int" 
+      resultMap="tagsMap">
+    SELECTI_NO,INTER
+    FROM TAGS T2
+    WHRER I_NO=  
+  </select> -->
 <!--  
    <insert id="insertDetailPhoto" parameterType="DetailPhoto">
     INSERT INTO DET_PHOTS(P_URL)

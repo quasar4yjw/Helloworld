@@ -20,8 +20,12 @@ public class Item implements Serializable{
   
   protected int             travelNo;
   protected int             travelDay;
-  protected String            travelTime;
+  protected String          travelTime;
   protected String          travelContent;
+  
+  protected String          photoUrl;  
+  
+  
   @Override
   public String toString() {
     return "Item [itemNo=" + itemNo + ", country=" + country + ", language="
@@ -29,7 +33,7 @@ public class Item implements Serializable{
         + price + ", interest1=" + interest1 + ", interest2=" + interest2
         + ", interest3=" + interest3 + ", travelNo=" + travelNo
         + ", travelDay=" + travelDay + ", travelTime=" + travelTime
-        + ", travelContent=" + travelContent + "]";
+        + ", travelContent=" + travelContent + ", photoUrl=" + photoUrl + "]";
   }
   public int getItemNo() {
     return itemNo;
@@ -110,9 +114,12 @@ public class Item implements Serializable{
     this.travelContent = travelContent;
   }
   
-  
-  
-  
+  public String getPhotoUrl() {
+    return photoUrl;
+  }
+  public void setPhotoUrl(String photoUrl) {
+    this.photoUrl = photoUrl;
+  }
  
  
 

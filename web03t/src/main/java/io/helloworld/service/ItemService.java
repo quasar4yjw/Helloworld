@@ -2,6 +2,8 @@ package io.helloworld.service;
 
 import io.helloworld.dao.ItemDao;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,23 @@ public class ItemService {
        itemDao.insertSchedule(dataMap);
      }
        /*   itemDao.insertDetailPhoto(detailPhoto);*/
+  }
+  
+  public List<?> getList(int pageNo, int pageSize) {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("startIndex", ((pageNo - 1) * pageSize));
+    paramMap.put("pageSize", pageSize);
+    /*paramMap.put("interest", itemDao.selectTages());*/
+    
+    return itemDao.selectList(paramMap);
+  }
+  
+  public int getMaxPageNo(int pageSize) {
+    int totalSize = itemDao.totalSize();
+    int maxPageNo = totalSize / pageSize;
+    if ((totalSize % pageSize) > 0) maxPageNo++;
+    
+    return maxPageNo;
   }
   
 /*  @Transactional(
