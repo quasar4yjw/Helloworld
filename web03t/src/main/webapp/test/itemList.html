@@ -810,17 +810,7 @@ z-index:9999;
            
           </ul>
         </div>
-                <nav>
-  <ul class="pagination">
-    <li><a  id="prevBtn" href="#"><span aria-hidden="true">&lt;</span><span class="sr-only">Previous</span></a></li>
-    <li class='active'><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li><a id="nextBtn" href="#"><span aria-hidden="true">&gt;</span><span class="sr-only">Next</span></a></li>
-  </ul>
-</nav>
+                 <div id="page-selection"></div>
   </div>
 		<div class='sidebar'>
 		<div class="recentlyItem">
@@ -848,11 +838,12 @@ z-index:9999;
 <script type="text/javascript" src='../js/jquery.range.js'></script>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 <script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
+<script type="text/javascript" src="http://rawgit.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
 <script type="text/javascript">
 $('.dialog').load('loginDialog.html');
   $('.header').load('header.html');
   $('.footer').load('footer.html');
-  loadProductList(1);
+  loadItemList(1);
   $('#startDate').datepicker({
     maxDate: '+1y',
     beforeShowDay: noBefore  });
@@ -886,16 +877,28 @@ $('.dialog').load('loginDialog.html');
     window.currPageNo = currPageNo;
     window.maxPageNo = maxPageNo;
     
-    $('#pageNo').html(currPageNo);
+  
     
-    if (currPageNo <= 1) $('#prevBtn').css('display', 'none');
-    else $('#prevBtn').css('display', '');
+    if (currPageNo <= 5)
+      $('#prevBtn').css('display', 'none');
+    else
+      $('#prevBtn').css('display', '');
+
+    if (currPageNo >= maxPageNo)
+      $('#nextBtn').css('display', 'none');
+    else
+      $('#nextBtn').css('display', '');
     
-    if (currPageNo >= maxPageNo) $('#nextBtn').css('display', 'none');
-    else $('#nextBtn').css('display', '');
+    $('#page-selection').bootpag({
+      total: maxPageNo,
+      page: currPageNo,
+      maxVisible: 5 
+    }).on('page', function(event, num){
+      loadItemList(num);   
+    });
   }
     
-  function loadProductList(pageNo) {
+  function loadItemList(pageNo) {
     if (pageNo <= 0) pageNo = currPageNo;
     
     $.getJSON('../item/list.do?pageNo=' + pageNo, 
