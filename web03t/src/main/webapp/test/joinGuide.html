@@ -9,7 +9,7 @@
         <form action="../guide/signUp.do" method="post" enctype="multipart/form-data" id="myForm" class="fs-form fs-form-overview fs-show" autocomplete="off">
           <ol class="fs-fields">
           <li>
-      <input id="guidePhoto" type="file" accept="image/png, image/jpeg">
+      <input id="guidePhoto" type="file" name="guidePhot" accept="image/png, image/jpeg">
           </li>
           
             <li class="">
@@ -190,7 +190,7 @@
 			                guideCount : 0,
 			                guideLanguageList : temp,
 			                introduce : $("#guideIntroduce").val(),
-			                photofile : $('#guidePhoto').val()
+			                photofile : $('#guidePhoto').prop('files')
 			             },
 			          dataType:'json',
                 beforeSubmit: function (data,form,option) {
