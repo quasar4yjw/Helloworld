@@ -27,7 +27,7 @@ connection.connect(function(err) {
 });
 
 
-var app = express(); 
+var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
