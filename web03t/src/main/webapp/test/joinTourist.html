@@ -6,11 +6,11 @@
           <div class="codrops-top">
           </div>
         </div>
-        <form id="myForm" class="fs-form fs-form-overview fs-show" autocomplete="off">
+        <form id="myTouristForm" action="../tourist/signUp.do" method="post" class="fs-form fs-form-overview fs-show" autocomplete="off">
           <ol class="fs-fields">
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't send you spam, we promise...">이메일 주소를 입력해주세요.</label>
-              <input class="fs-anim-lower fs-anim-lower-email" id="touristEmail" name="email" type="email" placeholder="yourid@gmail.com" required="">
+              <input class="fs-anim-lower fs-anim-lower-email" id="touristEmail" type="email" placeholder="yourid@gmail.com" required="">
             <div class="tooltip tooltip-west">
               <span class="tooltip-content yesno">이미 존재하는<br>이메일입니다.</span>
             </div>
@@ -20,7 +20,7 @@
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q3">패스워드를 입력해주세요.</label>
-              <input class="fs-anim-lower fs-anim-lower-password" id="touristPassword" name="q3" type="password"  placeholder="6자 이상, 영문 + 숫자 조합" required>
+              <input class="fs-anim-lower fs-anim-lower-password" id="touristPassword" type="password"  placeholder="6자 이상, 영문 + 숫자 조합" required>
               <div class="tooltip tooltip-west">
               <span class="tooltip-content tooltip-content-password">6자리 이상, 영문 +숫자 조합이어야 합니다.</span>
               </div>
@@ -28,7 +28,7 @@
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">패스워드 확인을 위해 다시한번 입력해주세요.</label>
-              <input class="fs-anim-lower fs-anim-lower-repassword" id="touristRepassword" name="q1" type="password"  placeholder="6자 이상, 영문 + 숫자 조합"  required="">
+              <input class="fs-anim-lower fs-anim-lower-repassword" id="touristRepassword" type="password"  placeholder="6자 이상, 영문 + 숫자 조합"  required="">
               <div class="tooltip tooltip-west">
               <span class="tooltip-content tooltip-content-repassword">6자리 이상, 영문 +숫자 조합이어야 합니다.</span>
             </div>
@@ -36,17 +36,17 @@
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">이름을 입력해주세요.</label>
-              <input class="fs-anim-lower" id="touristUserName" name="q1" type="text" placeholder="홍길동" required="">
+              <input class="fs-anim-lower" id="touristUserName" type="text" placeholder="홍길동" required="">
             </li>
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">생일을 입력해주세요.</label>
-              <input class="fs-anim-lower" id="touristBirthDate" name="q1" type="date" required="">
+              <input class="fs-anim-lower" id="touristBirthDate" type="date" required="">
             </li>
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">전화번호를 입력해주세요.</label>
-              <input class="fs-anim-lower" id="touristTel" name="q1" type="tel" placeholder="+821072225772" required=""
+              <input class="fs-anim-lower" id="touristTel" type="tel" placeholder="+821072225772" required=""
               onkeydown="return showKeyCode(event)">
             </li>
             
@@ -87,14 +87,14 @@
        <ul>
        <li><label for = "genderMale">남성</label>
           <input type = "radio"
-                 name = "gender"
+                 name = "genderCheck"
                  id = "genderMale"
                  value = "1" 
                  class = "gender"
                  required></li>
           <li><label for = "genderFemale">여성</label>
           <input type = "radio"
-                 name = "gender"
+                 name = "genderCheck"
                  id = "genderFemale"
                  value = "2" 
                  class = "gender"
@@ -112,7 +112,7 @@
             <svg class="cross" width="70" height="70"><path d="m35,35l-9.3,-9.3"/><path d="m35,35l9.3,9.3"/><path d="m35,35l-9.3,9.3"/><path d="m35,35l9.3,-9.3"/></svg>
           </div>/progress-button -->
           
-           <button class="fs-submit fs-submit-tourlist" type="button">가입하기</button> 
+           <button class="fs-submit fs-submit-tourlist" type="submit">가입하기</button> 
         </form><!-- /fs-form -->
         
       <div class="fs-controls"><button class="fs-continue">Continue</button><nav class="fs-nav-dots"><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class="fs-dot-current"></button></nav><span class="fs-numbers"><span class="fs-number-current">6</span><span class="fs-number-total">6</span></span><div class="fs-progress" style="width: 100%;"></div></div><span class="fs-message-error"></span></div><!-- /fs-form-wrap -->
@@ -221,7 +221,7 @@
         }
     }
     </script>
-    <script>
+   <!--  <script>
     $('.fs-submit-tourlist').click(function(){
     	  /*$.post(URL, 성공함수)
     	     .fail(실패함수)
@@ -257,7 +257,45 @@
     	   });
     	  
     	});
-    </script><!-- 회원가입 -->
+    </script>회원가입 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    <script>
+      $('.fs-submit-tourlist').click(function(){
+        //ajax form submit
+        $('#myTouristForm').ajaxForm({
+                data: { /* 서버에 보낼 데이터를 객체에 담아 넘긴다 */
+                	 	email : $('#touristEmail').val(),
+                    userName : $('#touristUserName').val(),
+                    tel : $('#touristTel').val(),
+                    password : $('#touristRepassword').val(),
+                    birthDate : $('#touristBirthDate').val(),
+                    gender : $("input:radio[name=genderCheck]:checked").val(),
+                    touristLanguage : $('#touristLanguage').val()
+                   },
+                dataType:'json',
+                beforeSubmit: function (data,form,option) {
+                    //validation체크 
+                    //막기위해서는 return false를 잡아주면됨
+                    console.log("투어가입 성공11!!");
+                    return true;
+                },
+                success: function(response,status){
+                    //성공후 서버에서 받은 데이터 처리
+                    console.log("투어가입 성공22!!");
+                },
+                error: function(){
+                    //에러발생을 위한 code페이지
+                }                               
+            });
+    });
+    </script>  
 </div><!-- /container -->
 
 
