@@ -129,7 +129,7 @@ text-decoration: none;
           
           </div>
          
-					<ul>
+					<!-- <ul>
 					
 						<li class="test-hover" onclick="location.href='#'";>
 						
@@ -206,8 +206,13 @@ text-decoration: none;
 						</li>
 						
 					</ul>
+					 -->
+					 
+        <ul id='connectUl'>            
+       
+           </ul>
 					
-					
+					<div id="page-selection"></div>
 				</div>
 			</div><!-- /main -->
 			
@@ -221,11 +226,59 @@ text-decoration: none;
     <script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
     <!-- <script type="text/javascript" src='../js/require.js'></script> -->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js" type="text/javascript"></script>
-	
+	<script type="text/javascript" src="http://rawgit.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
 		<script type="text/javascript">
 	$('.dialog').load('loginDialog.html');
   $('.header').load('header.html');
   $('.footer').load('footer.html');
+  
+  
+  loadItemList(1);
+  function setPageNo(currPageNo, maxPageNo) {
+	    window.currPageNo = currPageNo;
+	    window.maxPageNo = maxPageNo;
+	    
+	  
+	    
+	    if (currPageNo <= 5)
+	      $('#prevBtn').css('display', 'none');
+	    else
+	      $('#prevBtn').css('display', '');
+
+	    if (currPageNo >= maxPageNo)
+	      $('#nextBtn').css('display', 'none');
+	    else
+	      $('#nextBtn').css('display', '');
+	    
+	    $('#page-selection').bootpag({
+	      total: maxPageNo,
+	      page: currPageNo,
+	      maxVisible: 5 
+	    }).on('page', function(event, num){
+	      loadItemList(num);   
+	    });
+	  }
+	    
+	  function loadItemList(pageNo) {
+	    if (pageNo <= 0) pageNo = currPageNo;
+	    
+	    $.getJSON('../connect/status.do?pageNo=' + pageNo, 
+	      function(data){
+	        console.log(data);
+	        setPageNo(data.currPageNo, data.maxPageNo);
+	        var connects = data.connects; 
+	        
+	        $.get('templates/connect-list.html', function(source){
+	          var template = Handlebars.compile(source);
+	          $('#connectUl').html( template(data) );
+	        });
+	      });
+	  }
+	 
+  
+  
+  
+  
 </script>
 		
 		
@@ -330,7 +383,6 @@ text-decoration: none;
 		     
 		     
 		      */
-		
 		</script>
 		
 		

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.helloworld.dao.ConnectDao">
+
+  <resultMap type="map" id="connectListMap">
+    <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
+    <id column="C_NO" property="no"/>    
+    <result column="C_SDATE" property="connectStartDate"/>
+    <result column="C_EDATE" property="connectEndDate"/>
+    <result column="C_STAT" property="connectStatus"/>
+    <result column="C_DATE" property="connectDate"/>
+    <result column="TITLE" property="title"/>
+    <result column="PRICE" property="price"/>
+    <result column="P_URL" property="photoUrl"/>
+    </resultMap>
+  
+  
+  <select id="selectConnect" parameterType="map" 
+        resultMap="connectListMap">
+    SELECT     
+      T2.C_NO, 
+      T1.TITLE,
+      T1.PRICE,
+      T2.C_STAT,
+      T2.C_DATE,
+      T2.C_SDATE,
+      T3.P_URL
+      FROM (BOOK_INFO T2 LEFT JOIN ITEMS T1 on T1.I_NO=T2.I_NO) LEFT JOIN DET_PHOTS T3 on T2.I_NO=T3.I_NO
+      GROUP BY T2.C_NO
+    <if test="pageSize > 0">
+      limit #{startIndex}, #{pageSize}
+    </if>
+  </select>
+  
+  <select id="totalSize" resultType="int">
+    SELECT count(C_NO) FROM BOOK_INFO
+  </select>
+  
+  <delete id="delete" parameterType="int">
+    DELETE FROM BOOK_INFO WHERE C_NO=#{value}
+  </delete>
+
+  
+</mapper>
