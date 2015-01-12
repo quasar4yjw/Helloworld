@@ -30,17 +30,20 @@ public class GuideControl {
 
 		      String fileuploadRealPath = 
 		        servletContext.getRealPath("/fileupload");
-		      String filename = System.currentTimeMillis() + "_"; 
+		      //String filename = System.currentTimeMillis() + "_";
+		      String filename = new String(guide.getPhotofile().getOriginalFilename().getBytes("8859_1"),"utf-8");
 		      File file = new File(fileuploadRealPath + "/" + filename);
 		    
 		      guide.getPhotofile().transferTo(file);
 		      guide.setPhoto(filename);
 		    }
-		
-		
 		guideService.signUp(guide);
 	    HashMap<String,Object> resultMap = new HashMap<>();
-	    resultMap.put("status", "success");
-	    return resultMap;
+	    try{
+		    resultMap.put("status", "success");
+		    return resultMap;
+	    } catch(Exception ex){
+	    	return resultMap;
+	    }
 	  }
 }

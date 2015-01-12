@@ -192,6 +192,9 @@
 			                introduce : $("#guideIntroduce").val(),
 			             },
 			          dataType:'json',
+			          cache: false,
+			          processData: false,
+			          contentType: false,
                 beforeSubmit: function (data,form,option) {
                     //validation체크 
                     //막기위해서는 return false를 잡아주면됨
@@ -202,7 +205,8 @@
                     //성공후 서버에서 받은 데이터 처리
                     console.log("사진 업로드 성공22!!");
                 },
-                error: function(){
+                error: function(jqXHR, textStatus, errorThrown){ 
+                    console.log(jqXHR + ":" + textStatus + ":" + errorThrown);
                     //에러발생을 위한 code페이지
                 }                               
             });
