@@ -235,7 +235,7 @@ padding-left: 40%;
 	$('.dialog').load('loginDialog.html');
   $('.header').load('header.html');
   $('.footer').load('footer.html');
-  
+  var selected = "all";
   
   loadItemList(1);
   function setPageNo(currPageNo, maxPageNo) {
@@ -266,7 +266,7 @@ padding-left: 40%;
 	  function loadItemList(pageNo) {
 	    if (pageNo <= 0) pageNo = currPageNo;
 	    
-	    $.getJSON('../connect/status.do?pageNo=' + pageNo, 
+	    $.getJSON('../connect/status.do?pageNo=' + pageNo + "&selected=" + selected, 
 	      function(data){
 	        console.log(data);
 	        setPageNo(data.currPageNo, data.maxPageNo);
@@ -275,6 +275,9 @@ padding-left: 40%;
 	        $.get('templates/connect-list.html', function(source){
 	          var template = Handlebars.compile(source);
 	          $('#connectUl').html( template(data) );
+	          $(".예약요청").css('color','#669999');
+	          $(".예약완료").css('color','#3399CC');
+	          $(".예약취소").css('color','#C24747');
 	        });
 	      });
 	  }
@@ -288,12 +291,12 @@ padding-left: 40%;
 		
 		
 		<script>
-		$(document).ready(function(){
-			
-			  $("[id=reserv-cancel]").css("color","#C24747");
-			  $("[id=reserv-complete]").css("color","#3399CC");
-			  $("[id=reserv-request]").css("color","#669999");
-			  
+		$(function(){
+			/*       
+	        $("[id=reserv-cancel]").css("color","#C24747");
+	        $("[id=reserv-complete]").css("color","#3399CC");
+	        $("[id=reserv-request]").css("color","#669999"); */
+	        
 		});
 		</script>
 		
@@ -305,6 +308,8 @@ padding-left: 40%;
 		  $( '.myButtonReq' ).css("background-color","#47a3da");
 		  $( '.myButtonSucc' ).css("background-color","#47a3da");
 		  $( '.myButtonCancel' ).css("background-color","#47a3da");
+		  selected = "all"
+			loadItemList(1);
 		});
 		
 		$( '.myButtonReq' ).click(function() {
@@ -312,6 +317,9 @@ padding-left: 40%;
 		      $( '.myButtonReq' ).css("background-color","#ff5a5f");
 		      $( '.myButtonSucc' ).css("background-color","#47a3da");
 		      $( '.myButtonCancel' ).css("background-color","#47a3da");
+		    	selected = "req";
+		    	loadItemList(1);
+		      
 		    });
 		
 		$( '.myButtonSucc' ).click(function() {
@@ -319,6 +327,9 @@ padding-left: 40%;
 		      $( '.myButtonReq' ).css("background-color","#47a3da");
 		      $( '.myButtonSucc' ).css("background-color","#ff5a5f");
 		      $( '.myButtonCancel' ).css("background-color","#47a3da");
+		      selected = "succ";
+		      loadItemList(1);
+		      
 		    });
 		
 		$( '.myButtonCancel' ).click(function() {
@@ -326,6 +337,9 @@ padding-left: 40%;
 		      $( '.myButtonReq' ).css("background-color","#47a3da");
 		      $( '.myButtonSucc' ).css("background-color","#47a3da");
 		      $( '.myButtonCancel' ).css("background-color","#ff5a5f");
+		      selected = "cancel";
+		      loadItemList(1);
+		      
 		    });
 
 		
@@ -388,7 +402,6 @@ padding-left: 40%;
 		     
 		      */
 		</script>
-		
 		
 	</body>
 </html>

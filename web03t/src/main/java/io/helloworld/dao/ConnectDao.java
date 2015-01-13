@@ -6,5 +6,8 @@ import java.util.Map;
 public interface ConnectDao {
   List<?> selectConnect(Map<String,Object> params);
   int totalSize();
+  void delete(int itemNo);
+  
+  /*void deletePhoto(int productNo);*/
 
 }

@@ -25,7 +25,8 @@ public class ConnectControl {
   @RequestMapping("/status")
   public Object progress(
       @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="6") int pageSize) throws Exception {
+      @RequestParam(defaultValue="6") int pageSize,
+      @RequestParam(defaultValue="all") String selected) throws Exception {
     
     if (pageSize <= 0)
       pageSize = PAGE_DEFAULT_SIZE;
@@ -40,11 +41,17 @@ public class ConnectControl {
     resultMap.put("currPageNo", pageNo);
     resultMap.put("maxPageNo", maxPageNo);
     resultMap.put("connects", 
-        connectService.getList(pageNo, pageSize));
+          connectService.getList(pageNo, pageSize, selected));
+    
       
     return resultMap;
   }
   
+  @RequestMapping("/delete")
+  public String delete(int no) throws Exception {
+    connectService.delete(no);
+    return "redirect:list.do";
+  }
   
 }
 
