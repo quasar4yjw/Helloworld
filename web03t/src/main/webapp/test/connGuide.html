@@ -88,7 +88,6 @@
    h1 {
 display: block;
 color: #ff5a5f;
-content: '회원가입';
 font-weight: 700;
 font-size: 1.85em;
 padding: 50px 0px 20px 20%;
@@ -113,7 +112,6 @@ padding-left: 40%;
 		 <h1>연결 정보</h1>
 
 				
-			</header>
 			<div class="main">
 				<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-list">
 					<div class="cbp-vm-options">
@@ -122,7 +120,7 @@ padding-left: 40%;
 					<a href="#" class="myButton myButtonTotal">전체</a>
 					<a href="#" class="myButton myButtonReq">예약요청</a>
 					<a href="#" class="myButton myButtonSucc">예약완료</a>
-					<a href="#" class="myButton myButtonCancel">취소</a>
+					<a href="#" class="myButton myButtonCancel">예약취소</a>
 					
 					</div>
 					
@@ -339,7 +337,7 @@ var selected = "all";
     
     Handlebars.registerHelper("btnAccept", function (title, connectStatus) {
         if (connectStatus == '예약요청'){
-          var btnAccept = $('<a class="cbp-vm-add" href="#"></a>').text(title).attr('onclick', 'button_clickEvent()');
+          var btnAccept = $('<a class="cbp-vm-add" href="#"></a>').text(title).attr('onclick', 'btnAccept_clickEvent()');
           return $('<div></div>').append(btnAccept).html();
         } else {
           console.log(connectStatus); 
@@ -347,14 +345,14 @@ var selected = "all";
         }
       });
 
-      var button_clickEvent = function () {
+      var btnAccept_clickEvent = function () {
           alert("btnAccept " + $(this).text() + " clicked.");
       };
       
       
       Handlebars.registerHelper("btnReject", function (title, connectStatus) {
           if (connectStatus == '예약요청'){
-            var btnReject = $('<a class="cbp-vm-add" href="#"></a>').text(title).attr('onclick', 'button_clickEvent()');
+            var btnReject = $('<a class="cbp-vm-add" href="#"></a>').text(title).attr('onclick', 'btnReject_clickEvent()');
             return $('<div></div>').append(btnReject).html();
           } else {
             console.log(connectStatus); 
@@ -362,7 +360,7 @@ var selected = "all";
           }
         });
 
-        var button_clickEvent = function () {
+        var btnReject_clickEvent = function () {
             alert("btnReject " + $(this).text() + " clicked.");
         };
     

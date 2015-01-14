@@ -23,7 +23,7 @@ public class ConnectControl {
   
   
   @RequestMapping("/status")
-  public Object progress(
+  public Object status(
       @RequestParam(defaultValue="1") int pageNo,
       @RequestParam(defaultValue="6") int pageSize,
       @RequestParam(defaultValue="all") String selected) throws Exception {
