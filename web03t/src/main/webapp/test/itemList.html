@@ -924,10 +924,11 @@ $('.dialog').load('loginDialog.html');
        
         for (var i = 0; i < items.length; i++) {
           $('<li>').addClass('data-row')
-              .append($('<a>').addClass("cbp-vm-image").attr('href','#').append($('<img>').attr('src',items[i].photoUrl)))
+              .append($('<a>').addClass("cbp-vm-image").attr('href','detailItem.html?itemNo=' + items[i].no)
+                  .append($('<img>').attr('src',items[i].photoUrl)))
               .append(
                   
-                  $('<a>').attr('href', '#')
+                  $('<a>').attr('href','detailItem.html?itemNo=' + items[i].no)
                   .append($('<h3>').addClass('cbp-vm-title').html(items[i].title))
                   .append($('<div>').addClass('cbp-vm-price').html(items[i].price))
                   .append($('<div>').addClass('place').html("주요명소 : " + items[i].place ))
@@ -940,7 +941,7 @@ $('.dialog').load('loginDialog.html');
                 $('<span>').html("").appendTo($('.inter'));
                 if(items[i].no==tags[j].itemNo)  {
                   console.log(items[i].no,tags[j].itemNo,tags[j].interest )
-                  $('<span>').html(tags[j].interest +"  ").appendTo($('.inter'+i));
+                  $('<span>').html(tags[j].interest ).appendTo($('.inter'+i));
                 }
               }
         }
