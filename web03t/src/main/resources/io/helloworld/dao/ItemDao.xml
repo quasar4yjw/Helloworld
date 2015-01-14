@@ -99,7 +99,7 @@
     VALUES(#{photoUrl});
   </insert> -->
   
-  <select id="selectOne" parameterType="int" resultType="itemMap">
+  <select id="selectOne" parameterType="int" resultMap="itemMap">
     SELECT * FROM ITEMS
     WHERE I_NO=#{value}
   </select>
