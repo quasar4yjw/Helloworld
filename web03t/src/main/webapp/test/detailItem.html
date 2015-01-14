@@ -741,7 +741,7 @@ $('.bxslider').bxSlider({
 </script>
 <script>
 $(function(){
-	var reqNo = getParameterByName(itemNo);
+	var reqNo = getParameterByName("itemNo");
 	loadProduct(reqNo);
 });
 function getParameterByName(name) {
@@ -749,11 +749,10 @@ function getParameterByName(name) {
    }
    
 function loadProduct(itemNo) {
-	  $.getJSON('../item/view.do?no=' + productNo, 
+	  $.getJSON('../item/view.do?itemNo=' + itemNo, 
 	    function(data){
 	      $('#itemTitle').html(data.item.title);
 	      $('#itemPrice').html(data.item.price);
-	      $('#itemInter').html("관심사 : " + data.item.interest1 + " / " + data.item.interest2 + " / " + data.item.interest3);
 	      /* $('#makerNo').val(data.product.makerNo);
 	      
 	      if (data.product.madeDate) {

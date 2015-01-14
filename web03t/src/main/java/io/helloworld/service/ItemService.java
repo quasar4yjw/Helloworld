@@ -2,7 +2,6 @@ package io.helloworld.service;
 
 import io.helloworld.dao.ItemDao;
 import io.helloworld.dao.TagDao;
-import io.helloworld.domain.Item;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -78,11 +77,11 @@ public class ItemService {
 		return maxPageNo;
 	}
 
-	public Item get(int itemNo) {
-		Item item = itemDao.selectOne(itemNo);
+	public HashMap get(int itemNo) {
+		HashMap datamap = itemDao.selectOne(itemNo);
 		//item.setPhotoList( itemDao.selectPhoto(itemNo));
 		//item.setTravelScheduleList( itemDao.selectTravelSchedule(itemNo));
-		return item;
+		return datamap;
 	}
 
 	/*  @Transactional(

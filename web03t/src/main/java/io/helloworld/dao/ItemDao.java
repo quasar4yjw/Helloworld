@@ -1,11 +1,8 @@
 package io.helloworld.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import io.helloworld.domain.DetailPhoto;
-import io.helloworld.domain.Item;
-import io.helloworld.domain.ItemSchedule;
 
 public interface ItemDao {
   
@@ -16,7 +13,7 @@ public interface ItemDao {
   void insertSchedule(Map dataMap);
   List<?> selectList(Map<String,Object> params);
   int totalSize();
-  Item selectOne(int itemNo);
+  HashMap selectOne(int itemNo);
   List<?> selectPhoto(int itemNo);
   List<?> selectTravelSchedule(int itemNo);
   /*List<?> selectTags(int No);*/

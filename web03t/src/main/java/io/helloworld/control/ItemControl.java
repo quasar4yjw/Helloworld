@@ -1,11 +1,8 @@
 package io.helloworld.control;
 
-import io.helloworld.domain.Item;
 import io.helloworld.service.ItemService;
 
-import java.net.URLDecoder;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -13,13 +10,9 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 
 @Controller("ItemControl")
@@ -69,14 +62,14 @@ public class ItemControl {
 		return resultMap;
 	}
 	@RequestMapping("/view")
-	public Object view(int itemNo, HttpSession session) throws Exception {
-		Item item = itemService.get(itemNo);
+	public Object view(String itemNo, HttpSession session) throws Exception {
+		HashMap itemMap = itemService.get(Integer.parseInt(itemNo));
 		//int non = (int)session.getAttribute("view2Page");
 		HashMap<String,Object> resultMap = new HashMap<>();
 		resultMap.put("status", "success");
-		resultMap.put("item", item);
-		resultMap.put("photos", item.getPhotoList());
-		resultMap.put("travels", item.getTravelScheduleList());
+		resultMap.put("item", itemMap);
+		/*resultMap.put("photos", datamap.getPhotoList());
+		resultMap.put("travels", datamap.getTravelScheduleList());*/
 		return resultMap;
 	}
 
