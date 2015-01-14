@@ -1,6 +1,7 @@
 package io.helloworld.service;
 
 import io.helloworld.dao.ItemDao;
+import io.helloworld.domain.Item;
 
 import java.util.HashMap;
 import java.util.List;
@@ -53,6 +54,12 @@ public class ItemService {
     
     return maxPageNo;
   }
+  
+  public Item get(int productNo) {
+	    Item item = itemDao.selectOne(productNo);
+	    item.setPhotoList( itemDao.selectPhoto(productNo));
+	    return item;
+	  }
   
 /*  @Transactional(
       rollbackFor=Exception.class,

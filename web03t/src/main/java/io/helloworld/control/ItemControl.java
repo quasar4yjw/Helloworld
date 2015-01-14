@@ -1,19 +1,18 @@
 package io.helloworld.control;
 
+import io.helloworld.domain.Item;
+import io.helloworld.service.ItemService;
+
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
-
-import io.helloworld.domain.DetailPhoto;
-import io.helloworld.domain.Item;
-import io.helloworld.domain.ItemSchedule;
-import io.helloworld.service.ItemService;
 
 import javax.servlet.ServletContext;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,6 +63,16 @@ public class ItemControl {
    resultMap.put("items", 
        itemService.getList(pageNo, pageSize));
      
+   return resultMap;
+ }
+ @RequestMapping("/view")
+ public Object view(int no, Model model) throws Exception {
+   Item item = itemService.get(no);
+   
+   HashMap<String,Object> resultMap = new HashMap<>();
+   resultMap.put("status", "success");
+   resultMap.put("product", item);
+   resultMap.put("photos", item.getPhotoList());
    return resultMap;
  }
  
