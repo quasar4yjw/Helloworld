@@ -103,13 +103,13 @@
     WHERE I_NO=#{value}
   </select>
   
-  <select id="selectPhoto" parameterType="int" 
+  <!-- <select id="selectPhoto" parameterType="int" 
       resultMap="productPhotoMap">
     SELECT PPNO, PNO, URL
     FROM PROD_PHOTS
     <if test="value > 0">
     WHERE PNO = #{value}
     </if>
-  </select>
+  </select> -->
   
 </mapper>
