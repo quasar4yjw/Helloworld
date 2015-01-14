@@ -80,8 +80,8 @@ public class ItemService {
 
 	public Item get(int itemNo) {
 		Item item = itemDao.selectOne(itemNo);
-		item.setPhotoList( itemDao.selectPhoto(itemNo));
-		item.setTravelScheduleList( itemDao.selectTravelSchedule(itemNo));
+		//item.setPhotoList( itemDao.selectPhoto(itemNo));
+		//item.setTravelScheduleList( itemDao.selectTravelSchedule(itemNo));
 		return item;
 	}
 

@@ -100,6 +100,7 @@
   </insert> -->
   
   <select id="selectOne" parameterType="int" resultMap="itemMap">
+    SELECT * FROM
     WHERE I_NO=#{value}
   </select>
   

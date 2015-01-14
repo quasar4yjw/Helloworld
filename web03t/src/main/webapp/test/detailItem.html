@@ -143,7 +143,7 @@ border-color: #ff5a5f;
 .cbp_tmtimeline > li .cbp_tmtime {
     display: block;
     width: 25%;
-    padding-right: 100px;
+    padding-right: 80px;
     position: absolute;
 }
  
@@ -303,7 +303,8 @@ border-color: #ff5a5f;
 
 .first-detail, .second-detail, .three-detail {
 padding:30px;
-padding-right:30%;
+padding-left:20%;
+padding-right:40%;
 }
 .first-detail-color{
 background-color: #f3f3f5;
@@ -419,9 +420,13 @@ font-size: 28px;
 		    <div class='first-detail-color'>
 		    <div class='first-detail'>
 		    
-		    <h1>한국의 전통문화를 뼈속 깊이 알려드릴게요 ~!!!</h1>
-        <h3>  금액 : 100,000원</h3>
-        <h3>관심사 : 전통 / 음식 / 쇼핑</h3>
+		    
+		    <!-- <h1 id='itemTitle'>한국의 전통문화를 뼈속 깊이 알려드릴게요 ~!!!</h1>
+        <h3 id='itemPrice'>  금액 : 100,000원</h3>
+        <h3 id='itemInter'>관심사 : 전통 / 음식 / 쇼핑</h3> -->
+		    <h1 id='itemTitle'></h1>
+        <h3 id='itemPrice'></h3>
+        <h3 id='itemInter'></h3>
 		   <!--  <div id='anchorMenu' style='display:none'>
 		    <a href="#tourPlan"
         class="btn btn-default btn-lg active" role="button">여행일정</a>
@@ -737,7 +742,7 @@ $('.bxslider').bxSlider({
 <script>
 $(function(){
 	var reqNo = getParameterByName(itemNo);
-	
+	loadProduct(reqNo);
 });
 function getParameterByName(name) {
     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
@@ -746,12 +751,10 @@ function getParameterByName(name) {
 function loadProduct(itemNo) {
 	  $.getJSON('../item/view.do?no=' + productNo, 
 	    function(data){
-	      $('#btnCancel').click();
-	      
-	      $('#no').val(data.product.no);
-	      $('#name').val(data.product.name);
-	      $('#quantity').val(data.product.quantity);
-	      $('#makerNo').val(data.product.makerNo);
+	      $('#itemTitle').html(data.item.title);
+	      $('#itemPrice').html(data.item.price);
+	      $('#itemInter').html("관심사 : " + data.item.interest1 + " / " + data.item.interest2 + " / " + data.item.interest3);
+	      /* $('#makerNo').val(data.product.makerNo);
 	      
 	      if (data.product.madeDate) {
 	        $('#madeDate').val(yyyyMMdd(data.product.madeDate));
@@ -760,7 +763,7 @@ function loadProduct(itemNo) {
 	      product = data.product;
 	      
 	      $('.my-update-form').css('display', '');
-	      $('.my-new-form').css('display', 'none');
+	      $('.my-new-form').css('display', 'none'); */
 	    });
 	}   
 </script>
