@@ -26,6 +26,7 @@ public class Item implements Serializable{
 
 	protected String          photoUrl;
 	protected List<?>         photoList;
+	protected List<?>         travelScheduleList;
 
 
 	@Override
@@ -37,8 +38,13 @@ public class Item implements Serializable{
 				+ ", travelDay=" + travelDay + ", travelTime=" + travelTime
 				+ ", travelContent=" + travelContent + ", photoUrl=" + photoUrl + "]";
 	}
-
-
+	
+	public List<?> getTravelScheduleList() {
+		return travelScheduleList;
+	}
+	public void setTravelScheduleList(List<?> travelScheduleList) {
+		this.travelScheduleList = travelScheduleList;
+	}
 	public List<?> getPhotoList() {
 		return photoList;
 	}

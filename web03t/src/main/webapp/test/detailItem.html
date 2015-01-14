@@ -734,7 +734,36 @@ $('.bxslider').bxSlider({
 	  pagerCustom: '#bx-pager'
 	});
 </script>
-    
+<script>
+$(function(){
+	var reqNo = getParameterByName(itemNo);
+	
+});
+function getParameterByName(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+   }
+   
+function loadProduct(itemNo) {
+	  $.getJSON('../item/view.do?no=' + productNo, 
+	    function(data){
+	      $('#btnCancel').click();
+	      
+	      $('#no').val(data.product.no);
+	      $('#name').val(data.product.name);
+	      $('#quantity').val(data.product.quantity);
+	      $('#makerNo').val(data.product.makerNo);
+	      
+	      if (data.product.madeDate) {
+	        $('#madeDate').val(yyyyMMdd(data.product.madeDate));
+	      }
+	      
+	      product = data.product;
+	      
+	      $('.my-update-form').css('display', '');
+	      $('.my-new-form').css('display', 'none');
+	    });
+	}   
+</script>
     
 </body>
 </html>

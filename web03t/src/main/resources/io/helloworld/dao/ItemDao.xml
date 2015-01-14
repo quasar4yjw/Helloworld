@@ -26,6 +26,18 @@
     <result column="I_NO" property="itemNo"/>
     <result column="INTER" property="interest"/>    
   </resultMap>
+  
+  <resultMap type="map" id="itemMap">
+    <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
+    <id column="I_NO" property="no"/>    
+    <result column="COUNTRY" property="country"/>
+    <result column="LANG" property="language"/>
+    <result column="TITLE" property="title"/>
+    <result column="PLACE" property="place"/>
+    <result column="PRICE" property="price"/>
+    <result column="P_URL" property="photoUrl"/>
+    </resultMap>
+  
 
   <insert id="insertItem" parameterType="Map"
   useGeneratedKeys="true" keyColumn="I_NO" keyProperty="itemNo">
@@ -86,5 +98,18 @@
     INSERT INTO DET_PHOTS(P_URL)
     VALUES(#{photoUrl});
   </insert> -->
+  
+  <select id="selectOne" parameterType="int" resultMap="itemMap">
+    WHERE I_NO=#{value}
+  </select>
+  
+  <select id="selectPhoto" parameterType="int" 
+      resultMap="productPhotoMap">
+    SELECT PPNO, PNO, URL
+    FROM PROD_PHOTS
+    <if test="value > 0">
+    WHERE PNO = #{value}
+    </if>
+  </select>
   
 </mapper>
