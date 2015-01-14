@@ -1,6 +1,7 @@
 package io.helloworld.service;
 
 import io.helloworld.dao.ItemDao;
+import io.helloworld.dao.TagDao;
 import io.helloworld.domain.Item;
 
 import java.io.UnsupportedEncodingException;
@@ -22,6 +23,8 @@ public class ItemService {
 
 	@Autowired
 	ItemDao itemDao;
+	@Autowired
+  TagDao tagDao;
 
 
 	@Transactional(
@@ -62,6 +65,10 @@ public class ItemService {
 
 		return itemDao.selectList(paramMap);
 	}
+	public List<?> getTag() {
+
+    return tagDao.selectInter();
+  }
 
 	public int getMaxPageNo(int pageSize) {
 		int totalSize = itemDao.totalSize();

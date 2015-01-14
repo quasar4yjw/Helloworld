@@ -62,8 +62,9 @@ public class ItemControl {
 		resultMap.put("status", "success");
 		resultMap.put("currPageNo", pageNo);
 		resultMap.put("maxPageNo", maxPageNo);
-		resultMap.put("items", 
-				itemService.getList(pageNo, pageSize));
+	   resultMap.put("items", 
+	       itemService.getList(pageNo, pageSize));
+	   resultMap.put("tags",itemService.getTag());
 
 		return resultMap;
 	}
