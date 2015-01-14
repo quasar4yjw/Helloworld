@@ -44,13 +44,18 @@
     </if>
   </select>
   
-  <select id="totalSize" resultType="int">
+  <select id="totalSize" parameterType="map" resultType="int">
     SELECT count(C_NO) FROM BOOK_INFO
+    <if test="selected == 'req'">
+     WHERE C_STAT = '예약요청'
+    </if>
+    <if test="selected == 'succ'">
+     WHERE C_STAT = '예약완료'
+    </if>
+    <if test="selected == 'cancel'">
+     WHERE C_STAT = '예약취소'
+    </if>
   </select>
-  
-  <delete id="delete" parameterType="int">
-    DELETE FROM BOOK_INFO WHERE C_NO=#{value}
-  </delete>
 
   
 </mapper>

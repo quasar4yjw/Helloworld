@@ -6,7 +6,10 @@
               <a class="cbp-vm-image" href="#"><img src="../fileupload/{{photoUrl}}.jpg"></a>
               <h3 class="cbp-vm-title {{connectStatus}}">{{connectStatus}}</h3>
               <div class="cbp-vm-price">{{price}}</div>
-              <div class="cbp-vm-details">{{title}} </div><button type=button>버튼이 안생겨555</button>
+              <div class="cbp-vm-details">{{title}} </div>
 
+                  {{{btnAccept "수락" connectStatus }}}
+                  {{{btnReject "거절" connectStatus }}}
+                  
             </li>       
 {{/each}}

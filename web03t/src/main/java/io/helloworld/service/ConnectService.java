@@ -47,22 +47,15 @@ public class ConnectService {
     return connectDao.selectConnect(paramMap);
   }
   
-  public int getMaxPageNo(int pageSize) {
-    int totalSize = connectDao.totalSize();
+  public int getMaxPageNo(int pageSize, String selected) {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("selected", selected);
+    
+    int totalSize = connectDao.totalSize(paramMap);
     int maxPageNo = totalSize / pageSize;
     if ((totalSize % pageSize) > 0) maxPageNo++;
     
     return maxPageNo;
   }
-
-  @Transactional(
-      rollbackFor=Exception.class, 
-      propagation=Propagation.REQUIRED)
-  public void delete(int itemNo) {
-    /*connectDao.deletePhoto(productNo);*/
-    connectDao.delete(itemNo);
-  }
-  
-  
 
 }

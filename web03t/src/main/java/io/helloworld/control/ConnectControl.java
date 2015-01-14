@@ -31,7 +31,7 @@ public class ConnectControl {
     if (pageSize <= 0)
       pageSize = PAGE_DEFAULT_SIZE;
     
-    int maxPageNo = connectService.getMaxPageNo(pageSize);
+    int maxPageNo = connectService.getMaxPageNo(pageSize, selected);
     
     if (pageNo <= 0) pageNo = 1;
     if (pageNo > maxPageNo) pageNo = maxPageNo;
@@ -46,12 +46,7 @@ public class ConnectControl {
       
     return resultMap;
   }
-  
-  @RequestMapping("/delete")
-  public String delete(int no) throws Exception {
-    connectService.delete(no);
-    return "redirect:list.do";
-  }
+
   
 }
 
