@@ -760,8 +760,14 @@ $(function(){
 		$.getJSON('../item/view.do?itemNo=' + itemNo, function(data) {
 			console.log(data);
 			console.log(data.item);
+			var itemInter = "관심사 : ";
+			for (var i = 0; i < data.inters.length; i ++){
+				if (i + 1 == data.inters.length) itemInter += data.inters[i].interest;
+				else itemInter += data.inters[i].interest + " / ";
+			}
 			$('#itemTitle').html(data.item.title);
 			$('#itemPrice').html("금액 : " + numberWithCommas(data.item.price) + " 원");
+			$('#itemInter').html(itemInter);
 			/* $('#makerNo').val(data.product.makerNo);
 			
 			if (data.product.madeDate) {
