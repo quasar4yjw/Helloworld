@@ -1,9 +1,11 @@
 package io.helloworld.service;
 
 import io.helloworld.dao.ConnectDao;
+import io.helloworld.domain.Connect;
 
 import java.util.HashMap;
 import java.util.List;
+import java63.web03.domain.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,6 +58,14 @@ public class ConnectService {
     if ((totalSize % pageSize) > 0) maxPageNo++;
     
     return maxPageNo;
+  }
+
+  
+  @Transactional(
+      rollbackFor=Exception.class, 
+      propagation=Propagation.REQUIRED)
+  public void update(Connect connect) {
+    connectDao.update(connect);
   }
 
 }

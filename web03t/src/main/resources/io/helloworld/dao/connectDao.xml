@@ -29,6 +29,7 @@
       T2.C_SDATE,
       T3.P_URL
       FROM (BOOK_INFO T2 LEFT JOIN ITEMS T1 on T1.I_NO=T2.I_NO) LEFT JOIN DET_PHOTS T3 on T2.I_NO=T3.I_NO
+      
     <if test="selected == 'req'">
      WHERE T2.C_STAT = '예약요청'
     </if>
@@ -39,9 +40,11 @@
      WHERE T2.C_STAT = '예약취소'
     </if>
     GROUP BY T2.C_NO
+    ORDER BY T2.C_NO DESC
     <if test="pageSize > 0">
       limit #{startIndex}, #{pageSize}
     </if>
+    
   </select>
   
   <select id="totalSize" parameterType="map" resultType="int">
@@ -56,6 +59,12 @@
      WHERE C_STAT = '예약취소'
     </if>
   </select>
+  
+   <update id="update" parameterType="Connect">
+    UPDATE BOOK_INFO SET 
+      C_STAT= '예약취소'
+    WHERE C_NO=#{connectNo}
+  </update>
 
   
 </mapper>
