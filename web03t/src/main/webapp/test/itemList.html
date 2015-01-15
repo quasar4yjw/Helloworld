@@ -937,11 +937,11 @@ $('.dialog').load('loginDialog.html');
            
               
               for(var j = 0; j < tags.length ; j++){
-                console.log(items[i].no);
+                
                 $('<span>').html("").appendTo($('.inter'));
                 if(items[i].no==tags[j].itemNo)  {
-                  console.log(items[i].no,tags[j].itemNo,tags[j].interest )
-                  $('<span>').html(tags[j].interest ).appendTo($('.inter'+i));
+                  
+                  $('<span>').html(tags[j].interest+"   " ).appendTo($('.inter'+i));
                 }
               }
         }
