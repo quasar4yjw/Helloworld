@@ -3,6 +3,7 @@ package io.helloworld.control;
 import io.helloworld.service.ItemService;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -64,11 +65,12 @@ public class ItemControl {
 	@RequestMapping("/view")
 	public Object view(String itemNo, HttpSession session) throws Exception {
 		HashMap itemMap = itemService.get(Integer.parseInt(itemNo));
-		//HashMap interMap = itemService.getInter(Integer.parseInt(itemNo));
+		List interMap = itemService.getInter(Integer.parseInt(itemNo));
 		//int non = (int)session.getAttribute("view2Page");
 		HashMap<String,Object> resultMap = new HashMap<>();
 		resultMap.put("status", "success");
 		resultMap.put("item", itemMap);
+		resultMap.put("inters", interMap);
 		/*resultMap.put("photos", datamap.getPhotoList());
 		resultMap.put("travels", datamap.getTravelScheduleList());*/
 		return resultMap; 

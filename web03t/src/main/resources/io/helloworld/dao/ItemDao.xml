@@ -104,6 +104,10 @@
     WHERE I_NO=#{value}
   </select>
   
+   <select id="selectInters" parameterType="int" resultMap="tagsMap">
+    SELECT T_NO, I_NO, INTER
+    FROM TAGS WHERE I_NO=#{value}
+  </select>
   <!-- <select id="selectPhoto" parameterType="int" 
       resultMap="productPhotoMap">
     SELECT PPNO, PNO, URL

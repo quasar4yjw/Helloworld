@@ -83,6 +83,12 @@ public class ItemService {
 		//item.setTravelScheduleList( itemDao.selectTravelSchedule(itemNo));
 		return datamap;
 	}
+	public List getInter(int itemNo) {
+		List datamap = itemDao.selectInters(itemNo);
+		//item.setPhotoList( itemDao.selectPhoto(itemNo));
+		//item.setTravelScheduleList( itemDao.selectTravelSchedule(itemNo));
+		return datamap;
+	}
 
 	/*  @Transactional(
       rollbackFor=Exception.class,
