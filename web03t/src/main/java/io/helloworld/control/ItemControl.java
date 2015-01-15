@@ -64,6 +64,7 @@ public class ItemControl {
 	@RequestMapping("/view")
 	public Object view(String itemNo, HttpSession session) throws Exception {
 		HashMap itemMap = itemService.get(Integer.parseInt(itemNo));
+		//HashMap interMap = itemService.getInter(Integer.parseInt(itemNo));
 		//int non = (int)session.getAttribute("view2Page");
 		HashMap<String,Object> resultMap = new HashMap<>();
 		resultMap.put("status", "success");

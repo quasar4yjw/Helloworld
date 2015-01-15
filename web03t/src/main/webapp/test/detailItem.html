@@ -744,27 +744,36 @@ $(function(){
 	var reqNo = getParameterByName("itemNo");
 	loadProduct(reqNo);
 });
-function getParameterByName(name) {
-    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
-   }
-   
-function loadProduct(itemNo) {
-	  $.getJSON('../item/view.do?itemNo=' + itemNo, 
-	    function(data){
-	      $('#itemTitle').html(data.item.title);
-	      $('#itemPrice').html(data.item.price);
-	      /* $('#makerNo').val(data.product.makerNo);
-	      
-	      if (data.product.madeDate) {
-	        $('#madeDate').val(yyyyMMdd(data.product.madeDate));
-	      }
-	      
-	      product = data.product;
-	      
-	      $('.my-update-form').css('display', '');
-	      $('.my-new-form').css('display', 'none'); */
-	    });
-	}   
+
+	function getParameterByName(name) {
+		return decodeURIComponent((new RegExp('[?|&]' + name + '='
+				+ '([^&;]+?)(&|#|;|$)').exec(location.search) || [ , "" ])[1]
+				.replace(/\+/g, '%20'))
+				|| null;
+	}
+	function numberWithCommas(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	
+	
+	function loadProduct(itemNo) {
+		$.getJSON('../item/view.do?itemNo=' + itemNo, function(data) {
+			console.log(data);
+			console.log(data.item);
+			$('#itemTitle').html(data.item.title);
+			$('#itemPrice').html("금액 : " + numberWithCommas(data.item.price) + " 원");
+			/* $('#makerNo').val(data.product.makerNo);
+			
+			if (data.product.madeDate) {
+			  $('#madeDate').val(yyyyMMdd(data.product.madeDate));
+			}
+			
+			product = data.product;
+			
+			$('.my-update-form').css('display', '');
+			$('.my-new-form').css('display', 'none'); */
+		});
+	}
 </script>
     
 </body>
