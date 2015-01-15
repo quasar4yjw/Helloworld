@@ -24,11 +24,12 @@ public class ConnectService {
   
   /*public void status(Connect connect) {*/
   
-  public List<?> getList(int pageNo, int pageSize, String selected) {
+  public List<?> getList(int pageNo, int pageSize, String selected, String userType) {
     HashMap<String,Object> paramMap = new HashMap<>();
     paramMap.put("startIndex", ((pageNo - 1) * pageSize));
     paramMap.put("pageSize", pageSize);
     paramMap.put("selected", selected);
+    paramMap.put("userType", userType);
     
 /*    if(selected == "req"){
       resultMap.put("connects", 

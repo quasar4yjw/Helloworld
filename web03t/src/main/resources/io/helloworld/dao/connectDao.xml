@@ -40,7 +40,11 @@
      WHERE T2.C_STAT = '예약취소'
     </if>
     GROUP BY T2.C_NO
+    
+    <if test="userType == 'tourist'">
     ORDER BY T2.C_NO DESC
+    </if>
+    
     <if test="pageSize > 0">
       limit #{startIndex}, #{pageSize}
     </if>

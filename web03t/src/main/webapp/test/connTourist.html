@@ -46,6 +46,7 @@
  .cbp-vm-date {
   display: inline-block;
   margin-left: 5px;
+  text-align :center;
  }
  .conn-menubar {
   padding-bottom: 10px;
@@ -55,6 +56,7 @@
   .menu-date {
   display: inline-block;
   margin: 0px 175px 0px 10px;
+  text-align :center;
 }
   .menu-status {
   display: inline-block;
@@ -101,13 +103,12 @@ padding-left: 40%;
           <a href="#" class="myButton myButtonReq">예약요청</a>
           <a href="#" class="myButton myButtonSucc">예약완료</a>
           <a href="#" class="myButton myButtonCancel">예약취소</a>
-          <a href="#" class="myButton myButtonCancel">예약거절</a>
           
           </div>
           
           <div class="conn-menubar">
           <div class="menu-date">
-          여행 날짜
+          신청(여행)날짜
           </div>
           <div class="menu-status">
           상태
@@ -116,88 +117,11 @@ padding-left: 40%;
           가격
           </div>
           <div class="menu-item">
-          관광 상품
+          여행 제목
           </div>
           
           </div>
          
-          <!-- <ul>
-          
-            <li class="test-hover" onclick="location.href='#'";>
-            
-              <div class="cbp-vm-date">2014.01.22</div>
-              <a class="cbp-vm-image" href="#"><img src="../images/conn1.jpg"></a>
-              <h3 class="cbp-vm-title" id="reserv-request">예약요청</h3>
-              <div class="cbp-vm-price">100,000 원</div>
-              <div class="cbp-vm-details">
-                동산위에 올라서서 파란 하늘 바라 보며
-              </div>
-              
-              <a class="cbp-vm-icon cbp-vm-add" href="#">취소</a>
-            </li>
-            
-            <li class="test-hover">
-              <div class="cbp-vm-date">2014.01.22</div>
-              <a class="cbp-vm-image" href="#"><img src="../images/conn2.jpg"></a>
-              <h3 class="cbp-vm-title" id="reserv-complete">예약완료</h3>
-              <div class="cbp-vm-price">20,000 원</div>
-              <div class="cbp-vm-details">
-                저랑 치즈케이크 드실래요?
-              </div>
-              
-            </li>
-            <li class="test-hover">
-              <div class="cbp-vm-date">2014.01.22</div>
-              <a class="cbp-vm-image" href="#"><img src="../images/conn3.jpg"></a>
-              <h3 class="cbp-vm-title" id="reserv-cancel">예약취소</h3>
-              <div class="cbp-vm-price">90,000 원</div>
-              <div class="cbp-vm-details">
-                Kohlrabi bok choy broccoli rabe welsh onion spring onion tatsoi ricebean kombu chard.
-              </div>
-              
-            </li>
-            <li class="test-hover">
-              <div class="cbp-vm-date">2014.01.22</div>
-              <a class="cbp-vm-image" href="#"><img src="../images/conn4.jpg"></a>
-              <h3 class="cbp-vm-title" id="reserv-cancel">예약취소</h3>
-              <div class="cbp-vm-price">120,000 원</div>
-              <div class="cbp-vm-details">
-                Melon sierra leone bologi carrot peanut salsify celery onion jícama summer purslane.
-              </div>
-              
-            </li>
-            <li class="test-hover">
-              <div class="cbp-vm-date">2014.01.22</div>
-              <a class="cbp-vm-image" href="#"><img src="../images/conn5.jpg"></a>
-              <h3 class="cbp-vm-title" id="reserv-complete">예약완료</h3>
-              <div class="cbp-vm-price">150,000 원</div>
-              <div class="cbp-vm-details">
-                Celery carrot napa cabbage wakame zucchini celery chard beetroot jícama sierra leone.
-              </div>
-            </li>
-            <li class="test-hover">
-              <div class="cbp-vm-date">2014.01.22</div>
-              <a class="cbp-vm-image" href="#"><img src="../images/conn6.jpg"></a>
-              <h3 class="cbp-vm-title" id="reserv-complete">예약완료</h3>
-              <div class="cbp-vm-price">200,000 원</div>
-              <div class="cbp-vm-details">
-                Catsear cabbage tomato parsnip cucumber pea brussels sprout spring onion shallot swiss .
-              </div>
-            </li>
-            <li class="test-hover">
-              <div class="cbp-vm-date">2014.01.22</div>
-              <a class="cbp-vm-image" href="#"><img src="../images/conn7.jpg"></a>
-              <h3 class="cbp-vm-title" id="reserv-request">예약요청</h3>
-              <div class="cbp-vm-price">180,000 원</div>
-              <div class="cbp-vm-details">
-                Mung bean taro chicory spinach komatsuna fennel.
-              </div>
-              <a class="cbp-vm-icon cbp-vm-add" href="#">취소</a>
-            </li>
-            
-          </ul>
-           -->
-           
         <ul id='connectUl'>            
        
            </ul>
@@ -251,7 +175,7 @@ padding-left: 40%;
     function loadItemList(pageNo) {
       if (pageNo <= 0) pageNo = currPageNo;
       
-      $.getJSON('../connect/status.do?pageNo=' + pageNo + "&selected=" + selected, 
+      $.getJSON('../connect/status.do?pageNo=' + pageNo + "&selected=" + selected + "&userType=tourist", 
         function(data){
           console.log(data);
           setPageNo(data.currPageNo, data.maxPageNo);
@@ -268,11 +192,7 @@ padding-left: 40%;
     }
  
 </script>
-    
-    
-    
-    
-    
+
     <script>
     
     $( '.myButtonTotal' ).click(function() {
@@ -323,6 +243,11 @@ padding-left: 40%;
       });
 
     
+    Handlebars.registerHelper('yyyyMMdd', function(datetime) {
+    	  return yyyyMMdd(datetime); 
+        });
+    
+    
     Handlebars.registerHelper("btnCancel", function (title, connectStatus, no) {
     	if (connectStatus == '예약요청'){
         var btnCancel = $('<a class="cbp-vm-add btnCancel" href="#"></a>') .text(title).attr('onclick', 'updateConnect('+ no +')').attr('cno', no);
@@ -333,31 +258,50 @@ padding-left: 40%;
     		console.log(title);
     	}
     });
-    
-    function updateConnect(no) {
-    	
-         $.getJSON('../connect/update.do' 
-                , {
-                  connectNo:no
-                  }
-                , function(result){
-                      if (result.status == "success") {
-                    	  loadItemList(1);
-                        alert("변경 성공!");
-                      } else {
-                        alert("변경 실패!");
-                      }
-                    }  
-                
-                
-                ); 
-                };
-          
-
+  
+        function updateConnect(no) {
+                if (confirm('정말 예약을 취소하시겠습니까?')) {
+                        
+                        $.getJSON('../connect/update.do' 
+                               , {
+                                 connectNo:no
+                                 }
+                               , function(result){
+                                     if (result.status == "success") {
+                                       alert("예약이 취소되었습니다.");
+                                       loadItemList(1);
+                                     } else {
+                                       alert("서버가 바쁩니다. 나중에 다시 시도해주세요.");
+                                     }
+                                   }  
+                               );}
+                else {
+                    // Do nothing!
+                	   }
+             }
     
 
     </script>
     
+<script>
+function yyyyMMdd(date) {
+    if (date) {
+      var date = new Date(date);
+      var str = date.getFullYear() + '-';
+      
+      if (date.getMonth() < 9) str += '0';
+      str += (date.getMonth() + 1) + '-';
+      
+      if (date.getDate() < 10) str += '0';
+      str += date.getDate();
+      
+      return str;
+      
+    } else {
+      return '';
+    }
+  }
+</script>
 
 
  

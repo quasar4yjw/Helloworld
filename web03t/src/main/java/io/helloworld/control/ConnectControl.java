@@ -27,7 +27,8 @@ public class ConnectControl {
   public Object status(
       @RequestParam(defaultValue="1") int pageNo,
       @RequestParam(defaultValue="6") int pageSize,
-      @RequestParam(defaultValue="all") String selected) throws Exception {
+      @RequestParam(defaultValue="all") String selected,
+      @RequestParam String userType) throws Exception {
     
     if (pageSize <= 0)
       pageSize = PAGE_DEFAULT_SIZE;
@@ -42,7 +43,7 @@ public class ConnectControl {
     resultMap.put("currPageNo", pageNo);
     resultMap.put("maxPageNo", maxPageNo);
     resultMap.put("connects", 
-          connectService.getList(pageNo, pageSize, selected));
+          connectService.getList(pageNo, pageSize, selected, userType));
     
       
     return resultMap;
