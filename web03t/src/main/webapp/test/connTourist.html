@@ -265,14 +265,12 @@ padding-left: 40%;
           });
         });
     }
-   
-  
-  
-  
-  
+ 
 </script>
     
-
+    
+    
+    
     
     <script>
     
@@ -314,11 +312,7 @@ padding-left: 40%;
           loadItemList(1);
           
         });
-/*     
-    Handlebars.registerHelper('hello', function(title) {
-    	  return 'Hello123456 ' + title;
-    	});
-   */   
+ 
    
     Handlebars.registerHelper('stat', function(connectStatus) {
     	if (connectStatus == '예약요청')
@@ -326,39 +320,45 @@ padding-left: 40%;
     else if(connectStatus == '예약완료')  return connectStatus;
     else if(connectStatus == '예약취소')  return connectStatus;
       });
+
     
- 
-    /* Handlebars.registerHelper("button", function(title) {
-   
-    	var button = $('<a class="cbp-vm-add" href="#">').text(title);
-         button.click(function() {
-            alert('dd');
-        }); 
-        return $('<div>').append(button).html();
-    });
-    $(function(){
-    	$(".cbp-vm-add").click(function(){
-            alert("button");
-        });    
-    }); */
-    
-    Handlebars.registerHelper("btnCancel", function (title, connectStatus) {
+    Handlebars.registerHelper("btnCancel", function (title, connectStatus, no) {
     	if (connectStatus == '예약요청'){
-        var btnCancel = $('<a class="cbp-vm-add" href="#"></a>').text(title).attr('onclick', 'button_clickEvent()');
+        var btnCancel = $('<a class="cbp-vm-add btnCancel" href="#"></a>') .text(title).attr('onclick', 'updateConnect('+ no +')').attr('cno', no);
         return $('<div></div>').append(btnCancel).html();
+
     	} else {
     		console.log(connectStatus); 
     		console.log(title);
     	}
     });
-
-    var button_clickEvent = function () {
-        alert("btnCancel " + $(this).text() + " clicked.");
-    };
     
+    function updateConnect(no) {
+    	
+         $.getJSON('../connect/update.do' 
+                , {
+                  connectNo:no
+                  }
+                , function(result){
+                      if (result.status == "success") {
+                    	  loadItemList(1);
+                        alert("변경 성공!");
+                      } else {
+                        alert("변경 실패!");
+                      }
+                    }  
+                
+                
+                ); 
+                };
+          
+
+    
+
     </script>
     
-    
+
+
  
   </body>
 </html>

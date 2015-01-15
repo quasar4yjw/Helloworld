@@ -56,6 +56,12 @@
      WHERE C_STAT = '예약취소'
     </if>
   </select>
+  
+   <update id="update" parameterType="Connect">
+    UPDATE BOOK_INFO SET 
+      C_STAT= '예약취소'
+    WHERE C_NO=#{connectNo}
+  </update>
 
   
 </mapper>

@@ -1,5 +1,6 @@
 package io.helloworld.control;
 
+import io.helloworld.domain.Connect;
 import io.helloworld.service.ConnectService;
 
 import java.util.HashMap;
@@ -46,7 +47,25 @@ public class ConnectControl {
       
     return resultMap;
   }
+  
+/*  @RequestMapping("/statusUpdate")
+  public Object statusUpdate() throws Exception {
 
+    
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("travels", item.getTravelScheduleList());
+    return resultMap;
+  }
+*/
+  
+  @RequestMapping("/update")
+  public Object update(Connect connect) throws Exception {
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    connectService.update(connect);
+    return resultMap;
+  }
   
 }
 
