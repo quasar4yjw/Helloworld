@@ -762,7 +762,7 @@ $(function(){
 			console.log(data.item);
 			var itemInter = "관심사 : ";
 			for (var i = 0; i < data.inters.length; i ++){
-				if (i + 1 == data.inters.length) itemInter += data.inters[i].interest;
+				if (i + 1 == data.inters.length) itemInter += data.inters[i].interest; 
 				else itemInter += data.inters[i].interest + " / ";
 			}
 			$('#itemTitle').html(data.item.title);
