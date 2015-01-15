@@ -74,7 +74,7 @@
       T1.TITLE,
       T1.PLACE,
       T1.PRICE,
-      MIN(T2.P_URL)    
+      T2.P_URL    
     FROM ITEMS T1 LEFT OUTER JOIN DET_PHOTS T2 
     USING(I_NO)
     GROUP BY T1.I_NO

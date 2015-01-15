@@ -925,7 +925,7 @@ $('.dialog').load('loginDialog.html');
         for (var i = 0; i < items.length; i++) {
           $('<li>').addClass('data-row')
               .append($('<a>').addClass("cbp-vm-image").attr('href','detailItem.html?itemNo=' + items[i].no)
-                  .append($('<img>').attr('src',items[i].photoUrl)))
+                  .append($('<img>').attr('src',"../fileupload/" + items[i].photoUrl+".jpg")))
               .append(
                   
                   $('<a>').attr('href','detailItem.html?itemNo=' + items[i].no)
@@ -941,7 +941,7 @@ $('.dialog').load('loginDialog.html');
                 $('<span>').html("").appendTo($('.inter'));
                 if(items[i].no==tags[j].itemNo)  {
                   
-                  $('<span>').html(tags[j].interest+"   " ).appendTo($('.inter'+i));
+                  $('<span>').html(tags[j].interest+" " ).appendTo($('.inter'+i));
                 }
               }
         }
