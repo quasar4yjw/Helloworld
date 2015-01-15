@@ -71,7 +71,7 @@ public class ItemControl {
 		resultMap.put("item", itemMap);
 		/*resultMap.put("photos", datamap.getPhotoList());
 		resultMap.put("travels", datamap.getTravelScheduleList());*/
-		return resultMap;
+		return resultMap; 
 	}
 
 	/* @RequestMapping(value="/addPlanSchedule", method=RequestMethod.POST)
