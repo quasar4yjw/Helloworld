@@ -8,7 +8,7 @@
 -->
 
 <mapper namespace="io.helloworld.dao.ItemDao">
-
+ 
   <resultMap type="map" id="itemListMap">
     <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
     <id column="I_NO" property="no"/>    
