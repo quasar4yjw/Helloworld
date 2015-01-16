@@ -13,65 +13,59 @@ public class Connect implements Serializable{
   protected Date      connectEndDate;
   protected String    connectStatus;
   protected Date      connectDate;
+  protected String    buttonType;
   
   @Override
   public String toString() {
     return "Connect [itemNo=" + itemNo + ", connectNo=" + connectNo
         + ", connectStartDate=" + connectStartDate + ", connectEndDate="
         + connectEndDate + ", connectStatus=" + connectStatus
-        + ", connectDate=" + connectDate + "]";
+        + ", connectDate=" + connectDate + ", buttonType=" + buttonType + "]";
   }
-
+  
   public int getItemNo() {
     return itemNo;
   }
-
   public void setItemNo(int itemNo) {
     this.itemNo = itemNo;
   }
-
   public int getConnectNo() {
     return connectNo;
   }
-
   public void setConnectNo(int connectNo) {
     this.connectNo = connectNo;
   }
-
   public Date getConnectStartDate() {
     return connectStartDate;
   }
-
   public void setConnectStartDate(Date connectStartDate) {
     this.connectStartDate = connectStartDate;
   }
-
   public Date getConnectEndDate() {
     return connectEndDate;
   }
-
   public void setConnectEndDate(Date connectEndDate) {
     this.connectEndDate = connectEndDate;
   }
-
   public String getConnectStatus() {
     return connectStatus;
   }
-
   public void setConnectStatus(String connectStatus) {
     this.connectStatus = connectStatus;
   }
-
   public Date getConnectDate() {
     return connectDate;
   }
-
   public void setConnectDate(Date connectDate) {
     this.connectDate = connectDate;
   }
+  public String getButtonType() {
+    return buttonType;
+  }
+  public void setButtonType(String buttonType) {
+    this.buttonType = buttonType;
+  }
   
-  
-  
-  
+ 
   
 }

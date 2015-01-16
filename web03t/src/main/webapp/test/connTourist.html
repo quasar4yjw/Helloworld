@@ -248,14 +248,14 @@ padding-left: 40%;
         });
     
     
-    Handlebars.registerHelper("btnCancel", function (title, connectStatus, no) {
+    Handlebars.registerHelper("btnReject", function (title, connectStatus, no) {
     	if (connectStatus == '예약요청'){
-        var btnCancel = $('<a class="cbp-vm-add btnCancel" href="#"></a>') .text(title).attr('onclick', 'updateConnect('+ no +')').attr('cno', no);
-        return $('<div></div>').append(btnCancel).html();
+        var btnReject = $('<a class="cbp-vm-add"></a>').text(title).attr('onclick', 'updateConnect('+ no +')');
+        return $('<div></div>').append(btnReject).html();
 
     	} else {
-    		console.log(connectStatus); 
-    		console.log(title);
+    		//console.log(connectStatus); 
+    		//console.log(title);
     	}
     });
   
@@ -264,12 +264,13 @@ padding-left: 40%;
                         
                         $.getJSON('../connect/update.do' 
                                , {
-                                 connectNo:no
+                                 connectNo:no,
+                                 buttonType:"btnReject"
                                  }
                                , function(result){
                                      if (result.status == "success") {
                                        alert("예약이 취소되었습니다.");
-                                       loadItemList(1);
+                                       loadItemList(currPageNo);
                                      } else {
                                        alert("서버가 바쁩니다. 나중에 다시 시도해주세요.");
                                      }

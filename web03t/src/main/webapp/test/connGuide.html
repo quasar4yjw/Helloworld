@@ -126,7 +126,7 @@ padding-left: 40%;
 					
 					<div class="conn-menubar">
 					<div class="menu-date">
-					여행 날짜
+					신청(여행)날짜
 					</div>
 					<div class="menu-status">
           상태
@@ -272,7 +272,7 @@ var selected = "all";
     function loadItemList(pageNo) {
       if (pageNo <= 0) pageNo = currPageNo;
       
-      $.getJSON('../connect/status.do?pageNo=' + pageNo + "&selected=" + selected, 
+      $.getJSON('../connect/status.do?pageNo=' + pageNo + "&selected=" + selected + "&userType=guide", 
         function(data){
           console.log(data);
           setPageNo(data.currPageNo, data.maxPageNo);
@@ -334,7 +334,7 @@ var selected = "all";
           
         });
 
-    
+/*     
     Handlebars.registerHelper("btnAccept", function (title, connectStatus) {
         if (connectStatus == '예약요청'){
           var btnAccept = $('<a class="cbp-vm-add" href="#"></a>').text(title).attr('onclick', 'btnAccept_clickEvent()');
@@ -362,9 +362,112 @@ var selected = "all";
 
         var btnReject_clickEvent = function () {
             alert("btnReject " + $(this).text() + " clicked.");
-        };
+        }; */
     
+        
+    </script>
+    <script>
+    
+    Handlebars.registerHelper('stat', function(connectStatus) {
+      if (connectStatus == '예약요청')
+        return connectStatus;
+    else if(connectStatus == '예약완료')  return connectStatus;
+    else if(connectStatus == '예약취소')  return connectStatus;
+      });
+
+    
+    Handlebars.registerHelper('yyyyMMdd', function(datetime) {
+        return yyyyMMdd(datetime); 
+        });
+    
+    
+    Handlebars.registerHelper("btnReject", function (title, connectStatus, no) {
+      if (connectStatus == '예약요청'){
+        var btnReject = $('<a class="cbp-vm-add"></a>') .text(title).attr('onclick', 'connectReject('+ no + ')');
+        return $('<div></div>').append(btnReject).html();
+
+      } else {
+        //console.log(connectStatus); 
+        //console.log(title);
+      }
+    });
+    
+    Handlebars.registerHelper("btnAccept", function (title, connectStatus, no) {
+        if (connectStatus == '예약요청'){
+          var btnAccept = $('<a class="cbp-vm-add"></a>') .text(title).attr('onclick', 'connectAccept('+ no + ')');
+          return $('<div></div>').append(btnAccept).html();
+
+        } else {
+          //console.log(connectStatus); 
+          //console.log(title);
+        }
+      });
+  
+        function connectReject(no) {
+                if (confirm('정말 예약을 거절하시겠습니까?')) {
+                        
+                        $.getJSON('../connect/update.do' 
+                               , {
+                                 connectNo:no,
+                                 buttonType:"btnReject"
+                                 }
+                               , function(result){
+                                     if (result.status == "success") {
+                                       alert("예약을 거절했습니다.");
+                                       loadItemList(currPageNo);
+                                     } else {
+                                       alert("서버가 바쁩니다. 나중에 다시 시도해주세요.");
+                                     }
+                                   }  
+                               );}
+                else {
+                    // Do nothing!
+                     }
+             }
+        
+        function connectAccept(no) {
+            if (confirm('정말 예약을 수락하시겠습니까?')) {
+                    
+                    $.getJSON('../connect/update.do' 
+                           , {
+                             connectNo:no,
+                             buttonType:"btnAccept"
+                             }
+                           , function(result){
+                                 if (result.status == "success") {
+                                   alert("예약을 수락했습니다.");
+                                   loadItemList(currPageNo);
+                                 } else {
+                                   alert("서버가 바쁩니다. 나중에 다시 시도해주세요.");
+                                 }
+                               }  
+                           );}
+            else {
+                // Do nothing!
+                 }
+         }
+    
+
     </script>
     
+<script>
+function yyyyMMdd(date) {
+    if (date) {
+      var date = new Date(date);
+      var str = date.getFullYear() + '-';
+      
+      if (date.getMonth() < 9) str += '0';
+      str += (date.getMonth() + 1) + '-';
+      
+      if (date.getDate() < 10) str += '0';
+      str += date.getDate();
+      
+      return str;
+      
+    } else {
+      return '';
+    }
+  }
+</script>
 	</body>
 </html>

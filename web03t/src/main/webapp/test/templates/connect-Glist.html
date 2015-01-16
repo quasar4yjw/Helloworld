@@ -2,14 +2,18 @@
 {{#each connects}}
  <li class="test-hover">
               
-              <div class="cbp-vm-date">{{connectStartDate}}</div>
+              <div class="cbp-vm-date">
+              {{yyyyMMdd connectDate}}<br>
+              ({{connectStartDate}})
+              </div>
+              
               <a class="cbp-vm-image" href="#"><img src="../fileupload/{{photoUrl}}.jpg"></a>
-              <h3 class="cbp-vm-title {{connectStatus}}">{{connectStatus}}</h3>
+              <h3 class="cbp-vm-title {{connectStatus}}">{{stat connectStatus}}</h3>
               <div class="cbp-vm-price">{{price}}</div>
               <div class="cbp-vm-details">{{title}} </div>
 
-                  {{{btnAccept "수락" connectStatus }}}
-                  {{{btnReject "거절" connectStatus }}}
+                  {{{btnAccept "수락" connectStatus no}}}
+                  {{{btnReject "거절" connectStatus no}}}
                   
             </li>       
 {{/each}}
