@@ -84,10 +84,10 @@ public class ItemService {
 		return datamap;
 	}
 	public List getInter(int itemNo) {
-		List datamap = itemDao.selectInters(itemNo);
+		List datamaps = itemDao.selectInters(itemNo);
 		//item.setPhotoList( itemDao.selectPhoto(itemNo));
 		//item.setTravelScheduleList( itemDao.selectTravelSchedule(itemNo));
-		return datamap;
+		return datamaps;
 	}
 
 	/*  @Transactional(

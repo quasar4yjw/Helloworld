@@ -69,7 +69,7 @@ public class ItemControl {
 	@RequestMapping("/view")
 	public Object view(String itemNo, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws Exception {
 		HashMap itemMap = itemService.get(Integer.parseInt(itemNo));
-		List interMap = itemService.getInter(Integer.parseInt(itemNo));
+		List interMaps = itemService.getInter(Integer.parseInt(itemNo));
 		
 		
 		
@@ -93,7 +93,7 @@ public class ItemControl {
 		HashMap<String,Object> resultMap = new HashMap<>();
 		resultMap.put("status", "success");
 		resultMap.put("item", itemMap);
-		resultMap.put("inters", interMap);
+		resultMap.put("inters", interMaps);
 		/*resultMap.put("photos", datamap.getPhotoList());
 		resultMap.put("travels", datamap.getTravelScheduleList());*/
 		return resultMap; 

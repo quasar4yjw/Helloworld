@@ -78,6 +78,7 @@
     FROM ITEMS T1 LEFT OUTER JOIN DET_PHOTS T2 
     USING(I_NO)
     GROUP BY T1.I_NO
+    ORDER BY T1.I_NO DESC
     <if test="pageSize > 0">
       limit #{startIndex}, #{pageSize}
     </if>
