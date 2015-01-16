@@ -15,6 +15,7 @@ public interface ItemDao {
   int totalSize();
   HashMap selectOne(int itemNo);
   List selectInters(int itemNo);
+  List selectSchedules(int itemNo);
   List<?> selectPhoto(int itemNo);
   List<?> selectTravelSchedule(int itemNo);
   /*List<?> selectTags(int No);*/

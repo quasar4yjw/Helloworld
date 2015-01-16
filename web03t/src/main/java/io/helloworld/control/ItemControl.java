@@ -70,7 +70,7 @@ public class ItemControl {
 	public Object view(String itemNo, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws Exception {
 		HashMap itemMap = itemService.get(Integer.parseInt(itemNo));
 		List interMaps = itemService.getInter(Integer.parseInt(itemNo));
-		
+		List scheduleMaps = itemService.getSchedule(Integer.parseInt(itemNo));
 		
 		
 		/*Cookie[] cookies = request.getCookies();

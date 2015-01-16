@@ -85,8 +85,10 @@ public class ItemService {
 	}
 	public List getInter(int itemNo) {
 		List datamaps = itemDao.selectInters(itemNo);
-		//item.setPhotoList( itemDao.selectPhoto(itemNo));
-		//item.setTravelScheduleList( itemDao.selectTravelSchedule(itemNo));
+		return datamaps;
+	}
+	public List getSchedule(int itemNo) {
+		List datamaps = itemDao.selectSchedules(itemNo);
 		return datamaps;
 	}
 

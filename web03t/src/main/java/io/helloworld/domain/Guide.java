@@ -1,5 +1,6 @@
 package io.helloworld.domain;
 
+import java.beans.Transient;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -18,20 +19,10 @@ public class Guide implements Serializable{
 	protected String             guideLanguage;
 	protected String             introduce;
 	protected String   	      	 photo;
-	protected MultipartFile      photofile;
+	
+	//protected MultipartFile      photofile;
 	
 	
-	@Override
-	public String toString() {
-		return "Guide [email=" + email + ", userName=" + userName + ", tel="
-				+ tel + ", password=" + password + ", birthDate=" + birthDate
-				+ ", guideCount=" + guideCount + ", guideLanguageList="
-				+ guideLanguageList + ", guideLanguage=" + guideLanguage
-				+ ", introduce=" + introduce + ", photo=" + photo
-				+ ", photofile=" + photofile + "]";
-	}
-
-
 	public String getEmail() {
 		return email;
 	}
@@ -131,7 +122,7 @@ public class Guide implements Serializable{
 		this.photo = photo;
 	}
 
-
+	/*
 	public MultipartFile getPhotofile() {
 		return photofile;
 	}
@@ -140,7 +131,8 @@ public class Guide implements Serializable{
 	public void setPhotofile(MultipartFile photofile) {
 		this.photofile = photofile;
 	}
-	
+	*/
+
 	
 	
 
