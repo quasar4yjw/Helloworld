@@ -9,6 +9,19 @@
 
 <mapper namespace="io.helloworld.dao.TouristDao">
 
+  <resultMap type="map" id="touristMap">
+    <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
+    <id column="EMAIL" property="email"/>    
+    <result column="UNAME" property="userName"/>
+    <result column="TEL" property="tel"/>
+    <result column="PWD" property="password"/>
+    <result column="BIRTH" property="birthDate"/>
+    <result column="T_GENDER" property="gender"/>
+    <result column="T_LANG" property="touristLanguage"/>
+    </resultMap>
+
+
+
   <insert id="insert" parameterType="Tourist">
     INSERT INTO USERS(EMAIL, UNAME, TEL, PWD, BIRTH) 
     VALUES (#{email},#{userName},#{tel},#{password},#{birthDate});
@@ -18,6 +31,44 @@
     INSERT INTO TOURISTS(T_EMAIL, T_GENDER, T_LANG) 
     VALUES(#{email}, #{gender}, #{touristLanguage});
   </insert>
+  
+
+
+<select id="select" parameterType="String" resultMap="touristMap">
+    SELECT 
+    T1.EMAIL,
+    T1.UNAME, 
+    T1.TEL, 
+    T1.PWD, 
+    T1.BIRTH,
+    T2.T_GENDER,
+    T2.T_LANG 
+    FROM USERS T1 JOIN TOURISTS T2 on T1.EMAIL = T2.T_EMAIL
+    WHERE T1.EMAIL = #{value}
+  </select>
+  
+
+
+  <update id="update" parameterType="Tourist">
+   
+    UPDATE USERS SET 
+      TEL=#{tel},
+      PWD=#{password}
+    WHERE EMAIL=#{email}
+  
+</update>
+
+  <update id="updateSpecial" parameterType="Tourist">
+   
+    UPDATE TOURISTS SET 
+      T_LANG=#{touristLanguage}
+    WHERE T_EMAIL=#{email}
+  
+</update>
+
+
+
+
   
 </mapper>
 

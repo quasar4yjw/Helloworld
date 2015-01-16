@@ -2,6 +2,14 @@
 <html>
 <head>
 
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" type="text/css" href="../css/normalizeCurved.css" />
+<link rel="stylesheet" type="text/css" href="../css/demoCurved.css" />
+<link rel="stylesheet" href="../fonts/font-awesome-4.2.0/css/font-awesome.minCurved.css">
+<link rel="stylesheet" type="text/css" href="../css/tooltip-curved.css" />
+
+
+
 <!-- 성별라디오버튼 -->
 <link rel="stylesheet" type="text/css" href="../css/normalizeRadioEffect.css" />
     <link rel="stylesheet" type="text/css" href="../css/demoRadioEffect.css" />
@@ -10,9 +18,9 @@
 
 
 
-<link
+<!--  <link
   href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
-  rel="stylesheet">
+  rel="stylesheet">  -->
 
 <link rel="stylesheet" type="text/css" href="../css/defaultConn.css" />
 
@@ -21,12 +29,11 @@
 <link rel="stylesheet" type="text/css" href="../css/componentJoin.css" />
 <link rel="stylesheet" type="text/css" href="../css/cs-select.css" />
 <link rel="stylesheet" type="text/css" href="../css/cs-skin-boxes.css" />
-
-<link rel='stylesheet' href='/web03t/css/bootstrap.min.css'>
-<link rel='stylesheet' href='/web03t/css/bootstrap-theme.min.css'>
+<!-- 
+ <link rel='stylesheet' href='/web03t/css/bootstrap.min.css'>
+<link rel='stylesheet' href='/web03t/css/bootstrap-theme.min.css'>  -->
 <link rel='stylesheet' href='../css/common.css'>
 <link rel='stylesheet' href='/web03t/css/login-popup.css'>
-
 
 
 
@@ -191,6 +198,11 @@ padding: 2em 40% 10em 15%;
 margin: 50px 50px 50px 0px;
 }
 
+.tooltip-west .tooltip-content {
+font-size: 1em;
+left: 7em;
+}
+
 </style>
 
 </head>
@@ -214,7 +226,7 @@ margin: 50px 50px 50px 0px;
           <ol class="fs-fields">
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't send you spam, we promise...">이메일 주소</label>
-              <input class="fs-anim-lower-email2" id="email" name="email" type="email" value="yourid@gmail.com" READONLY>
+              <input class="fs-anim-lower-email2" id="email" name="email" type="email" READONLY>
             </li>
             
             
@@ -222,38 +234,44 @@ margin: 50px 50px 50px 0px;
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">패스워드</label>
-              <input class="fs-anim-lower" id="q1" name="q1" type="password">
+              <input class="fs-anim-lower fs-anim-lower-password" id="password" type="password">
+              <div class="tooltip tooltip-west">
+              <span class="tooltip-content tooltip-content-password">6자리 이상, 영문 +숫자 조합이어야 합니다.</span>
+              </div>
             </li>
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">패스워드 확인</label>
-              <input class="fs-anim-lower" id="q1" name="q1" type="password">
+              <input class="fs-anim-lower fs-anim-lower-repassword" id="repassword" type="password">
+              <div class="tooltip tooltip-west">
+              <span class="tooltip-content tooltip-content-repassword">6자리 이상, 영문 +숫자 조합이어야 합니다.</span>
+            </div>
             </li>
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">이름</label>
-              <input class="fs-anim-lower" id="q1" name="q1" type="text" value="홍길동">
+              <input class="fs-anim-lower" id="touristName" name="q1" type="text" READONLY>
             </li>
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">생일</label>
-              <input class="fs-anim-lower" id="q1" name="q1" type="date" value = "1991-10-04">
+              <input class="fs-anim-lower" id="birthDate" name="q1" type="date" READONLY>
             </li>
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">전화번호</label>
-              <input class="fs-anim-lower" id="q1" name="q1" type="tel" value="+821072225772">
+              <input class="fs-anim-lower" id="tel" name="tel" type="tel" onkeydown="return showKeyCode(event)">
             </li>
 
            <li>
               <label class="fs-field-label fs-anim-upper" for="q1">성별</label>
        <div class='ac-custom ac-radio ac-circle' style="padding-bottom: 10px;">
        <ul>
-       <li><label for = "genderMale">남성</label>
+       <li><label for = "genderMale" id="genderLabel">성별</label>
           <input type = "radio"
                  name = "gender"
-                 id = "genderMale"
-                 value = "남성"
+                 id = "gender"
+                 value = ""
                  checked="checked"></li>
     <!--       <li><label for = "genderFemale">여성</label>
           <input type = "radio"
@@ -272,7 +290,7 @@ margin: 50px 50px 50px 0px;
              <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">사용언어</label>
               <br>
-            <select class="language-selector form-control">    
+            <select class="language-selector form-control" id="touristLanguage">    
                   <option value="id">Bahasa Indonesia</option>    
                   <option value="ms">Bahasa Melayu</option>    
                   <option value="ca">Català</option>    
@@ -302,33 +320,13 @@ margin: 50px 50px 50px 0px;
               </select>
               </li>
             
-            
-            
-            
+          
           </ol><!-- /fs-fields -->
-          <button class="fs-submit" type="submit" style="
-    font-size: 1.5em;
-    padding: 23px 0px;
-">수정하기</button>
+          <button class="fs-submit" type="button" style="font-size: 1.5em; padding: 23px 0px;">수정하기</button>
         </form><!-- /fs-form -->
       <div class="fs-controls"><button class="fs-continue">Continue</button><nav class="fs-nav-dots"><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class="fs-dot-current"></button></nav><span class="fs-numbers"><span class="fs-number-current">6</span><span class="fs-number-total">6</span></span><div class="fs-progress" style="width: 100%;"></div></div><span class="fs-message-error"></span></div><!-- /fs-form-wrap -->
+      
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
  </div>
 
 
@@ -338,59 +336,6 @@ margin: 50px 50px 50px 0px;
   
 
  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   <div class="footer"></div>
@@ -411,7 +356,7 @@ margin: 50px 50px 50px 0px;
   <script type="text/javascript" src='../js/jquery-1.11.1.js'></script>
 
   <script src="../js/classieSelectJoinForm.js"></script>
-  <script src="../js/cbpSplitLayoutSelectJoinForm.js"></script>
+ <!--  <script src="../js/cbpSplitLayoutSelectJoinForm.js"></script> -->
 
 <!-- 성별라디오버튼 -->
   <script src="../js/modernizr.customRadioEffect.js"></script>
@@ -424,7 +369,156 @@ margin: 50px 50px 50px 0px;
     $('.footer').load('footer.html');
   </script>
 
+<script>
+$(function(){
+	loadTourist("U0111@TEST.COM");
+});
+function loadTourist(email) {
+	  $.getJSON('../tourist/view.do?email=' + email, 
+	    function(data){
+		  
+	      
+	      $('#email').val(data.tourist.email);
+	      $('#touristName').val(data.tourist.userName);
+	      genderType(data.tourist.gender);
+	      $('#tel').val(data.tourist.tel);
+	      $('#touristLanguage').val(data.tourist.touristLanguage);
+	      
+	      if (data.tourist.birthDate) {
+	       $('#birthDate').val(data.tourist.birthDate);
+	      }
+	      
+	      tourist = data.tourist;
+	    });
+	}
 
+function genderType(genderNo) {
+	if (genderNo == 1) {
+		$('#genderLabel').text("남자");
+	} else if (genderNo == 2) {
+		$('#genderLabel').text("여자");
+	}
+	
+}  
+	 
+
+
+
+
+
+</script>
+
+
+
+<script>
+
+      $('.fs-submit').click(function () {
+   
+           if (confirm('정말 수정하시겠습니까?')) {
+              
+              $.getJSON('../tourist/update.do' 
+                     , {
+            	         email : $('#email').val(),
+                    	 tel : $('#tel').val(),
+                    	 password : $('#repassword').val(),
+                    	 touristLanguage : $('#touristLanguage').val()
+                       }
+                     , function(result){
+                           if (result.status == "success") {
+                        	   if (tourist.tel == $('#tel').val() &&
+                        	            tourist.touristLanguage == $('#touristLanguage').val() &&
+                        	            $('#password').val()  ==  "" &&
+                        	            $('#repassword').val()  ==  ""
+                        	             ) { alert('수정된 정보가 없습니다.');
+                        	        } else if ($('#password').val()  ==  "" ||
+                        	        		$('#repassword').val()  ==  "" ) {
+                        	        	alert('비밀번호를 모두 입력해주세요.');
+                        	        }  else {
+                        	        	    alert("수정되었습니다.");
+                        	        	    location.reload();
+                        	        }
+                           } else {
+                             alert("서버가 바쁩니다. 나중에 다시 시도해주세요.");
+                           }
+                         }  
+                     )}
+      else {
+          // Do nothing!
+           }
+
+    	});
+
+</script>
+
+<script>
+pwdValidate('.fs-anim-lower-password', '.tooltip-content-password');
+pwdValidate('.fs-anim-lower-repassword', '.tooltip-content-repassword');
+function pwdValidate(target, message){
+    $(target).focusout(function(){
+      var pwdVal = this.value;
+      var validate = pwdVal.match(/^(?=\w{6,}$)(?=.*\d)(?=.*[A-z]).*/);
+      if(pwdVal != ""){
+        if (pwdVal.match(/^(?=\w{6,}$)(?=.*\d)(?=.*[A-z]).*/) == null) {
+                $(message).html("6자리 이상, 영문 +숫자 조합이어야 합니다.");
+                    appear(message);
+                    this.focus(); 
+        } 
+        else if(target == '.fs-anim-lower-repassword' && $('.fs-anim-lower-password').val() != this.value) {
+             $('.tooltip-content-repassword').html("입력한 패스워드가 동일하지 않습니다.");
+              appear(message);
+              this.focus();
+            }
+      }
+      console.log(pwdVal.match(/^(?=\w{6,}$)(?=.*\d)(?=.*[A-z]).*/));
+      
+    });
+    
+    $(target).keyup(function(){
+        var pwdVal = this.value;
+        var validate = pwdVal.match(/^(?=\w{6,}$)(?=.*\d)(?=.*[A-z]).*/);
+        console.log(pwdVal.match(/^(?=\w{6,}$)(?=.*\d)(?=.*[A-z]).*/));
+        if(target == '.fs-anim-lower-repassword'){
+          if($('.fs-anim-lower-password').val() == this.value && pwdVal.match(/^(?=\w{6,}$)(?=.*\d)(?=.*[A-z]).*/)){
+          disappear(message);
+        }
+        }
+        else if(pwdVal.match(/^(?=\w{6,}$)(?=.*\d)(?=.*[A-z]).*/)){
+                    disappear(message);
+                    }
+      });
+    }
+
+function appear(message){
+    $(message).css({
+          "opacity": "1",
+       "-webkit-transform": "translate3d(0,50%,0) rotate3d(0,0,0,0)",
+       "transform": "translate3d(0,50%,0) rotate3d(0,0,0,0)",
+       "pointer-events": "auto"
+       });
+  }
+  function disappear(message){
+    $(message).css({
+          "opacity": "0",
+          "-webkit-transform": "translate3d(0,50%,0) rotate3d(1,1,1,30deg)",
+       "transform": "translate3d(0,50%,0) rotate3d(1,1,1,30deg)",
+       "pointer-events": "none"
+       });
+  }
+  
+  
+  function showKeyCode(event) {
+      event = event || window.event;
+      var keyID = (event.which) ? event.which : event.keyCode;
+      if( ( keyID >=48 && keyID <= 57 ) || ( keyID >=96 && keyID <= 105 ) || keyID == 8 || keyID == 46)
+      {
+          return;
+      }
+      else
+      {
+          return false;
+      }
+  }
+</script>
 
 </body>
 </html>
