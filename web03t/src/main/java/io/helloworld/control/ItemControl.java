@@ -2,10 +2,14 @@ package io.helloworld.control;
 
 import io.helloworld.service.ItemService;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -63,9 +67,27 @@ public class ItemControl {
 		return resultMap;
 	}
 	@RequestMapping("/view")
-	public Object view(String itemNo, HttpSession session) throws Exception {
+	public Object view(String itemNo, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws Exception {
 		HashMap itemMap = itemService.get(Integer.parseInt(itemNo));
 		List interMap = itemService.getInter(Integer.parseInt(itemNo));
+		
+		
+		
+		/*Cookie[] cookies = request.getCookies();
+		if(cookies != null){
+			for(int i = 0; i < cookies.length; i++) {
+				System.out.println("@@@@___@@@@");
+				System.out.println(cookies[i].getValue());
+			}
+		}*/
+		
+		
+		Cookie cookie = new Cookie("item" + itemNo, itemNo);
+		cookie.setMaxAge(60 * 60 * 24);
+		//cookie.setMaxAge(0); // 무효화시킴
+		response.addCookie(cookie);
+	      
+		
 		//int non = (int)session.getAttribute("view2Page");
 		HashMap<String,Object> resultMap = new HashMap<>();
 		resultMap.put("status", "success");
