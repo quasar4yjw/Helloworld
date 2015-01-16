@@ -78,6 +78,7 @@ public class ItemControl {
 			for(int i = 0; i < cookies.length; i++) {
 				System.out.println("@@@@___@@@@");
 				System.out.println(cookies[i].getValue());
+				System.out.println(cookies[i].getName()); // 끝 쿠키 JSESSIONID
 			}
 		}*/
 		
