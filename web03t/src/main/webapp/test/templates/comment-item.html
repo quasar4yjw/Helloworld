@@ -1,0 +1,12 @@
+<tr>
+	<th style="width: 100px;">점수</th>
+	<th>내용</th>
+	<th>작성일</th>
+</tr>
+{{#each commentList}}
+<tr>
+	<td>{{toStars commentScore}}</td>
+	<td>{{commentContent}}</td>
+	<td>{{yyyyMMdd commentDate}}</td>
+</tr>
+{{/each}}

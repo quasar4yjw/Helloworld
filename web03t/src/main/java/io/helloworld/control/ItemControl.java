@@ -90,6 +90,9 @@ public class ItemControl {
 		HashMap itemMap = itemService.get(Integer.parseInt(itemNo));
 		List interMaps = itemService.getInter(Integer.parseInt(itemNo));
 		List scheduleMaps = itemService.getSchedule(Integer.parseInt(itemNo));
+		HashMap guideMap = itemService.getGuideInfo(Integer.parseInt(itemNo));
+		List commentMaps = itemService.getComment(Integer.parseInt(itemNo));
+		int tourDayCount = itemService.getTourDayCount(Integer.parseInt(itemNo));
 		
 		
 		/*Cookie[] cookies = request.getCookies();
@@ -114,6 +117,9 @@ public class ItemControl {
 		resultMap.put("item", itemMap);
 		resultMap.put("inters", interMaps);
 		resultMap.put("itemSchedules", scheduleMaps);
+		resultMap.put("guideInfo", guideMap);
+		resultMap.put("commentList", commentMaps);
+		resultMap.put("tourDayCount", tourDayCount);
 		/*resultMap.put("photos", datamap.getPhotoList());
 		resultMap.put("travels", datamap.getTravelScheduleList());*/
 		return resultMap; 

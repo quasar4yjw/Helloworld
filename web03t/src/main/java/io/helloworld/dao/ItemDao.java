@@ -21,5 +21,8 @@ public interface ItemDao {
   /*List<?> selectTags(int No);*/
   /* void insertDetailPhoto(DetailPhoto detailPhoto);
 */
-  HashMap selectRecently(int itemNo);  
+  HashMap selectRecently(int itemNo);
+HashMap selectGuideOfItem(int itemNo);
+List selectComments(int itemNo);
+int selectTourDayCount(int itemNo);  
 }

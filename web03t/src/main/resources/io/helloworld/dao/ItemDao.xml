@@ -45,6 +45,21 @@
     <result column="T_TIME" property="scheduleTime"/>
     <result column="T_CONT" property="scheduleContent"/>
     </resultMap>
+    
+    <resultMap type="map" id="guideMap">
+    <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
+    <id column="G_EMAIL" property="guideEmail"/>    
+    <result column="UNAME" property="guideName"/>
+    <result column="G_COUNT" property="guideCount"/>
+    <result column="G_PHOT" property="guidePhoto"/>
+    </resultMap>
+    
+    <resultMap type="map" id="commentMap">
+    <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
+    <result column="COM_CONT" property="commentContent"/>
+    <result column="COM_DATE" property="commentDate"/>
+    <result column="COM_SCO" property="commentScore"/>
+    </resultMap>
    
 <resultMap type="map" id="recentlyListMap">
    
@@ -128,6 +143,26 @@
   SELECT I_NO, T_DAY, T_TIME, T_CONT
   FROM ITEM_SCH
   WHERE I_NO=#{value}
+  </select>
+  
+  <select id="selectGuideOfItem" parameterType="int" resultMap="guideMap">
+  SELECT T2.UNAME, T1.G_EMAIL, T1.G_COUNT, T1.G_PHOT
+  FROM GUIDES T1 
+  LEFT OUTER JOIN USERS T2 ON T1.G_EMAIL = T2.EMAIL  
+  LEFT OUTER JOIN ITEMS T3 ON T2.EMAIL = T3.G_EMAIL 
+  WHERE T3.I_NO=#{value}
+  </select>
+  
+  <select id="selectComments" parameterType="int" resultMap="commentMap">
+  SELECT T1.COM_CONT, T1.COM_DATE, T1.COM_SCO
+  FROM COMMENTS T1 
+  LEFT OUTER JOIN BOOK_INFO T2 ON T1.C_NO = T2.C_NO  
+  WHERE T2.I_NO=#{value}
+  ORDER BY T1.COM_DATE DESC
+  </select>
+  
+  <select id="selectTourDayCount" parameterType="int" resultType="int">
+  SELECT MAX(T_DAY) FROM ITEM_SCH WHERE I_NO=#{value}
   </select>
   
   <!-- <select id="selectPhoto" parameterType="int" 

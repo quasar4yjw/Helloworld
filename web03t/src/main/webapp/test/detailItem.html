@@ -443,7 +443,7 @@ font-size: 28px;
           
            <ul class="cbp_tmtimeline">
    
-     <li>
+     <!-- <li>
         <time class="cbp_tmtime" datetime="2013-04-11T12:04"> <span>1일차</span></time>
         <div class="cbp_tmlabel">
             <h2>07:00</h2>
@@ -471,7 +471,7 @@ font-size: 28px;
             <br>→ 이른 새벽 댓잎에서 떨어진 이슬을 먹고 자란다는 죽로차나무도 가득 
             <br>→ 담양 죽녹원의 아름다운 대나무숲을 관람하신후 죽녹원 근처에서 먹는 맛있는 개별중식 (국수, 정식, 떡갈비등 담양의별미 맛 보시고 푸짐한 인심을 느껴보세요~)</p>
         </div>
-    </li>
+    </li> -->
           </ul>
           
 
@@ -513,9 +513,10 @@ font-size: 28px;
           </ul>
         <br>
         <br>
+        <div id='guideProfileTemplate'>
         <span><img src='../images/guideFace.jpg' style=width:220px;></span>
         <div id='guideProfile'>
-        <h4>이름 엄진영</h4>
+         <h4>이름 엄진영</h4>
         
         <!-- <h4>나이 42세</h4> -->
         
@@ -523,7 +524,7 @@ font-size: 28px;
         
         <!-- <h4>사용가능언어 한글, English, Français</h4> -->
         
-        <h4>가이드 횟수 : 3026회</h4>
+        <h4>가이드 횟수 : 3026회</h4> 
         </div>
         <br>
         <!-- <h4>언어자격증</h4>
@@ -542,6 +543,7 @@ font-size: 28px;
          </tr>
          </table> -->
         <br>
+        </div>
         </div></div>
         
         <div class='three-detail-color'>
@@ -551,8 +553,8 @@ font-size: 28px;
           </ul>
         <br>
         <br>
-		    <table class="table table-hover">
-		      <tr> 
+		    <table class="table table-hover item-comment-table">
+		      <!-- <tr> 
               <th style=width:100px;>점수</th>
               <th>내용</th>
               <th>작성일</th>
@@ -576,7 +578,7 @@ font-size: 28px;
               <td>★★★</td>
               <td>재밌는 강의였어요.</td>
               <td>2014-11-20</td>
-         </tr>
+         </tr> -->
 		    </table>
 		    <nav>
   <ul class="pagination">
@@ -640,6 +642,12 @@ font-size: 28px;
 <script type="text/javascript" src='../js/bootstrap.min.js'></script>
   <script type="text/javascript" src='../js/jquery-ui.multidatespicker.js'></script>
   <script type="text/javascript">
+  $(function(){
+	  var reqNo = getParameterByName("itemNo");
+	  loadProduct(reqNo);
+	});
+  
+  
   $(function() {
        $.datepicker.regional['ko'] = {
                 closeText: '닫기',
@@ -668,9 +676,9 @@ font-size: 28px;
           $.datepicker.setDefaults($.datepicker.regional['ko']);
   });
   
-  var numTravel = 3;
+  var numTravel = 1;
   
-  var date = new Date();
+  /* var date = new Date();
     $(function() {
       $( "#datepicker" ).multiDatesPicker({
           minDate:0,
@@ -679,7 +687,7 @@ font-size: 28px;
         mode: 'daysRange',
         autoselectRange: [0, numTravel]
       });
-    });
+    }); */
 
     
     var nav = $('#anchorMenu');
@@ -740,10 +748,6 @@ $('.bxslider').bxSlider({
 	});
 </script>
 <script>
-$(function(){
-	var reqNo = getParameterByName("itemNo");
-	loadProduct(reqNo);
-});
 
 	function getParameterByName(name) {
 		return decodeURIComponent((new RegExp('[?|&]' + name + '='
@@ -774,6 +778,27 @@ $(function(){
 				  $('.cbp_tmtimeline').html(template(data));
 				});
 			
+			 $.get('templates/guide-item.html', function(html){
+		          var template = Handlebars.compile(html);
+		          $('#guideProfileTemplate').html(template(data));
+		        }); 
+			 $.get('templates/comment-item.html', function(html){
+	              var template = Handlebars.compile(html);
+	              $('.item-comment-table').html(template(data));
+	            }); 
+			
+			numTravel = data.tourDayCount;
+			
+			var date = new Date();
+		    $(function() {
+		      $( "#datepicker" ).multiDatesPicker({
+		          minDate:0,
+		          addDisabledDates: [date.setDate(24), date.setDate(25)],// 불가능한 스케줄 multidatespickr.sourceforge.net
+		        dateFormat:"yy-mm-dd",
+		        mode: 'daysRange',
+		        autoselectRange: [0, numTravel]
+		      });
+		    });
 			
 			/* $('#makerNo').val(data.product.makerNo);
 			
@@ -787,6 +812,40 @@ $(function(){
 			$('.my-new-form').css('display', 'none'); */
 		});
 	}
+</script>
+<script>
+Handlebars.registerHelper('toStars', function(commentScore) {
+    if (commentScore == 5)  return "★★★★★";
+  else if(commentScore == 4)  return "★★★★";
+  else if(commentScore == 3)  return "★★★";
+  else if(commentScore == 2)  return "★★";
+  else if(commentScore == 1)  return "★";
+    });
+    
+Handlebars.registerHelper('yyyyMMdd', function(datetime) {
+    return yyyyMMdd(datetime); 
+    });
+    
+function yyyyMMdd(date) {
+    if (date) {
+      var date = new Date(date);
+      var str = date.getFullYear() + '-';
+      
+      if (date.getMonth() < 9) str += '0';
+      str += (date.getMonth() + 1) + '-';
+      
+      if (date.getDate() < 10) str += '0';
+      str += date.getDate();
+      
+      return str;
+      
+    } else {
+      return '';
+    }
+  }
+  
+  
+  
 </script>
 
     

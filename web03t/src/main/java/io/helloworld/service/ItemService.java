@@ -91,6 +91,19 @@ public class ItemService {
 		List datamaps = itemDao.selectSchedules(itemNo);
 		return datamaps;
 	}
+	public HashMap getGuideInfo(int itemNo) {
+		HashMap datamap = itemDao.selectGuideOfItem(itemNo);
+		return datamap;
+	}
+	public List getComment(int itemNo) {
+		List datamaps = itemDao.selectComments(itemNo);
+		return datamaps;
+	}
+
+	public int getTourDayCount(int itemNo) {
+		int count = itemDao.selectTourDayCount(itemNo);
+		return count;
+	}
 
   public HashMap getRecently(int itemNo) {
     HashMap datamap = itemDao.selectRecently(itemNo);
