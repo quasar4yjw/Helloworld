@@ -20,5 +20,6 @@ public interface ItemDao {
   List<?> selectTravelSchedule(int itemNo);
   /*List<?> selectTags(int No);*/
   /* void insertDetailPhoto(DetailPhoto detailPhoto);
-*/  
+*/
+  HashMap selectRecently(int itemNo);  
 }

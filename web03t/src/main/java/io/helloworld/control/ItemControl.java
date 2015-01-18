@@ -46,7 +46,9 @@ public class ItemControl {
 	@RequestMapping("/list")
 	public Object list(
 			@RequestParam(defaultValue="1") int pageNo,
-			@RequestParam(defaultValue="6") int pageSize) throws Exception {
+			@RequestParam(defaultValue="6") int pageSize,
+			HttpServletRequest request) throws Exception {
+	  HashMap itemMap = new HashMap();
 
 		if (pageSize <= 0)
 			pageSize = PAGE_DEFAULT_SIZE;
@@ -64,6 +66,23 @@ public class ItemControl {
 	       itemService.getList(pageNo, pageSize));
 	   resultMap.put("tags",itemService.getTag());
 
+	   Cookie[] cookies = request.getCookies();
+     
+     
+     //cookies[i].getValue() =  값을 출력,
+     //cookies[i].getName() = 키(값의 키값)을 출력. 
+     if(cookies != null){
+       int length = cookies.length > 4 ? 3: (cookies.length-1);
+       //쿠키의 크기가 6보다크면 반복문을 5번 반복하고 아니면 크기에서 1뺀값으로 한다.
+       //쿠키의 마지막 값이 itemNo가 아니기 때문이다.
+
+       for(int count = 0; count < length; count++) {
+         int i = cookies.length - 2 - count;
+           //i의 값은 가장 최근에 들어간 사이트부터 출력을 해야 하기 때문에 이 공식을 사용하였다.
+         itemMap = itemService.getRecently(Integer.parseInt(cookies[i].getValue()));
+         resultMap.put("item"+count, itemMap);
+       }
+     }
 		return resultMap;
 	}
 	@RequestMapping("/view")

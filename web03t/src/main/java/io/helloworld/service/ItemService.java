@@ -92,6 +92,11 @@ public class ItemService {
 		return datamaps;
 	}
 
+  public HashMap getRecently(int itemNo) {
+    HashMap datamap = itemDao.selectRecently(itemNo);
+    return datamap;
+  }
+
 	/*  @Transactional(
       rollbackFor=Exception.class,
       propagation=Propagation.REQUIRED)

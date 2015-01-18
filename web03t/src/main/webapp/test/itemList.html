@@ -816,13 +816,7 @@ z-index:9999;
 		<div class="recentlyItem">
         <h4 class='recentlyTitle'> 최근 본 상품 </h4>
         <div>
-        <ul>
-          <li><a href='#'><img src='../images/best02.jpg'></a>
-            <h6 id='title'>파리의 아침 크로와상과 함께</h6>
-          </li>
-          <li><a><img src='../images/best05.jpg'></a>
-            <h6 id='title'>오구리슌 닮은 알파카를 찾아</h6>
-          </li>
+        <ul id='recentlyItemList'>
         </ul>
         </div>
       </div>
@@ -920,7 +914,20 @@ $('.dialog').load('loginDialog.html');
         var tags = data.tags;        
         console.log(items);
         console.log(tags);
+        
         $('.data-row').remove();
+        for(var i = 0;i<3;i++){
+          
+          var cookie=data["item" + i];
+          console.log(cookie);
+          if(cookie ==null) break;
+          $('<li>').addClass('data-row')
+            .append($('<a>').attr('href','detailItem.html?itemNo=' + cookie.no)
+              .append($('<img>').attr('src',"../fileupload/" + cookie.photoUrl+".jpg")))
+             .append($('<h6>').addClass('recent-title').html(cookie.title))
+             .appendTo($('#recentlyItemList'))
+        }
+      
        
         for (var i = 0; i < items.length; i++) {
           $('<li>').addClass('data-row')
