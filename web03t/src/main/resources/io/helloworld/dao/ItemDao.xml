@@ -47,28 +47,28 @@
     </resultMap>
   
 
-  <insert id="insertItem" parameterType="Map"
+  <insert id="insertItem" parameterType="map"
   useGeneratedKeys="true" keyColumn="I_NO" keyProperty="itemNo">
     INSERT INTO ITEMS(COUNTRY, LANG, TITLE, PLACE, PRICE) 
     VALUES (#{country},#{language},#{title},#{place},#{price});
   </insert>
   
-  <insert id="insertTag1" parameterType="Map">
+  <insert id="insertTag1" parameterType="map">
     INSERT INTO TAGS(I_NO, INTER)
     VALUES (#{itemNo}, #{interest1});
   </insert>
   
-  <insert id="insertTag2" parameterType="Map">
+  <insert id="insertTag2" parameterType="map">
     INSERT INTO TAGS(I_NO, INTER)
     VALUES (#{itemNo}, #{interest2});
   </insert>
   
-  <insert id="insertTag3" parameterType="Map">
+  <insert id="insertTag3" parameterType="map">
     INSERT INTO TAGS(I_NO, INTER)
     VALUES (#{itemNo}, #{interest3});
   </insert>
   
-   <insert id="insertSchedule" parameterType="Map">
+   <insert id="insertSchedule" parameterType="map">
     INSERT INTO ITEM_SCH(I_NO, T_DAY, T_TIME, T_CONT)
     VALUES(#{itemNo}, #{travelDay}, #{travelTime}, #{travelContent});
   </insert>
