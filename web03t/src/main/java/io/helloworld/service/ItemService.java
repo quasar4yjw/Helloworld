@@ -101,7 +101,9 @@ public class ItemService {
 	}
 
 	public int getTourDayCount(int itemNo) {
-		int count = itemDao.selectTourDayCount(itemNo);
+		int count = 1;
+		if ((Integer)itemDao.selectTourDayCount(itemNo) != null) 
+		count = itemDao.selectTourDayCount(itemNo);
 		return count;
 	}
 
