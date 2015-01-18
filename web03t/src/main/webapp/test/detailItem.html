@@ -443,7 +443,7 @@ font-size: 28px;
           
            <ul class="cbp_tmtimeline">
    
-    <li>
+     <li>
         <time class="cbp_tmtime" datetime="2013-04-11T12:04"> <span>1일차</span></time>
         <div class="cbp_tmlabel">
             <h2>07:00</h2>
@@ -768,6 +768,13 @@ $(function(){
 			$('#itemTitle').html(data.item.title);
 			$('#itemPrice').html("금액 : " + numberWithCommas(data.item.price) + " 원");
 			$('#itemInter').html(itemInter);
+			
+			$.get('templates/detail-item.html', function(html){
+				  var template = Handlebars.compile(html);
+				  $('.cbp_tmtimeline').html(template(data));
+				});
+			
+			
 			/* $('#makerNo').val(data.product.makerNo);
 			
 			if (data.product.madeDate) {
@@ -781,6 +788,7 @@ $(function(){
 		});
 	}
 </script>
+
     
 </body>
 </html>

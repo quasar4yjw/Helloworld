@@ -94,6 +94,7 @@ public class ItemControl {
 		resultMap.put("status", "success");
 		resultMap.put("item", itemMap);
 		resultMap.put("inters", interMaps);
+		resultMap.put("itemSchedules", scheduleMaps);
 		/*resultMap.put("photos", datamap.getPhotoList());
 		resultMap.put("travels", datamap.getTravelScheduleList());*/
 		return resultMap; 
