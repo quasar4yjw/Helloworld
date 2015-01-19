@@ -1,11 +1,7 @@
 package io.helloworld.domain;
 
-import java.beans.Transient;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-
-import org.springframework.web.multipart.MultipartFile;
 
 public class Guide implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -21,6 +17,17 @@ public class Guide implements Serializable{
 	protected String   	      	 photo;
 	
 	//protected MultipartFile      photofile;
+	
+	
+  @Override
+  public String toString() {
+    return "Guide [email=" + email + ", userName=" + userName + ", tel=" + tel
+        + ", password=" + password + ", birthDate=" + birthDate
+        + ", guideCount=" + guideCount + ", guideLanguageList="
+        + guideLanguageList + ", guideLanguage=" + guideLanguage
+        + ", introduce=" + introduce + ", photo=" + photo + "]";
+  }
+	
 	
 	
 	public String getEmail() {
@@ -121,6 +128,9 @@ public class Guide implements Serializable{
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
+
+
+
 
 	/*
 	public MultipartFile getPhotofile() {

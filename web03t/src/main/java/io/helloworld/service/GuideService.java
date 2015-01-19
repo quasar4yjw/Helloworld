@@ -1,11 +1,13 @@
 package io.helloworld.service;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.Map;
-
 import io.helloworld.dao.GuideDao;
 import io.helloworld.domain.Guide;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,4 +44,40 @@ public class GuideService {
 			guideDao.insertLanguage(guide);
 		}
 	}
+	
+	
+  @Transactional(
+      rollbackFor=Exception.class, 
+      propagation=Propagation.REQUIRED)
+   public void update(Guide guide) {
+    guideDao.update(guide);
+    guideDao.updateSpecial(guide);
+  }
+
+  
+
+
+    public HashMap get(String email) {
+      HashMap guide = guideDao.select(email);
+      return guide;
+  }
+    
+  
+  public List getLang(String email) {
+    List guideLang = guideDao.selectLang(email);
+    return guideLang;
+  }
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+	
+	
+	
 }

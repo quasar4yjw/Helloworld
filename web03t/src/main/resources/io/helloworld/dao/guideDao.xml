@@ -9,6 +9,26 @@
 
 <mapper namespace="io.helloworld.dao.GuideDao">
 
+
+  <resultMap type="map" id="langMap">
+    <id column="AL_NO" property="aLangNo"/>    
+    <result column="ALANG" property="guideLanguage"/>
+    <result column="G_EMAIL" property="email"/>
+    </resultMap> 
+    
+      <resultMap type="map" id="guideMap">
+    <id column="EMAIL" property="email"/>    
+    <result column="UNAME" property="userName"/>
+    <result column="TEL" property="tel"/>
+    <result column="PWD" property="password"/>
+    <result column="BIRTH" property="birthDate"/>
+    <result column="G_PHOT" property="photo"/>
+    <result column="G_COUNT" property="guideCount"/>
+    <result column="G_CONT" property="content"/>
+    
+    </resultMap>
+
+
   <insert id="insert" parameterType="Guide">
     INSERT INTO USERS(EMAIL, UNAME, TEL, PWD, BIRTH) 
     VALUES (#{email},#{userName},#{tel},#{password},#{birthDate});
@@ -25,11 +45,39 @@
   </insert>
   
   
+  
    <!-- <insert id="insertLanguages" parameterType="Guide">
     INSERT INTO G_LANGS(G_EMAIL, ALANG)
     VALUES(#{email}, #{guideLanguageList});
   </insert>  -->
   
+  <select id="select" parameterType="String" resultMap="guideMap">
+    SELECT 
+    T1.EMAIL,
+    T1.UNAME, 
+    T1.TEL, 
+    T1.PWD, 
+    T1.BIRTH,
+    T2.G_PHOT,
+    T2.G_COUNT,
+    T2.G_CONT
+    
+    FROM GUIDES T2 LEFT JOIN USERS T1 on T1.EMAIL=T2.G_EMAIL
+    
+    WHERE T1. EMAIL = #{value}
+  </select>
+  
+  <select id="selectLang" parameterType="String" resultMap="langMap">
+  SELECT 
+  G_EMAIL,
+  AL_NO,
+  ALANG 
+  FROM G_LANGS
+  
+  WHERE G_EMAIL = #{value}
+  </select>
+  
+
 </mapper>
 
 

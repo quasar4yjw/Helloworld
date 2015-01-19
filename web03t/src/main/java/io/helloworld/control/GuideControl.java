@@ -5,17 +5,15 @@ import io.helloworld.service.GuideService;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 
-import org.apache.ibatis.annotations.Param;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller("guideControl")
@@ -50,4 +48,30 @@ public class GuideControl {
 	    	return resultMap;
 	    }
 	  }
+	
+	
+	@RequestMapping("/update")
+  public Object update(Guide guide) throws Exception {
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    guideService.update(guide);
+    return resultMap;
+  }
+  
+  @RequestMapping("/view")
+  public Object view(String email) throws Exception {
+    HashMap guide = guideService.get(email);
+    List guideLang = guideService.getLang(email);
+    
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("guide", guide);
+    resultMap.put("guideLang", guideLang);
+    return resultMap;
+  }
+	
+	
+	
+	
+	
 }
