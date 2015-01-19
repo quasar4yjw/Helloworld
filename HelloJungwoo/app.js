@@ -69,7 +69,7 @@ app.get('/idCheck', function (request, response) {
     		response.send({
     			"result":"0"
     		});
-    	}
+    	} 
     });
 });
 
