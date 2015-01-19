@@ -140,7 +140,7 @@
   </select>
   
   <select id="selectSchedules" parameterType="int" resultMap="scheduleMap">
-  SELECT I_NO, T_DAY, T_TIME, T_CONT
+  SELECT I_NO, T_DAY, TIME_FORMAT(T_TIME, '%H:%i') AS T_TIME, T_CONT
   FROM ITEM_SCH
   WHERE I_NO=#{value}
   </select>
