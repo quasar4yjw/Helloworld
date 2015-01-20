@@ -242,7 +242,10 @@ padding-left: 40%;
   $('.footer').load('footer.html');
   
 var selected = "all";
-  
+var count = 0;
+$('#page-selection').on('page', function(event, num){
+    loadItemList(num);   
+});
   loadItemList(1);
   function setPageNo(currPageNo, maxPageNo) {
       window.currPageNo = currPageNo;
@@ -264,8 +267,6 @@ var selected = "all";
         total: maxPageNo,
         page: currPageNo,
         maxVisible: 5 
-      }).on('page', function(event, num){
-        loadItemList(num);   
       });
     }
       
@@ -275,6 +276,7 @@ var selected = "all";
       $.getJSON('../connect/status.do?pageNo=' + pageNo + "&selected=" + selected + "&userType=guide", 
         function(data){
           console.log(data);
+          console.log(count++);
           setPageNo(data.currPageNo, data.maxPageNo);
           var connects = data.connects; 
           

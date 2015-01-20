@@ -146,6 +146,10 @@ padding-left: 40%;
   $('.header').load('header.html');
   $('.footer').load('footer.html');
   var selected = "all";
+  var count = 0;
+  $('#page-selection').on('page', function(event, num){
+      loadItemList(num);   
+  });
   
   loadItemList(1);
   function setPageNo(currPageNo, maxPageNo) {
@@ -167,8 +171,6 @@ padding-left: 40%;
         total: maxPageNo,
         page: currPageNo,
         maxVisible: 5 
-      }).on('page', function(event, num){
-        loadItemList(num);   
       });
     }
       
