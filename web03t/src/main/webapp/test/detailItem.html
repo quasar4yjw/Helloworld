@@ -773,7 +773,7 @@ $('.bxslider').bxSlider({
 			$('#itemPrice').html("금액 : " + numberWithCommas(data.item.price) + " 원");
 			$('#itemInter').html(itemInter);
 			
-			$.get('templates/detail-item.html', function(html){
+			$.get('templates/detail-item2.html', function(html){
 				  var template = Handlebars.compile(html);
 				  $('.cbp_tmtimeline').html(template(data));
 				});

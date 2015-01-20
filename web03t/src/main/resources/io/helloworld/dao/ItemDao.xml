@@ -140,7 +140,10 @@
   </select>
   
   <select id="selectSchedules" parameterType="int" resultMap="scheduleMap">
-  SELECT I_NO, T_DAY, TIME_FORMAT(T_TIME, '%H:%i') AS T_TIME, T_CONT
+  SELECT REPLACE(T_CONT, '\n', '&lt;br/&gt;') AS T_CONT, 
+  I_NO, 
+  T_DAY, 
+  TIME_FORMAT(T_TIME, '%H:%i') AS T_TIME
   FROM ITEM_SCH
   WHERE I_NO=#{value}
   </select>
