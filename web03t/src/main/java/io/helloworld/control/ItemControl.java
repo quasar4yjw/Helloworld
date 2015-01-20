@@ -93,6 +93,7 @@ public class ItemControl {
 		HashMap guideMap = itemService.getGuideInfo(Integer.parseInt(itemNo));
 		List commentMaps = itemService.getComment(Integer.parseInt(itemNo));
 		int tourDayCount = itemService.getTourDayCount(Integer.parseInt(itemNo));
+		List photoMaps = itemService.getDetailPhoto(Integer.parseInt(itemNo));
 		
 		
 		/*Cookie[] cookies = request.getCookies();
@@ -120,6 +121,7 @@ public class ItemControl {
 		resultMap.put("guideInfo", guideMap);
 		resultMap.put("commentList", commentMaps);
 		resultMap.put("tourDayCount", tourDayCount);
+		resultMap.put("photoList", photoMaps);
 		/*resultMap.put("photos", datamap.getPhotoList());
 		resultMap.put("travels", datamap.getTravelScheduleList());*/
 		return resultMap; 

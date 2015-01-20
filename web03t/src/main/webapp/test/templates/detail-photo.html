@@ -1,0 +1,11 @@
+<ul class="bxslider">
+  {{#each photoList}}
+  <li><img style='height:800px;' src="../fileupload/{{photoUrl}}" /></li>
+  {{/each}}
+</ul>
+
+<div id="bx-pager">
+  {{#each photoList}}
+  <a data-slide-index={{@index}} href=""><img style='width:120px; height:120px;' src="../fileupload/{{photoUrl}}" /></a>
+  {{/each}}
+</div>

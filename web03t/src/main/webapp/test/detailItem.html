@@ -384,7 +384,7 @@ font-size: 28px;
 		<div class="header"></div>
 		<div class="main-content">
 		  <div class="represent-img">
-<ul class="bxslider">
+ <!--   <ul class="bxslider">
   <li><img style='height:800px;' src="../images/KyungbokGoong.jpg" /></li>
   <li><img style='height:800px;' src="../images/guideItem1.jpg" /></li>
   <li><img style='height:800px;' src="../images/guideItem2.jpg" /></li>
@@ -394,8 +394,7 @@ font-size: 28px;
   <a data-slide-index="0" href=""><img style='width:120px; height:120px;' src="../images/KyungbokGoong.jpg" /></a>
   <a data-slide-index="1" href=""><img style='width:120px; height:120px;' src="../images/guideItem1.jpg" /></a>
   <a data-slide-index="2" href=""><img style='width:120px; height:120px;' src="../images/guideItem2.jpg" /></a>
-</div>
-
+</div>  -->
 </div>
 		  
 		  
@@ -743,12 +742,6 @@ $('.ui-state-default').mouseover(function(){
 </script>
 <script>
 
-$('.bxslider').bxSlider({
-	  pagerCustom: '#bx-pager'
-	});
-</script>
-<script>
-
 	function getParameterByName(name) {
 		return decodeURIComponent((new RegExp('[?|&]' + name + '='
 				+ '([^&;]+?)(&|#|;|$)').exec(location.search) || [ , "" ])[1]
@@ -773,33 +766,45 @@ $('.bxslider').bxSlider({
 			$('#itemPrice').html("금액 : " + numberWithCommas(data.item.price) + " 원");
 			$('#itemInter').html(itemInter);
 			
-			$.get('templates/detail-item2.html', function(html){
-				  var template = Handlebars.compile(html);
-				  $('.cbp_tmtimeline').html(template(data));
-				});
+
 			
-			 $.get('templates/guide-item.html', function(html){
-		          var template = Handlebars.compile(html);
-		          $('#guideProfileTemplate').html(template(data));
-		        }); 
-			 $.get('templates/comment-item.html', function(html){
-	              var template = Handlebars.compile(html);
-	              $('.item-comment-table').html(template(data));
-	            }); 
+	    $.get('templates/detail-schedule.html', function(html) {
+				var template = Handlebars.compile(html);
+				$('.cbp_tmtimeline').html(template(data));
+			});
+			$.get('templates/guide-item.html', function(html) {
+				var template = Handlebars.compile(html);
+				$('#guideProfileTemplate').html(template(data));
+			});
+			$.get('templates/comment-item.html', function(html) {
+				var template = Handlebars.compile(html);
+				$('.item-comment-table').html(template(data));
+			});
+			 $.get('templates/detail-photo.html', function(html) {
+				var template = Handlebars.compile(html);
+				$('.represent-img').html(template(data));
+				console.log(template(data));
+				console.log(data);
+				 $('.bxslider').bxSlider({
+			           pagerCustom: '#bx-pager'
+			         });
+			}); 
+
+			
 			
 			numTravel = data.tourDayCount;
-			
+
 			var date = new Date();
-		    $(function() {
-		      $( "#datepicker" ).multiDatesPicker({
-		          minDate:0,
-		          addDisabledDates: [date.setDate(24), date.setDate(25)],// 불가능한 스케줄 multidatespickr.sourceforge.net
-		        dateFormat:"yy-mm-dd",
-		        mode: 'daysRange',
-		        autoselectRange: [0, numTravel]
-		      });
-		    });
-			
+			$(function() {
+				$("#datepicker").multiDatesPicker({
+					minDate : 0,
+					addDisabledDates : [ date.setDate(24), date.setDate(25) ],// 불가능한 스케줄 multidatespickr.sourceforge.net
+					dateFormat : "yy-mm-dd",
+					mode : 'daysRange',
+					autoselectRange : [ 0, numTravel ]
+				});
+			});
+
 			/* $('#makerNo').val(data.product.makerNo);
 			
 			if (data.product.madeDate) {

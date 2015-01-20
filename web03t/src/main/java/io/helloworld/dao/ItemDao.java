@@ -24,5 +24,6 @@ public interface ItemDao {
   HashMap selectRecently(int itemNo);
 HashMap selectGuideOfItem(int itemNo);
 List selectComments(int itemNo);
-int selectTourDayCount(int itemNo);  
+int selectTourDayCount(int itemNo);
+List selectDetailPhotos(int itemNo);  
 }

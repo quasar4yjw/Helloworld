@@ -61,12 +61,14 @@
     <result column="COM_SCO" property="commentScore"/>
     </resultMap>
    
-<resultMap type="map" id="recentlyListMap">
-   
-    <id column="I_NO" property="no"/>    
-    <result column="TITLE" property="title"/>
-    <result column="P_URL" property="photoUrl"/>
-</resultMap> 
+		<resultMap type="map" id="recentlyListMap">
+		    <id column="I_NO" property="no"/>    
+		    <result column="TITLE" property="title"/>
+		    <result column="P_URL" property="photoUrl"/>
+		</resultMap>
+		<resultMap type="map" id="photoMap">
+		   <result column="P_URL" property="photoUrl"/>
+		</resultMap>
     
   <insert id="insertItem" parameterType="map"
   useGeneratedKeys="true" keyColumn="I_NO" keyProperty="itemNo">
@@ -176,15 +178,18 @@
     WHERE PNO = #{value}
     </if>
   </select> -->
-    <select id="selectRecently" parameterType="int" 
-        resultMap="recentlyListMap">
-    SELECT       
-      T1.I_NO, 
-      T1.TITLE,
-      T2.P_URL    
-    FROM ITEMS T1 LEFT OUTER JOIN DET_PHOTS T2 
-    USING(I_NO)
-    WHERE  T1.I_NO=#{value}
-    GROUP BY T1.I_NO
+  <select id="selectRecently" parameterType="int" 
+      resultMap="recentlyListMap">
+  SELECT       
+    T1.I_NO, 
+    T1.TITLE,
+    T2.P_URL    
+  FROM ITEMS T1 LEFT OUTER JOIN DET_PHOTS T2 
+  USING(I_NO)
+  WHERE  T1.I_NO=#{value}
+  GROUP BY T1.I_NO
+  </select>
+  <select id="selectDetailPhotos" parameterType="int" resultMap="photoMap">
+  SELECT P_URL FROM DET_PHOTS WHERE I_NO=#{value}
   </select>
 </mapper>

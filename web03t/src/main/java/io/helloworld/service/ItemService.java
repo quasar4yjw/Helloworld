@@ -112,6 +112,11 @@ public class ItemService {
     return datamap;
   }
 
+	public List getDetailPhoto(int itemNo) {
+		List datamaps = itemDao.selectDetailPhotos(itemNo);
+		return datamaps;
+	}
+
 	/*  @Transactional(
       rollbackFor=Exception.class,
       propagation=Propagation.REQUIRED)
