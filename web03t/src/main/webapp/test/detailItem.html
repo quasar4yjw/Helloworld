@@ -783,15 +783,12 @@ $('.ui-state-default').mouseover(function(){
 			 $.get('templates/detail-photo.html', function(html) {
 				var template = Handlebars.compile(html);
 				$('.represent-img').html(template(data));
-				console.log(template(data));
-				console.log(data);
 				 $('.bxslider').bxSlider({
 			           pagerCustom: '#bx-pager'
 			         });
 			}); 
 
-			
-			
+			console.log(data.guideInfo.guideEmail);
 			numTravel = data.tourDayCount;
 
 			var date = new Date();
@@ -848,7 +845,6 @@ function yyyyMMdd(date) {
       return '';
     }
   }
-  
   
   
 </script>
