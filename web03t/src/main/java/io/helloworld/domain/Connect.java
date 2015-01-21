@@ -14,15 +14,23 @@ public class Connect implements Serializable{
   protected String    connectStatus;
   protected Date      connectDate;
   protected String    buttonType;
+  protected String    guideEmail;
+  protected String    touristEmail;
   
-  @Override
-  public String toString() {
-    return "Connect [itemNo=" + itemNo + ", connectNo=" + connectNo
-        + ", connectStartDate=" + connectStartDate + ", connectEndDate="
-        + connectEndDate + ", connectStatus=" + connectStatus
-        + ", connectDate=" + connectDate + ", buttonType=" + buttonType + "]";
-  }
+
   
+	  @Override
+	public String toString() {
+		return "Connect [itemNo=" + itemNo + ", connectNo=" + connectNo
+				+ ", connectStartDate=" + connectStartDate + ", connectEndDate="
+				+ connectEndDate + ", connectStatus=" + connectStatus
+				+ ", connectDate=" + connectDate + ", buttonType=" + buttonType
+				+ ", guideEmail=" + guideEmail + ", touristEmail=" + touristEmail
+				+ "]";
+	}
+	  
+	  
+	  
   public int getItemNo() {
     return itemNo;
   }
@@ -65,6 +73,22 @@ public class Connect implements Serializable{
   public void setButtonType(String buttonType) {
     this.buttonType = buttonType;
   }
+
+
+
+	public String getGuideEmail() {
+		return guideEmail;
+	}
+	public void setGuideEmail(String guideEmail) {
+		this.guideEmail = guideEmail;
+	}
+	public String getTouristEmail() {
+		return touristEmail;
+	}
+	public void setTouristEmail(String touristEmail) {
+		this.touristEmail = touristEmail;
+	}
+	  
   
  
   

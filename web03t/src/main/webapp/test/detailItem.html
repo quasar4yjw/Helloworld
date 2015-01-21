@@ -375,6 +375,19 @@ font-size: 28px;
  .ui-state-default:hover {
  background-color:#CC0000 !important;
 } 
+
+#firstDate, #lastDate {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #DDDDDD;
+  width:150px;
+}
+
 </style>
 <meta charset="UTF-8">
 <title>Welcome to the HelloWorld</title>
@@ -641,8 +654,11 @@ font-size: 28px;
 <script type="text/javascript" src='../js/bootstrap.min.js'></script>
   <script type="text/javascript" src='../js/jquery-ui.multidatespicker.js'></script>
   <script type="text/javascript">
+  var reqNo = 0;
+  var numTravel = 1;
+  var guideEmail = null;
   $(function(){
-	  var reqNo = getParameterByName("itemNo");
+	  reqNo = getParameterByName("itemNo");
 	  loadProduct(reqNo);
 	});
   
@@ -675,7 +691,6 @@ font-size: 28px;
           $.datepicker.setDefaults($.datepicker.regional['ko']);
   });
   
-  var numTravel = 1;
   
   /* var date = new Date();
     $(function() {
@@ -716,6 +731,7 @@ $(".serviceTest").click(function(){
 	var mm = parseInt($(".ui-datepicker-month").html());
   var ddFirst = $(".ui-datepicker .ui-datepicker-calendar .ui-state-highlight a:first").html();
   var ddLast = $(".ui-datepicker .ui-datepicker-calendar .ui-state-highlight a:last").html();
+  
   if(mm < 10) mm = "0" + mm;
 	if(ddFirst < 10) ddFirst = "0" + ddFirst;
 	if(ddLast < 10) ddLast = "0" + ddLast;
@@ -724,17 +740,60 @@ $(".serviceTest").click(function(){
             + "-" + mm
             + "-" + ddFirst);
 	var lastDate = new Date(firstDate);
-	
 	lastDate.setDate(firstDate.getDate()+numTravel-1); // 2일짜리 여행이라면 퍼스트데이에 2일에서 1을 뺀 결과, 1을 더합니다. +(2일짜리-1)
-	 console.log($(".ui-datepicker-year").html() 
+	 
+	
+	console.log($(".ui-datepicker-year").html() 
 	          + "-" + mm
 	          + "-" + ddFirst + " ~ " +
 	          yyyyMMdd(lastDate));
 	 
+	
+	
 	 $("#firstDate").val($(".ui-datepicker-year").html() 
 	            + "-" + mm
 	            + "-" + ddFirst);
 	 $("#lastDate").val(yyyyMMdd(lastDate));
+	 $("#firstDate, #lastDate").css('box-shadow', '0 0 5px red');
+	 $("#firstDate, #lastDate").css('border', '1px solid #ff5a5f');
+	 
+	 setTimeout(function(){
+		 
+		 if (confirm('해당일정으로 예약하시겠습니까?')) {
+             $.post('../connect/insertBook.do' 
+                    , {
+                      itemNo:reqNo,
+                      connectStartDate:$(".ui-datepicker-year").html() 
+                      + "-" + mm
+                      + "-" + ddFirst,
+                      connectEndDate:yyyyMMdd(lastDate),
+                      connectStatus:'예약요청',
+                      connectDate:new Date(),
+                      guideEmail:guideEmail,
+                      touristEmail:'quasar4yjw@gmail.com',
+                      }
+                    , function(result){
+                          if (result.status == "success") {
+                            alert("예약요청을 완료했습니다.");
+                            $("#firstDate, #lastDate").css('box-shadow', 'initial');
+                            $("#firstDate, #lastDate").css('border', '1px solid #DDDDDD');
+                          } else {
+                            alert("서버가 바쁩니다. 나중에 다시 시도해주세요.");
+                            $("#firstDate, #lastDate").css('box-shadow', '0 0 5px red');
+                            $("#firstDate, #lastDate").css('border', '1px solid #DDDDDD');
+                          }
+                        },'json'  
+                    );}
+     else {
+         // Do nothing!
+    	   $("#firstDate, #lastDate").css('box-shadow', 'initial');
+    	   $("#firstDate, #lastDate").css('border', '1px solid #DDDDDD');
+          }
+		 
+		 
+	 }, 2000);
+	   
+	 
 })
 });
 
@@ -792,7 +851,7 @@ $('.ui-state-default').mouseover(function(){
 			         });
 			}); 
 
-			console.log(data.guideInfo.guideEmail);
+			guideEmail = data.guideInfo.guideEmail;
 			numTravel = data.tourDayCount;
 
 			var date = new Date();

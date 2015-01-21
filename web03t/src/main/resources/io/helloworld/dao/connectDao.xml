@@ -74,6 +74,11 @@
     </if> 
     WHERE C_NO=#{connectNo}
   </update>
+  
+  <insert id="insert" parameterType="Connect">
+    INSERT INTO BOOK_INFO(I_NO, C_SDATE, C_EDATE, C_STAT, C_DATE, G_EMAIL, T_EMAIL)
+    VALUES (#{itemNo}, #{connectStartDate}, #{connectEndDate}, '예약요청', #{connectDate}, #{guideEmail}, #{touristEmail})
+  </insert>
 
   
 </mapper>

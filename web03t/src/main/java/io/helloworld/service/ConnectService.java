@@ -14,24 +14,24 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ConnectService {
-  
-  @Autowired 
-  ConnectDao connectDao;
-  
-  @Transactional(
-      rollbackFor=Exception.class,
-      propagation=Propagation.REQUIRED)
-  
-  /*public void status(Connect connect) {*/
-  
-  public List<?> getList(int pageNo, int pageSize, String selected, String userType) {
-    HashMap<String,Object> paramMap = new HashMap<>();
-    paramMap.put("startIndex", ((pageNo - 1) * pageSize));
-    paramMap.put("pageSize", pageSize);
-    paramMap.put("selected", selected);
-    paramMap.put("userType", userType);
-    
-/*    if(selected == "req"){
+
+	@Autowired 
+	ConnectDao connectDao;
+
+	@Transactional(
+			rollbackFor=Exception.class,
+			propagation=Propagation.REQUIRED)
+
+	/*public void status(Connect connect) {*/
+
+	public List<?> getList(int pageNo, int pageSize, String selected, String userType) {
+		HashMap<String,Object> paramMap = new HashMap<>();
+		paramMap.put("startIndex", ((pageNo - 1) * pageSize));
+		paramMap.put("pageSize", pageSize);
+		paramMap.put("selected", selected);
+		paramMap.put("userType", userType);
+
+		/*    if(selected == "req"){
       resultMap.put("connects", 
           connectService.getList(pageNo, pageSize));
     } else if(selected == "succ") {
@@ -41,32 +41,39 @@ public class ConnectService {
       resultMap.put("connects", 
           connectService.getList(pageNo, pageSize));
     } else {
-      
-    }*/
-    
-    
-    /*paramMap.put("interest", itemDao.selectTages());*/
-    
-    return connectDao.selectConnect(paramMap);
-  }
-  
-  public int getMaxPageNo(int pageSize, String selected) {
-    HashMap<String,Object> paramMap = new HashMap<>();
-    paramMap.put("selected", selected);
-    
-    int totalSize = connectDao.totalSize(paramMap);
-    int maxPageNo = totalSize / pageSize;
-    if ((totalSize % pageSize) > 0) maxPageNo++;
-    
-    return maxPageNo;
-  }
 
-  
-  @Transactional(
-      rollbackFor=Exception.class, 
-      propagation=Propagation.REQUIRED)
-  public void update(Connect connect) {
-    connectDao.update(connect);
-  }
+    }*/
+
+
+		/*paramMap.put("interest", itemDao.selectTages());*/
+
+		return connectDao.selectConnect(paramMap);
+	}
+
+	public int getMaxPageNo(int pageSize, String selected) {
+		HashMap<String,Object> paramMap = new HashMap<>();
+		paramMap.put("selected", selected);
+
+		int totalSize = connectDao.totalSize(paramMap);
+		int maxPageNo = totalSize / pageSize;
+		if ((totalSize % pageSize) > 0) maxPageNo++;
+
+		return maxPageNo;
+	}
+
+
+	@Transactional(
+			rollbackFor=Exception.class, 
+			propagation=Propagation.REQUIRED)
+	public void update(Connect connect) {
+		connectDao.update(connect);
+	}
+
+	@Transactional(
+			rollbackFor=Exception.class, 
+			propagation=Propagation.REQUIRED)
+	public void insert(Connect connect) {
+		connectDao.insert(connect);
+	}
 
 }

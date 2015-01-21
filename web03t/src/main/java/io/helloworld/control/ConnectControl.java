@@ -68,6 +68,14 @@ public class ConnectControl {
     return resultMap;
   }
   
+  @RequestMapping("/insertBook")
+  public Object insertBook(Connect connect) throws Exception {
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    connectService.insert(connect);
+    return resultMap;
+  }
+  
 }
 
 

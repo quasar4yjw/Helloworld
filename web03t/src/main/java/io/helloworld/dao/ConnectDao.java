@@ -9,5 +9,6 @@ public interface ConnectDao {
   List<?> selectConnect(Map<String,Object> params);
   int totalSize(Map<String,Object> params);
   void update(Connect connect);
+  void insert(Connect connect);
 
 }
