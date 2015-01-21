@@ -400,6 +400,7 @@ $(function(){
 });
 var photoUrl;
 var guide;
+var guideLanguageInit;
 function loadGuide(email) {
     $.getJSON('../guide/view.do?email=' + email, 
       function(data){
@@ -422,6 +423,7 @@ function loadGuide(email) {
          $.each(data.guideLang, function( index, value ) { 
          $('#guideLanguage option[value = ' + data.guideLang[index].guideLanguage + ']').attr('selected', 'selected');
          });
+         guideLanguageInit = $('#guideLanguage').val();
          $('.my-select').multiSelect();
         
         
@@ -444,14 +446,13 @@ function loadGuide(email) {
     	  console.log(photoUrl);
     	
     	  if (confirm('정말 수정하시겠습니까?')) {
-         console.log($('.my-select').val() + "템프");
-       
-    	  /*  if (guide.tel == $('#tel').val() &&
+         console.log($('.my-select').val() , "템프");
+    	    if (guide.tel == $('#tel').val() &&
                      guide.introduce == $('#introduce').val() &&
                       $('#password').val()  ==  "" &&
-                      $('#repassword').val()  ==  ""    &&
-                        guide.guideLanguageList == temp && 
-                      guide.photo == photoUrl    
+                      $('#repassword').val()  ==  "" &&
+                        guideLanguageInit.join() == $('#guideLanguage').val().join() &&
+                         guide.photo == photoUrl    
                        ) { 
     		              $("button[name='updateButton']").prop("type", "button");
     		             alert('수정된 정보가 없습니다.');
@@ -494,7 +495,7 @@ function loadGuide(email) {
                      });
                 	 
                 	 
-               /*    } */
+                  } 
     	  }
     	  else {
     		   $("button[name='updateButton']").prop("type", "button");
