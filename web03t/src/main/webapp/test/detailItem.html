@@ -719,18 +719,22 @@ $(".serviceTest").click(function(){
   if(mm < 10) mm = "0" + mm;
 	if(ddFirst < 10) ddFirst = "0" + ddFirst;
 	if(ddLast < 10) ddLast = "0" + ddLast;
+	
+	var firstDate = new Date($(".ui-datepicker-year").html() 
+            + "-" + mm
+            + "-" + ddFirst);
+	var lastDate = new Date(firstDate);
+	
+	lastDate.setDate(firstDate.getDate()+numTravel-1); // 2일짜리 여행이라면 퍼스트데이에 2일에서 1을 뺀 결과, 1을 더합니다. +(2일짜리-1)
 	 console.log($(".ui-datepicker-year").html() 
 	          + "-" + mm
 	          + "-" + ddFirst + " ~ " +
-	          $(".ui-datepicker-year").html() 
-	            + "-" + mm
-	            + "-" + ddLast);
+	          yyyyMMdd(lastDate));
+	 
 	 $("#firstDate").val($(".ui-datepicker-year").html() 
 	            + "-" + mm
 	            + "-" + ddFirst);
-	 $("#lastDate").val($(".ui-datepicker-year").html() 
-             + "-" + mm
-             + "-" + ddLast);
+	 $("#lastDate").val(yyyyMMdd(lastDate));
 })
 });
 
@@ -832,7 +836,6 @@ function yyyyMMdd(date) {
     if (date) {
       var date = new Date(date);
       var str = date.getFullYear() + '-';
-      
       if (date.getMonth() < 9) str += '0';
       str += (date.getMonth() + 1) + '-';
       
