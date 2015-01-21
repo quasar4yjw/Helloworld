@@ -51,7 +51,29 @@ public class GuideControl {
 	
 	
 	@RequestMapping("/update")
-  public Object update(Guide guide) throws Exception {
+  public Object update(Guide guide, MultipartFile photofile) throws Exception {
+
+	  if (photofile != null
+        && !photofile.isEmpty()) {
+/*
+	    if(photofile.delete()){
+        System.out.println(photofile.getName() + " is deleted!");
+      }else{
+        System.out.println("Delete operation is failed.");
+      }*/
+	      
+	    
+      String fileuploadRealPath = 
+        servletContext.getRealPath("/fileupload");
+      String filename = System.currentTimeMillis() + "_";
+      //String filename = new String(photofile.getOriginalFilename().getBytes("8859_1"),"utf-8");
+      File file = new File(fileuploadRealPath + "/" + filename);
+    
+      photofile.transferTo(file);
+      guide.setPhoto(filename);
+}
+	  
+	  
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
     guideService.update(guide);

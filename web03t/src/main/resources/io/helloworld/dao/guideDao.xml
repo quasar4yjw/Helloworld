@@ -24,7 +24,7 @@
     <result column="BIRTH" property="birthDate"/>
     <result column="G_PHOT" property="photo"/>
     <result column="G_COUNT" property="guideCount"/>
-    <result column="G_CONT" property="content"/>
+    <result column="G_CONT" property="introduce"/>
     
     </resultMap>
 
@@ -77,6 +77,35 @@
   WHERE G_EMAIL = #{value}
   </select>
   
+  
+    <update id="update" parameterType="Guide">
+   
+    UPDATE USERS SET 
+      TEL=#{tel},
+      PWD=#{password}
+    WHERE EMAIL=#{email}
+  
+</update>
+
+  <update id="updateSpecial" parameterType="Guide">
+     UPDATE GUIDES SET 
+      G_PHOT=#{photo},
+      G_COUNT=#{guideCount},
+      G_CONT=#{introduce}
+     
+    WHERE G_EMAIL=#{email}
+
+</update>
+
+<delete id="updateLanguageToDelete" parameterType="String">
+  DELETE FROM G_LANGS
+   WHERE G_EMAIL = #{email}
+  </delete>
+  
+  <insert id="updateLanguageToInsert" parameterType="String">
+   INSERT INTO G_LANGS(G_EMAIL, ALANG)
+   VALUES(#{email}, #{guideLanguage})
+  </insert>
 
 </mapper>
 

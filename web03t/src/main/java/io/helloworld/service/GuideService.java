@@ -52,6 +52,23 @@ public class GuideService {
    public void update(Guide guide) {
     guideDao.update(guide);
     guideDao.updateSpecial(guide);
+    
+    
+    String msg = null;
+    try {
+      msg = URLDecoder.decode(guide.getGuideLanguageList(), "utf-8");
+    } catch (UnsupportedEncodingException e) {
+      e.printStackTrace();
+    }
+
+    Map dataMap = new Gson().fromJson(msg, new TypeToken<Map<String, String>>() {}.getType());
+
+    guideDao.updateLanguageToDelete(guide);
+    for(int i = 0; i < dataMap.size(); i++) {
+      guide.setGuideLanguage((String)dataMap.get(i+""));
+      guideDao.updateLanguageToInsert(guide);
+    }
+    
   }
 
   

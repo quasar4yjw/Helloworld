@@ -412,7 +412,7 @@ function genderType(genderNo) {
    
            if (confirm('정말 수정하시겠습니까?')) {
               
-              $.getJSON('../tourist/update.do' 
+              $.post('../tourist/update.do' 
                      , {
             	         email : $('#email').val(),
                     	 tel : $('#tel').val(),
@@ -436,12 +436,12 @@ function genderType(genderNo) {
                            } else {
                              alert("서버가 바쁩니다. 나중에 다시 시도해주세요.");
                            }
-                         }  
+                         },'json'  
                      )}
       else {
           // Do nothing!
            }
-
+           
     	});
 
 </script>

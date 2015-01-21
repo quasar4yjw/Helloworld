@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <link rel="shortcut icon" href="../favicon.ico">
-
-
 <link rel="stylesheet" type="text/css" href="../css/normalizeCurved.css" />
 <link rel="stylesheet" type="text/css" href="../css/demoCurved.css" />
 <link rel="stylesheet" href="../fonts/font-awesome-4.2.0/css/font-awesome.minCurved.css">
 <link rel="stylesheet" type="text/css" href="../css/tooltip-curved.css" />
-
-
-
 
 
 
@@ -191,8 +187,10 @@ margin-top: 30px;
 background-color: white;
 }
 
-
-
+.tooltip-west .tooltip-content {
+font-size: 1em;
+left: 7em;
+}
 
 
 </style>
@@ -216,8 +214,9 @@ background-color: white;
 
  <div class="Mypage-update">
 
-<form id="myform" class="fs-form fs-form-overview fs-show" autocomplete="off"
-action="" method="post" enctype="multipart/form-data">
+ <form id="myform" class="fs-form fs-form-overview fs-show" autocomplete="off"
+action="../guide/update.do" method="post" enctype="multipart/form-data">
+
 
 
 
@@ -231,14 +230,15 @@ action="" method="post" enctype="multipart/form-data">
     <li class="">
     <label class="fs-field-label fs-anim-upper"  id="guidePhoto" for="q2">프로필 사진</label><br>
 <!-- 사진 업로드 -->
-      <input type="file" accept="image/png, image/jpeg">
+      <input type="file" name="photofile"  accept="image/png, image/jpeg">
 <img id='guideImage' src=''></img>
+    
     
     </li>
           <br>
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q2">이메일 주소</label>
-              <input class="fs-anim-lower-email2" id="email" name="email" type="email" READONLY>
+              <input class="fs-anim-lower-email2" id="email" type="email" READONLY>
             </li>
             
             
@@ -246,12 +246,18 @@ action="" method="post" enctype="multipart/form-data">
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">패스워드</label>
-              <input class="fs-anim-lower" id="password" name="q1" type="password">
+              <input class="fs-anim-lower fs-anim-lower-password" id="password" name="q1" type="password">
+              <div class="tooltip tooltip-west">
+              <span class="tooltip-content tooltip-content-password">6자리 이상, 영문 +숫자 조합이어야 합니다.</span>
+            </div>
             </li>
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">패스워드 확인</label>
-              <input class="fs-anim-lower" id="repassword" name="q1" type="password">
+              <input class="fs-anim-lower fs-anim-lower-repassword" id="repassword" name="q1" type="password">
+              <div class="tooltip tooltip-west">
+              <span class="tooltip-content tooltip-content-repassword">6자리 이상, 영문 +숫자 조합이어야 합니다.</span>
+            </div>
             </li>
             
             <li class="">
@@ -266,7 +272,7 @@ action="" method="post" enctype="multipart/form-data">
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">전화번호</label>
-              <input class="fs-anim-lower" id="tel" name="q1" type="tel">
+              <input class="fs-anim-lower" id="tel" name="q1" type="tel" onkeydown="return showKeyCode(event)" required="">
             </li>
              
              <br>  
@@ -274,7 +280,7 @@ action="" method="post" enctype="multipart/form-data">
             
             <li class="">
               <label class="fs-field-label fs-anim-upper" for="q1">사용가능언어를 선택해주세요.</label>
-            <select multiple="multiple" id="guideLanguage" name="my-select[]" class="language-selector my-select form-control">    
+            <select multiple="multiple" id="guideLanguage" name="my-select[]" class="language-selector my-select form-control" required="">    
                   <option value="id">Bahasa Indonesia</option>    
                   <option value="ms">Bahasa Melayu</option>    
                   <option value="ca">Català</option>    
@@ -306,15 +312,14 @@ action="" method="post" enctype="multipart/form-data">
             
             <li class="">
             <label class="fs-field-label fs-anim-upper" for="q1">자기 소개</label>
-            <textarea class="fs-anim-lower" id="content" name="q1" style="
-    font-size: 1.1em; ">안녕하세요. 자기소개입니다.</textarea>
+            <textarea class="fs-anim-lower" id="introduce" name="q1" style="font-size: 1.1em; "></textarea>
             
             </li>
             
             
             
           </ol><!-- /fs-fields -->
-          <button class="fs-submit fs-submit-guide" type="button" style="font-size: 1.5em; padding: 23px 0px;">수정하기</button>
+          <button class="fs-submit fs-submit-guide" type="submit" name ="updateButton" style="font-size: 1.5em; padding: 23px 0px;">수정하기</button>
         </form><!-- /fs-form -->
       <div class="fs-controls"><button class="fs-continue">Continue</button><nav class="fs-nav-dots"><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class="fs-dot-current"></button></nav><span class="fs-numbers"><span class="fs-number-current">6</span><span class="fs-number-total">6</span></span><div class="fs-progress" style="width: 100%;"></div></div><span class="fs-message-error"></span></div><!-- /fs-form-wrap -->
 
@@ -360,7 +365,9 @@ action="" method="post" enctype="multipart/form-data">
   </script>
   
   <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="../js/jquery.form.js"></script>
     <script src="../js/jquery.ezdz.js"></script>
+    
     <script>
         $('[type="file"]').ezdz({
             text: '사진을 올려주세요.',
@@ -389,36 +396,187 @@ action="" method="post" enctype="multipart/form-data">
   
   <script>
 $(function(){
-  loadGuide("abcd@efg.com");
+  loadGuide("apple@apple.com");
 });
-
+var photoUrl;
+var guide;
 function loadGuide(email) {
     $.getJSON('../guide/view.do?email=' + email, 
       function(data){
         $('#email').val(data.guide.email); 
         $('#guideName').val(data.guide.userName);
         $('#tel').val(data.guide.tel);
-        $('.ezdz-dropzone').addClass('ezdz-accept').children('div').first().html("<img src='../fileupload/" + data.guide.photo + "'></img>");
+        
+         /* $('.ezdz-dropzone').addClass('ezdz-accept').children('div').first().html("<img src='../fileupload/" + data.guide.photo + "'></img>");
            console.log(data.guideLang);
-           console.log(data.guide.photo);
+           console.log(data.guide.photo);  */
+           photoUrl=data.guide.photo;
+             console.log(data.guide.photo);
+             console.log(data);
+             if(data.guide.photo == null) {
+            	 
+               } else {
+                 $('.ezdz-dropzone').addClass('ezdz-accept').children('div').first().html("<img src='../fileupload/" + data.guide.photo + "'></img>");
+               }  
+           
          $.each(data.guideLang, function( index, value ) { 
          $('#guideLanguage option[value = ' + data.guideLang[index].guideLanguage + ']').attr('selected', 'selected');
          });
          $('.my-select').multiSelect();
         
         
-        $('#content').val(data.guide.content);
+        $('#introduce').val(data.guide.introduce);
         
         if (data.guide.birthDate) {
             $('#birthDate').val(data.guide.birthDate);
            }
 
         guide = data.guide;
+        console.log($('.my-select').val());
       });
   }
 
+
+      $('.fs-submit-guide').click(function(){
+    	  
+    	  var temp = encodeURIComponent( JSON.stringify($.extend({}, $('.my-select').val())) );
+    	  console.log('-------------');
+    	  console.log(photoUrl);
+    	
+    	  if (confirm('정말 수정하시겠습니까?')) {
+         console.log($('.my-select').val() + "템프");
+       
+    	  /*  if (guide.tel == $('#tel').val() &&
+                     guide.introduce == $('#introduce').val() &&
+                      $('#password').val()  ==  "" &&
+                      $('#repassword').val()  ==  ""    &&
+                        guide.guideLanguageList == temp && 
+                      guide.photo == photoUrl    
+                       ) { 
+    		              $("button[name='updateButton']").prop("type", "button");
+    		             alert('수정된 정보가 없습니다.');
+                  } else if ($('#password').val()  ==  "" ||
+                      $('#repassword').val()  ==  "" ) {
+                	   $("button[name='updateButton']").prop("type", "button"); 
+                    alert('비밀번호를 모두 입력해주세요.');
+                  }  else { 
+                	 console.log('성공');
+                	 $("button[name='updateButton']").prop("type", "submit");
+                	 $('#myform').ajaxForm({
+                         data: { 
+                             email : $('#email').val(),
+                             tel : $('#tel').val(),
+                             password : $('#repassword').val(),
+                             introduce : $('#introduce').val(),
+                             guideLanguageList : temp,
+                             photo : photoUrl
+                            },
+                         dataType:'json',
+                         cache: false,
+                         processData: false,
+                         contentType: false,
+                         beforeSubmit: function (data,form,option) {
+                             //validation체크 
+                             //막기위해서는 return false를 잡아주면됨
+                             
+                             console.log("사진 업로드 성공11!!");
+                             return true;
+                         },
+                         success: function(response,status){
+                             //성공후 서버에서 받은 데이터 처리
+                             alert("수정되었습니다.");
+                             location.reload();
+                         },
+                         error: function(jqXHR, textStatus, errorThrown){ 
+                             console.log(jqXHR + ":" + textStatus + ":" + errorThrown);
+                             //에러발생을 위한 code페이지
+                         }                               
+                     });
+                	 
+                	 
+               /*    } */
+    	  }
+    	  else {
+    		   $("button[name='updateButton']").prop("type", "button");
+    		  console.log('취소');
+          } 
+    	  
+      });
+    	  
+          
+      
 </script>
+
+<script>
+pwdValidate('.fs-anim-lower-password', '.tooltip-content-password');
+pwdValidate('.fs-anim-lower-repassword', '.tooltip-content-repassword');
+function pwdValidate(target, message){
+    $(target).focusout(function(){
+      var pwdVal = this.value;
+      var validate = pwdVal.match(/^(?=\w{6,}$)(?=.*\d)(?=.*[A-z]).*/);
+      if(pwdVal != ""){
+        if (pwdVal.match(/^(?=\w{6,}$)(?=.*\d)(?=.*[A-z]).*/) == null) {
+                $(message).html("6자리 이상, 영문 +숫자 조합이어야 합니다.");
+                    appear(message);
+                    this.focus(); 
+        } 
+        else if(target == '.fs-anim-lower-repassword' && $('.fs-anim-lower-password').val() != this.value) {
+             $('.tooltip-content-repassword').html("입력한 패스워드가 동일하지 않습니다.");
+              appear(message);
+              this.focus();
+            }
+      }
+      console.log(pwdVal.match(/^(?=\w{6,}$)(?=.*\d)(?=.*[A-z]).*/));
+      
+    });
+    
+    $(target).keyup(function(){
+        var pwdVal = this.value;
+        var validate = pwdVal.match(/^(?=\w{6,}$)(?=.*\d)(?=.*[A-z]).*/);
+        console.log(pwdVal.match(/^(?=\w{6,}$)(?=.*\d)(?=.*[A-z]).*/));
+        if(target == '.fs-anim-lower-repassword'){
+          if($('.fs-anim-lower-password').val() == this.value && pwdVal.match(/^(?=\w{6,}$)(?=.*\d)(?=.*[A-z]).*/)){
+          disappear(message);
+        }
+        }
+        else if(pwdVal.match(/^(?=\w{6,}$)(?=.*\d)(?=.*[A-z]).*/)){
+                    disappear(message);
+                    }
+      });
+    }
+
+function appear(message){
+    $(message).css({
+          "opacity": "1",
+       "-webkit-transform": "translate3d(0,50%,0) rotate3d(0,0,0,0)",
+       "transform": "translate3d(0,50%,0) rotate3d(0,0,0,0)",
+       "pointer-events": "auto"
+       });
+  }
+  function disappear(message){
+    $(message).css({
+          "opacity": "0",
+          "-webkit-transform": "translate3d(0,50%,0) rotate3d(1,1,1,30deg)",
+       "transform": "translate3d(0,50%,0) rotate3d(1,1,1,30deg)",
+       "pointer-events": "none"
+       });
+  }
   
+  
+  function showKeyCode(event) {
+      event = event || window.event;
+      var keyID = (event.which) ? event.which : event.keyCode;
+      if( ( keyID >=48 && keyID <= 57 ) || ( keyID >=96 && keyID <= 105 ) || keyID == 8 || keyID == 46)
+      {
+          return;
+      }
+      else
+      {
+          return false;
+      }
+  }
+</script>
+
 
 </body>
 </html>
