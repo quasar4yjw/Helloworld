@@ -48,7 +48,7 @@ body {
 
 .container {
  width: 100%;
- border: 1px solid blue; 
+ /* border: 1px solid blue;  */
 padding: 0px;
 margin:auto;
 background-color:#f3f3f5;
@@ -63,7 +63,7 @@ background-color:#ff5a5f;
 .top {
 	width: 360px;
 height: 32px;
- border: 1px solid black; 
+ /* border: 1px solid black;  */
 position: relative;
 left: 77%;
 padding: 0 10px;
@@ -155,22 +155,22 @@ TEXT-DECORATION: none;
 /*  main-name= hello world */
 .main-name {
 height: 70px;
- border: 1px solid black; 
+/*  border: 1px solid black;  */
 text-align: center;
 font-size: 3.3em;
 
 }
 .main-content {
 height: 500px;
- border:1px solid red; 
+/*  border:1px solid red;  */
 position: relative;
 
 }
 .best-items {
 width: 1170px;
-height: 700px;
+height: 659px;
 margin: 0 auto;
- border:1px solid red; 
+ /* border:1px solid red;  */
 position: relative;
 
 }
@@ -178,7 +178,7 @@ position: relative;
 background: rgb(87,85,85);
 height: 100%;
 clear:both;
-border:1px solid red; 
+/* border:1px solid red;  */
 }
 
 
@@ -203,7 +203,7 @@ margin: 0;
 width: 200px;
 height: 40px;
 padding: 10px 0px;
-border: 1px solid black; 
+/* border: 1px solid black;  */
 position: relative;
 display: inline-block;
 left: 5%;
@@ -222,7 +222,7 @@ height: 40px;
 display: inline-block;
 position: absolute;
 padding: 10px 0;
- border: 1px solid black; 
+/*  border: 1px solid black;  */
 /* float: right; */
 right: 5%;
 }
