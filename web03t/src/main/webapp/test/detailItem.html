@@ -657,6 +657,23 @@ font-size: 28px;
   var reqNo = 0;
   var numTravel = 1;
   var guideEmail = null;
+  
+  Object.defineProperty(Date.prototype, 'YYYYMMDDHHMMSS', {
+	    value: function() {
+	        function pad2(n) {  // always returns a string
+	            return (n < 10 ? '0' : '') + n;
+	        }
+
+	        return this.getFullYear() +
+	               pad2(this.getMonth() + 1) + 
+	               pad2(this.getDate()) +
+	               pad2(this.getHours()) +
+	               pad2(this.getMinutes()) +
+	               pad2(this.getSeconds());
+	    }
+	});
+  
+  
   $(function(){
 	  reqNo = getParameterByName("itemNo");
 	  loadProduct(reqNo);
@@ -768,7 +785,7 @@ $(".serviceTest").click(function(){
                       + "-" + ddFirst,
                       connectEndDate:yyyyMMdd(lastDate),
                       connectStatus:'예약요청',
-                      connectDate:yyyyMMdd(new Date()),
+                      connectDate:new Date().YYYYMMDDHHMMSS(),
                       guideEmail:guideEmail,
                       touristEmail:'quasar4yjw@gmail.com',
                       }
@@ -908,7 +925,9 @@ function yyyyMMdd(date) {
     }
   }
   
-  
+
+
+
 </script>
 
     
