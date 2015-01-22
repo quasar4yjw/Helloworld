@@ -232,6 +232,7 @@ action="../guide/update.do" method="post" enctype="multipart/form-data">
 <!-- 사진 업로드 -->
       <input type="file" name="photofile"  accept="image/png, image/jpeg">
 <img id='guideImage' src=''></img>
+
     
     
     </li>
@@ -401,6 +402,8 @@ $(function(){
 var photoUrl;
 var guide;
 var guideLanguageInit;
+var imageSrc;
+var srcSubstring;
 function loadGuide(email) {
     $.getJSON('../guide/view.do?email=' + email, 
       function(data){
@@ -417,7 +420,12 @@ function loadGuide(email) {
              if(data.guide.photo == null) {
             	 
                } else {
-                 $('.ezdz-dropzone').addClass('ezdz-accept').children('div').first().html("<img src='../fileupload/" + data.guide.photo + "'></img>");
+                 $('.ezdz-dropzone').addClass('ezdz-accept').children('div').first().html("<img class= photofile src='../fileupload/" + data.guide.photo + "'></img>");
+              /*  alert($('img[id='guideImage']').val());  */
+             imageSrc = $( 'img.photofile' ).attr( 'src' );
+              console.log(imageSrc + "@@@@imageSrc");
+              srcSubstring = imageSrc.substring(14);
+              console.log(srcSubstring);
                }  
            
          $.each(data.guideLang, function( index, value ) { 
@@ -444,15 +452,42 @@ function loadGuide(email) {
     	  var temp = encodeURIComponent( JSON.stringify($.extend({}, $('.my-select').val())) );
     	  console.log('-------------');
     	  console.log(photoUrl);
-    	
+    	  console.log(srcSubstring);
+    	  console.log( srcSubstring == photoUrl );
+    	  
     	  if (confirm('정말 수정하시겠습니까?')) {
-         console.log($('.my-select').val() , "템프");
+    		 
+     		  /* File fileDelete = (File) photofile;
+    		    fileDelete.delete(); 
+    		    
+    		     String s = "test_9999.txt"; 
+    	         File f = file; 
+              console.log(file);
+    	        if (file.delete()) {
+    	          System.out.println("파일 또는 디렉토리를 성공적으로 지웠습니다: " + "1");
+    	        } else {
+    	          System.err.println("파일 또는 디렉토리 지우기 실패: " + "2");
+    	        } 
+    	        
+    	        String tempFile = "../fileupload/" + guide.photo ;     
+    	                File fileTemp = new File(tempFile);
+    	                fileTemp.delete();   
+    	        
+    	                 Path path = FileSystems.getDefault().getPath("../fileupload/1421821266472_");
+    	                boolean b=Files.deleteIfExists(path); 
+    	                
+    	                
+    	                var f = photofile.GetFile("../fileupload/1421821266472");
+    	                f.delete(); */
+    	               
+
+    		    console.log($('.my-select').val() , "템프");
     	    if (guide.tel == $('#tel').val() &&
                      guide.introduce == $('#introduce').val() &&
                       $('#password').val()  ==  "" &&
                       $('#repassword').val()  ==  "" &&
                         guideLanguageInit.join() == $('#guideLanguage').val().join() &&
-                         guide.photo == photoUrl    
+                        srcSubstring == photoUrl    
                        ) { 
     		              $("button[name='updateButton']").prop("type", "button");
     		             alert('수정된 정보가 없습니다.');
