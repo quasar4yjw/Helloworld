@@ -17,19 +17,19 @@ public class AuthService {
 		    HashMap<String,String> params = new HashMap<>();
 		    params.put("loginEmail", loginEmail);
 		    params.put("loginPwd", loginPwd);
+		    
+		    HashMap resultMap = new HashMap();
 		    long guideBool = 0L;
 		    long touristBool = 0L;
-		    HashMap resultMap = authDao.existUser(params);
 		    
-		    if ((Long)authDao.areYouGuide(params) != null){
-		    guideBool = (Long)authDao.areYouGuide(params);
-		    }
-		    if ((Long)authDao.areYouTourist(params) != null) {
-		    touristBool = (Long)authDao.areYouTourist(params);
-		    }
-		    
-		    /*resultMap.put("guideBool", "333");
-		    resultMap.put("touristBool", "222");*/
+		    HashMap existUser = authDao.existUser(params);
+		    resultMap.put("existUser", existUser);
+
+		    guideBool = authDao.areYouGuide(params);
+		    resultMap.put("guideBool", guideBool);
+
+		    touristBool = authDao.areYouTourist(params);
+		    resultMap.put("touristBool", touristBool);
 		    
 		    return resultMap;
 		  }

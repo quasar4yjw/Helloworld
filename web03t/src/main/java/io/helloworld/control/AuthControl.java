@@ -42,13 +42,13 @@ public class AuthControl {
 	      HttpServletResponse response,
 	      HttpSession session) throws Exception {
 
-	    HashMap validateMap = authService.validate(loginEmail, loginPwd);
+	    HashMap userInfo = authService.validate(loginEmail, loginPwd);
 	    
 	    HashMap<String,Object> resultMap = new HashMap<>();
 	    
-	    if (validateMap != null) {
+	    if (userInfo.get("existUser") != null) {
 	      resultMap.put("status", "success");
-	      session.setAttribute("loginUser", validateMap);
+	      session.setAttribute("loginUser", userInfo);
 	    } else {
 	      session.invalidate();
 	      resultMap.put("status", "fail");

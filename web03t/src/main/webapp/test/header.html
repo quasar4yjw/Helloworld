@@ -49,7 +49,7 @@ $.getJSON('/web03t/auth/loginUser.do', function(data){
 /* 	    if (data.photo) {
 	        $('#userPhoto').attr('src', data.loginUser.photo);
 	    } */
-	    $('#userName').html(data.loginUser.userName);
+	    $('#userName').html(data.loginUser.existUser.userName);
 	    $('#userName').click(function(){
 	      alert('사용자 정보 조회 창으로 보낼 예정');
 	    });

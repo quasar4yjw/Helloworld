@@ -6,8 +6,8 @@ public interface AuthDao {
 
 	HashMap existUser(HashMap<String, String> params);
 
-	Object areYouGuide(HashMap<String, String> params);
+	long areYouGuide(HashMap<String, String> params);
 
-	Object areYouTourist(HashMap<String, String> params);
+	long areYouTourist(HashMap<String, String> params);
 
 }
