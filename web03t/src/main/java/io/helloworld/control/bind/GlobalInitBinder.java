@@ -25,6 +25,9 @@ public class GlobalInitBinder {
   //    CustomDateEditor를 사용하라!
   @InitBinder
   public void initBinder(WebDataBinder binder) {
+
+	  
+	  
     log.debug("initBinder() 호출됨");
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     dateFormat.setLenient(false);
@@ -34,6 +37,17 @@ public class GlobalInitBinder {
         Date.class, /* 어떤 타입으로 바꿀 것인지 지정*/ 
         new CustomDateEditor(dateFormat, true) /* 변환기 */
         );
+    
+	  /*log.debug("initBinder2() 호출됨");
+	  SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	  dateFormat2.setLenient(false);
+	  
+//문자열을 특정 타입으로 바꿀 변환기를 등록
+	  binder.registerCustomEditor(
+			  Date.class,  어떤 타입으로 바꿀 것인지 지정 
+			  new CustomDateEditor(dateFormat2, true)  변환기 
+			  );*/
+    
   }
 }
 
