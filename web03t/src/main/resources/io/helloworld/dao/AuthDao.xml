@@ -20,7 +20,7 @@
   <select id="existUser" parameterType="map" resultMap="userMap">
     SELECT EMAIL,UNAME,TEL,BIRTH
     FROM USERS
-    WHERE EMAIL=#{loginEmail} AND PWD=#{loginPwd}
+    WHERE EMAIL=#{loginEmail} AND binary(PWD)=#{loginPwd}
   </select>
   <select id="areYouGuide" parameterType="map" resultType="long">
 	  SELECT COUNT(G_EMAIL)
