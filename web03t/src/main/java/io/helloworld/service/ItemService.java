@@ -2,6 +2,7 @@ package io.helloworld.service;
 
 import io.helloworld.dao.ItemDao;
 import io.helloworld.dao.TagDao;
+import io.helloworld.domain.Search;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -56,10 +57,15 @@ public class ItemService {
 		/*   itemDao.insertDetailPhoto(detailPhoto);*/
 	}
 
-	public List<?> getList(int pageNo, int pageSize) {
+	public List<?> getList(int pageNo, int pageSize, Search search) {
 		HashMap<String,Object> paramMap = new HashMap<>();
 		paramMap.put("startIndex", ((pageNo - 1) * pageSize));
 		paramMap.put("pageSize", pageSize);
+		paramMap.put("country",search.getCountry());
+    paramMap.put("startDate",search.getStartDate());
+    paramMap.put("endDate",search.getEndDate());
+    paramMap.put("minPrice",search.getMinPrice());
+    paramMap.put("maxPrice",search.getMaxPrice());
 		/*paramMap.put("interest", itemDao.selectTages());*/
 
 		return itemDao.selectList(paramMap);

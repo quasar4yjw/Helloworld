@@ -1,8 +1,8 @@
 package io.helloworld.control;
 
+import io.helloworld.domain.Search;
 import io.helloworld.service.ItemService;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -47,8 +47,11 @@ public class ItemControl {
 	public Object list(
 			@RequestParam(defaultValue="1") int pageNo,
 			@RequestParam(defaultValue="6") int pageSize,
+			Search search,
 			HttpServletRequest request) throws Exception {
 	  HashMap itemMap = new HashMap();
+    
+    
 
 		if (pageSize <= 0)
 			pageSize = PAGE_DEFAULT_SIZE;
@@ -62,8 +65,8 @@ public class ItemControl {
 		resultMap.put("status", "success");
 		resultMap.put("currPageNo", pageNo);
 		resultMap.put("maxPageNo", maxPageNo);
-	   resultMap.put("items", 
-	       itemService.getList(pageNo, pageSize));
+	  resultMap.put("items", 
+	       itemService.getList(pageNo, pageSize,search));
 	   resultMap.put("tags",itemService.getTag());
 
 	   Cookie[] cookies = request.getCookies();
@@ -73,7 +76,7 @@ public class ItemControl {
      //cookies[i].getName() = 키(값의 키값)을 출력. 
      if(cookies != null){
        int length = cookies.length > 4 ? 3: (cookies.length-1);
-       //쿠키의 크기가 6보다크면 반복문을 5번 반복하고 아니면 크기에서 1뺀값으로 한다.
+       //쿠키의 크기가 4보다크면 반복문을 3번 반복하고 아니면 크기에서 1뺀값으로 한다.
        //쿠키의 마지막 값이 itemNo가 아니기 때문이다.
 
        for(int count = 0; count < length; count++) {

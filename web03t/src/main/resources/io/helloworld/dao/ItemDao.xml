@@ -98,6 +98,7 @@
   
   <select id="selectList" parameterType="map" 
         resultMap="itemListMap">
+  <![CDATA[
     SELECT       
       T1.I_NO, 
       T1.COUNTRY, 
@@ -108,11 +109,14 @@
       T2.P_URL    
     FROM ITEMS T1 LEFT OUTER JOIN DET_PHOTS T2 
     USING(I_NO)
+     WHERE T1.COUNTRY =#{country} AND T1.PRICE >= #{minPrice}  AND T1.PRICE <= #{maxPrice}  
     GROUP BY T1.I_NO
     ORDER BY T1.I_NO DESC
+  ]]> 
     <if test="pageSize > 0">
       limit #{startIndex}, #{pageSize}
     </if>
+   
   </select>
   
   <select id="totalSize" resultType="int">

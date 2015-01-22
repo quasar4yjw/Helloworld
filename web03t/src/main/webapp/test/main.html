@@ -29,7 +29,7 @@ background-image: linear-gradient(to bottom, #B6B6B4, #B6B6B4);
     .main-search{
 width: 450px;
 height: 500px;
-border: 1px solid black;
+/* border: 1px solid black; */
 position: absolute;
 z-index: 0;
 /* margin: auto; */
@@ -81,7 +81,7 @@ margin-left: 7%;
 /* 서치 버튼 수 */    
     #search{
 width: 350px;
-margin-top: 100px;
+margin-top: 80px;
 margin-left: 7%;
 background: transparent;
 font-weight: bolder;
@@ -247,7 +247,7 @@ line-height: 1.3em;
 }
 
     /* search 나라선택  */
-    .main-search #select-country{
+    .main-search #selectCountry{
     width: 350px;    
     color:white;
 background-color: transparent;
@@ -283,7 +283,7 @@ margin-left: -172.5px;
 			<div class='main-search back'>
 
 				<form action="">
-					<select id='select-country'> <!-- class="form-control" -->
+					<select id='selectCountry'> <!-- class="form-control" -->
 						<option value="">여행지를 선택하세요.</option>
   <option value="AF">Afghanistan</option>
   <option value="AX">Åland Islands</option>
@@ -531,20 +531,21 @@ margin-left: -172.5px;
   <option value="VI">Virgin Islands, U.S.</option>
   <option value="WF">Wallis and Futuna</option>
   <option value="EH">Western Sahara</option>
-  <option value="YE">Yemen</opt로그인   회원가입    여행일정등록
-  ion>
+  <option value="YE">Yemen</option>
   <option value="ZM">Zambia</option>
   <option value="ZW">Zimbabwe</option>
 					</select> <br> <br> 
 					<input type="text" id="startDate" placeholder="여행시작일" class='date'> 
 					<input type="text" id="endDate" placeholder="여행종료일" class='date'>
 					<br> <br>
+					<div id='mainPrice'>
 					<br> <br> 
 					<input type="hidden" class="slider-input"
 						value="50000,200000" />
-
-					<button type="submit" id='search' class="btn btn-default"
-					onclick="location.href='itemList.html'">search</button>
+						<br> <br>
+          </div>
+					<button type="button" id='search' class="btn btn-default">
+					<!-- onclick="location.href='itemList.html'" -->search</button>
 				</form>
 			</div>
 
@@ -626,57 +627,90 @@ margin-left: -172.5px;
   $('.dialog').load('loginDialog.html');
   $('.header').load('header.html');  
   $('.footer').load('footer.html');
-  console.log($("#select-country option:selected").text());
-  $('#startDate').datepicker({
-    maxDate: '+1y',
-    beforeShowDay: noBefore  });
-  function noBefore(date){
-   
-        if (date < new Date())
-   
-            return [false];
-    
-        return [true];
-    
-    }
-  $('#endDate').datepicker({
-    maxDate: '+1y',
-    beforeShowDay: noBefore  });
-  $('.slider-input').jRange({
-    from: 50000,
-    to: 200000,
-    step: 1000,
-    scale: [50000,100000,1500000,200000],
-    format: '%s won',
-    width: 350,
-    showLabels: true,
-    isRange : true
-});
- 
- 
-  var current=0;
-  var slide_length = $('.slide-ul>li').length;//이미지의 갯수를 변수로
+  console.log($("#selectCountry option:selected").text());
   
+  $('#startDate').datepicker({
+    dateFormat: 'yy-mm-dd',
+    numberOfMonths: 1,
+    beforeShowDay: noBefore,
+    onSelect: function(selected) {
+      $("#endDate").datepicker("option","minDate", selected)
+    }
+  });
+  $("#endDate").datepicker({ 
+    dateFormat: 'yy-mm-dd' ,
+    numberOfMonths: 1,
+    onSelect: function(selected) {
+    $("#startDate").datepicker("option","maxDate", selected)
+    }
+    });  
+ 
+ 
+  function noBefore(date) {
+    if (date < new Date())
+      return [ false ];
+    return [ true ];
 
+  }
+  $('.slider-input').jRange({
+    from : 50000,
+    to : 200000,
+    step : 1000,
+    scale : [ 50000, 100000, 1500000, 200000 ],
+    format : '%s won',
+    width : 350,
+    showLabels : true,
+    isRange : true
+  });
+  /*  $(function(){
+     console.log($('#lowPointer').attr('left'));
+     setTimeout("console.log($('.slider-input').val() )",10000);
+     if($('#lowPointer').attr('left') > 0){
+       console.log($('#lowLabel').val());
+     }
+   }); */
+
+  
+   //값 이동시 바로바로 리스트 출력할 때 필요한값.
+   //메인 마우스 아웃할때 나타나는 값.
+   /* 
+   $('#mainPrice').mouseleave(function() {
+     console.log($('.slider-input').val() )
+   }); 
+ */
+  var current = 0;
+  var slide_length = $('.slide-ul>li').length;//이미지의 갯수를 변수로
 
   $('.slide-ul>li').hide();//이미지 안보이게
   $('.slide-ul>li').first().show();//이미지 하나만 보이게
-  
-    
-  
-//자동 슬라이드 함수
-function autoplay(){
-  
-  if(current == slide_length-1){
-  current = 0;
-}else{
-  current++;
-}
-  $('.slide-ul>li').stop().fadeOut(900);
-  $('.slide-ul>li').eq(current).stop().fadeIn(700);
-}
-setInterval(autoplay,4000);//반복 
 
+  //자동 슬라이드 함수
+  function autoplay() {
+
+    if (current == slide_length - 1) {
+      current = 0;
+    } else {
+      current++;
+    }
+    $('.slide-ul>li').stop().fadeOut(900);
+    $('.slide-ul>li').eq(current).stop().fadeIn(700);
+  }
+  setInterval(autoplay, 4000);//반복
+</script>
+<!-- 서버에 데이터 전송. -->
+<script type="text/javascript">
+$('#search').click(function(){
+  var prices = $('.slider-input').val().split(',');
+  
+     $(location).attr('href',
+        'itemList.html?'/* country=' + $('#selectCountry').val()
+        + "&startDate=" + $('#startDate').val() 
+        + "&endDate=" + $('#endDate').val()
+        + "&minPrice=" + prices[0] + "&maxPrice="+ prices[1] */); 
+  
+  
+  
+});
 </script>
 </body>
 </html>
