@@ -15,15 +15,21 @@ public class AuthService {
 
 	  public HashMap validate(String loginEmail, String loginPwd) {
 		    HashMap<String,String> params = new HashMap<>();
-		    params.put("userId", loginEmail);
-		    params.put("password", loginPwd);
-		    
+		    params.put("loginEmail", loginEmail);
+		    params.put("loginPwd", loginPwd);
+		    long guideBool = 0L;
+		    long touristBool = 0L;
 		    HashMap resultMap = authDao.existUser(params);
-		    int guideBool = authDao.areYouGuide(params);
-		    int touristBool = authDao.areYouTourist(params);
 		    
-		    resultMap.put("guideBool", guideBool);
-		    resultMap.put("touristBool", touristBool);
+		    if ((Long)authDao.areYouGuide(params) != null){
+		    guideBool = (Long)authDao.areYouGuide(params);
+		    }
+		    if ((Long)authDao.areYouTourist(params) != null) {
+		    touristBool = (Long)authDao.areYouTourist(params);
+		    }
+		    
+		    /*resultMap.put("guideBool", "333");
+		    resultMap.put("touristBool", "222");*/
 		    
 		    return resultMap;
 		  }

@@ -22,12 +22,12 @@
     FROM USERS
     WHERE EMAIL=#{loginEmail} AND PWD=#{loginPwd}
   </select>
-  <select id="areYouGuide" parameterType="map" resultMap="int">
+  <select id="areYouGuide" parameterType="map" resultType="object">
 	  SELECT COUNT(G_EMAIL)
 	  FROM GUIDES 
 	  WHERE G_EMAIL=#{loginEmail}
   </select>
-  <select id="areYouTourist" parameterType="map" resultMap="int">
+  <select id="areYouTourist" parameterType="map" resultType="object">
     SELECT COUNT(T_EMAIL)
     FROM TOURISTS
     WHERE T_EMAIL=#{loginEmail}

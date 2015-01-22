@@ -1,12 +1,12 @@
 <div class='top'>  
-  <a id='userName' href='#'  style='display:none;'>염정우</a>
+  <a id='userName' href='#'  style='display:none;'>곰도리</a>
 <span class="si-icon si-icon-mail" data-icon-name="mail"   style='display:none;'>
 <img src='../images/mail.png'>
 </span>
-	<button  data-dialog="somedialog" class="trigger" >로그인</button> 
+	<button  data-dialog="somedialog" class="trigger" id='loginBtn'>로그인</button> 
 	&nbsp
-	<button class="trigger" onclick="location.href='selectJoinForm.html'">회원가입</button>  &nbsp
-	<button  class="trigger logout"  style='display:none;'>로그아웃</button>
+	<button class="trigger" onclick="location.href='selectJoinForm.html'" id='signUpBtn'>회원가입</button>  &nbsp
+	<button  class="trigger logout"  style='display:none;' id='logoutBtn'>로그아웃</button>
 	  <a href="addPlan.html" class="button blue alt"  id='trip'>여행일정등록</a>
 	<!-- <button>여행일정등록</button> -->
 </div>
@@ -31,5 +31,25 @@
 $('#btnLogin').click(function(){  
   $('.main-content').css('opacity','1');
 });  */
+
+
+$.getJSON('/web03t/auth/loginUser.do', function(data){
+	  if (data.status == 'fail') {
+	    $('#loginBtn').css('display', '');
+	    $('#signUpBtn').css('display', '');
+	    
+	  } else {
+	    $('#logoutBtn').css('display', '');
+	    $('#userName').css('display', '');
+	    
+/* 	    if (data.photo) {
+	        $('#userPhoto').attr('src', data.loginUser.photo);
+	    } */
+	    $('#userName').html(data.loginUser.userName);
+	    $('#userName').click(function(){
+	      alert('사용자 정보 조회 창으로 보낼 예정');
+	    });
+	  }
+	});
 
 </script>

@@ -17,6 +17,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/auth") 
 public class AuthControl {
 	@Autowired AuthService authService;
+	
+	
+	  @RequestMapping(value="/loginUser", method=RequestMethod.GET)
+	  public Object loginUser(HttpSession session) throws Exception {
+	    HashMap<String,Object> resultMap = new HashMap<>();
+	    
+	    if (session.getAttribute("loginUser") != null) {
+	      resultMap.put("status", "success");
+	      resultMap.put("loginUser", session.getAttribute("loginUser"));
+	    } else {
+	      resultMap.put("status", "fail");
+	    }
+	    
+	    return resultMap;
+	  }
+	
 
 	 @RequestMapping(value="/login", method=RequestMethod.POST)
 	  public Object login(
