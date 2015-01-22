@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <sql> 태그 사용하기
+=> 자주 사용되는 SQL문은 별도로 정의해두고 포함한다.
+-->
+
+<mapper namespace="io.helloworld.dao.AuthDao">
+
+  <resultMap type="map" id="userMap">
+    <id column="EMAIL" property="loginEmail"/>
+    <result column="PWD" property="loginPwd"/>
+    <result column="UNAME" property="userName"/>
+    <result column="TEL" property="tel"/>
+    <result column="BIRTH" property="userBirthday"/>
+  </resultMap>
+  
+  <select id="existUser" parameterType="map" resultMap="userMap">
+    SELECT EMAIL,UNAME,TEL,BIRTH
+    FROM USERS
+    WHERE EMAIL=#{loginEmail} AND PWD=#{loginPwd}
+  </select>
+  <select id="areYouGuide" parameterType="map" resultMap="int">
+	  SELECT COUNT(G_EMAIL)
+	  FROM GUIDES 
+	  WHERE G_EMAIL=#{loginEmail}
+  </select>
+  <select id="areYouTourist" parameterType="map" resultMap="int">
+    SELECT COUNT(T_EMAIL)
+    FROM TOURISTS
+    WHERE T_EMAIL=#{loginEmail}
+  </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
