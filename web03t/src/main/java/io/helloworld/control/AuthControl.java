@@ -56,4 +56,12 @@ public class AuthControl {
 	    
 	    return resultMap;
 	  }
+	 
+	  @RequestMapping("/logout")
+	  public Object execute(HttpSession session) throws Exception {
+	    session.invalidate();
+	    HashMap<String,Object> resultMap = new HashMap<>();
+	    resultMap.put("status", "success");
+	    return resultMap;
+	  }
 }

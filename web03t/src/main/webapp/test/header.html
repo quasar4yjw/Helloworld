@@ -3,9 +3,9 @@
 <span class="si-icon si-icon-mail" data-icon-name="mail"   style='display:none;'>
 <img src='../images/mail.png'>
 </span>
-	<button  data-dialog="somedialog" class="trigger" id='loginBtn'>로그인</button> 
+	<button  data-dialog="somedialog" class="trigger" id='loginBtn' style='display:none'>로그인</button> 
 	&nbsp
-	<button class="trigger" onclick="location.href='selectJoinForm.html'" id='signUpBtn'>회원가입</button>  &nbsp
+	<button class="trigger" onclick="location.href='selectJoinForm.html'" id='signUpBtn' style='display:none'>회원가입</button>  &nbsp
 	<button  class="trigger logout"  style='display:none;' id='logoutBtn'>로그아웃</button>
 	  <a href="addPlan.html" class="button blue alt"  id='trip'>여행일정등록</a>
 	<!-- <button>여행일정등록</button> -->
@@ -31,7 +31,11 @@
 $('#btnLogin').click(function(){  
   $('.main-content').css('opacity','1');
 });  */
-
+$('#logoutBtn').click(function(event){
+	  $.getJSON('/web03t/auth/logout.do', function(data){
+		  location.reload();
+	  });
+	});
 
 $.getJSON('/web03t/auth/loginUser.do', function(data){
 	  if (data.status == 'fail') {
