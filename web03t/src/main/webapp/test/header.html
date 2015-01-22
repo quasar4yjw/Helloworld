@@ -7,7 +7,7 @@
 	&nbsp
 	<button class="trigger" onclick="location.href='selectJoinForm.html'" id='signUpBtn' style='display:none;'>회원가입</button>  &nbsp
 	<button  class="trigger logout"  style='display:none;' id='logoutBtn'>로그아웃</button>
-	  <a href="addPlan.html" class="button blue alt"  id='trip' style='display:none;'>여행일정등록</a>
+	  <a href="addPlan.html" class="button blue alt"  id='trip' style='display:;'>여행일정등록</a>
 	<!-- <button>여행일정등록</button> -->
 </div>
 <div class='main-name'>
@@ -48,7 +48,7 @@ $.getJSON('/web03t/auth/loginUser.do', function(data){
 	    $('#messageIcon').css('display', '');
 	    $('.mypage').css('display', '');
 	    
-	    if(data.loginUser.guideBool == 1) $('#trip').css('display', '');
+	    //if(data.loginUser.guideBool == 1) $('#trip').css('display', '');
 	    
 /* 	    if (data.photo) {
 	        $('#userPhoto').attr('src', data.loginUser.photo);
