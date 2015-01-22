@@ -1,13 +1,13 @@
 <div class='top'>  
   <a id='userName' href='#'  style='display:none;'>곰도리</a>
-<span class="si-icon si-icon-mail" data-icon-name="mail"   style='display:none;'>
+<span class="si-icon si-icon-mail" data-icon-name="mail"  id='messageIcon' style='display:none;'>
 <img src='../images/mail.png'>
 </span>
-	<button  data-dialog="somedialog" class="trigger" id='loginBtn' style='display:none'>로그인</button> 
+	<button  data-dialog="somedialog" class="trigger" id='loginBtn' style='display:none;'>로그인</button> 
 	&nbsp
-	<button class="trigger" onclick="location.href='selectJoinForm.html'" id='signUpBtn' style='display:none'>회원가입</button>  &nbsp
+	<button class="trigger" onclick="location.href='selectJoinForm.html'" id='signUpBtn' style='display:none;'>회원가입</button>  &nbsp
 	<button  class="trigger logout"  style='display:none;' id='logoutBtn'>로그아웃</button>
-	  <a href="addPlan.html" class="button blue alt"  id='trip'>여행일정등록</a>
+	  <a href="addPlan.html" class="button blue alt"  id='trip' style='display:none;'>여행일정등록</a>
 	<!-- <button>여행일정등록</button> -->
 </div>
 <div class='main-name'>
@@ -45,6 +45,10 @@ $.getJSON('/web03t/auth/loginUser.do', function(data){
 	  } else {
 	    $('#logoutBtn').css('display', '');
 	    $('#userName').css('display', '');
+	    $('#messageIcon').css('display', '');
+	    $('.mypage').css('display', '');
+	    
+	    if(data.loginUser.guideBool == 1) $('#trip').css('display', '');
 	    
 /* 	    if (data.photo) {
 	        $('#userPhoto').attr('src', data.loginUser.photo);
