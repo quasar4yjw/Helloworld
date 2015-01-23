@@ -57,7 +57,7 @@ app.get('/idCheck', function (request, response) {
 	response.setHeader("Access-Control-Allow-Origin", "*");
 	connection.query('SELECT EMAIL FROM USERS WHERE EMAIL=?', [request.param('id')], function (error, result) {
 
-    	console.log(result);
+    	console.log(result, "@@@@@@@@@@@@@");
     	
     	if(result.length){
     		console.log('아이디 있음!!!');	
