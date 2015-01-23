@@ -143,15 +143,10 @@ public class ItemControl {
 	
 	
 	@RequestMapping("/addComment")
-	public Object addComment(String selectScore, String inputComment, Date currentDate) throws Exception {
-		HashMap itemMap = itemService.addComment(Integer.parseInt(selectScore));
-			      		
-		//int non = (int)session.getAttribute("view2Page");
+	public Object addComment(int connectNo, String selectScore, String inputComment, Date currentDate) throws Exception {
+		itemService.addComment(connectNo, Integer.parseInt(selectScore), inputComment,currentDate);
 		HashMap<String,Object> resultMap = new HashMap<>();
 		resultMap.put("status", "success");
-		
-		/*resultMap.put("photos", datamap.getPhotoList());
-		resultMap.put("travels", datamap.getTravelScheduleList());*/
 		return resultMap; 
 	}
 	

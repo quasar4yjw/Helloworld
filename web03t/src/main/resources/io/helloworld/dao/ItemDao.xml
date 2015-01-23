@@ -196,4 +196,8 @@
   <select id="selectDetailPhotos" parameterType="int" resultMap="photoMap">
   SELECT P_URL FROM DET_PHOTS WHERE I_NO=#{value}
   </select>
+  <insert id="insertComment" parameterType="map">
+  INSERT INTO COMMENTS(C_NO, COM_CONT, COM_DATE, COM_SCO)
+    VALUES (#{connectNo}, #{inputComment}, #{currentDate},  #{selectScore});
+  </insert>
 </mapper>

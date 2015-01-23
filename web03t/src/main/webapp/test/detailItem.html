@@ -958,11 +958,12 @@ function yyyyMMdd(date) {
 </script>
 <script>
 $('#commentBtn').click(function(){
-        $.post('../guide/signUp.do' 
+        $.post('../item/addComment.do' 
           , { 
+        	   connectNo   : 268,
         	   selectScore : $('#selectScore').val(),
              inputComment : $('#inputComment').val(),
-             currentDate : yyyyMMdd(new Date());
+             currentDate : yyyyMMdd(new Date())
           } 
           , function(result){ 
             if (result.status == "success") {

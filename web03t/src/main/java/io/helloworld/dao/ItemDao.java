@@ -25,5 +25,6 @@ public interface ItemDao {
 HashMap selectGuideOfItem(int itemNo);
 List selectComments(int itemNo);
 Object selectTourDayCount(int itemNo);
-List selectDetailPhotos(int itemNo);  
+List selectDetailPhotos(int itemNo);
+void insertComment(HashMap<String, Object> paramMap);  
 }

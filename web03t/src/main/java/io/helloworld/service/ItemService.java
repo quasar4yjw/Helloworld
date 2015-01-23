@@ -6,6 +6,7 @@ import io.helloworld.domain.Search;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -122,6 +123,7 @@ public class ItemService {
 		List datamaps = itemDao.selectDetailPhotos(itemNo);
 		return datamaps;
 	}
+	
 
 	/*  @Transactional(
       rollbackFor=Exception.class,
@@ -131,5 +133,18 @@ public class ItemService {
            itemDao.insertDetailPhoto(detailPhoto);
    }*/
 
+	
+	@Transactional(
+			rollbackFor=Exception.class,
+			propagation=Propagation.REQUIRED)
+	public void addComment(int connectNo, int selectScore, String inputComment, Date currentDate){
+		HashMap<String,Object> paramMap = new HashMap<>();
+		paramMap.put("connectNo", connectNo);
+		paramMap.put("selectScore", selectScore);
+		paramMap.put("inputComment", inputComment);
+		paramMap.put("currentDate", currentDate);
+		itemDao.insertComment(paramMap);
+		/*   itemDao.insertDetailPhoto(detailPhoto);*/
+	}
 
 }
