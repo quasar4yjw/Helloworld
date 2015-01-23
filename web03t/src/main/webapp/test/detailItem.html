@@ -388,6 +388,19 @@ font-size: 28px;
   width:150px;
 }
 
+
+#selectScore {
+height: 30px;
+font-size: 1.1em;
+}
+#inputComment{
+height: 30px;
+width: 440px;
+}
+#commentBtn{
+height: 30px;
+width: 60px;
+}
 </style>
 <meta charset="UTF-8">
 <title>Welcome to the HelloWorld</title>
@@ -592,6 +605,20 @@ font-size: 28px;
               <td>2014-11-20</td>
          </tr> -->
 		    </table>
+		    
+		    <form method="post">
+		    <select required="" id='selectScore'>
+        <option value='5'>★★★★★</option>
+        <option value='4'>★★★★</option>
+        <option value='3'>★★★</option>
+        <option value='2'>★★</option>
+        <option value='1'>★</option>
+        </select>
+        <input type='text' id='inputComment'>
+		    <button type='button' id='commentBtn'>등록</button>
+		    </form>
+		    
+		    
 		    <nav>
   <ul class="pagination">
     <li><a href="#"><span aria-hidden="true">&lt;</span><span class="sr-only">Previous</span></a></li>
@@ -927,6 +954,30 @@ function yyyyMMdd(date) {
   
 
 
+
+</script>
+<script>
+$('#commentBtn').click(function(){
+        $.post('../guide/signUp.do' 
+          , { 
+        	   selectScore : $('#selectScore').val(),
+             inputComment : $('#inputComment').val(),
+             currentDate : yyyyMMdd(new Date());
+          } 
+          , function(result){ 
+            if (result.status == "success") {
+              alert("등록되었습니다.");
+              location.href="http://helloworld.io:8080/web03t/test/detailItem.html?itemNo=" + reqNo + "#itemComment";
+            } else {
+              alert("등록 실패!");
+            }
+          } 
+          , 'json' )
+       .fail(function(jqXHR, textStatus, errorThrown){ 
+         alert(textStatus + ":" + errorThrown);
+       });
+      
+    });
 
 </script>
 

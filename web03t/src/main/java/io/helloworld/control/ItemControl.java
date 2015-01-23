@@ -3,6 +3,7 @@ package io.helloworld.control;
 import io.helloworld.domain.Search;
 import io.helloworld.service.ItemService;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -139,5 +140,20 @@ public class ItemControl {
    return resultMap;
 
    }*/
+	
+	
+	@RequestMapping("/addComment")
+	public Object addComment(String selectScore, String inputComment, Date currentDate) throws Exception {
+		HashMap itemMap = itemService.addComment(Integer.parseInt(selectScore));
+			      		
+		//int non = (int)session.getAttribute("view2Page");
+		HashMap<String,Object> resultMap = new HashMap<>();
+		resultMap.put("status", "success");
+		
+		/*resultMap.put("photos", datamap.getPhotoList());
+		resultMap.put("travels", datamap.getTravelScheduleList());*/
+		return resultMap; 
+	}
+	
 
 }
