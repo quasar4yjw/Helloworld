@@ -370,14 +370,62 @@ left: 7em;
   </script>
 
 <script>
+
+var guideBool;
+var touristBool;
+var existUser;
+
 $(function(){
-	loadTourist("U0111@TEST.COM");
+loadBool();
 });
+function loadBool(email) {
+	  
+    $.ajax({
+            type:'GET',
+            url: "../auth/loginUser.do",
+            dataType:'json',
+            data: {
+              guideBool : guideBool,
+              touristBool : touristBool,
+              existUser : existUser
+            }
+            ,
+            cache: false,
+            
+            success: function(result){
+            if(result.status=="success"){
+              console.log('등록됨..');
+              console.log(result.loginUser);
+              console.log(result.loginUser.existUser);
+              console.log(result.loginUser.existUser.loginEmail);
+              loadTourist(result.loginUser.existUser.loginEmail);
+
+              if (result.loginUser.guideBool == 1) {
+                alert("여행객으로 로그인해주세요.");
+                location.href='main.html';
+              } else {
+                console.log('여행객 정보수정페이지 입니다.');
+              } 
+              
+              
+            }else{
+            console.log('등록실패');
+            alert("로그인 후 이용해주세요");
+            location.href='main.html';
+            }
+            }
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){ 
+               console.log(textStatus + "두번째 :" + errorThrown);
+             });
+        
+        
+        };
+
+
 function loadTourist(email) {
 	  $.getJSON('../tourist/view.do?email=' + email, 
 	    function(data){
-		  
-	      
 	      $('#email').val(data.tourist.email);
 	      $('#touristName').val(data.tourist.userName);
 	      genderType(data.tourist.gender);
