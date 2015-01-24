@@ -232,7 +232,7 @@ background-color: #ff5a5f;
 
 </head>
 <body>
-
+ <!-- onload="pageLoad('loginEmail')" -->
 
 
 
@@ -723,6 +723,7 @@ background-color: #ff5a5f;
     </div>
     </div>
   </div>
+ 
   <div class="footer"></div>
   <div id="somedialog" class="dialog"></div>
   
@@ -1027,40 +1028,45 @@ function maxLengthCheck(object)
       });
     
     
+    var guideBool;
+    var touristBool;
+    var userInfo;
     
-    
-    
-    
-   /*  $('.regiBtn').click(function () {
-        
 
-      var data = $('#tblAppendGrid').appendGrid('getAllValue');
-      var count =  $('#tblAppendGrid').appendGrid('getRowCount');
-
-      for (var i=0;i<count;i++){
-      var travelDay = data[i].travelDay;
-      var travelTime = data[i].travelTime;
-      var travelContent = data[i].travelContent;
-
-
+    loadBool();
+ 
+     function loadBool(email) {
+  
       $.ajax({
-              type:'POST',
-              url: "../item/addPlan.do",
+              type:'GET',
+              url: "../auth/loginUser.do",
               dataType:'json',
               data: {
-                travelDay : travelDay,
-                travelTime : travelTime,
-                travelContent : travelContent}
+            	  guideBool : guideBool,
+            	  touristBool : touristBool
+              }
               ,
               cache: false,
               
               success: function(result){
               if(result.status=="success"){
-             
                 console.log('등록됨..');
-              
+                console.log(result.loginUser);
+                console.log(result.loginUser.guideBool);
+                console.log(result.loginUser.touristBool);
+                console.log(result.loginUser.guideBool == 1);
+                if (result.loginUser.guideBool == 0) {
+                	alert("가이드회원만 이용가능합니다.");
+                	location.href='main.html';
+                } else {
+                	console.log('가이드입니다.');
+                } 
+                
+                
               }else{
               console.log('등록실패');
+              alert("가이드 회원으로 로그인 후 이용해주세요");
+              location.href='main.html';
               }
               }
           })
@@ -1069,13 +1075,13 @@ function maxLengthCheck(object)
                });
           
           
-          }
-      }); */
+          };  
     
     
     
     
     </script>
+
 
 
 </body>
