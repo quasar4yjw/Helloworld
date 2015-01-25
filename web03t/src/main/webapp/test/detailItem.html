@@ -975,10 +975,39 @@ function yyyyMMdd(date) {
 
 </script>
 <script>
+var connectNo = null;
+var commentAuthFalse  = true
+setTimeout(function(){$.post('../connect/getMinConnectNo.do' 
+        , { 
+            reqNo : reqNo,
+            touristEmail : touristEmail
+         } 
+         , function(result){ 
+           if (result.status == "success") {
+        	   if(result.getMinConnectNo != null) {
+             connectNo = result.getMinConnectNo;
+             commentAuthFalse = false;
+        	   }
+           } else {
+             commentAuthFalse = true;
+           }
+         } 
+         , 'json' )
+      .fail(function(jqXHR, textStatus, errorThrown){ 
+        alert(textStatus + ":" + errorThrown);
+      });}, 3000);
+
+
+</script>
+<script>
 $('#commentBtn').click(function(){
+	  if(commentAuthFalse){
+		   alert("한줄평을 작성할 권한이 없습니다."
+				   + "\n한줄평은 위 여행을 다녀온 사람만이 작성가능합니다.")
+	  } else {
         $.post('../item/addComment.do' 
           , { 
-        	   connectNo   : 268,
+        	   connectNo   : connectNo,
         	   selectScore : $('#selectScore').val(),
              inputComment : $('#inputComment').val(),
              currentDate : yyyyMMdd(new Date())
@@ -995,7 +1024,7 @@ $('#commentBtn').click(function(){
        .fail(function(jqXHR, textStatus, errorThrown){ 
          alert(textStatus + ":" + errorThrown);
        });
-      
+	  }
     });
 
 </script>

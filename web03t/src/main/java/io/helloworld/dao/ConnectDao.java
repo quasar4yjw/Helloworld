@@ -10,5 +10,6 @@ public interface ConnectDao {
   int totalSize(Map<String,Object> params);
   void update(Connect connect);
   void insert(Connect connect);
+Object getMinConnectNo(Map paramMap);
 
 }

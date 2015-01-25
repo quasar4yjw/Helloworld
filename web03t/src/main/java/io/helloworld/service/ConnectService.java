@@ -76,4 +76,11 @@ public class ConnectService {
 		connectDao.insert(connect);
 	}
 
+	public Object getMinConnectNo(int reqNo, String touristEmail) {
+		HashMap<String,Object> paramMap = new HashMap<>();
+		paramMap.put("reqNo", reqNo);
+		paramMap.put("touristEmail", touristEmail);
+		return connectDao.getMinConnectNo(paramMap);
+	}
+
 }

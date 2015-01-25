@@ -76,6 +76,14 @@ public class ConnectControl {
     return resultMap;
   }
   
+  @RequestMapping("/getMinConnectNo")
+  public Object getMinConnectNo(int reqNo, String touristEmail) throws Exception {
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("getMinConnectNo", connectService.getMinConnectNo(reqNo, touristEmail));
+    return resultMap;
+  }
+  
 }
 
 
