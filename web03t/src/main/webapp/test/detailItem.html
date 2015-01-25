@@ -684,6 +684,7 @@ width: 60px;
   var reqNo = 0;
   var numTravel = 1;
   var guideEmail = null;
+  var touristEmail = null;
   
   Object.defineProperty(Date.prototype, 'YYYYMMDDHHMMSS', {
 	    value: function() {
@@ -794,33 +795,38 @@ $(".serviceTest").click(function(){
 	 
 	
 	
-	 $("#firstDate").val($(".ui-datepicker-year").html() 
-	            + "-" + mm
-	            + "-" + ddFirst);
+	 $("#firstDate").val(yyyyMMdd(firstDate));
 	 $("#lastDate").val(yyyyMMdd(lastDate));
 	 $("#firstDate, #lastDate").css('box-shadow', '0 0 5px red');
 	 $("#firstDate, #lastDate").css('border', '1px solid #ff5a5f');
-	 
+	 if(ddFirst!=null){
 	 setTimeout(function(){
 		 
-		 if (confirm('해당일정으로 예약하시겠습니까?')) {
+		 if (confirm('여행시작일 : ' + yyyyMMdd(firstDate) +
+                 '\n여행종료일 : ' + yyyyMMdd(lastDate) +
+                 '\n해당 일정으로 예약하시겠습니까?')) {
              $.post('../connect/insertBook.do' 
                     , {
                       itemNo:reqNo,
-                      connectStartDate:$(".ui-datepicker-year").html() 
-                      + "-" + mm
-                      + "-" + ddFirst,
+                      connectStartDate:yyyyMMdd(firstDate),
                       connectEndDate:yyyyMMdd(lastDate),
                       connectStatus:'예약요청',
                       connectDate:new Date().YYYYMMDDHHMMSS(),
                       guideEmail:guideEmail,
-                      touristEmail:'quasar4yjw@gmail.com',
+                      touristEmail:touristEmail,
                       }
                     , function(result){
                           if (result.status == "success") {
-                            alert("예약요청을 완료했습니다.");
-                            $("#firstDate, #lastDate").css('box-shadow', 'initial');
+                        	  $("#firstDate, #lastDate").css('box-shadow', 'initial');
                             $("#firstDate, #lastDate").css('border', '1px solid #DDDDDD');
+                            if (confirm('여행시작일 : ' + yyyyMMdd(firstDate) +
+                                    '\n여행종료일 : ' + yyyyMMdd(lastDate) +
+                                    '\n해당 일정으로 예약을 완료했습니다.' +
+                                    '\n예약정보 페이지로 가시겠습니까?')) {
+                              location.href = 'connTourist.html'
+                            } else {
+                            	
+                            }
                           } else {
                             alert("서버가 바쁩니다. 나중에 다시 시도해주세요.");
                             $("#firstDate, #lastDate").css('box-shadow', '0 0 5px red');
@@ -836,7 +842,9 @@ $(".serviceTest").click(function(){
 		 
 		 
 	 }, 2000);
-	   
+	 } else{
+		 alert("원하시는 가이드날짜를 선택해주시기 바랍니다.")
+	 }
 	 
 })
 });
@@ -919,6 +927,16 @@ $('.ui-state-default').mouseover(function(){
 			
 			$('.my-update-form').css('display', '');
 			$('.my-new-form').css('display', 'none'); */
+			$.getJSON('/web03t/auth/loginUser.do', function(data){
+			    if (data.status == 'fail') {
+			    } else {
+			    	if(data.loginUser.touristBool == 1){
+			    	touristEmail = data.loginUser.existUser.loginEmail
+			    	}
+			      $('#userName').html(data.loginUser.existUser.userName);
+			    }
+			  });
+			
 		});
 	}
 </script>
