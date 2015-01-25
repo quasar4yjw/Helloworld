@@ -7,7 +7,7 @@
 	&nbsp
 	<button class="trigger" onclick="location.href='selectJoinForm.html'" id='signUpBtn' style='display:none;'>회원가입</button>  &nbsp
 	<button  class="trigger logout"  style='display:none;' id='logoutBtn'>로그아웃</button>
-	  <a href="addPlan.html" class="button blue alt"  id='trip' style='display:;'>여행일정등록</a>
+	  <a href="#" class="button blue alt"  id='trip' style='display:;' onclick="addPlanClick(); return false;">여행일정등록</a>
 	<!-- <button>여행일정등록</button> -->
 </div>
 <div class='main-name'>
@@ -59,5 +59,46 @@ $.getJSON('/web03t/auth/loginUser.do', function(data){
 	    });
 	  }
 	});
+	
+var guideBool;
+var touristBool;
+var userInfo;
+
+
+
+
+ function addPlanClick(email) {
+
+  $.ajax({
+          type:'GET',
+          url: "../auth/loginUser.do",
+          dataType:'json',
+          data: {
+            guideBool : guideBool,
+            touristBool : touristBool
+          }
+          ,
+          cache: false,
+          
+          success: function(result){
+          if(result.status=="success"){
+        	  if(result.loginUser.guideBool == 1){
+        	  location.href='addPlan.html';
+        	  } else {
+        		  alert('가이드회원만 이용가능합니다.');
+        	  }
+            
+          }else{
+          console.log('등록실패');
+          alert("로그인 후 이용해주세요");
+          }
+          }
+      })
+      .fail(function(jqXHR, textStatus, errorThrown){ 
+             console.log(textStatus + "두번째 :" + errorThrown);
+           });
+      
+      
+      };
 
 </script>

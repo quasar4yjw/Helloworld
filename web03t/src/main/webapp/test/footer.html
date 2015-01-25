@@ -8,7 +8,7 @@
     <a href='qna'>문의사항</a>  
     </div>
     <span class='mypage' style='display:none;'>
-    <a href='mypageGuide.html'>회원정보수정</a>
+    <a href='#' onclick="mypageClick(); return false;">회원정보수정</a>
      &nbsp&nbsp
     <a href='#'>쪽지</a> &nbsp&nbsp
     <a href='#'>신청정보</a>    
@@ -50,4 +50,44 @@
 if($('.mypage').attr('display') != 'none'){
   $('.select-language').attr('left','51%');
 }
+
+
+var guideBool;
+var touristBool;
+var userInfo;
+
+
+
+
+ function mypageClick(email) {
+
+  $.ajax({
+          type:'GET',
+          url: "../auth/loginUser.do",
+          dataType:'json',
+          data: {
+            guideBool : guideBool,
+            touristBool : touristBool
+          }
+          ,
+          cache: false,
+          
+          success: function(result){
+          if(result.status=="success"){
+            if(result.loginUser.guideBool == 1 && result.loginUser.TouristBool == 0){
+            location.href='mypageGuide.html';
+            } else {
+            	location.href='mypageTourist.html';
+            }
+            
+          }else{
+          console.log('등록실패');
+          alert("로그인 후 이용해주세요");
+          }
+          }
+      })
+      .fail(function(jqXHR, textStatus, errorThrown){ 
+             console.log(textStatus + "두번째 :" + errorThrown);
+           });
+      };
 </script>
