@@ -96,7 +96,7 @@
     VALUES(#{itemNo}, #{travelDay}, #{travelTime}, #{travelContent});
   </insert>
   
-  <select id="selectList" parameterType="map" 
+ <select id="selectList" parameterType="map" 
         resultMap="itemListMap">
   <![CDATA[
     SELECT       
@@ -109,18 +109,23 @@
       T2.P_URL    
     FROM ITEMS T1 LEFT OUTER JOIN DET_PHOTS T2 
     USING(I_NO)
-     WHERE T1.COUNTRY =#{country} AND T1.PRICE >= #{minPrice}  AND T1.PRICE <= #{maxPrice}  
+     WHERE T1.COUNTRY =#{country} AND T1.PRICE >= #{minPrice}  AND T1.PRICE <= #{maxPrice}  ]]> 
+     
+      
     GROUP BY T1.I_NO
     ORDER BY T1.I_NO DESC
-  ]]> 
+ 
     <if test="pageSize > 0">
       limit #{startIndex}, #{pageSize}
     </if>
    
   </select>
   
-  <select id="totalSize" resultType="int">
-    SELECT count(I_NO) FROM ITEMS
+  <select id="totalSize" parameterType="search"  resultType="int">
+  <![CDATA[
+    SELECT count(I_NO) FROM ITEMS T1
+     WHERE T1.COUNTRY =#{country} AND T1.PRICE >= #{minPrice}  AND T1.PRICE <= #{maxPrice} 
+      ]]> 
   </select>
   
   <!-- <select id="selectTags" parameterType="int" 

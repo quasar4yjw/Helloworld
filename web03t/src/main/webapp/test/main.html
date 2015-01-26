@@ -703,10 +703,10 @@ $('#search').click(function(){
   var prices = $('.slider-input').val().split(',');
   
      $(location).attr('href',
-        'itemList.html?'/* country=' + $('#selectCountry').val()
+        'itemList.html?pageNo=1&country=' + $('#selectCountry').val()
         + "&startDate=" + $('#startDate').val() 
         + "&endDate=" + $('#endDate').val()
-        + "&minPrice=" + prices[0] + "&maxPrice="+ prices[1] */); 
+        + "&minPrice=" + prices[0] + "&maxPrice="+ prices[1]) ; 
   
   
   

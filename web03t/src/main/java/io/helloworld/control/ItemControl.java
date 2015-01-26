@@ -44,34 +44,34 @@ public class ItemControl {
 		return resultMap;
 
 	}
+	
 	@RequestMapping("/list")
-	public Object list(
-			@RequestParam(defaultValue="1") int pageNo,
-			@RequestParam(defaultValue="6") int pageSize,
-			Search search,
-			HttpServletRequest request) throws Exception {
-	  HashMap itemMap = new HashMap();
+  public Object list(
+      @RequestParam(defaultValue="1") int pageNo,
+      @RequestParam(defaultValue="6") int pageSize,
+      Search search,
+      HttpServletRequest request) throws Exception {
+    HashMap itemMap = new HashMap();
     
     
 
-		if (pageSize <= 0)
-			pageSize = PAGE_DEFAULT_SIZE;
+    if (pageSize <= 0)
+      pageSize = PAGE_DEFAULT_SIZE;
 
-		int maxPageNo = itemService.getMaxPageNo(pageSize);
+    int maxPageNo = itemService.getMaxPageNo(pageSize, search);
+    
+    if (pageNo <= 0) pageNo = 1;
+    if (maxPageNo!=0 && pageNo > maxPageNo) pageNo = maxPageNo;
 
-		if (pageNo <= 0) pageNo = 1;
-		if (pageNo > maxPageNo) pageNo = maxPageNo;
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("currPageNo", pageNo);
+    resultMap.put("maxPageNo", maxPageNo);
+    resultMap.put("items", 
+         itemService.getList(pageNo, pageSize,search));
+     resultMap.put("tags",itemService.getTag());
 
-		HashMap<String,Object> resultMap = new HashMap<>();
-		resultMap.put("status", "success");
-		resultMap.put("currPageNo", pageNo);
-		resultMap.put("maxPageNo", maxPageNo);
-	  resultMap.put("items", 
-	       itemService.getList(pageNo, pageSize,search));
-	   resultMap.put("tags",itemService.getTag());
-
-	   Cookie[] cookies = request.getCookies();
-     
+     Cookie[] cookies = request.getCookies();
      
      //cookies[i].getValue() =  값을 출력,
      //cookies[i].getName() = 키(값의 키값)을 출력. 
@@ -87,8 +87,8 @@ public class ItemControl {
          resultMap.put("item"+count, itemMap);
        }
      }
-		return resultMap;
-	}
+    return resultMap;
+  }
 	@RequestMapping("/view")
 	public Object view(String itemNo, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws Exception {
 		HashMap itemMap = itemService.get(Integer.parseInt(itemNo));

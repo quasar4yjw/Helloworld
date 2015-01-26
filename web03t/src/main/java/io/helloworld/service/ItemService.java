@@ -59,30 +59,30 @@ public class ItemService {
 	}
 
 	public List<?> getList(int pageNo, int pageSize, Search search) {
-		HashMap<String,Object> paramMap = new HashMap<>();
-		paramMap.put("startIndex", ((pageNo - 1) * pageSize));
-		paramMap.put("pageSize", pageSize);
-		paramMap.put("country",search.getCountry());
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("startIndex", ((pageNo - 1) * pageSize));
+    paramMap.put("pageSize", pageSize);
+    paramMap.put("country",search.getCountry());
     paramMap.put("startDate",search.getStartDate());
     paramMap.put("endDate",search.getEndDate());
     paramMap.put("minPrice",search.getMinPrice());
     paramMap.put("maxPrice",search.getMaxPrice());
-		/*paramMap.put("interest", itemDao.selectTages());*/
+    /*paramMap.put("interest", itemDao.selectTages());*/
 
-		return itemDao.selectList(paramMap);
-	}
+    return itemDao.selectList(paramMap);
+  }
 	public List<?> getTag() {
 
     return tagDao.selectInter();
   }
 
-	public int getMaxPageNo(int pageSize) {
-		int totalSize = itemDao.totalSize();
-		int maxPageNo = totalSize / pageSize;
-		if ((totalSize % pageSize) > 0) maxPageNo++;
+	public int getMaxPageNo(int pageSize, Search search) {
+    int totalSize = itemDao.totalSize(search);
+    int maxPageNo = totalSize / pageSize;
+    if ((totalSize % pageSize) > 0) maxPageNo++;
 
-		return maxPageNo;
-	}
+    return maxPageNo;
+  }
 
 	public HashMap get(int itemNo) {
 		HashMap datamap = itemDao.selectOne(itemNo);

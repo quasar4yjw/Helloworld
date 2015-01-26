@@ -1,5 +1,7 @@
 package io.helloworld.dao;
 
+import io.helloworld.domain.Search;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +14,7 @@ public interface ItemDao {
   void insertTag3(Map dataMap);
   void insertSchedule(Map dataMap);
   List<?> selectList(Map<String,Object> params);
-  int totalSize();
+  int totalSize(Search search);
   HashMap selectOne(int itemNo);
   List selectInters(int itemNo);
   List selectSchedules(int itemNo);
