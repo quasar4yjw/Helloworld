@@ -692,12 +692,18 @@ width: 60px;
 	            return (n < 10 ? '0' : '') + n;
 	        }
 
-	        return this.getFullYear() + "-" +
-	               pad2(this.getMonth() + 1) + "-" +
-	               pad2(this.getDate()) + " " +
-	               pad2(this.getHours()) + ":" +
-	               pad2(this.getMinutes()) + ":" +
-	               pad2(this.getSeconds()); 
+	         return this.getFullYear() + "-" +
+            pad2(this.getMonth() + 1) + "-" +
+            pad2(this.getDate()) + " " +
+            pad2(this.getHours()) + ":" +
+            pad2(this.getMinutes()) + ":" +
+            pad2(this.getSeconds());  
+	        /* return this.getFullYear() +
+	               pad2(this.getMonth() + 1) +
+	               pad2(this.getDate()) +
+	               pad2(this.getHours()) +
+	               pad2(this.getMinutes()) +
+	               pad2(this.getSeconds());  */
 	    }
 	});
   
@@ -813,10 +819,11 @@ $(".serviceTest").click(function(){
                       connectStatus:'예약요청',
                       connectDate:new Date().YYYYMMDDHHMMSS(),
                       guideEmail:guideEmail,
-                      touristEmail:touristEmail,
+                      touristEmail:touristEmail
                       }
                     , function(result){
                           if (result.status == "success") {
+                        	  console.log(new Date().YYYYMMDDHHMMSS());
                         	  $("#firstDate, #lastDate").css('box-shadow', 'initial');
                             $("#firstDate, #lastDate").css('border', '1px solid #DDDDDD');
                             if (confirm('여행시작일 : ' + yyyyMMdd(firstDate) +
@@ -1010,7 +1017,7 @@ $('#commentBtn').click(function(){
         	   connectNo   : connectNo,
         	   selectScore : $('#selectScore').val(),
              inputComment : $('#inputComment').val(),
-             currentDate : yyyyMMdd(new Date())
+             currentDate : new Date().YYYYMMDDHHMMSS()
           } 
           , function(result){ 
             if (result.status == "success") {

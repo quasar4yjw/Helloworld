@@ -137,7 +137,7 @@ public class ItemService {
 	@Transactional(
 			rollbackFor=Exception.class,
 			propagation=Propagation.REQUIRED)
-	public void addComment(int connectNo, int selectScore, String inputComment, Date currentDate){
+	public void addComment(int connectNo, int selectScore, String inputComment, String currentDate){
 		HashMap<String,Object> paramMap = new HashMap<>();
 		paramMap.put("connectNo", connectNo);
 		paramMap.put("selectScore", selectScore);
