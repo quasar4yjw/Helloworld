@@ -160,4 +160,9 @@ public class ItemService {
 		return maxPageNo;
 	}
 
+	public List getDisableDate(int itemNo) {
+		return itemDao.disableDatepicker(itemNo);
+		
+	}
+
 }

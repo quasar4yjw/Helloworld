@@ -29,5 +29,6 @@ List selectComments(HashMap<String, Object> paramMap);
 Object selectTourDayCount(int itemNo);
 List selectDetailPhotos(int itemNo);
 void insertComment(HashMap<String, Object> paramMap);  
-int commentTotalSize(int itemNo);  
+int commentTotalSize(int itemNo);
+List disableDatepicker(int itemNo);  
 }

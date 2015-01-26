@@ -113,7 +113,7 @@ public class ItemControl {
 			List commentMaps = itemService.getComment(Integer.parseInt(itemNo), pageNo, pageSize);
 			int tourDayCount = itemService.getTourDayCount(Integer.parseInt(itemNo));
 			List photoMaps = itemService.getDetailPhoto(Integer.parseInt(itemNo));
-			
+			List disableDates = itemService.getDisableDate(Integer.parseInt(itemNo));
 			
 			/*Cookie[] cookies = request.getCookies();
 			if(cookies != null){
@@ -143,6 +143,7 @@ public class ItemControl {
 			resultMap.put("commentList", commentMaps);
 			resultMap.put("tourDayCount", tourDayCount);
 			resultMap.put("photoList", photoMaps);
+			resultMap.put("disableDates", disableDates);
 			/*resultMap.put("photos", datamap.getPhotoList());
 			resultMap.put("travels", datamap.getTravelScheduleList());*/
 			return resultMap; 

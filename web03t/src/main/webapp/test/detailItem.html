@@ -692,6 +692,8 @@ width: 60px;
   var connectNo = null;
   var commentAuthFalse  = true;
   
+  var disableDateList = [];
+  
   $('#page-selection').on('page', function(event, num){
 	  loadProduct(reqNo, num);   
   });
@@ -920,6 +922,7 @@ $('.ui-state-default').mouseover(function(){
 			console.log(data);
 			console.log(data.item);
 			setPageNo(data.currPageNo, data.maxPageNo);
+			    
 			var itemInter = "관심사 : ";
 			for (var i = 0; i < data.inters.length; i ++){
 				if (i + 1 == data.inters.length) itemInter += data.inters[i].interest; 
@@ -954,11 +957,17 @@ $('.ui-state-default').mouseover(function(){
 			guideEmail = data.guideInfo.guideEmail;
 			numTravel = data.tourDayCount;
 
-			var date = new Date();
+			for (var i = 0; i < data.disableDates.length; i++) {
+				  for (var j = 0; j < numTravel; j++) {
+                disableDateList.push(new Date(data.disableDates[i]).setDate(new Date(data.disableDates[i]).getDate() + j));
+				  }
+      }
+			
+			//var date = new Date();
 			$(function() {
 				$("#datepicker").multiDatesPicker({
 					minDate : 0,
-					addDisabledDates : [ date.setDate(24), date.setDate(25) ],// 불가능한 스케줄 multidatespickr.sourceforge.net
+					addDisabledDates : disableDateList,// 불가능한 스케줄 multidatespickr.sourceforge.net
 					dateFormat : "yy-mm-dd",
 					mode : 'daysRange',
 					autoselectRange : [ 0, numTravel ]

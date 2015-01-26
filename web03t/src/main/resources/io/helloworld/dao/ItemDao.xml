@@ -215,4 +215,11 @@
     LEFT OUTER JOIN BOOK_INFO T2 ON T1.C_NO = T2.C_NO  
     WHERE T2.I_NO=#{itemNo}
   </select>
+  
+  <select id="disableDatepicker" parameterType="int" resultType="date">
+  SELECT C_SDATE
+  FROM BOOK_INFO T1 
+  LEFT OUTER JOIN ITEMS T2 ON T1.I_NO = T2.I_NO   
+  WHERE T1.C_STAT='예약완료' AND T1.I_NO = #{itemNo}
+  </select>
 </mapper>
