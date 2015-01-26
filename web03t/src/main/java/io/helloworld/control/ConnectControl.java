@@ -28,22 +28,23 @@ public class ConnectControl {
       @RequestParam(defaultValue="1") int pageNo,
       @RequestParam(defaultValue="6") int pageSize,
       @RequestParam(defaultValue="all") String selected,
+      @RequestParam(defaultValue="") String email,
       @RequestParam String userType) throws Exception {
     
     if (pageSize <= 0)
       pageSize = PAGE_DEFAULT_SIZE;
     
-    int maxPageNo = connectService.getMaxPageNo(pageSize, selected);
+    int maxPageNo = connectService.getMaxPageNo(pageSize, selected, email);
     
     if (pageNo <= 0) pageNo = 1;
-    if (pageNo > maxPageNo) pageNo = maxPageNo;
+    if (maxPageNo != 0 && pageNo > maxPageNo) pageNo = maxPageNo;
     
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
     resultMap.put("currPageNo", pageNo);
     resultMap.put("maxPageNo", maxPageNo);
     resultMap.put("connects", 
-          connectService.getList(pageNo, pageSize, selected, userType));
+          connectService.getList(pageNo, pageSize, selected, userType,email));
     
       
     return resultMap;
@@ -73,6 +74,14 @@ public class ConnectControl {
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
     connectService.insert(connect);
+    return resultMap;
+  }
+  
+  @RequestMapping("/getMinConnectNo")
+  public Object getMinConnectNo(int reqNo, String touristEmail) throws Exception {
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("getMinConnectNo", connectService.getMinConnectNo(reqNo, touristEmail));
     return resultMap;
   }
   

@@ -3,6 +3,8 @@ package io.helloworld.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Connect implements Serializable{
 
   private static final long serialVersionUID = 1L;
@@ -12,7 +14,10 @@ public class Connect implements Serializable{
   protected Date      connectStartDate;
   protected Date      connectEndDate;
   protected String    connectStatus;
-  protected Date      connectDate;
+  
+  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  protected String    connectDate;
+  
   protected String    buttonType;
   protected String    guideEmail;
   protected String    touristEmail;
@@ -61,10 +66,10 @@ public class Connect implements Serializable{
   public void setConnectStatus(String connectStatus) {
     this.connectStatus = connectStatus;
   }
-  public Date getConnectDate() {
+  public String getConnectDate() {
     return connectDate;
   }
-  public void setConnectDate(Date connectDate) {
+  public void setConnectDate(String connectDate) {
     this.connectDate = connectDate;
   }
   public String getButtonType() {

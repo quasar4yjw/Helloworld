@@ -7,7 +7,9 @@
 
   <resultMap type="map" id="connectListMap">
     <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
-    <id column="C_NO" property="no"/>    
+    <id column="C_NO" property="no"/> 
+    <result column="T_EMAIL" property="touristEmail"/>
+    <result column="G_EMAIL" property="guideEmail"/>   
     <result column="C_SDATE" property="connectStartDate"/>
     <result column="C_EDATE" property="connectEndDate"/>
     <result column="C_STAT" property="connectStatus"/>
@@ -20,7 +22,9 @@
   
   <select id="selectConnect" parameterType="map" 
         resultMap="connectListMap">
-    SELECT     
+    SELECT   
+      T2.G_EMAIL,
+      T2.T_EMAIL,   
       T2.C_NO, 
       T1.TITLE,
       T1.PRICE,
@@ -30,37 +34,79 @@
       T3.P_URL
       FROM (BOOK_INFO T2 LEFT JOIN ITEMS T1 on T1.I_NO=T2.I_NO) LEFT JOIN DET_PHOTS T3 on T2.I_NO=T3.I_NO
       
-    <if test="selected == 'req'">
-     WHERE T2.C_STAT = '예약요청'
+    <if test="userType == 'tourist'">
+    
+    <if test="selected == 'all'">
+    WHERE T2.T_EMAIL=#{email}
+    </if> 
+     <if test="selected == 'req'">
+     WHERE (T2.C_STAT = '예약요청') AND (T2.T_EMAIL=#{email})
     </if>
     <if test="selected == 'succ'">
-     WHERE T2.C_STAT = '예약완료'
+     WHERE (T2.C_STAT = '예약완료') AND (T2.T_EMAIL=#{email}) 
     </if>
     <if test="selected == 'cancel'">
-     WHERE T2.C_STAT = '예약취소'
+     WHERE (T2.C_STAT = '예약취소') AND (T2.T_EMAIL=#{email}) 
     </if>
-    GROUP BY T2.C_NO
-    
-    <if test="userType == 'tourist'">
+    GROUP BY T2.C_NO 
+  
     ORDER BY T2.C_NO DESC
+
     </if>
     
-    <if test="pageSize > 0">
+    <if test="userType == 'guide'">
+    
+    <if test="selected == 'all'">
+    WHERE T2.G_EMAIL=#{email}
+    </if> 
+     <if test="selected == 'req'">
+     WHERE (T2.C_STAT = '예약요청') AND (T2.G_EMAIL=#{email})
+    </if>
+    <if test="selected == 'succ'">
+     WHERE (T2.C_STAT = '예약완료') AND (T2.G_EMAIL=#{email}) 
+    </if>
+    <if test="selected == 'cancel'">
+     WHERE (T2.C_STAT = '예약취소') AND (T2.G_EMAIL=#{email}) 
+    </if>
+    GROUP BY T2.C_NO 
+    </if>  
+    
+    
+     <if test="pageSize > 0">
       limit #{startIndex}, #{pageSize}
     </if>
     
   </select>
   
+  
   <select id="totalSize" parameterType="map" resultType="int">
-    SELECT count(C_NO) FROM BOOK_INFO
-    <if test="selected == 'req'">
-     WHERE C_STAT = '예약요청'
+    SELECT 
+    count(C_NO) 
+    FROM BOOK_INFO
+    
+    <if test="userType == 'tourist'">
+		    <if test="selected == 'req'">
+		     WHERE (C_STAT = '예약요청') AND (T_EMAIL=#{email}) 
+		    </if>
+		    <if test="selected == 'succ'">
+		     WHERE (C_STAT = '예약완료') AND (T_EMAIL=#{email}) 
+		    </if>
+		    <if test="selected == 'cancel'">
+		     WHERE (C_STAT = '예약취소') AND (T_EMAIL=#{email}) 
+		    </if>
     </if>
-    <if test="selected == 'succ'">
-     WHERE C_STAT = '예약완료'
-    </if>
-    <if test="selected == 'cancel'">
-     WHERE C_STAT = '예약취소'
+    
+    <if test="userType == 'guide'">
+		    <if test="selected == 'req'">
+		     WHERE (C_STAT = '예약요청') AND (G_EMAIL=#{email}) 
+		    </if>
+		    <if test="selected == 'succ'">
+		     WHERE (C_STAT = '예약완료') AND (G_EMAIL=#{email}) 
+		    </if>
+		    <if test="selected == 'cancel'">
+		     WHERE (C_STAT = '예약취소') AND (G_EMAIL=#{email}) 
+		    </if>
+    
     </if>
   </select>
   
@@ -79,6 +125,15 @@
     INSERT INTO BOOK_INFO(I_NO, C_SDATE, C_EDATE, C_STAT, C_DATE, G_EMAIL, T_EMAIL)
     VALUES (#{itemNo}, #{connectStartDate}, #{connectEndDate}, '예약요청', #{connectDate}, #{guideEmail}, #{touristEmail})
   </insert>
+  
+  <select id='getMinConnectNo' parameterType="map" resultType="object">
+  SELECT MIN(T1.C_NO) FROM BOOK_INFO T1
+	LEFT OUTER JOIN ITEMS T2  ON T1.I_NO = T2.I_NO
+	LEFT OUTER JOIN TOURISTS T3 ON T1.T_EMAIL = T3.T_EMAIL 
+	WHERE T2.I_NO=${reqNo} AND T1.C_STAT='예약요청' AND T3.T_EMAIL='${touristEmail}'
+	AND T1.C_NO NOT IN (SELECT T1.C_NO FROM COMMENTS T1 
+	LEFT OUTER JOIN BOOK_INFO T2 ON T1.C_NO = T2.C_NO);
+  </select>
 
   
 </mapper>

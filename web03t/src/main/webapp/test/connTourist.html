@@ -147,11 +147,15 @@ padding-left: 40%;
   $('.footer').load('footer.html');
   var selected = "all";
   var count = 0;
+  var guideBool;
+  var touristBool;
+  var existUser;
+  var email;
   $('#page-selection').on('page', function(event, num){
-      loadItemList(num);   
+      loadItemList(num, email);   
   });
   
-  loadItemList(1);
+ 
   function setPageNo(currPageNo, maxPageNo) {
       window.currPageNo = currPageNo;
       window.maxPageNo = maxPageNo;
@@ -173,12 +177,69 @@ padding-left: 40%;
         maxVisible: 5 
       });
     }
+  
+  
+  
+  
+  
+  
+  
+  
+  loadBool();
+
+   function loadBool() {
+
+    $.ajax({
+            type:'GET',
+            url: "../auth/loginUser.do",
+            dataType:'json',
+            data: {
+              guideBool : guideBool,
+              touristBool : touristBool,
+              existUser : existUser
+            }
+            ,
+            cache: false,
+            
+            success: function(result){
+            if(result.status=="success"){
+              console.log('등록됨..');
+              console.log(result.loginUser.existUser.loginEmail);
+              console.log(result.loginUser.guideBool == 1);
+              email = result.loginUser.existUser.loginEmail;
+              console.log(email);
+              loadItemList(1, email);
+              if (result.loginUser.guideBool == 1) {
+                alert("여행객만 이용가능합니다.");
+                location.href='main.html';
+              } else {
+                console.log('여행객입니다.');
+              } 
+              
+              
+            }else{
+            console.log('등록실패');
+            alert("로그인 후 이용해주세요");
+            location.href='main.html';
+            }
+            }
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){ 
+               console.log(textStatus + "두번째 :" + errorThrown);
+             });
+     
+        };
+
+  
+  
       
-    function loadItemList(pageNo) {
+    function loadItemList(pageNo,email) {
       if (pageNo <= 0) pageNo = currPageNo;
       
-      $.getJSON('../connect/status.do?pageNo=' + pageNo + "&selected=" + selected + "&userType=tourist", 
+      $.getJSON('../connect/status.do?pageNo=' + pageNo + "&selected=" + selected + "&userType=tourist&email=" + email, 
         function(data){
+        console.log('-------------------');
+        console.log(email);
           console.log(data);
           setPageNo(data.currPageNo, data.maxPageNo);
           var connects = data.connects; 
@@ -203,7 +264,8 @@ padding-left: 40%;
       $( '.myButtonSucc' ).css("background-color","#47a3da");
       $( '.myButtonCancel' ).css("background-color","#47a3da");
       selected = "all"
-      loadItemList(1);
+      console.log("@@@@@@@@@@", email);
+      loadItemList(1, email);
     });
     
     $( '.myButtonReq' ).click(function() {
@@ -212,7 +274,7 @@ padding-left: 40%;
           $( '.myButtonSucc' ).css("background-color","#47a3da");
           $( '.myButtonCancel' ).css("background-color","#47a3da");
           selected = "req";
-          loadItemList(1);
+          loadItemList(1, email);
           
         });
     
@@ -222,7 +284,7 @@ padding-left: 40%;
           $( '.myButtonSucc' ).css("background-color","#ff5a5f");
           $( '.myButtonCancel' ).css("background-color","#47a3da");
           selected = "succ";
-          loadItemList(1);
+          loadItemList(1, email);
           
         });
     
@@ -232,13 +294,13 @@ padding-left: 40%;
           $( '.myButtonSucc' ).css("background-color","#47a3da");
           $( '.myButtonCancel' ).css("background-color","#ff5a5f");
           selected = "cancel";
-          loadItemList(1);
+          loadItemList(1, email);
           
         });
  
    
     Handlebars.registerHelper('stat', function(connectStatus) {
-    	if (connectStatus == '예약요청')
+      if (connectStatus == '예약요청')
         return connectStatus;
     else if(connectStatus == '예약완료')  return connectStatus;
     else if(connectStatus == '예약취소')  return connectStatus;
@@ -246,19 +308,19 @@ padding-left: 40%;
 
     
     Handlebars.registerHelper('yyyyMMdd', function(datetime) {
-    	  return yyyyMMdd(datetime); 
+        return yyyyMMdd(datetime); 
         });
     
     
     Handlebars.registerHelper("btnReject", function (title, connectStatus, no) {
-    	if (connectStatus == '예약요청'){
-        var btnReject = $('<a class="cbp-vm-add"></a>').text(title).attr('onclick', 'updateConnect('+ no +')');
+      if (connectStatus == '예약요청'){
+        var btnReject = $('<a href="#" class="cbp-vm-add"></a>').text(title).attr('onclick', 'updateConnect('+ no +')');
         return $('<div></div>').append(btnReject).html();
 
-    	} else {
-    		//console.log(connectStatus); 
-    		//console.log(title);
-    	}
+      } else {
+        //console.log(connectStatus); 
+        //console.log(title);
+      }
     });
   
         function updateConnect(no) {
@@ -272,7 +334,7 @@ padding-left: 40%;
                                , function(result){
                                      if (result.status == "success") {
                                        alert("예약이 취소되었습니다.");
-                                       loadItemList(currPageNo);
+                                       loadItemList(currPageNo, email);
                                      } else {
                                        alert("서버가 바쁩니다. 나중에 다시 시도해주세요.");
                                      }
@@ -280,7 +342,7 @@ padding-left: 40%;
                                );}
                 else {
                     // Do nothing!
-                	   }
+                     }
              }
     
 

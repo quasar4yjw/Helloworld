@@ -143,7 +143,7 @@ public class ItemControl {
 	
 	
 	@RequestMapping("/addComment")
-	public Object addComment(int connectNo, String selectScore, String inputComment, Date currentDate) throws Exception {
+	public Object addComment(int connectNo, String selectScore, String inputComment, String currentDate) throws Exception {
 		itemService.addComment(connectNo, Integer.parseInt(selectScore), inputComment,currentDate);
 		HashMap<String,Object> resultMap = new HashMap<>();
 		resultMap.put("status", "success");

@@ -692,12 +692,18 @@ width: 60px;
 	            return (n < 10 ? '0' : '') + n;
 	        }
 
-	        return this.getFullYear() + "-" +
-	               pad2(this.getMonth() + 1) + "-" +
-	               pad2(this.getDate()) + " " +
-	               pad2(this.getHours()) + ":" +
-	               pad2(this.getMinutes()) + ":" +
-	               pad2(this.getSeconds()); 
+	         return this.getFullYear() + "-" +
+            pad2(this.getMonth() + 1) + "-" +
+            pad2(this.getDate()) + " " +
+            pad2(this.getHours()) + ":" +
+            pad2(this.getMinutes()) + ":" +
+            pad2(this.getSeconds());  
+	        /* return this.getFullYear() +
+	               pad2(this.getMonth() + 1) +
+	               pad2(this.getDate()) +
+	               pad2(this.getHours()) +
+	               pad2(this.getMinutes()) +
+	               pad2(this.getSeconds());  */
 	    }
 	});
   
@@ -813,10 +819,11 @@ $(".serviceTest").click(function(){
                       connectStatus:'예약요청',
                       connectDate:new Date().YYYYMMDDHHMMSS(),
                       guideEmail:guideEmail,
-                      touristEmail:touristEmail,
+                      touristEmail:touristEmail
                       }
                     , function(result){
                           if (result.status == "success") {
+                        	  console.log(new Date().YYYYMMDDHHMMSS());
                         	  $("#firstDate, #lastDate").css('box-shadow', 'initial');
                             $("#firstDate, #lastDate").css('border', '1px solid #DDDDDD');
                             if (confirm('여행시작일 : ' + yyyyMMdd(firstDate) +
@@ -975,13 +982,42 @@ function yyyyMMdd(date) {
 
 </script>
 <script>
+var connectNo = null;
+var commentAuthFalse  = true
+setTimeout(function(){$.post('../connect/getMinConnectNo.do' 
+        , { 
+            reqNo : reqNo,
+            touristEmail : touristEmail
+         } 
+         , function(result){ 
+           if (result.status == "success") {
+        	   if(result.getMinConnectNo != null) {
+             connectNo = result.getMinConnectNo;
+             commentAuthFalse = false;
+        	   }
+           } else {
+             commentAuthFalse = true;
+           }
+         } 
+         , 'json' )
+      .fail(function(jqXHR, textStatus, errorThrown){ 
+        alert(textStatus + ":" + errorThrown);
+      });}, 3000);
+
+
+</script>
+<script>
 $('#commentBtn').click(function(){
+	  if(commentAuthFalse){
+		   alert("한줄평을 작성할 권한이 없습니다."
+				   + "\n한줄평은 위 여행을 다녀온 사람만이 작성가능합니다.")
+	  } else {
         $.post('../item/addComment.do' 
           , { 
-        	   connectNo   : 268,
+        	   connectNo   : connectNo,
         	   selectScore : $('#selectScore').val(),
              inputComment : $('#inputComment').val(),
-             currentDate : yyyyMMdd(new Date())
+             currentDate : new Date().YYYYMMDDHHMMSS()
           } 
           , function(result){ 
             if (result.status == "success") {
@@ -995,7 +1031,7 @@ $('#commentBtn').click(function(){
        .fail(function(jqXHR, textStatus, errorThrown){ 
          alert(textStatus + ":" + errorThrown);
        });
-      
+	  }
     });
 
 </script>
