@@ -150,7 +150,7 @@ padding-left: 40%;
   var guideBool;
   var touristBool;
   var existUser;
-  var email = "@@@@";
+  var email;
   $('#page-selection').on('page', function(event, num){
       loadItemList(num, email);   
   });
@@ -314,7 +314,7 @@ padding-left: 40%;
     
     Handlebars.registerHelper("btnReject", function (title, connectStatus, no) {
       if (connectStatus == '예약요청'){
-        var btnReject = $('<a class="cbp-vm-add"></a>').text(title).attr('onclick', 'updateConnect('+ no +')');
+        var btnReject = $('<a href="#" class="cbp-vm-add"></a>').text(title).attr('onclick', 'updateConnect('+ no +')');
         return $('<div></div>').append(btnReject).html();
 
       } else {
@@ -334,7 +334,7 @@ padding-left: 40%;
                                , function(result){
                                      if (result.status == "success") {
                                        alert("예약이 취소되었습니다.");
-                                       loadItemList(currPageNo);
+                                       loadItemList(currPageNo, email);
                                      } else {
                                        alert("서버가 바쁩니다. 나중에 다시 시도해주세요.");
                                      }

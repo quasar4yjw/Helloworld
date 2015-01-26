@@ -11,7 +11,7 @@
     <a href='#' onclick="mypageClick(); return false;">회원정보수정</a>
      &nbsp&nbsp
     <a href='#'>쪽지</a> &nbsp&nbsp
-    <a href='#'>신청정보</a>    
+    <a href='#' onclick="connectClick(); return false;">신청정보</a>    
     </span>
     <div class='select-language'>
      <select class="language-selector">    
@@ -55,11 +55,11 @@ if($('.mypage').attr('display') != 'none'){
 var guideBool;
 var touristBool;
 var userInfo;
+var existUser;
 
 
 
-
- function mypageClick(email) {
+ function mypageClick() {
 
   $.ajax({
           type:'GET',
@@ -67,14 +67,16 @@ var userInfo;
           dataType:'json',
           data: {
             guideBool : guideBool,
-            touristBool : touristBool
+            touristBool : touristBool,
+            existUser : existUser
           }
           ,
           cache: false,
           
           success: function(result){
           if(result.status=="success"){
-            if(result.loginUser.guideBool == 1 && result.loginUser.TouristBool == 0){
+        	  console.log(result.loginUser.guideBool);
+            if(result.loginUser.guideBool == 1){
             location.href='mypageGuide.html';
             } else {
             	location.href='mypageTourist.html';
@@ -90,4 +92,38 @@ var userInfo;
              console.log(textStatus + "두번째 :" + errorThrown);
            });
       };
+      
+      function connectClick() {
+
+    	  $.ajax({
+    	          type:'GET',
+    	          url: "../auth/loginUser.do",
+    	          dataType:'json',
+    	          data: {
+    	            guideBool : guideBool,
+    	            touristBool : touristBool,
+    	            existUser : existUser
+    	          }
+    	          ,
+    	          cache: false,
+    	          
+    	          success: function(result){
+    	          if(result.status=="success"){
+    	            console.log(result.loginUser.guideBool);
+    	            if(result.loginUser.guideBool == 1){
+    	            location.href='connGuide.html';
+    	            } else {
+    	              location.href='connTourist.html';
+    	            }
+    	            
+    	          }else{
+    	          console.log('등록실패');
+    	          alert("로그인 후 이용해주세요");
+    	          }
+    	          }
+    	      })
+    	      .fail(function(jqXHR, textStatus, errorThrown){ 
+    	             console.log(textStatus + "두번째 :" + errorThrown);
+    	           });
+    	      };
 </script>

@@ -23,7 +23,7 @@
   <select id="selectConnect" parameterType="map" 
         resultMap="connectListMap">
     SELECT   
-      T1.G_EMAIL,
+      T2.G_EMAIL,
       T2.T_EMAIL,   
       T2.C_NO, 
       T1.TITLE,
@@ -40,7 +40,7 @@
     WHERE T2.T_EMAIL=#{email}
     </if> 
      <if test="selected == 'req'">
-     WHERE T2.C_STAT = '예약요청' AND T2.T_EMAIL=#{email}
+     WHERE (T2.C_STAT = '예약요청') AND (T2.T_EMAIL=#{email})
     </if>
     <if test="selected == 'succ'">
      WHERE (T2.C_STAT = '예약완료') AND (T2.T_EMAIL=#{email}) 
@@ -54,9 +54,22 @@
 
     </if>
     
- <!--   <if test="userType == 'guide'">
-    WHERE T2.G_EMAIL=#{value}
-    </if>   -->
+    <if test="userType == 'guide'">
+    
+    <if test="selected == 'all'">
+    WHERE T2.G_EMAIL=#{email}
+    </if> 
+     <if test="selected == 'req'">
+     WHERE (T2.C_STAT = '예약요청') AND (T2.G_EMAIL=#{email})
+    </if>
+    <if test="selected == 'succ'">
+     WHERE (T2.C_STAT = '예약완료') AND (T2.G_EMAIL=#{email}) 
+    </if>
+    <if test="selected == 'cancel'">
+     WHERE (T2.C_STAT = '예약취소') AND (T2.G_EMAIL=#{email}) 
+    </if>
+    GROUP BY T2.C_NO 
+    </if>  
     
     
      <if test="pageSize > 0">
@@ -65,18 +78,35 @@
     
   </select>
   
+  
   <select id="totalSize" parameterType="map" resultType="int">
     SELECT 
     count(C_NO) 
     FROM BOOK_INFO
-    <if test="selected == 'req'">
-     WHERE (C_STAT = '예약요청') AND (T_EMAIL=#{email}) 
+    
+    <if test="userType == 'tourist'">
+		    <if test="selected == 'req'">
+		     WHERE (C_STAT = '예약요청') AND (T_EMAIL=#{email}) 
+		    </if>
+		    <if test="selected == 'succ'">
+		     WHERE (C_STAT = '예약완료') AND (T_EMAIL=#{email}) 
+		    </if>
+		    <if test="selected == 'cancel'">
+		     WHERE (C_STAT = '예약취소') AND (T_EMAIL=#{email}) 
+		    </if>
     </if>
-    <if test="selected == 'succ'">
-     WHERE (C_STAT = '예약완료') AND (T_EMAIL=#{email}) 
-    </if>
-    <if test="selected == 'cancel'">
-     WHERE (C_STAT = '예약취소') AND (T_EMAIL=#{email}) 
+    
+    <if test="userType == 'guide'">
+		    <if test="selected == 'req'">
+		     WHERE (C_STAT = '예약요청') AND (G_EMAIL=#{email}) 
+		    </if>
+		    <if test="selected == 'succ'">
+		     WHERE (C_STAT = '예약완료') AND (G_EMAIL=#{email}) 
+		    </if>
+		    <if test="selected == 'cancel'">
+		     WHERE (C_STAT = '예약취소') AND (G_EMAIL=#{email}) 
+		    </if>
+    
     </if>
   </select>
   
