@@ -240,6 +240,8 @@ padding-left: 40%;
         function(data){
         console.log('-------------------');
         console.log(email);
+        console.log(data.totalSize);
+        console.log(data.maxPageNo);
           console.log(data);
           setPageNo(data.currPageNo, data.maxPageNo);
           var connects = data.connects; 

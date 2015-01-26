@@ -28,7 +28,7 @@ public class ConnectControl {
       @RequestParam(defaultValue="1") int pageNo,
       @RequestParam(defaultValue="6") int pageSize,
       @RequestParam(defaultValue="all") String selected,
-      @RequestParam(defaultValue="") String email,
+      @RequestParam String email,
       @RequestParam String userType) throws Exception {
     
     if (pageSize <= 0)

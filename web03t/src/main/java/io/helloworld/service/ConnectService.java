@@ -57,6 +57,9 @@ public class ConnectService {
 
 		int totalSize = connectDao.totalSize(paramMap);
 		int maxPageNo = totalSize / pageSize;
+		System.out.println(totalSize);
+    System.out.println(maxPageNo);
+    System.out.println(pageSize);
 		if ((totalSize % pageSize) > 0) maxPageNo++;
 
 		return maxPageNo;

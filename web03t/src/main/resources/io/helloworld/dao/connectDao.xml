@@ -83,31 +83,20 @@
     SELECT 
     count(C_NO) 
     FROM BOOK_INFO
-    
-    <if test="userType == 'tourist'">
+
+        <if test="selected == 'all' ">
+		    WHERE T_EMAIL=#{email}
+		    </if> 
 		    <if test="selected == 'req'">
-		     WHERE (C_STAT = '예약요청') AND (T_EMAIL=#{email}) 
+		     WHERE (C_STAT = '예약요청') AND ((T_EMAIL=#{email}) OR  (G_EMAIL=#{email})) 
 		    </if>
 		    <if test="selected == 'succ'">
-		     WHERE (C_STAT = '예약완료') AND (T_EMAIL=#{email}) 
+		     WHERE (C_STAT = '예약완료') AND ((T_EMAIL=#{email}) OR  (G_EMAIL=#{email})) 
 		    </if>
 		    <if test="selected == 'cancel'">
-		     WHERE (C_STAT = '예약취소') AND (T_EMAIL=#{email}) 
+		     WHERE (C_STAT = '예약취소') AND ((T_EMAIL=#{email}) OR  (G_EMAIL=#{email})) 
 		    </if>
-    </if>
-    
-    <if test="userType == 'guide'">
-		    <if test="selected == 'req'">
-		     WHERE (C_STAT = '예약요청') AND (G_EMAIL=#{email}) 
-		    </if>
-		    <if test="selected == 'succ'">
-		     WHERE (C_STAT = '예약완료') AND (G_EMAIL=#{email}) 
-		    </if>
-		    <if test="selected == 'cancel'">
-		     WHERE (C_STAT = '예약취소') AND (G_EMAIL=#{email}) 
-		    </if>
-    
-    </if>
+
   </select>
   
    <update id="update" parameterType="Connect">
