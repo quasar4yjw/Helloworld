@@ -1,6 +1,7 @@
 package io.helloworld.domain;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 
 public class Search implements Serializable{
@@ -10,18 +11,23 @@ public class Search implements Serializable{
   
   protected String          country;
   protected Date            startDate;
-  protected Date          endDate;
-  protected int          minPrice;
+  protected Date            endDate;
+  protected int             minPrice;
   protected int             maxPrice;
-   
+  protected String[]        interests;
   
   @Override
   public String toString() {
     return "Search [country=" + country + ", startDate=" + startDate
         + ", endDate=" + endDate + ", minPrice=" + minPrice + ", maxPrice="
-        + maxPrice + "]";
+        + maxPrice + ", inter=" + Arrays.toString(interests) + "]";
   }
-  
+  public String[] getInterests() {
+    return interests;
+  }
+  public void setInterests(String[] interests) {
+    this.interests = interests;
+  }
   public String getCountry() {
     return country;
   }

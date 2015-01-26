@@ -67,6 +67,7 @@ public class ItemService {
     paramMap.put("endDate",search.getEndDate());
     paramMap.put("minPrice",search.getMinPrice());
     paramMap.put("maxPrice",search.getMaxPrice());
+    paramMap.put("interests",search.getInterests());
     /*paramMap.put("interest", itemDao.selectTages());*/
 
     return itemDao.selectList(paramMap);

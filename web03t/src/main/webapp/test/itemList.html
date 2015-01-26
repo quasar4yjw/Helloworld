@@ -754,36 +754,36 @@ z-index:9999;
 						
 					<div id='interest'>
 					<div class="checkbox checkbox-danger">
-                        <input id="checkbox1" type="checkbox" value='전통1'>
-                        <label for="checkbox1">전통1</label>
+                        <input id="checkbox1" name='inter' type="checkbox" value="Traditional">
+                        <label for="checkbox1">전통</label>
           </div>
           <div class="checkbox checkbox-danger">
-                        <input id="checkbox2" type="checkbox" value='전통2'>
-                        <label for="checkbox2">전통2</label>
+                        <input id="checkbox2" name='inter' type="checkbox"  value="Food">
+                        <label for="checkbox2">음식</label>
           </div>
            <div class="checkbox checkbox-danger">
-                        <input id="checkbox3" type="checkbox" value='전통3'>
-                        <label for="checkbox3">전통3</label>
+                        <input id="checkbox3" name='inter' type="checkbox" value="Shopping">
+                        <label for="checkbox3">쇼핑</label>
           </div>
            <div class="checkbox checkbox-danger">
-                        <input id="checkbox4" type="checkbox" value='전통4'>
-                        <label for="checkbox4">전통4</label>
+                        <input id="checkbox4" name='inter' type="checkbox" value="NightLife">
+                        <label for="checkbox4">밤문화</label>
           </div>
            <div class="checkbox checkbox-danger">
-                        <input id="checkbox5" type="checkbox" value='전통5'>
-                        <label for="checkbox5">전통5</label>
+                        <input id="checkbox5" name='inter' type="checkbox"  value="Sport">
+                        <label for="checkbox5">스포츠</label>
           </div>
           <div class="checkbox checkbox-danger">
-                        <input id="checkbox6" type="checkbox" value='전통6' >
-                        <label for="checkbox6">전통6</label>
+                        <input id="checkbox6" name='inter' type="checkbox" value="Exhibition">
+                        <label for="checkbox6">전시회</label>
           </div>
           <div class="checkbox checkbox-danger">
-                        <input id="checkbox7" type="checkbox" value='전통7'>
-                        <label for="checkbox7">전통7</label>
+                        <input id="checkbox7" name='inter' type="checkbox" value="Artsy">
+                        <label for="checkbox7">미술관</label>
           </div>
           <div class="checkbox checkbox-danger">
-                        <input id="checkbox8" type="checkbox" value='전통8'>
-                        <label for="checkbox8">전통8</label>
+                        <input id="checkbox8" name='inter' type="checkbox" value="Etc">
+                        <label for="checkbox8">기타</label>
           </div>
 					</div>
 				</form>
@@ -826,6 +826,7 @@ z-index:9999;
 <script type="text/javascript" src="../js/jquery.bootpag.min.js"></script>
 <script >
 var country,startDate,endDate,minPrice,maxPrice;
+var interests = new Array();
 $(function(){
   
   country = getParameterByName("country");
@@ -838,8 +839,8 @@ $(function(){
   minPrice = getParameterByName("minPrice");
   maxPrice = getParameterByName("maxPrice"); 
   
-  
-  loadItemList(1 ,country,startDate,endDate,minPrice,maxPrice );
+  console.log(interests.length);
+  loadItemList(1 ,country,startDate,endDate,minPrice,maxPrice,interests);
   
   $('#select-country').val(country);
   $('#startDate').val(startDate);
@@ -858,7 +859,7 @@ $(function(){
   
   $('#select-country').click(function(){
     country = $('#select-country').val();
-    loadItemList(1 ,country,startDate,endDate,minPrice,maxPrice,inter );
+    loadItemList(1 ,country,startDate,endDate,minPrice,maxPrice,interests);
   });
   
   $('#mainPrice').mouseleave(function() {
@@ -866,52 +867,40 @@ $(function(){
     minPrice = prices[0];
     maxPrice = prices[1];
   }); 
-  getInterest('checkbox1');
-  getInterest('checkbox2');
-  getInterest('checkbox3');
-  getInterest('checkbox4');
-  getInterest('checkbox5');
-  getInterest('checkbox6');
-  getInterest('checkbox7');
-  getInterest('checkbox8');
+  interests = getInterest('checkbox1');
+  interests = getInterest('checkbox2');
+  interests = getInterest('checkbox3');
+  interests = getInterest('checkbox4');
+  interests = getInterest('checkbox5');
+  interests = getInterest('checkbox6');
+  interests = getInterest('checkbox7');
+  interests = getInterest('checkbox8');
   
   
 });
 var inters = null;
 var interSplit;
-var inter3 = new Array(3);
-function getInterest(inter){
-  $('#'+inter).click(function(){
+//var inter = new Array(3);
+function getInterest(interest){
+  $('#'+interest).click(function(){    
+    var interCount= 0;
+    var inter = new Array(3);
+   /*  console.log('----------------------11');
+    console.log(inter); */
     // console.log($('input:checkbox:checked').length);
-    if($('input:checkbox:checked').length<=3){ // 선택된 값이 3개 이하일
-	    if($('#'+inter).prop("checked")){
-				var count= 0;
-	      
-	      inters += $('#'+inter).val() + ",";
-	      interSplit = inters.split(',');
-	      interSplit[0] = interSplit[0].substring(4);
-	      
-	      console.log('----------------------');
-	      for(var i = (interSplit.length - 2); i >=0 ; i-- ){
-	        
-	        
-	        if(inter3[count] !=interSplit[i] && count<3){
-	          inter3[count] =interSplit[i];
-	          count++;
-	        } 
-	      }
-	     
-	       for(var i in inter3){
-	        console.log(inter3[i]);
-	      } 
-	      //console.log($('#'+inter).val());
-	      //console.log(inters);
-	    }
-    }else {
-      $('#'+inter).prop("checked",false);
-      alert('관심사는 3개까지 선택 가능합니다.');
+    if($('input:checkbox:checked').length > 3 ){ // 선택된 값이 3개 이상일때   
+      $('#'+interest).prop("checked",false);
+      alert('관심사는 3개까지 선택 가능합니다.');      
+    }  
       
-    }
+      $("input[name=inter]:checked").each(function() {
+        inter[interCount] = $(this).val();       
+        interCount++;
+      });
+      
+      console.log(inter);   
+     return inter;
+   
   });
 }
 function getParameterByName(name) {
@@ -1001,12 +990,13 @@ function getParameterByName(name) {
       if(lvalue === rvalue) return options.fn(this);
     }
 });
-  function loadItemList(pageNo ,country,startDate,endDate,minPrice,maxPrice ) {
+  function loadItemList(pageNo ,country,startDate,endDate,minPrice,maxPrice,interests ) {
     if (pageNo <= 0) pageNo = currPageNo;
     
     $.getJSON('../item/list.do?pageNo=' + pageNo
          +'&country=' + country + "&startDate=" + startDate 
-        + "&endDate=" + endDate + "&minPrice=" + minPrice + "&maxPrice="+ maxPrice , 
+        + "&endDate=" + endDate + "&minPrice=" + minPrice 
+        + "&maxPrice="+ maxPrice + "&interests="+ interests , 
       function(data){
         console.log(data);
         setPageNo(data.currPageNo, data.maxPageNo);

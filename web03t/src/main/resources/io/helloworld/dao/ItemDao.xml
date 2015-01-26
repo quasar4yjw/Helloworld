@@ -107,10 +107,13 @@
       T1.PLACE,
       T1.PRICE,
       T2.P_URL    
-    FROM ITEMS T1 LEFT OUTER JOIN DET_PHOTS T2 
-    USING(I_NO)
+     FROM (ITEMS T1 LEFT OUTER JOIN DET_PHOTS T2 ON T1.I_NO = T2.I_NO)  LEFT OUTER JOIN TAGS T3 ON T1.I_NO=T3.I_NO
      WHERE T1.COUNTRY =#{country} AND T1.PRICE >= #{minPrice}  AND T1.PRICE <= #{maxPrice}  ]]> 
-     
+      <if test="interests.length > 0">      
+	      <foreach item="item" index="index" collection="interests" >
+	        AND T3.INTER = #{item}
+	      </foreach>
+    </if>
       
     GROUP BY T1.I_NO
     ORDER BY T1.I_NO DESC
