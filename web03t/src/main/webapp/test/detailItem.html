@@ -619,7 +619,7 @@ width: 60px;
 		    </form>
 		    
 		    
-		    <nav>
+		   <!--  <nav>
   <ul class="pagination">
     <li><a href="#"><span aria-hidden="true">&lt;</span><span class="sr-only">Previous</span></a></li>
     <li class='active'><a href="#">1</a></li>
@@ -629,7 +629,8 @@ width: 60px;
     <li><a href="#">5</a></li>
     <li><a href="#"><span aria-hidden="true">&gt;</span><span class="sr-only">Next</span></a></li>
   </ul>
-</nav>
+</nav> -->
+<div id="page-selection"></div>
 </div></div>
 		  
 		  
@@ -668,6 +669,7 @@ width: 60px;
 	<!-- <script type="text/javascript" src='../js/require.js'></script> -->
 	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 	<script src="../js/jquery.bxslider.js"></script>
+	<script type="text/javascript" src="http://rawgit.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
 	<script type="text/javascript">
 	
 	  $('.dialog').load('loginDialog.html');
@@ -683,8 +685,42 @@ width: 60px;
   <script type="text/javascript">
   var reqNo = 0;
   var numTravel = 1;
+  
   var guideEmail = null;
   var touristEmail = null;
+  
+  var connectNo = null;
+  var commentAuthFalse  = true;
+  
+  $('#page-selection').on('page', function(event, num){
+	  loadProduct(reqNo, num);   
+  });
+  
+ 
+  function setPageNo(currPageNo, maxPageNo) {
+      window.currPageNo = currPageNo;
+      window.maxPageNo = maxPageNo;
+      
+    
+      
+      if (currPageNo <= 5)
+        $('#prevBtn').css('display', 'none');
+      else
+        $('#prevBtn').css('display', '');
+      if (currPageNo >= maxPageNo)
+        $('#nextBtn').css('display', 'none');
+      else
+        $('#nextBtn').css('display', '');
+      
+      $('#page-selection').bootpag({
+        total: maxPageNo,
+        page: currPageNo,
+        maxVisible: 5 
+      });
+    }
+  
+  
+  
   
   Object.defineProperty(Date.prototype, 'YYYYMMDDHHMMSS', {
 	    value: function() {
@@ -710,7 +746,7 @@ width: 60px;
   
   $(function(){
 	  reqNo = getParameterByName("itemNo");
-	  loadProduct(reqNo);
+	  loadProduct(reqNo, 1);
 	});
   
   
@@ -875,10 +911,15 @@ $('.ui-state-default').mouseover(function(){
 	}
 	
 	
-	function loadProduct(itemNo) {
-		$.getJSON('../item/view.do?itemNo=' + itemNo, function(data) {
+	function loadProduct(itemNo, commentPageNum) {
+		$.getJSON('../item/view.do?itemNo=' + itemNo,
+				{
+			   pageNo : commentPageNum
+				},
+		    function(data) {
 			console.log(data);
 			console.log(data.item);
+			setPageNo(data.currPageNo, data.maxPageNo);
 			var itemInter = "관심사 : ";
 			for (var i = 0; i < data.inters.length; i ++){
 				if (i + 1 == data.inters.length) itemInter += data.inters[i].interest; 
@@ -935,12 +976,28 @@ $('.ui-state-default').mouseover(function(){
 			$('.my-update-form').css('display', '');
 			$('.my-new-form').css('display', 'none'); */
 			$.getJSON('/web03t/auth/loginUser.do', function(data){
-			    if (data.status == 'fail') {
-			    } else {
-			    	if(data.loginUser.touristBool == 1){
-			    	touristEmail = data.loginUser.existUser.loginEmail
-			    	}
-			      $('#userName').html(data.loginUser.existUser.userName);
+			    if (data.status == 'fail');
+			    else if (data.loginUser.touristBool == 1) {
+			    	touristEmail = data.loginUser.existUser.loginEmail;
+			    	
+			    	$.post('../connect/getMinConnectNo.do' 
+			    	        , { 
+			    	            reqNo : reqNo,
+			    	            touristEmail : touristEmail
+			    	         } 
+			    	         , function(result){ 
+			    	           if (result.status == "success" && result.getMinConnectNo != null) {
+			    	             connectNo = result.getMinConnectNo;
+			    	             commentAuthFalse = false;
+			    	           } else {
+			    	             commentAuthFalse = true;
+			    	           }
+			    	         } 
+			    	         , 'json' )
+			    	      .fail(function(jqXHR, textStatus, errorThrown){ 
+			    	        alert(textStatus + ":" + errorThrown);
+			    	      });
+			    	
 			    }
 			  });
 			
@@ -982,31 +1039,6 @@ function yyyyMMdd(date) {
 
 </script>
 <script>
-var connectNo = null;
-var commentAuthFalse  = true
-setTimeout(function(){$.post('../connect/getMinConnectNo.do' 
-        , { 
-            reqNo : reqNo,
-            touristEmail : touristEmail
-         } 
-         , function(result){ 
-           if (result.status == "success") {
-        	   if(result.getMinConnectNo != null) {
-             connectNo = result.getMinConnectNo;
-             commentAuthFalse = false;
-        	   }
-           } else {
-             commentAuthFalse = true;
-           }
-         } 
-         , 'json' )
-      .fail(function(jqXHR, textStatus, errorThrown){ 
-        alert(textStatus + ":" + errorThrown);
-      });}, 3000);
-
-
-</script>
-<script>
 $('#commentBtn').click(function(){
 	  if(commentAuthFalse){
 		   alert("한줄평을 작성할 권한이 없습니다."
@@ -1022,6 +1054,8 @@ $('#commentBtn').click(function(){
           , function(result){ 
             if (result.status == "success") {
               alert("등록되었습니다.");
+              $('#inputComment').val("");
+              loadProduct(reqNo, currPageNo);
               location.href="http://helloworld.io:8080/web03t/test/detailItem.html?itemNo=" + reqNo + "#itemComment";
             } else {
               alert("등록 실패!");

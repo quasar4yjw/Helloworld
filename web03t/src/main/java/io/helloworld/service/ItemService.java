@@ -102,8 +102,12 @@ public class ItemService {
 		HashMap datamap = itemDao.selectGuideOfItem(itemNo);
 		return datamap;
 	}
-	public List getComment(int itemNo) {
-		List datamaps = itemDao.selectComments(itemNo);
+	public List getComment(int itemNo, int pageNo, int pageSize) {
+		HashMap<String,Object> paramMap = new HashMap<>();
+		paramMap.put("startIndex", ((pageNo - 1) * pageSize));
+		paramMap.put("pageSize", pageSize);
+		paramMap.put("itemNo", itemNo);
+		List datamaps = itemDao.selectComments(paramMap);
 		return datamaps;
 	}
 
@@ -145,6 +149,15 @@ public class ItemService {
 		paramMap.put("currentDate", currentDate);
 		itemDao.insertComment(paramMap);
 		/*   itemDao.insertDetailPhoto(detailPhoto);*/
+	}
+	
+	
+	public int getCommentMaxPageNo(int pageSize, int itemNo) {
+		int totalSize = itemDao.commentTotalSize(itemNo);
+		int maxPageNo = totalSize / pageSize;
+		if ((totalSize % pageSize) > 0) maxPageNo++;
+
+		return maxPageNo;
 	}
 
 }

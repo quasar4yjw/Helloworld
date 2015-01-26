@@ -90,45 +90,62 @@ public class ItemControl {
     return resultMap;
   }
 	@RequestMapping("/view")
-	public Object view(String itemNo, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws Exception {
-		HashMap itemMap = itemService.get(Integer.parseInt(itemNo));
-		List interMaps = itemService.getInter(Integer.parseInt(itemNo));
-		List scheduleMaps = itemService.getSchedule(Integer.parseInt(itemNo));
-		HashMap guideMap = itemService.getGuideInfo(Integer.parseInt(itemNo));
-		List commentMaps = itemService.getComment(Integer.parseInt(itemNo));
-		int tourDayCount = itemService.getTourDayCount(Integer.parseInt(itemNo));
-		List photoMaps = itemService.getDetailPhoto(Integer.parseInt(itemNo));
+	public Object view(
+			@RequestParam(defaultValue="1") int pageNo,
+			@RequestParam(defaultValue="6") int pageSize,
+			String itemNo, 
+			HttpSession session, 
+			HttpServletResponse response, 
+			HttpServletRequest request) throws Exception {
+		
+			if (pageSize <= 0) pageSize = PAGE_DEFAULT_SIZE;
+		    
+		    int maxPageNo = itemService.getCommentMaxPageNo(pageSize, Integer.parseInt(itemNo));
+		    
+		    if (pageNo <= 0) pageNo = 1;
+		    if (maxPageNo != 0 && pageNo > maxPageNo) pageNo = maxPageNo;
 		
 		
-		/*Cookie[] cookies = request.getCookies();
-		if(cookies != null){
-			for(int i = 0; i < cookies.length; i++) {
-				System.out.println("@@@@___@@@@");
-				System.out.println(cookies[i].getValue());
-				System.out.println(cookies[i].getName()); // 끝 쿠키 JSESSIONID
-			}
-		}*/
-		
-		
-		Cookie cookie = new Cookie("item" + itemNo, itemNo);
-		cookie.setMaxAge(60 * 60 * 24);
-		//cookie.setMaxAge(0); // 무효화시킴
-		response.addCookie(cookie);
-	      
-		
-		//int non = (int)session.getAttribute("view2Page");
-		HashMap<String,Object> resultMap = new HashMap<>();
-		resultMap.put("status", "success");
-		resultMap.put("item", itemMap);
-		resultMap.put("inters", interMaps);
-		resultMap.put("itemSchedules", scheduleMaps);
-		resultMap.put("guideInfo", guideMap);
-		resultMap.put("commentList", commentMaps);
-		resultMap.put("tourDayCount", tourDayCount);
-		resultMap.put("photoList", photoMaps);
-		/*resultMap.put("photos", datamap.getPhotoList());
-		resultMap.put("travels", datamap.getTravelScheduleList());*/
-		return resultMap; 
+			HashMap itemMap = itemService.get(Integer.parseInt(itemNo));
+			List interMaps = itemService.getInter(Integer.parseInt(itemNo));
+			List scheduleMaps = itemService.getSchedule(Integer.parseInt(itemNo));
+			HashMap guideMap = itemService.getGuideInfo(Integer.parseInt(itemNo));
+			List commentMaps = itemService.getComment(Integer.parseInt(itemNo), pageNo, pageSize);
+			int tourDayCount = itemService.getTourDayCount(Integer.parseInt(itemNo));
+			List photoMaps = itemService.getDetailPhoto(Integer.parseInt(itemNo));
+			
+			
+			/*Cookie[] cookies = request.getCookies();
+			if(cookies != null){
+				for(int i = 0; i < cookies.length; i++) {
+					System.out.println("@@@@___@@@@");
+					System.out.println(cookies[i].getValue());
+					System.out.println(cookies[i].getName()); // 끝 쿠키 JSESSIONID
+				}
+			}*/
+			
+			
+			Cookie cookie = new Cookie("item" + itemNo, itemNo);
+			cookie.setMaxAge(60 * 60 * 24);
+			//cookie.setMaxAge(0); // 무효화시킴
+			response.addCookie(cookie);
+		      
+			
+			//int non = (int)session.getAttribute("view2Page");
+			HashMap<String,Object> resultMap = new HashMap<>();
+			resultMap.put("status", "success");
+			resultMap.put("currPageNo", pageNo);
+		    resultMap.put("maxPageNo", maxPageNo);
+			resultMap.put("item", itemMap);
+			resultMap.put("inters", interMaps);
+			resultMap.put("itemSchedules", scheduleMaps);
+			resultMap.put("guideInfo", guideMap);
+			resultMap.put("commentList", commentMaps);
+			resultMap.put("tourDayCount", tourDayCount);
+			resultMap.put("photoList", photoMaps);
+			/*resultMap.put("photos", datamap.getPhotoList());
+			resultMap.put("travels", datamap.getTravelScheduleList());*/
+			return resultMap; 
 	}
 
 	/* @RequestMapping(value="/addPlanSchedule", method=RequestMethod.POST)

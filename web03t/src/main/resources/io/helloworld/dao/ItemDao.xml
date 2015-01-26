@@ -167,12 +167,15 @@
   WHERE T3.I_NO=#{value}
   </select>
   
-  <select id="selectComments" parameterType="int" resultMap="commentMap">
+  <select id="selectComments" parameterType="map" resultMap="commentMap">
   SELECT T1.COM_CONT, T1.COM_DATE, T1.COM_SCO
   FROM COMMENTS T1 
   LEFT OUTER JOIN BOOK_INFO T2 ON T1.C_NO = T2.C_NO  
-  WHERE T2.I_NO=#{value}
+  WHERE T2.I_NO=#{itemNo}
   ORDER BY T1.COM_DATE DESC
+  <if test="pageSize > 0">
+      limit #{startIndex}, #{pageSize}
+  </if>
   </select>
   
   <select id="selectTourDayCount" parameterType="int" resultType="object">
@@ -205,4 +208,11 @@
   INSERT INTO COMMENTS(C_NO, COM_CONT, COM_DATE, COM_SCO)
     VALUES (#{connectNo}, #{inputComment}, #{currentDate},  #{selectScore});
   </insert>
+  
+  <select id="commentTotalSize" parameterType="int" resultType="int">
+    SELECT COUNT(T1.C_NO)
+    FROM COMMENTS T1 
+    LEFT OUTER JOIN BOOK_INFO T2 ON T1.C_NO = T2.C_NO  
+    WHERE T2.I_NO=#{itemNo}
+  </select>
 </mapper>
