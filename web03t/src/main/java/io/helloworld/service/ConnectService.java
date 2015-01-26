@@ -5,7 +5,6 @@ import io.helloworld.domain.Connect;
 
 import java.util.HashMap;
 import java.util.List;
-import java63.web03.domain.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,12 +23,13 @@ public class ConnectService {
 
 	/*public void status(Connect connect) {*/
 
-	public List<?> getList(int pageNo, int pageSize, String selected, String userType) {
+	public List<?> getList(int pageNo, int pageSize, String selected, String userType, String email) {
 		HashMap<String,Object> paramMap = new HashMap<>();
 		paramMap.put("startIndex", ((pageNo - 1) * pageSize));
 		paramMap.put("pageSize", pageSize);
 		paramMap.put("selected", selected);
 		paramMap.put("userType", userType);
+		paramMap.put("email", email);
 
 		/*    if(selected == "req"){
       resultMap.put("connects", 
@@ -50,9 +50,10 @@ public class ConnectService {
 		return connectDao.selectConnect(paramMap);
 	}
 
-	public int getMaxPageNo(int pageSize, String selected) {
+	public int getMaxPageNo(int pageSize, String selected, String email) {
 		HashMap<String,Object> paramMap = new HashMap<>();
 		paramMap.put("selected", selected);
+		paramMap.put("email", email);
 
 		int totalSize = connectDao.totalSize(paramMap);
 		int maxPageNo = totalSize / pageSize;
