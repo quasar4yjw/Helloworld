@@ -859,13 +859,15 @@ $(function(){
   
   $('#select-country').click(function(){
     country = $('#select-country').val();
-    loadItemList(1 ,country,startDate,endDate,minPrice,maxPrice,interests);
+    loadInter();
   });
   
   $('#mainPrice').mouseleave(function() {
     var prices = $('.slider-input').val().split(',');
     minPrice = prices[0];    
     maxPrice = prices[1];
+    
+    loadInter();
   }); 
   getInterest('checkbox1');
   getInterest('checkbox2');
@@ -884,8 +886,7 @@ var interSplit;
 //var inter = new Array(3);
 function getInterest(interest){
   $('#'+interest).click(function(){    
-    var interCount= 0;
-    var inter = new Array();
+   
    /*  console.log('----------------------11');
     console.log(inter); */
     // console.log($('input:checkbox:checked').length);
@@ -894,18 +895,22 @@ function getInterest(interest){
       alert('관심사는 3개까지 선택 가능합니다.');      
     }  
       
-      $("input[name=inter]:checked").each(function() {
-        inter[interCount] = $(this).val();       
-        interCount++;
-      });
-      
-      console.log(inter);
-      loadItemList(1 ,country,startDate,endDate,minPrice,maxPrice,inter);
+     loadInter();
       
    
   });
 }
-
+function loadInter(){
+  var interCount= 0;
+  var inter = new Array();
+  $("input[name=inter]:checked").each(function() {
+    inter[interCount] = $(this).val();       
+    interCount++;
+  });
+  
+  console.log(inter);
+  loadItemList(1 ,country,startDate,endDate,minPrice,maxPrice,inter);
+}
 function getParameterByName(name) {
   return decodeURIComponent((new RegExp('[?|&]' + name + '='
       + '([^&;]+?)(&|#|;|$)').exec(location.search) || [ , "" ])[1]
@@ -929,7 +934,7 @@ function getParameterByName(name) {
     onSelect: function(selected) {
       $("#endDate").datepicker("option","minDate", selected);
       startDate = $('#startDate').val();
-      loadItemList(1 ,country,startDate,endDate,minPrice,maxPrice,interests);
+      loadInter();
       
       
     }
@@ -939,7 +944,8 @@ function getParameterByName(name) {
     numberOfMonths: 1,
     onSelect: function(selected) {
     $("#startDate").datepicker("option","maxDate", selected);
-    console.log($('#endDate').val());
+    endDate = $('#endDate').val();
+    loadInter();
     }
     });  
  
