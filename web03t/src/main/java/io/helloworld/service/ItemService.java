@@ -6,7 +6,7 @@ import io.helloworld.domain.Search;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,7 +67,19 @@ public class ItemService {
     paramMap.put("endDate",search.getEndDate());
     paramMap.put("minPrice",search.getMinPrice());
     paramMap.put("maxPrice",search.getMaxPrice());
-    paramMap.put("interests",search.getInterests());
+    
+    if (search.getInterests() != null && search.getInterests().length > 0) {
+      String interests = "";
+      for (String interest : search.getInterests()) {
+        if (interests.length() > 0)
+          interests += ",";
+        interests += "'" + interest + "'";
+      }
+      paramMap.put("interests",interests);
+      System.out.println(paramMap.get("interests"));
+    }
+    
+    //paramMap.put("interests",search.getInterests());
     /*paramMap.put("interest", itemDao.selectTages());*/
 
     return itemDao.selectList(paramMap);

@@ -864,7 +864,7 @@ $(function(){
   
   $('#mainPrice').mouseleave(function() {
     var prices = $('.slider-input').val().split(',');
-    minPrice = prices[0];
+    minPrice = prices[0];    
     maxPrice = prices[1];
   }); 
   getInterest('checkbox1');
@@ -905,6 +905,7 @@ function getInterest(interest){
    
   });
 }
+
 function getParameterByName(name) {
   return decodeURIComponent((new RegExp('[?|&]' + name + '='
       + '([^&;]+?)(&|#|;|$)').exec(location.search) || [ , "" ])[1]
@@ -918,7 +919,7 @@ function getParameterByName(name) {
   $('.footer').load('footer.html');
   
   $('#page-selection').on('page', function(event, num){
-    loadItemList(1 ,country,startDate,endDate,minPrice,maxPrice,inter);   
+    loadItemList(1 ,country,startDate,endDate,minPrice,maxPrice,interests);   
   })
   
   $('#startDate').datepicker({
@@ -997,11 +998,10 @@ function getParameterByName(name) {
 });
   function loadItemList(pageNo ,country,startDate,endDate,minPrice,maxPrice,interests ) {
     if (pageNo <= 0) pageNo = currPageNo;
-    
-    $.getJSON('../item/list.do?pageNo=' + pageNo
-         +'&country=' + country + "&startDate=" + startDate 
+        $.getJSON('../item/list.do?pageNo=' + pageNo
+        +'&country=' + country + "&startDate=" + startDate 
         + "&endDate=" + endDate + "&minPrice=" + minPrice 
-        + "&maxPrice="+ maxPrice + "&interests="+ interests , 
+        + "&maxPrice="+ maxPrice + "&interests="+ interests, 
       function(data){
         console.log(data);
         setPageNo(data.currPageNo, data.maxPageNo);
