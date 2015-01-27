@@ -10,11 +10,11 @@ Primary style
 }
 
 *::after, *::before {
-/*   content: ''; */
+   content: ''; 
 }
 
 body {
-  /* font-size: 100%; */
+   font-size: 100%; 
   color: #4e5359;
   background-color: #f3f3f5;
 }
@@ -274,6 +274,7 @@ padding: 0px 0px 30px 0%;
   .cd-faq-items {
     float: none;
     width: 100%;
+    padding-left: 220px;
   }
   .no-js .cd-faq-items {
     padding-left: 0;
