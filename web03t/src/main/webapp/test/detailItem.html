@@ -695,7 +695,7 @@ width: 60px;
   var disableDateList = [];
   
   $('#page-selection').on('page', function(event, num){
-	  loadProduct(reqNo, num);   
+	  loadComment(reqNo, num);   
   });
   
  
@@ -748,7 +748,8 @@ width: 60px;
   
   $(function(){
 	  reqNo = getParameterByName("itemNo");
-	  loadProduct(reqNo, 1);
+	  loadProduct(reqNo);
+	  loadComment(reqNo, 1);
 	});
   
   
@@ -913,15 +914,11 @@ $('.ui-state-default').mouseover(function(){
 	}
 	
 	
-	function loadProduct(itemNo, commentPageNum) {
+	function loadProduct(itemNo) {
 		$.getJSON('../item/view.do?itemNo=' + itemNo,
-				{
-			   pageNo : commentPageNum
-				},
 		    function(data) {
 			console.log(data);
 			console.log(data.item);
-			setPageNo(data.currPageNo, data.maxPageNo);
 			    
 			var itemInter = "관심사 : ";
 			for (var i = 0; i < data.inters.length; i ++){
@@ -942,10 +939,6 @@ $('.ui-state-default').mouseover(function(){
 				var template = Handlebars.compile(html);
 				$('#guideProfileTemplate').html(template(data));
 			});
-			$.get('templates/comment-item.html', function(html) {
-				var template = Handlebars.compile(html);
-				$('.item-comment-table').html(template(data));
-			});
 			 $.get('templates/detail-photo.html', function(html) {
 				var template = Handlebars.compile(html);
 				$('.represent-img').html(template(data));
@@ -965,15 +958,23 @@ $('.ui-state-default').mouseover(function(){
 			
 			//var date = new Date();
 			$(function() {
+				if (disableDateList.length == 0) {
+					$("#datepicker").multiDatesPicker({
+		                minDate : 0,
+		                dateFormat : "yy-mm-dd",
+		                mode : 'daysRange',
+		                autoselectRange : [ 0, numTravel ]
+		              });
+				} else {
 				$("#datepicker").multiDatesPicker({
-					minDate : 0,
-					addDisabledDates : disableDateList,// 불가능한 스케줄 multidatespickr.sourceforge.net
-					dateFormat : "yy-mm-dd",
-					mode : 'daysRange',
-					autoselectRange : [ 0, numTravel ]
-				});
+			          minDate : 0,
+			          addDisabledDates : disableDateList,// 불가능한 스케줄 multidatespickr.sourceforge.net
+			          dateFormat : "yy-mm-dd",
+			          mode : 'daysRange',
+			          autoselectRange : [ 0, numTravel ]
+			        });
+				}
 			});
-
 			/* $('#makerNo').val(data.product.makerNo);
 			
 			if (data.product.madeDate) {
@@ -1010,6 +1011,27 @@ $('.ui-state-default').mouseover(function(){
 			    }
 			  });
 			
+		});
+	}
+	
+	
+	
+	
+	
+	
+	 
+	function loadComment(itemNo, commentPageNum) {
+		$.getJSON('../item/viewComment.do?itemNo=' + itemNo, {
+			pageNo : commentPageNum
+		}, function(data) {
+			console.log(data, "@@코멘트@@");
+			console.log(data.item);
+			setPageNo(data.currPageNo, data.maxPageNo);
+
+			$.get('templates/comment-item.html', function(html) {
+				var template = Handlebars.compile(html);
+				$('.item-comment-table').html(template(data));
+			});
 		});
 	}
 </script>
@@ -1064,7 +1086,7 @@ $('#commentBtn').click(function(){
             if (result.status == "success") {
               alert("등록되었습니다.");
               $('#inputComment').val("");
-              loadProduct(reqNo, currPageNo);
+              loadComment(reqNo, currPageNo);
               location.href="http://helloworld.io:8080/web03t/test/detailItem.html?itemNo=" + reqNo + "#itemComment";
             } else {
               alert("등록 실패!");

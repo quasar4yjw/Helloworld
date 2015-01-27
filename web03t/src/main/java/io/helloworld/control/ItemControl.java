@@ -91,26 +91,15 @@ public class ItemControl {
   }
 	@RequestMapping("/view")
 	public Object view(
-			@RequestParam(defaultValue="1") int pageNo,
-			@RequestParam(defaultValue="6") int pageSize,
 			String itemNo, 
 			HttpSession session, 
 			HttpServletResponse response, 
 			HttpServletRequest request) throws Exception {
 		
-			if (pageSize <= 0) pageSize = PAGE_DEFAULT_SIZE;
-		    
-		    int maxPageNo = itemService.getCommentMaxPageNo(pageSize, Integer.parseInt(itemNo));
-		    
-		    if (pageNo <= 0) pageNo = 1;
-		    if (maxPageNo != 0 && pageNo > maxPageNo) pageNo = maxPageNo;
-		
-		
 			HashMap itemMap = itemService.get(Integer.parseInt(itemNo));
 			List interMaps = itemService.getInter(Integer.parseInt(itemNo));
 			List scheduleMaps = itemService.getSchedule(Integer.parseInt(itemNo));
 			HashMap guideMap = itemService.getGuideInfo(Integer.parseInt(itemNo));
-			List commentMaps = itemService.getComment(Integer.parseInt(itemNo), pageNo, pageSize);
 			int tourDayCount = itemService.getTourDayCount(Integer.parseInt(itemNo));
 			List photoMaps = itemService.getDetailPhoto(Integer.parseInt(itemNo));
 			List disableDates = itemService.getDisableDate(Integer.parseInt(itemNo));
@@ -134,16 +123,44 @@ public class ItemControl {
 			//int non = (int)session.getAttribute("view2Page");
 			HashMap<String,Object> resultMap = new HashMap<>();
 			resultMap.put("status", "success");
-			resultMap.put("currPageNo", pageNo);
-		    resultMap.put("maxPageNo", maxPageNo);
 			resultMap.put("item", itemMap);
 			resultMap.put("inters", interMaps);
 			resultMap.put("itemSchedules", scheduleMaps);
 			resultMap.put("guideInfo", guideMap);
-			resultMap.put("commentList", commentMaps);
 			resultMap.put("tourDayCount", tourDayCount);
 			resultMap.put("photoList", photoMaps);
 			resultMap.put("disableDates", disableDates);
+			/*resultMap.put("photos", datamap.getPhotoList());
+			resultMap.put("travels", datamap.getTravelScheduleList());*/
+			return resultMap; 
+	}
+	
+	
+	@RequestMapping("/viewComment")
+	public Object viewComment(
+			@RequestParam(defaultValue="1") int pageNo,
+			@RequestParam(defaultValue="6") int pageSize,
+			String itemNo, 
+			HttpSession session, 
+			HttpServletResponse response, 
+			HttpServletRequest request) throws Exception {
+		
+			if (pageSize <= 0) pageSize = PAGE_DEFAULT_SIZE;
+		    
+		    int maxPageNo = itemService.getCommentMaxPageNo(pageSize, Integer.parseInt(itemNo));
+		    
+		    if (pageNo <= 0) pageNo = 1;
+		    if (maxPageNo != 0 && pageNo > maxPageNo) pageNo = maxPageNo;
+		
+		
+			List commentMaps = itemService.getComment(Integer.parseInt(itemNo), pageNo, pageSize);
+			
+			//int non = (int)session.getAttribute("view2Page");
+			HashMap<String,Object> resultMap = new HashMap<>();
+			resultMap.put("status", "success");
+			resultMap.put("currPageNo", pageNo);
+		    resultMap.put("maxPageNo", maxPageNo);
+			resultMap.put("commentList", commentMaps);
 			/*resultMap.put("photos", datamap.getPhotoList());
 			resultMap.put("travels", datamap.getTravelScheduleList());*/
 			return resultMap; 
