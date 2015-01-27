@@ -39,13 +39,13 @@ jQuery(document).ready(function($){
 		event.preventDefault();
 		$(this).next('.cd-faq-content').slideToggle(200).end().parent('li').toggleClass('content-visible');
 	});
-/*
+
 	//update category sidebar while scrolling
 	$(window).on('scroll', function(){
 		if ( $(window).width() > MqL ) {
 			(!window.requestAnimationFrame) ? updateCategory() : window.requestAnimationFrame(updateCategory); 
 		}
-	});*/
+	});
 
 	$(window).on('resize', function(){
 		if($(window).width() <= MqL) {
@@ -70,7 +70,7 @@ jQuery(document).ready(function($){
 		closeFaqsContainer.removeClass('move-left');
 		$('body').removeClass('cd-overlay');
 	}
-/*
+
 	function updateCategory(){
 		updateCategoryPosition();
 		updateSelectedCategory();
@@ -107,8 +107,8 @@ jQuery(document).ready(function($){
 				'top': 0,
 			});
 		}
-	}*/
-/*
+	}
+
 	function updateSelectedCategory() {
 		faqsSections.each(function(){
 			var actual = $(this),
@@ -122,5 +122,5 @@ jQuery(document).ready(function($){
 				activeCategory.removeClass('selected');
 			}
 		});
-	}*/
+	}
 });
