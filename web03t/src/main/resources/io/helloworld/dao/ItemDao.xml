@@ -109,9 +109,11 @@
       T2.P_URL    
      FROM (ITEMS T1 LEFT OUTER JOIN DET_PHOTS T2 ON T1.I_NO = T2.I_NO)  LEFT OUTER JOIN TAGS T3 ON T1.I_NO=T3.I_NO
      WHERE T1.COUNTRY =#{country} AND T1.PRICE >= #{minPrice}  AND T1.PRICE <= #{maxPrice}  ]]> 
-      <if test="interests.length > 0">      
-	      <foreach item="item" index="index" collection="interests" >
-	        AND T3.INTER = #{item}
+      
+      <if test="interests.length > 0"> 
+      AND T3.INTER IN
+	      <foreach item="item" index="index" collection="interests" open="(" separator="," close=")">
+	        #{item}
 	      </foreach>
     </if>
       

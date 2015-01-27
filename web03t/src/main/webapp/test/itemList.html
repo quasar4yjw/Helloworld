@@ -867,14 +867,15 @@ $(function(){
     minPrice = prices[0];
     maxPrice = prices[1];
   }); 
-  interests = getInterest('checkbox1');
-  interests = getInterest('checkbox2');
-  interests = getInterest('checkbox3');
-  interests = getInterest('checkbox4');
-  interests = getInterest('checkbox5');
-  interests = getInterest('checkbox6');
-  interests = getInterest('checkbox7');
-  interests = getInterest('checkbox8');
+  getInterest('checkbox1');
+  getInterest('checkbox2');
+  //console.log(interests.length);
+  getInterest('checkbox3');
+  getInterest('checkbox4');
+  getInterest('checkbox5');
+  getInterest('checkbox6');
+  getInterest('checkbox7');
+  getInterest('checkbox8');
   
   
 });
@@ -884,7 +885,7 @@ var interSplit;
 function getInterest(interest){
   $('#'+interest).click(function(){    
     var interCount= 0;
-    var inter = new Array(3);
+    var inter = new Array();
    /*  console.log('----------------------11');
     console.log(inter); */
     // console.log($('input:checkbox:checked').length);
@@ -898,8 +899,9 @@ function getInterest(interest){
         interCount++;
       });
       
-      console.log(inter);   
-     return inter;
+      console.log(inter);
+      loadItemList(1 ,country,startDate,endDate,minPrice,maxPrice,inter);
+      
    
   });
 }
@@ -916,7 +918,7 @@ function getParameterByName(name) {
   $('.footer').load('footer.html');
   
   $('#page-selection').on('page', function(event, num){
-    loadItemList(num ,country,startDate,endDate,minPrice,maxPrice);   
+    loadItemList(1 ,country,startDate,endDate,minPrice,maxPrice,inter);   
   })
   
   $('#startDate').datepicker({
@@ -925,7 +927,10 @@ function getParameterByName(name) {
     beforeShowDay: noBefore,
     onSelect: function(selected) {
       $("#endDate").datepicker("option","minDate", selected);
-      console.log($('#startDate').val());
+      startDate = $('#startDate').val();
+      loadItemList(1 ,country,startDate,endDate,minPrice,maxPrice,interests);
+      
+      
     }
   });
   $("#endDate").datepicker({ 
