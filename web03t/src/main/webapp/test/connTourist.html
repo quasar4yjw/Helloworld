@@ -246,7 +246,7 @@ padding-left: 40%;
           setPageNo(data.currPageNo, data.maxPageNo);
           var connects = data.connects; 
           
-          $.get('templates/connect-Tlist.html', function(source){
+          $.get('templates/connect-Tlist32.html', function(source){
             var template = Handlebars.compile(source);
             $('#connectUl').html( template(data) );
             $(".예약요청").css('color','#669999');
@@ -324,6 +324,17 @@ padding-left: 40%;
         //console.log(title);
       }
     });
+    
+/*     Handlebars.registerHelper("btnTel", function (title, connectStatus, no, tel) {
+        if (connectStatus == '예약완료'){
+          var btnTel = $('<div href="#" class="cbp-vm-add"></div>').text(tel);
+          return $('<div></div>').append(btnTel).html();
+
+        } else {
+          //console.log(connectStatus); 
+          //console.log(title);
+        }
+      }); */
   
         function updateConnect(no) {
                 if (confirm('정말 예약을 취소하시겠습니까?')) {

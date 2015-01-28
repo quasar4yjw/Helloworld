@@ -17,6 +17,7 @@
     <result column="TITLE" property="title"/>
     <result column="PRICE" property="price"/>
     <result column="P_URL" property="photoUrl"/>
+    <result column="TEL" property="tel"/>
     </resultMap>
   
   
@@ -24,33 +25,42 @@
         resultMap="connectListMap">
     SELECT   
       T2.G_EMAIL,
-      T2.T_EMAIL,   
-      T2.C_NO, 
-      T1.TITLE,
-      T1.PRICE,
-      T2.C_STAT,
-      T2.C_DATE,
-      T2.C_SDATE,
-      T3.P_URL
-      FROM (BOOK_INFO T2 LEFT JOIN ITEMS T1 on T1.I_NO=T2.I_NO) LEFT JOIN DET_PHOTS T3 on T2.I_NO=T3.I_NO
+      T1.T_EMAIL,   
+      
+      T1.C_NO, 
+      T2.TITLE,
+      T2.PRICE,
+      T1.C_STAT,
+      T1.C_DATE,
+      T1.C_SDATE,
+      T4.TEL,
+      T5.P_URL
+      
+      <!-- FROM (BOOK_INFO T2 LEFT JOIN ITEMS T1 on T1.I_NO=T2.I_NO) LEFT JOIN DET_PHOTS T3 on T2.I_NO=T3.I_NO -->
+      
+      
+      FROM (((BOOK_INFO T1 LEFT JOIN ITEMS T2 on T1.I_NO=T2.I_NO) LEFT JOIN  DET_PHOTS T5 on T1.I_NO=T5.I_NO)
+      LEFT JOIN GUIDES T3 on T2.G_EMAIL=T3.G_EMAIL) LEFT JOIN USERS T4 on T3.G_EMAIL=T4.EMAIL
+      
+      
       
     <if test="userType == 'tourist'">
     
     <if test="selected == 'all'">
-    WHERE T2.T_EMAIL=#{email}
+    WHERE T1.T_EMAIL=#{email}
     </if> 
      <if test="selected == 'req'">
-     WHERE (T2.C_STAT = '예약요청') AND (T2.T_EMAIL=#{email})
+     WHERE (T1.C_STAT = '예약요청') AND (T1.T_EMAIL=#{email})
     </if>
     <if test="selected == 'succ'">
-     WHERE (T2.C_STAT = '예약완료') AND (T2.T_EMAIL=#{email}) 
+     WHERE (T1.C_STAT = '예약완료') AND (T1.T_EMAIL=#{email}) 
     </if>
     <if test="selected == 'cancel'">
-     WHERE (T2.C_STAT = '예약취소') AND (T2.T_EMAIL=#{email}) 
+     WHERE (T1.C_STAT = '예약취소') AND (T1.T_EMAIL=#{email}) 
     </if>
-    GROUP BY T2.C_NO 
+    GROUP BY T1.C_NO 
   
-    ORDER BY T2.C_NO DESC
+    ORDER BY T1.C_NO DESC
 
     </if>
     
@@ -60,15 +70,15 @@
     WHERE T2.G_EMAIL=#{email}
     </if> 
      <if test="selected == 'req'">
-     WHERE (T2.C_STAT = '예약요청') AND (T2.G_EMAIL=#{email})
+     WHERE (T1.C_STAT = '예약요청') AND (T2.G_EMAIL=#{email})
     </if>
     <if test="selected == 'succ'">
-     WHERE (T2.C_STAT = '예약완료') AND (T2.G_EMAIL=#{email}) 
+     WHERE (T1.C_STAT = '예약완료') AND (T2.G_EMAIL=#{email}) 
     </if>
     <if test="selected == 'cancel'">
-     WHERE (T2.C_STAT = '예약취소') AND (T2.G_EMAIL=#{email}) 
+     WHERE (T1.C_STAT = '예약취소') AND (T2.G_EMAIL=#{email}) 
     </if>
-    GROUP BY T2.C_NO 
+    GROUP BY T1.C_NO 
     </if>  
     
     
@@ -81,21 +91,24 @@
   
   <select id="totalSize" parameterType="map" resultType="int">
     SELECT 
-    count(C_NO) 
-    FROM BOOK_INFO
+    count(C_NO)
+    
+  
+    FROM BOOK_INFO T1 LEFT JOIN ITEMS T2 on T1.I_NO=T2.I_NO 
+  
 
         <if test="selected == 'all' ">
-		    WHERE T_EMAIL=#{email}
-		    </if> 
-		    <if test="selected == 'req'">
-		     WHERE (C_STAT = '예약요청') AND ((T_EMAIL=#{email}) OR  (G_EMAIL=#{email})) 
-		    </if>
-		    <if test="selected == 'succ'">
-		     WHERE (C_STAT = '예약완료') AND ((T_EMAIL=#{email}) OR  (G_EMAIL=#{email})) 
-		    </if>
-		    <if test="selected == 'cancel'">
-		     WHERE (C_STAT = '예약취소') AND ((T_EMAIL=#{email}) OR  (G_EMAIL=#{email})) 
-		    </if>
+        WHERE (T1.T_EMAIL=#{email}) OR  (T2.G_EMAIL=#{email})
+        </if> 
+        <if test="selected == 'req'">
+         WHERE (T1.C_STAT = '예약요청') AND ((T1.T_EMAIL=#{email}) OR  (T2.G_EMAIL=#{email})) 
+        </if>
+        <if test="selected == 'succ'">
+         WHERE (T1.C_STAT = '예약완료') AND ((T1.T_EMAIL=#{email}) OR  (T2.G_EMAIL=#{email})) 
+        </if>
+        <if test="selected == 'cancel'">
+         WHERE (T1.C_STAT = '예약취소') AND ((T1.T_EMAIL=#{email}) OR  (T2.G_EMAIL=#{email})) 
+        </if>
 
   </select>
   
@@ -117,11 +130,11 @@
   
   <select id='getMinConnectNo' parameterType="map" resultType="object">
   SELECT MIN(T1.C_NO) FROM BOOK_INFO T1
-	LEFT OUTER JOIN ITEMS T2  ON T1.I_NO = T2.I_NO
-	LEFT OUTER JOIN TOURISTS T3 ON T1.T_EMAIL = T3.T_EMAIL 
-	WHERE T2.I_NO=${reqNo} AND T1.C_STAT='예약완료' AND T3.T_EMAIL='${touristEmail}'
-	AND T1.C_NO NOT IN (SELECT T1.C_NO FROM COMMENTS T1 
-	LEFT OUTER JOIN BOOK_INFO T2 ON T1.C_NO = T2.C_NO);
+  LEFT OUTER JOIN ITEMS T2  ON T1.I_NO = T2.I_NO
+  LEFT OUTER JOIN TOURISTS T3 ON T1.T_EMAIL = T3.T_EMAIL 
+  WHERE T2.I_NO=${reqNo} AND T1.C_STAT='예약완료' AND T3.T_EMAIL='${touristEmail}'
+  AND T1.C_NO NOT IN (SELECT T1.C_NO FROM COMMENTS T1 
+  LEFT OUTER JOIN BOOK_INFO T2 ON T1.C_NO = T2.C_NO);
   </select>
 
   

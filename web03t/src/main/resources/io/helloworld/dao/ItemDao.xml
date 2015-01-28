@@ -29,7 +29,7 @@
   
   <resultMap type="map" id="itemMap">
     <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
-    <id column="I_NO" property="no"/>    
+    <id column="I_NO" property="no"/>   
     <result column="COUNTRY" property="country"/>
     <result column="LANG" property="language"/>
     <result column="TITLE" property="title"/>
@@ -72,8 +72,8 @@
     
   <insert id="insertItem" parameterType="map"
   useGeneratedKeys="true" keyColumn="I_NO" keyProperty="itemNo">
-    INSERT INTO ITEMS(COUNTRY, LANG, TITLE, PLACE, PRICE) 
-    VALUES (#{country},#{language},#{title},#{place},#{price});
+    INSERT INTO ITEMS(G_EMAIL, COUNTRY, LANG, TITLE, PLACE, PRICE) 
+    VALUES (#{guideEmail},#{country},#{language},#{title},#{place},#{price});
   </insert>
   
   <insert id="insertTag1" parameterType="map">

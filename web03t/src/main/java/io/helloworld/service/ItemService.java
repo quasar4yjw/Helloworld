@@ -41,13 +41,14 @@ public class ItemService {
 		}
 		Map dataMap = new Gson().fromJson(msg, new TypeToken<Map<String, String>>() {}.getType());
 		System.out.println(dataMap);
-		System.out.println(dataMap.size()); //일정하나:11 일정둘:14
+		System.out.println(dataMap.size()); //일정하나:11 일정둘:14 => 가이드이메일이 추가되므로
+		// 일정하나:12 일정둘:15
 		
 		itemDao.insertItem(dataMap);
 		itemDao.insertTag1(dataMap);
 		itemDao.insertTag2(dataMap);
 		itemDao.insertTag3(dataMap);
-		int j = (dataMap.size() - 8) / 3;
+		int j = (dataMap.size() - 9) / 3;
 		for(int i = 1; i <= j; i++) {
 			System.out.println(i + "@_@_@_@");
 			dataMap.put("travelDay", dataMap.get("travelDay" + i));
