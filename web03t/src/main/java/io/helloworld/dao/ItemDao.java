@@ -12,6 +12,7 @@ public interface ItemDao {
   void insertTag1(Map dataMap);
   void insertTag2(Map dataMap);
   void insertTag3(Map dataMap);
+  int selectI_NO(Map dataMap);
   void insertSchedule(Map dataMap);
   List<?> selectList(Map<String,Object> params);
   int totalSize(Search search);

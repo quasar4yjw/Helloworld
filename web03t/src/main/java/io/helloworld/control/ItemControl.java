@@ -37,10 +37,12 @@ public class ItemControl {
 		Map<?, ?> dataMap = new Gson().fromJson(msg, new TypeToken<Map<String, String>>() {}.getType());
 		System.out.println(dataMap);
 		System.out.println(dataMap.size()); //일정하나:11 일정둘:14 */		
-		
-		itemService.addPlan(data/*, itemSchedule, detailPhoto*/);
+		int iNo=0;
+		iNo=itemService.addPlan(data/*, itemSchedule, detailPhoto*/);
 		HashMap<String,Object> resultMap = new HashMap<>();
 		resultMap.put("status", "success");
+		resultMap.put("iNo", iNo);
+    
 		return resultMap;
 
 	}

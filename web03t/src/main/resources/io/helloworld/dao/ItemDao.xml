@@ -96,6 +96,11 @@
     VALUES(#{itemNo}, #{travelDay}, #{travelTime}, #{travelContent});
   </insert>
   
+  <select id="selectI_NO" parameterType="map" resultType="int">
+    SELECT MAX(I_NO) FROM ITEMS
+    WHERE G_EMAIL=#{guideEmail}
+  </select>
+  
  <select id="selectList" parameterType="map" 
         resultMap="itemListMap">
   <![CDATA[
@@ -145,7 +150,7 @@
     SELECT * FROM ITEMS
     WHERE I_NO=#{value}
   </select>
-
+  
    <select id="selectInters" parameterType="int" resultMap="tagsMap">
     SELECT T_NO, I_NO, INTER
     FROM TAGS WHERE I_NO=#{value}

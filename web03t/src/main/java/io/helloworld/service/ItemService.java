@@ -32,7 +32,7 @@ public class ItemService {
 	@Transactional(
 			rollbackFor=Exception.class,
 			propagation=Propagation.REQUIRED)
-	public void addPlan(String data/*, ItemSchedule itemSchedule, DetailPhoto detailPhoto*/){
+	public int addPlan(String data/*, ItemSchedule itemSchedule, DetailPhoto detailPhoto*/){
 		String msg = null;
 		try {
 			msg = URLDecoder.decode(data, "utf-8");
@@ -49,6 +49,7 @@ public class ItemService {
 		itemDao.insertTag1(dataMap);
 		itemDao.insertTag2(dataMap);
 		itemDao.insertTag3(dataMap);
+		
 		int j = (dataMap.size() - 9) / 3;
 		for(int i = 1; i <= j; i++) {
 			System.out.println(i + "@_@_@_@");
@@ -57,6 +58,7 @@ public class ItemService {
 			dataMap.put("travelContent", dataMap.get("travelContent" + i));
 			itemDao.insertSchedule(dataMap);
 		}
+		return itemDao.selectI_NO(dataMap);
 		/*   itemDao.insertDetailPhoto(detailPhoto);*/
 	}
 

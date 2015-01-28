@@ -1023,9 +1023,9 @@ function maxLengthCheck(object)
                 //$('#btnCancel').click(); // click 이벤트 발생시킴.
                 console.log("111 등록되었습니다.");
                 console.log(result);
+                console.log(result.iNo);
                 if (confirm('등록되었습니다. 여행 상세페이지로 이동하시겠습니까?')) {
-                	location.href="itemList?itemNo=" + no + ".html"; 
-                	location.href="main.html";
+                	location.href="detailItem.html?itemNo=" + result.iNo; 
                  }
             else {
             	  location.href="main.html"; 
