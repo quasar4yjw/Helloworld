@@ -3,7 +3,7 @@ package io.helloworld.control;
 import io.helloworld.domain.Search;
 import io.helloworld.service.ItemService;
 
-import java.util.Date;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 
@@ -95,6 +95,12 @@ public class ItemControl {
 			HttpSession session, 
 			HttpServletResponse response, 
 			HttpServletRequest request) throws Exception {
+		
+			   for (Enumeration e = request.getLocales(); e.hasMoreElements();){
+				   System.out.println("========@@@@@@@@=========");
+			       System.out.println(e.nextElement());
+			       System.out.println("========@@@@@@@@=========");
+			   }
 		
 			HashMap itemMap = itemService.get(Integer.parseInt(itemNo));
 			List interMaps = itemService.getInter(Integer.parseInt(itemNo));

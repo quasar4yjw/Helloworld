@@ -819,10 +819,9 @@ var nav2 = $('.right-scroll');
 $(function(){
 $(".serviceTest").click(function(){
 	if (touristEmail == null) {
-		alert("로그인 후 이용해주세요.");
+		alert("여행객으로 로그인 후 이용해주세요.");
 		return;
 	}
-	alert("@@@@@@@@@");
 	var mm = parseInt($(".ui-datepicker-month").html());
   var ddFirst = $(".ui-datepicker .ui-datepicker-calendar .ui-state-highlight a:first").html();
   var ddLast = $(".ui-datepicker .ui-datepicker-calendar .ui-state-highlight a:last").html();
@@ -862,7 +861,7 @@ $(".serviceTest").click(function(){
                       connectEndDate:yyyyMMdd(lastDate),
                       connectStatus:'예약요청',
                       connectDate:new Date().YYYYMMDDHHMMSS(),
-                      guideEmail:guideEmail,
+                      //guideEmail:guideEmail,
                       touristEmail:touristEmail
                       }
                     , function(result){

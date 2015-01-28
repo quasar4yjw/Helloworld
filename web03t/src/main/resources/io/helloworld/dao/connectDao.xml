@@ -124,8 +124,8 @@
   </update>
   
   <insert id="insert" parameterType="Connect">
-    INSERT INTO BOOK_INFO(I_NO, C_SDATE, C_EDATE, C_STAT, C_DATE, G_EMAIL, T_EMAIL)
-    VALUES (#{itemNo}, #{connectStartDate}, #{connectEndDate}, '예약요청', #{connectDate}, #{guideEmail}, #{touristEmail})
+    INSERT INTO BOOK_INFO(I_NO, C_SDATE, C_EDATE, C_STAT, C_DATE, T_EMAIL)
+    VALUES (#{itemNo}, #{connectStartDate}, #{connectEndDate}, '예약요청', #{connectDate}, #{touristEmail})
   </insert>
   
   <select id='getMinConnectNo' parameterType="map" resultType="object">
