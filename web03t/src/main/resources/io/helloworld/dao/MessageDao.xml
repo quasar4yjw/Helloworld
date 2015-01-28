@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <sql> 태그 사용하기
+=> 자주 사용되는 SQL문은 별도로 정의해두고 포함한다.
+-->
+
+<mapper namespace="io.helloworld.dao.MessageDao">
+  
+  <select id="getSelectJoinForm" parameterType="string" resultType="map">
+    SELECT MSG_ID, LOCALE, MESSAGE
+    FROM I18N
+    WHERE LOCALE=#{value} AND MSG_ID like 'selectJoinForm.%';
+  </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

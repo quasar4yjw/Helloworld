@@ -1,8 +1,11 @@
 package io.helloworld.service;
 
-import io.helloworld.dao.AuthDao;
+import io.helloworld.dao.MessageDao;
 
+import java.util.Enumeration;
 import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,32 +14,16 @@ import org.springframework.stereotype.Service;
 public class MessageService {
 
 	@Autowired 
-	AuthDao authDao;
+	MessageDao messageDao;
 
-	  public HashMap validate(String loginEmail, String loginPwd) {
-		    HashMap<String,String> params = new HashMap<>();
-		    params.put("loginEmail", loginEmail);
-		    params.put("loginPwd", loginPwd);
-		    
-		    HashMap resultMap = new HashMap();
-		    long guideBool = 0L;
-		    long touristBool = 0L;
-		    
-		    HashMap existUser = authDao.existUser(params);
-		    resultMap.put("existUser", existUser);
-
-		    guideBool = authDao.areYouGuide(params);
-		    resultMap.put("guideBool", guideBool);
-
-		    touristBool = authDao.areYouTourist(params);
-		    resultMap.put("touristBool", touristBool);
-		    
-		    return resultMap;
-		  }
-
-	public Object getSelectJoinForm(Object nextElement) {
-		// TODO Auto-generated method stub
-		return null;
+	public Object getSelectJoinForm(HttpServletRequest request) {
+		Object obj = null;
+		for (Enumeration e = request.getLocales(); e.hasMoreElements();) {
+		       if((obj = messageDao.getSelectJoinForm(e.nextElement().toString())) != null){
+		    	   return obj;
+		       }
+		   }
+		return obj;
 	}
 	
 

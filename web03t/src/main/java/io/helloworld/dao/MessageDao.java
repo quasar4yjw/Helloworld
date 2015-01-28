@@ -1,13 +1,9 @@
 package io.helloworld.dao;
 
-import java.util.HashMap;
+import java.util.List;
 
 public interface MessageDao {
 
-	HashMap existUser(HashMap<String, String> params);
-
-	long areYouGuide(HashMap<String, String> params);
-
-	long areYouTourist(HashMap<String, String> params);
+	List getSelectJoinForm(String nextElement);
 
 }

@@ -26,12 +26,7 @@ public class MessageControl {
 	  public Object loginUser(HttpSession session, HttpServletRequest request) throws Exception {
 	    HashMap<String,Object> resultMap = new HashMap<>();
 	    
-	       for (Enumeration e = request.getLocales(); e.hasMoreElements();){
-		       Object obj = null;
-		       if((obj = messageService.getSelectJoinForm(e.nextElement())) != null){
-		    	   resultMap.put("message", obj);
-		       }
-		   }
+	      resultMap.put("message", messageService.getSelectJoinForm(request));
 	      resultMap.put("status", "success");
 	      resultMap.put("selectJoinForm", session.getAttribute("loginUser"));
 	    
