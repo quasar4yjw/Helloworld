@@ -55,17 +55,17 @@
  
   .menu-date {
   display: inline-block;
-  margin: 0px 175px 0px 10px;
+  margin: 0px 190px 0px 10px;
   text-align :center;
 }
   .menu-status {
   display: inline-block;
-  margin-right: 105px;
+  margin-right: 110px;
 }
  
   .menu-price {
   display: inline-block;
-  margin-right: 130px;
+  margin-right: 150px;
 }
   .menu-item {
   display: inline-block;
@@ -240,13 +240,15 @@ padding-left: 40%;
         function(data){
         console.log('-------------------');
         console.log(email);
-        console.log(data.totalSize);
-        console.log(data.maxPageNo);
+     
+        console.log('-----------');
           console.log(data);
+          console.log(data.connects[0].itemNo);
+          
           setPageNo(data.currPageNo, data.maxPageNo);
           var connects = data.connects; 
           
-          $.get('templates/connect-Tlist32.html', function(source){
+          $.get('templates/connect-Tlist.html', function(source){
             var template = Handlebars.compile(source);
             $('#connectUl').html( template(data) );
             $(".예약요청").css('color','#669999');
@@ -320,12 +322,13 @@ padding-left: 40%;
         return $('<div></div>').append(btnReject).html();
 
       } else {
-        //console.log(connectStatus); 
-        //console.log(title);
+        console.log(connectStatus); 
+        console.log(title);
+      
       }
     });
     
-/*     Handlebars.registerHelper("btnTel", function (title, connectStatus, no, tel) {
+     Handlebars.registerHelper("btnTel", function (connectStatus, no, tel) {
         if (connectStatus == '예약완료'){
           var btnTel = $('<div href="#" class="cbp-vm-add"></div>').text(tel);
           return $('<div></div>').append(btnTel).html();
@@ -334,7 +337,7 @@ padding-left: 40%;
           //console.log(connectStatus); 
           //console.log(title);
         }
-      }); */
+      }); 
   
         function updateConnect(no) {
                 if (confirm('정말 예약을 취소하시겠습니까?')) {

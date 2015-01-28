@@ -6,11 +6,13 @@
               ({{connectStartDate}})
               </div>
               
-              <a class="cbp-vm-image" href="#"><img src="../fileupload/{{photoUrl}}"></a>
+              <a class="cbp-vm-image" href="detailItem.html?itemNo={{itemNo}}">
+              <img src="../fileupload/{{photoUrl}}"></a>
               <h3 class="cbp-vm-title {{connectStatus}}">{{stat connectStatus}}</h3>
               <div class="cbp-vm-price">{{price}}</div>
               <div class="cbp-vm-details">{{title}} </div>
                             
                             {{{btnReject "취소" connectStatus no}}}
+                            {{{btnTel connectStatus no tel}}}
             </li>       
 {{/each}} 

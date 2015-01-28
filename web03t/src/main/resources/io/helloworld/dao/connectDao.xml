@@ -8,6 +8,7 @@
   <resultMap type="map" id="connectListMap">
     <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
     <id column="C_NO" property="no"/> 
+    <result column="I_NO" property="itemNo"/>
     <result column="T_EMAIL" property="touristEmail"/>
     <result column="G_EMAIL" property="guideEmail"/>   
     <result column="C_SDATE" property="connectStartDate"/>
@@ -24,6 +25,7 @@
   <select id="selectConnect" parameterType="map" 
         resultMap="connectListMap">
     SELECT   
+      T2.I_NO,
       T2.G_EMAIL,
       T1.T_EMAIL,   
       

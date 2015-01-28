@@ -63,7 +63,7 @@ form#myForm {
   padding: 20px;
   margin-bottom: 20px;
   float: right;
-  border: 1px solid #bcbcbc;
+ /*  border: 1px solid #bcbcbc; */
 }
 .title {
   width: 350px;
@@ -969,6 +969,12 @@ function maxLengthCheck(object)
       });
     </script> -->
     <script>
+    var guideBool;
+    var touristBool;
+    var userInfo;
+    var guideEmail = null;
+    
+    
     $('.regiBtn').click(function(){
 /*         var travelDay = "";
         var travelTime = "";
@@ -978,6 +984,7 @@ function maxLengthCheck(object)
         var count =  $('#tblAppendGrid').appendGrid('getRowCount');
         
         var temp = {
+        		    guideEmail : guideEmail,
                 country : $('#itemCountry').val(),
                 language : $('#itemLanguage').val(),
                 title : $('#itemTitle').val(),
@@ -1015,7 +1022,15 @@ function maxLengthCheck(object)
               if (result.status == "success") {
                 //$('#btnCancel').click(); // click 이벤트 발생시킴.
                 console.log("111 등록되었습니다.");
-                /* location.href="main.html"; */
+                console.log(result);
+                if (confirm('등록되었습니다. 여행 상세페이지로 이동하시겠습니까?')) {
+                	location.href="itemList?itemNo=" + no + ".html"; 
+                	location.href="main.html";
+                 }
+            else {
+            	  location.href="main.html"; 
+                 }
+    
               } else {
                 console.log("111 등록 실패!");
               }
@@ -1028,9 +1043,7 @@ function maxLengthCheck(object)
       });
     
     
-    var guideBool;
-    var touristBool;
-    var userInfo;
+    
     
 
     loadBool();
@@ -1059,6 +1072,7 @@ function maxLengthCheck(object)
                 	alert("가이드회원만 이용가능합니다.");
                 	location.href='main.html';
                 } else {
+                	guideEmail = result.loginUser.existUser.loginEmail;
                 	console.log('가이드입니다.');
                 } 
                 

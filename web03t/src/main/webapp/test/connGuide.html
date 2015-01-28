@@ -61,17 +61,17 @@
 
 	.menu-date {
 	display: inline-block;
-	margin: 0px 175px 0px 10px;
+	margin: 0px 190px 0px 10px;
 }
 
   .menu-status {
   display: inline-block;
-  margin-right: 105px;
+  margin-right: 110px;
 }
  
   .menu-price {
   display: inline-block;
-  margin-right: 130px;
+  margin-right: 150px;
 }
 
   .menu-item {
@@ -247,6 +247,7 @@ var guideBool;
 var touristBool;
 var existUser;
 var email;
+var itemDetailNo = new Array();
 
 $('#page-selection').on('page', function(event, num){
     loadItemList(num, email);   
@@ -334,10 +335,12 @@ $('#page-selection').on('page', function(event, num){
           console.log(count++);
           console.log('-------------------');
           console.log(email);
+
+          
           setPageNo(data.currPageNo, data.maxPageNo);
           var connects = data.connects; 
-          
-          $.get('templates/connect-Glist.html', function(source){
+         
+          $.get('templates/connect-Glist1.html', function(source){
             var template = Handlebars.compile(source);
             $('#connectUl').html( template(data) );
             $(".예약요청").css('color','#669999');
@@ -461,6 +464,17 @@ $('#page-selection').on('page', function(event, num){
           //console.log(title);
         }
       });
+    
+    Handlebars.registerHelper("btnTel", function (connectStatus, no, tel) {
+        if (connectStatus == '예약완료'){
+          var btnTel = $('<div href="#" class="cbp-vm-add"></div>').text(tel);
+          return $('<div></div>').append(btnTel).html();
+
+        } else {
+          //console.log(connectStatus); 
+          //console.log(title);
+        }
+      }); 
   
         function connectReject(no) {
                 if (confirm('정말 예약을 거절하시겠습니까?')) {
