@@ -6,10 +6,11 @@ import io.helloworld.domain.Search;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,7 +60,7 @@ public class ItemService {
 		/*   itemDao.insertDetailPhoto(detailPhoto);*/
 	}
 
-	public List<?> getList(int pageNo, int pageSize, Search search) {
+	public List<?> getList(int pageNo, int pageSize, Search search, String lang) {
     HashMap<String,Object> paramMap = new HashMap<>();
     paramMap.put("startIndex", ((pageNo - 1) * pageSize));
     paramMap.put("pageSize", pageSize);
@@ -68,6 +69,7 @@ public class ItemService {
     paramMap.put("endDate",search.getEndDate());
     paramMap.put("minPrice",search.getMinPrice());
     paramMap.put("maxPrice",search.getMaxPrice());
+    paramMap.put("lang", lang);
     
     if (search.getInterests() != null && search.getInterests().length > 0) {
       String interests = "";

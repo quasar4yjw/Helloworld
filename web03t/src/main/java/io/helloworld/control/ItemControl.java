@@ -53,7 +53,19 @@ public class ItemControl {
       HttpServletRequest request) throws Exception {
     HashMap itemMap = new HashMap();
     
+    String lang = null;
     
+    for (Enumeration e = request.getLocales(); e.hasMoreElements();){
+      System.out.println("========@@@@@@@@=========");
+        lang= e.nextElement().toString();
+        if(lang.length() == 2){
+          System.out.println(lang);
+        //System.out.println(e.nextElement().toString());
+        break;
+        //System.out.println(e.nextElement());
+        }
+        System.out.println("========@@@@@@@@=========");
+    }
 
     if (pageSize <= 0)
       pageSize = PAGE_DEFAULT_SIZE;
@@ -68,9 +80,9 @@ public class ItemControl {
     resultMap.put("currPageNo", pageNo);
     resultMap.put("maxPageNo", maxPageNo);
     resultMap.put("items", 
-         itemService.getList(pageNo, pageSize,search));
+         itemService.getList(pageNo, pageSize,search,lang) );
      resultMap.put("tags",itemService.getTag());
-
+   
      Cookie[] cookies = request.getCookies();
      
      //cookies[i].getValue() =  값을 출력,
