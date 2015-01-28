@@ -1024,7 +1024,7 @@ function getParameterByName(name) {
           if(cookie ==null) break;
           $('<li>').addClass('data-row')
             .append($('<a>').attr('href','detailItem.html?itemNo=' + cookie.no)
-              .append($('<img>').attr('src',"../fileupload/" + cookie.photoUrl+".jpg")))
+              .append($('<img>').attr('src',"../fileupload/" + cookie.photoUrl)))
              .append($('<h6>').addClass('recent-title').html(cookie.title))
              .appendTo($('#recentlyItemList'))
         }
@@ -1033,7 +1033,7 @@ function getParameterByName(name) {
         for (var i = 0; i < items.length; i++) {
           $('<li>').addClass('data-row')
               .append($('<a>').addClass("cbp-vm-image").attr('href','detailItem.html?itemNo=' + items[i].no)
-                  .append($('<img>').attr('src',"../fileupload/" + items[i].photoUrl+".jpg")))
+                  .append($('<img>').attr('src',"../fileupload/" + items[i].photoUrl)))
               .append(
                   
                   $('<a>').attr('href','detailItem.html?itemNo=' + items[i].no)
