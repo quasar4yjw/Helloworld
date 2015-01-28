@@ -108,11 +108,13 @@ public class ItemControl {
 			HttpServletResponse response, 
 			HttpServletRequest request) throws Exception {
 		
-			   for (Enumeration e = request.getLocales(); e.hasMoreElements();){
-				   System.out.println("========@@@@@@@@=========");
-			       System.out.println(e.nextElement());
-			       System.out.println("========@@@@@@@@=========");
-			   }
+			for (Enumeration e = request.getLocales(); e.hasMoreElements();){
+			   System.out.println("========@@@@@@@@=========");
+			  // if(e.nextElement().toString().length() == 2){
+		       System.out.println(e.nextElement());
+			  // }
+		       System.out.println("========@@@@@@@@=========");
+			}
 		
 			HashMap itemMap = itemService.get(Integer.parseInt(itemNo));
 			List interMaps = itemService.getInter(Integer.parseInt(itemNo));

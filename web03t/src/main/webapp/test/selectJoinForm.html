@@ -91,14 +91,14 @@ transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 						</header>
 						<div class="intro-content">
 							<div class="profile"><img src="../images/touristIcon.png" alt="profile1"></div>
-							<h1><span>여행객으로 가입하기 </span></h1>
+							<h1><span id='signUpToTour'></span></h1>
 						</div>
 						<div class="overlay"></div>
 					</div>
 					<div class="side side-right">
 						<div class="intro-content">
 							<div class="profile2"><img src="../images/guideIcon.png" alt="profile2"></div>
-							<h1><span>가이드로 가입하기 </span></h1>
+							<h1><span id='signUpToGuide'></span></h1>
 						</div>
 						<div class="overlay"></div>
 					</div>
@@ -162,6 +162,7 @@ transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 		 $.get('joinTourist.html', function(result) {
             $('.page-inner-left').html(result);
         });
+		 /* 정우야 언제나 고맙고 사랑해 -의문의 사나이 */
 		</script>
 		
 	</body>
