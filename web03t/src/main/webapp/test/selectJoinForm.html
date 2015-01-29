@@ -91,7 +91,7 @@ transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 						</header>
 						<div class="intro-content">
 							<div class="profile"><img src="../images/touristIcon.png" alt="profile1"></div>
-							<h1><span class='selectJoinForm signUpToTour'></span></h1>
+							<h1><span class='selectJoinForm signUpToTour'></span></h1> <!-- $('.selectJoinForm.signUpToTour').html('가입하기'); -->
 						</div>
 						<div class="overlay"></div>
 					</div>
@@ -171,7 +171,7 @@ transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 	                console.log(result.message);
 	                for(var i = 0; i < result.message.length; i++){
 	                $('.' + result.message[i].MSG_ID).html(result.message[i].MESSAGE);
-	                console.log(result.message[i].MSG_ID, result.message[i].MESSAGE)
+	                console.log(result.message[i].MSG_ID, result.message[i].MESSAGE, result.message.length);
 	                }
 	              } else {
 	                alert("실패!");

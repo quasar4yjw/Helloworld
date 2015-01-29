@@ -26,5 +26,15 @@ public class MessageService {
 		return obj;
 	}
 	
+	public Object getJoinGuide(HttpServletRequest request) {
+		Object obj = null;
+		for (Enumeration e = request.getLocales(); e.hasMoreElements();) {
+		       if( (obj = messageDao.getJoinGuide(e.nextElement().toString()) ) != null){
+		    	   return obj;
+		       }
+		   }
+		return obj;
+	}
+	
 
 }

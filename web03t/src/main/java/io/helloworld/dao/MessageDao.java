@@ -6,4 +6,6 @@ public interface MessageDao {
 
 	List getSelectJoinForm(String nextElement);
 
+	List getJoinGuide(String string);
+
 }

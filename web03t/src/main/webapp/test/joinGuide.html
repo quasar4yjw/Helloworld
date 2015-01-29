@@ -13,7 +13,7 @@
           </li>
           
             <li class="">
-              <label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't send you spam, we promise...">이메일 주소를 입력해주세요.</label>
+              <label class="fs-field-label fs-anim-upper joinGuide inputEmail" for="q2" data-info="We won't send you spam, we promise..."></label>
               <input class="fs-anim-lower-email2" id="guideEmail" name="guideEmail" type="email" placeholder="yourid@gmail.com" required="">
               <div class="tooltip tooltip-west">
               <span class="tooltip-content yesno2">이미 존재하는 이메일입니다.</span>
@@ -22,39 +22,39 @@
             
             
             <li class="">
-              <label class="fs-field-label fs-anim-upper" for="q1">패스워드를 입력해주세요.</label>
-              <input class="fs-anim-lower fs-anim-lower-password2" id="guidePassword" name="guidePassword" type="password"  placeholder="6자 이상, 영문 + 숫자 조합" required>
+              <label class="fs-field-label fs-anim-upper joinGuide inputPassword" for="q1"></label>
+              <input class="fs-anim-lower fs-anim-lower-password2 joinGuide placeholderPWD" id="guidePassword" name="guidePassword" type="password"  placeholder="" required>
               <div class="tooltip tooltip-west">
               <span class="tooltip-content tooltip-content-password2">6자리 이상, 영문 +숫자 조합이어야 합니다.</span>
               </div>
             </li>
             
             <li class="">
-              <label class="fs-field-label fs-anim-upper" for="q1">패스워드 확인을 위해 다시한번 입력해주세요.</label>
-              <input class="fs-anim-lower fs-anim-lower-repassword2" id="guideRepassword" name="guideRepassword" type="password"  placeholder="6자 이상, 영문 + 숫자 조합"  required="">
+              <label class="fs-field-label fs-anim-upper joinGuide inputRepassword" for="q1"></label>
+              <input class="fs-anim-lower fs-anim-lower-repassword2 joinGuide placeholderPWD" id="guideRepassword" name="guideRepassword" type="password"  placeholder=""  required="">
               <div class="tooltip tooltip-west">
               <span class="tooltip-content tooltip-content-repassword2">6자리 이상, 영문 +숫자 조합이어야 합니다.</span>
               </div>
             </li>
             
             <li class="">
-              <label class="fs-field-label fs-anim-upper" for="q1">이름을 입력해주세요.</label>
-              <input class="fs-anim-lower" id="guideUserName" name="guideUserName" type="text" placeholder="홍길동" required="">
+              <label class="fs-field-label fs-anim-upper joinGuide inputName" for="q1"></label>
+              <input class="fs-anim-lower joinGuide placeholderName" id="guideUserName" name="guideUserName" type="text" placeholder="" required="">
             </li>
             
             <li class="">
-              <label class="fs-field-label fs-anim-upper" for="q1">생일을 입력해주세요.</label>
+              <label class="fs-field-label fs-anim-upper joinGuide inputBirthday" for="q1"></label>
               <input class="fs-anim-lower" id="guideBirthDate" name="guideBirthDate" type="date" required="">
             </li>
             
             <li class="">
-              <label class="fs-field-label fs-anim-upper" for="q1">전화번호를 입력해주세요.</label>
-              <input class="fs-anim-lower" id="guideTel" name="guideTel" type="tel" placeholder="+821072225772" required=""
+              <label class="fs-field-label fs-anim-upper joinGuide inputPhoneNum" for="q1"></label>
+              <input class="fs-anim-lower joinGuide placeholderPhoneNum" id="guideTel" name="guideTel" type="tel" placeholder="" required=""
               onkeydown="return showKeyCode(event)">
             </li>
             
              <li class="">
-              <label class="fs-field-label fs-anim-upper" for="q1">사용가능언어를 선택해주세요.</label>
+              <label class="fs-field-label fs-anim-upper joinGuide selectLangs" for="q1"></label>
             <select multiple="multiple" id="guideLanguage" name="guideLanguage" class="language-selector form-control my-select" required="">    
                   <option value="id">Bahasa Indonesia</option>    
                   <option value="ms">Bahasa Melayu</option>    
@@ -86,8 +86,8 @@
               </li>
             
             <li class="">
-              <label class="fs-field-label fs-anim-upper" for="q4">가이드 정보에 표시될<BR>자기소개를 입력해주세요.</label>
-              <textarea class="fs-anim-lower" id="guideIntroduce" name="guideIntroduce" placeholder="안녕하세요? 저는 홍길동입니다." required=""></textarea>
+              <label class="fs-field-label fs-anim-upper joinGuide inputIntro" for="q4"></label>
+              <textarea class="fs-anim-lower joinGuide placeholderIntro" id="guideIntroduce" name="guideIntroduce" placeholder="안녕하세요? 저는 홍길동입니다." required=""></textarea>
             </li>
             
           </ol><!-- /fs-fields -->
@@ -95,8 +95,29 @@
            <button class="fs-submit fs-submit-guide" type="submit" >가입하기</button>
         </form><!-- /fs-form -->
       <div class="fs-controls"><button class="fs-continue">Continue</button><nav class="fs-nav-dots"><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class=""></button><button class="fs-dot-current"></button></nav><span class="fs-numbers"><span class="fs-number-current">6</span><span class="fs-number-total">6</span></span><div class="fs-progress" style="width: 100%;"></div></div><span class="fs-message-error"></span></div><!-- /fs-form-wrap -->
-
+<script>
+    $.post('../i18n/joinGuide.do' /* URL */
+              ,  function(result){ /* 서버로부터 응답을 받았을 때 호출될 메서드*/
+                if (result.status == "success") {
+                  console.log(result.message);
+                  for(var i = 0; i < result.message.length; i++){
+                	  if(result.message[i].MSG_ID.indexOf("joinGuide.placeholder") > -1) {
+                		  $('.' + result.message[i].MSG_ID).attr('placeholder', result.message[i].MESSAGE);
+                	  } else $('.' + result.message[i].MSG_ID).html(result.message[i].MESSAGE);
+                  console.log(result.message[i].MSG_ID, result.message[i].MESSAGE)
+                  }
+                } else {
+                  alert("실패!");
+                }
+              } 
+              , 'json' /* 서버가 보낸 데이터를 JSON 형식으로 처리*/)
+           /* 서버 요청이 실패했을 때 호출될 함수 등록*/   
+           .fail(function(jqXHR, textStatus, errorThrown){ 
+             alert(textStatus + ":" + errorThrown);
+           });
+    </script>
     <script>
+    
    /*  $(".fs-anim-lower-email").keyup(function() {
       console.log($('.fs-anim-lower-email').val());
        $.get("http://localhost:3000/idCheck", {
