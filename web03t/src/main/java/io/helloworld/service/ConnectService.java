@@ -87,4 +87,8 @@ public class ConnectService {
 		return connectDao.getMinConnectNo(paramMap);
 	}
 
+  public void updateCount(Connect connect) {
+    connectDao.updateCount(connect);
+  }
+
 }

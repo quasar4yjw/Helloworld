@@ -19,6 +19,7 @@
     <result column="PRICE" property="price"/>
     <result column="P_URL" property="photoUrl"/>
     <result column="TEL" property="tel"/>
+    <result column="G_COUNT" property="count"/>
     </resultMap>
   
   
@@ -27,7 +28,8 @@
     SELECT   
       T2.I_NO,
       T2.G_EMAIL,
-      T1.T_EMAIL,   
+      T1.T_EMAIL, 
+      T3.G_COUNT,  
       
       T1.C_NO, 
       T2.TITLE,
@@ -90,6 +92,12 @@
     
   </select>
   
+<update id="updateCount" parameterType="connect">
+  UPDATE GUIDES
+  SET G_COUNT=G_COUNT+1
+  WHERE G_EMAIL=#{guideEmail}
+
+  </update>
   
   <select id="totalSize" parameterType="map" resultType="int">
     SELECT 
