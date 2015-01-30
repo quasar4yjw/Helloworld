@@ -20,6 +20,12 @@
     FROM I18N
     WHERE LOCALE=#{value} AND MSG_ID like 'joinGuide.%';
   </select>
+  
+  <select id="getMainI18N" parameterType="string" resultType="map">
+    SELECT MSG_ID, LOCALE, MESSAGE
+    FROM I18N
+    WHERE LOCALE=#{value} AND MSG_ID like 'main.%';
+  </select>
 </mapper>
 
 

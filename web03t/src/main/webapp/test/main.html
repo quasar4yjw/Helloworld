@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
+<link rel="icon" href="../favicon.png" type="image/x-icon">
 <link rel='stylesheet' 
   href='/web03t/css/bootstrap.min.css'>
 <link rel='stylesheet' 
@@ -272,19 +274,19 @@ margin-left: -172.5px;
 			<ul class="slide-ul">
 				<li><a href="#"><img src="../images/bg1.jpg" alt="dane">  
 				<span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
-          <h4 class='tile-label'>터키</h4></a></li>
+          <h4 class='tile-label main advItem'></h4></a></li>
 				<li><a href="#"><img src="../images/bg2.jpg" alt="dane">
 				<span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
-          <h4 class='tile-label'>볼리비아</h4></a></li>
+          <h4 class='tile-label main advItem2'></h4></a></li>
 				<li><a href="#"><img src="../images/bg3.jpg" alt="dane">
 				<span class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label">
-          <h4 class='tile-label'>독일</h4></a></li>
+          <h4 class='tile-label main advItem3'></h4></a></li>
 			</ul>
 			<div class='main-search back'>
 
 				<form action="">
 					<select id='selectCountry'> <!-- class="form-control" -->
-						<option value="">여행지를 선택하세요.</option>
+						<option class='main selectCountry' value=""></option>
   <option value="AF">Afghanistan</option>
   <option value="AX">Åland Islands</option>
   <option value="AL">Albania</option>
@@ -535,8 +537,8 @@ margin-left: -172.5px;
   <option value="ZM">Zambia</option>
   <option value="ZW">Zimbabwe</option>
 					</select> <br> <br> 
-					<input type="text" id="startDate" placeholder="여행시작일" class='date'> 
-					<input type="text" id="endDate" placeholder="여행종료일" class='date'>
+					<input type="text" id="startDate" class='main tourStartDate' placeholder="여행시작일" class='date'> 
+					<input type="text" id="endDate" class='main tourEndDate' placeholder="여행종료일" class='date'>
 					<br> <br>
 					<div id='mainPrice'>
 					<br> <br> 
@@ -556,46 +558,46 @@ margin-left: -172.5px;
 					<a href="detailItem.html"> <img src="../images/best01.jpg" />
 								
 					<span class="panel-overlay-bottom-left panel-overlay-label1 panel-overlay-listing-label">
-                 <h3 class='tile-label'>당신도 팬더의 음식 맛이 궁금하나요? 그럼 담양으로 놀러오세요</h3>
+                 <h3 class='tile-label main bestItem1'></h3>
                 
-              <sup class='h3 price-amount'>100,000 </sup>
-                 <sup class='h3 text-contrast'>원</sup>
+              <sup class='h3 price-amount main bestItem1price'></sup>
+                 <sup class='h3 text-contrast main currency'></sup>
               </span>
 					</a>
 				</div>
 				<div class="tile tile-2 ">
 					<a> <img src="../images/best02.jpg" /> 
 					<span class="panel-overlay-bottom-left panel-overlay-label1 panel-overlay-listing-label">
-					<h4 class='tile-label'>파리의하루</h4>
-                 <sup class='h4 price-amount'>150,000 </sup>
-                 <sup class='h4 text-contrast'>원</sup>
+					<h4 class='tile-label main bestItem2'></h4>
+                 <sup class='h4 price-amount main bestItem2price'></sup>
+                 <sup class='h4 text-contrast main currency'></sup>
               </span>
 					</a>
 				</div>
         <div class="tile tile-3 ">
           <a> <img src="../images/best03.jpg" /> 
           <span class="panel-overlay-bottom-left panel-overlay-label1 panel-overlay-listing-label">
-                 <h4 class='tile-label'>추운겨울 바다에 수영하고 싶지 않으세요?</h4>
-                 <sup class='h4 price-amount'>70,000 </sup>
-                 <sup class='h4 text-contrast'>원</sup>
+                 <h4 class='tile-label main bestItem3'></h4>
+                 <sup class='h4 price-amount main bestItem3price'></sup>
+                 <sup class='h4 text-contrast main currency'></sup>
               </span>
           </a>
         </div>				
 				 <div class="tile tile-4 ">
           <a> <img src="../images/best04.jpg" /> 
           <span class="panel-overlay-bottom-left panel-overlay-label1 panel-overlay-listing-label">
-          <h4 class='tile-label'>카지노의도시 당신의 운을 믿으십니까?</h4>
-                 <sup class='h4 price-amount'>135,000 </sup>
-                 <sup class='h4 text-contrast'>원</sup>
+          <h4 class='tile-label main bestItem4'></h4>
+                 <sup class='h4 price-amount main bestItem4price'></sup>
+                 <sup class='h4 text-contrast main currency'></sup>
               </span>
           </a>
         </div>        
         <div class="tile tile-5 ">
           <a> <img src="../images/best05.jpg" /> 
           <span class="panel-overlay-bottom-left panel-overlay-label1 panel-overlay-listing-label">
-          <h4 class='tile-label'>오구리슌을 닮은 알파카를 찾아라.</h4>
-                 <sup class='h4 price-amount'>160,000 </sup>
-                 <sup class='h4 text-contrast'>원</sup>
+          <h4 class='tile-label main bestItem5'></h4>
+                 <sup class='h4 price-amount main bestItem5price'></sup>
+                 <sup class='h4 text-contrast main currency'></sup>
               </span>
           </a>
         </div>
@@ -603,9 +605,9 @@ margin-left: -172.5px;
         <div class="tile tile-6 ">
           <a> <img src="../images/best06.jpg" /> 
           <span class="panel-overlay-bottom-left panel-overlay-label1 panel-overlay-listing-label">
-          <h4 class='tile-label'>한번쯤 외어본 주문 : 윙가디움 레디오사</h4>
-                 <sup class='h4 price-amount'>190,000 </sup>
-                 <sup class='h4 text-contrast'>원</sup>
+          <h4 class='tile-label main bestItem6'></h4>
+                 <sup class='h4 price-amount main bestItem6price'></sup>
+                 <sup class='h4 text-contrast main currency'></sup>
               </span>
           </a>
         </div>				
@@ -622,29 +624,70 @@ margin-left: -172.5px;
 <!-- <script type="text/javascript" src='../js/require.js'></script> -->
 <script type="text/javascript" src='../js/jquery.range.js'></script>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript" src='../js/datepicker-ko.js'></script>
 <script type="text/javascript" src='../js/jquery-ui.multidatespicker.js'></script>
+
 <script type="text/javascript">
   $('.dialog').load('loginDialog.html');
   $('.header').load('header.html');  
   $('.footer').load('footer.html');
   console.log($("#selectCountry option:selected").text());
+  var datePickerInit = -1;
   
-  $('#startDate').datepicker({
-    dateFormat: 'yy-mm-dd',
-    numberOfMonths: 1,
-    beforeShowDay: noBefore,
-    onSelect: function(selected) {
-      $("#endDate").datepicker("option","minDate", selected)
-    }
-  });
-  $("#endDate").datepicker({ 
-    dateFormat: 'yy-mm-dd' ,
-    numberOfMonths: 1,
-    onSelect: function(selected) {
-    $("#startDate").datepicker("option","maxDate", selected)
-    }
-    });  
+  $.post('../i18n/main.do' /* URL */
+          ,  function(result){ /* 서버로부터 응답을 받았을 때 호출될 메서드*/
+            if (result.status == "success") {
+              console.log(result.message);
+              
+              for(var i = 0; i < result.message.length; i++){
+                if(result.message[i].MSG_ID.indexOf("tour") > -1) {
+                  $('.' + result.message[i].MSG_ID).attr('placeholder', result.message[i].MESSAGE);
+                  }
+                else if(result.message[i].MSG_ID.indexOf("picker") > -1) { 
+                	madeDatepicker(result.message[i].MESSAGE);
+                	datePickerInit = result.message[i].MSG_ID.indexOf("picker");
+                	}
+                else {
+                	$('.' + result.message[i].MSG_ID).html(result.message[i].MESSAGE);
+                  }
+              console.log(result.message[i].MSG_ID, result.message[i].MESSAGE)
+              }
+              
+              if(datePickerInit == -1) {
+            	  madeDatepicker("");
+              }
+              
+            } else {
+              alert("실패!");
+            }
+          } 
+          , 'json' /* 서버가 보낸 데이터를 JSON 형식으로 처리*/)
+       /* 서버 요청이 실패했을 때 호출될 함수 등록*/   
+       .fail(function(jqXHR, textStatus, errorThrown){ 
+         alert(textStatus + ":" + errorThrown);
+       });
+  
+  
  
+  function madeDatepicker(str){
+	  //$.datepicker.regional[str];
+	  $.datepicker.setDefaults($.datepicker.regional[str]);
+	  $('#startDate').datepicker({
+	    dateFormat: 'yy-mm-dd',
+	    numberOfMonths: 1,
+	    beforeShowDay: noBefore,
+	    onSelect: function(selected) {
+	      $("#endDate").datepicker("option","minDate", selected)
+	    }
+	  });
+	  $("#endDate").datepicker({
+	    dateFormat: 'yy-mm-dd' ,
+	    numberOfMonths: 1,
+	    onSelect: function(selected) {
+	    $("#startDate").datepicker("option","maxDate", selected)
+	    }
+	    });  
+  }
  
   function noBefore(date) {
     if (date < new Date())

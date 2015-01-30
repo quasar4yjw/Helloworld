@@ -8,4 +8,6 @@ public interface MessageDao {
 
 	List getJoinGuide(String string);
 
+	List getMainI18N(String string);
+
 }
