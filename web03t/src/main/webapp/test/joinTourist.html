@@ -123,7 +123,7 @@
     function emailValidate(target, message) {
     $(target).keyup(function() {
       console.log($(target).val());
-       $.get("http://192.168.0.155:3000/idCheck", {
+       $.get("http://192.168.0.38:3000/idCheck", {
         id : $(target).val()
       }, function(data) {
     	  if(data.result == "0"){
@@ -133,7 +133,7 @@
     });
      $(target).focusout(function(){
     	 console.log($(target).val());
-         $.get("http://192.168.0.155:3000/idCheck", {
+         $.get("http://192.168.0.38:3000/idCheck", {
           id : $(target).val()
         }, function(data) {
           if(data.result == "1"){
