@@ -669,8 +669,10 @@ width: 60px;
 	<!-- <script type="text/javascript" src='../js/require.js'></script> -->
 	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 	<script src="../js/jquery.bxslider.js"></script>
-	<script type="text/javascript" src="http://rawgit.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
-	<script type="text/javascript">
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/bootbox.min.js"></script>
+	<script src="http://rawgit.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
+	<script>
 	
 	  $('.dialog').load('loginDialog.html');
   $('.header').load('header.html');
@@ -820,6 +822,7 @@ $(function(){
 $(".serviceTest").click(function(){
 	if (touristEmail == null) {
 		alert("여행객으로 로그인 후 이용해주세요.");
+		bootbox.alert("Hello world!");
 		return;
 	}
 	var mm = parseInt($(".ui-datepicker-month").html());
