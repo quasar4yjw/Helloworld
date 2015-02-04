@@ -167,6 +167,11 @@
               appear(message);
               this.focus();
             }
+    		else if(target == '.fs-anim-lower-repassword2' && $('.fs-anim-lower-password2').val() != this.value) {
+             $('.tooltip-content-repassword2').html("입력한 패스워드가 동일하지 않습니다.");
+              appear(message);
+              this.focus();
+            }
     	}
     	console.log(pwdVal.match(/^(?=\w{6,}$)(?=.*\d)(?=.*[A-z]).*/));
     	
