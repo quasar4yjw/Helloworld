@@ -28,9 +28,12 @@
     SELECT   
       T2.I_NO,
       T2.G_EMAIL,
-      T1.T_EMAIL, 
-      T3.G_COUNT,  
       
+      T1.T_EMAIL, 
+      
+       <if test="userType == 'guide'">
+      T3.G_COUNT,  
+      </if>
       T1.C_NO, 
       T2.TITLE,
       T2.PRICE,
@@ -43,12 +46,12 @@
       <!-- FROM (BOOK_INFO T2 LEFT JOIN ITEMS T1 on T1.I_NO=T2.I_NO) LEFT JOIN DET_PHOTS T3 on T2.I_NO=T3.I_NO -->
       
       
-      FROM (((BOOK_INFO T1 LEFT JOIN ITEMS T2 on T1.I_NO=T2.I_NO) LEFT JOIN  DET_PHOTS T5 on T1.I_NO=T5.I_NO)
-      LEFT JOIN GUIDES T3 on T2.G_EMAIL=T3.G_EMAIL) LEFT JOIN USERS T4 on T3.G_EMAIL=T4.EMAIL
       
       
       
     <if test="userType == 'tourist'">
+      FROM (((BOOK_INFO T1 LEFT JOIN ITEMS T2 on T1.I_NO=T2.I_NO) LEFT JOIN  DET_PHOTS T5 on T1.I_NO=T5.I_NO)
+      LEFT JOIN GUIDES T3 on T2.G_EMAIL=T3.G_EMAIL) LEFT JOIN USERS T4 on T3.G_EMAIL=T4.EMAIL
     
     <if test="selected == 'all'">
     WHERE T1.T_EMAIL=#{email}
@@ -69,6 +72,12 @@
     </if>
     
     <if test="userType == 'guide'">
+    
+          FROM (((BOOK_INFO T1 LEFT JOIN ITEMS T2 on T1.I_NO=T2.I_NO) LEFT JOIN  DET_PHOTS T5 on T1.I_NO=T5.I_NO)
+      LEFT JOIN TOURISTS T6 on T1.T_EMAIL=T6.T_EMAIL) LEFT JOIN USERS T4 on T6.T_EMAIL=T4.EMAIL
+      LEFT JOIN GUIDES T3 on T2.G_EMAIL=T3.G_EMAIL
+    
+    
     
     <if test="selected == 'all'">
     WHERE T2.G_EMAIL=#{email}
